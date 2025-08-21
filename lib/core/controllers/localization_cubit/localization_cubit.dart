@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:metro_egypt_guide/core/Helper/cashe_helper/cashe_helper.dart';
 import 'package:metro_egypt_guide/core/Helper/cashe_helper/cashe_keys.dart';
@@ -11,6 +12,8 @@ class LocalizationCubit extends Cubit<LocalizationState> {
   }
 
   String currentLang = '';
+
+static  LocalizationCubit get(BuildContext context) => BlocProvider.of(context);
 
   Future<void> setLang(String lang) async {
     currentLang = lang;
