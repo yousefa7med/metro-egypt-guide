@@ -1,0 +1,27 @@
+{
+    "metroGuide":"Metro Guide",
+    "nearestStation":"Nearest Station",
+    "start station":"Start Station",
+    "final station":"Final Station",
+    "Find Route":"Find Route",
+    "Home":"Home",
+    "Settings":"Settings",
+    "Lines":"Lines",
+    "SelectMetroLine":"Select Metro Line",
+    "Chooose A Metro Line":"Chooose A Metro Line",
+    "Line 1":"Line 1",
+    "Line 2":"Line 2",
+    "Line 3":"Line 3",
+    "Line Details":"Line Details",
+    "All Lines":"All Lines",
+    "lang":"Language",
+    "selectLang":"Select your language",
+    "English":"English",
+    "Arabic":"Arabic",
+    "preTheme":"Choose your preferred theme",
+        "Light":"Light",
+    "Dark":"Dark",
+    "Theme":"Theme"
+
+
+}
