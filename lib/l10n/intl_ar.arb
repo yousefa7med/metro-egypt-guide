@@ -1,0 +1,27 @@
+{
+    "metroGuide":"مرشد المترو ",
+    "nearestStation":"اقرب محطة",
+    "start station":"محطة البداية",
+    "final station":"محطة النهاية",
+    "Find Route":"ارني عن الطريق",
+    "Home":"الصفحة الرئيسية",
+    "Settings":"الاعدادت",
+    "Lines":"خطوط المترو",
+    "SelectMetroLine":"اختر خط المترو",
+    "Chooose A Metro Line":"اختر خط المترو",
+    "Line 1":"الخط الأول",
+    "Line 2":"الخط الثاني",
+    "Line 3":"الخط الثالث",
+    "Line Details":"تفاصيل الخط",
+    "All Lines":"جميع الخطوط",
+    "lang":"اللغة",
+    "selectLang":"اختر اللغة",
+    "English":"اللغة الانجليزية",
+    "Arabic":"اللغة العربية",
+    "preTheme":"اختر الثيم الذي تفضله",
+        "Light":"فاتح",
+    "Dark":"داكن",
+    "Theme":"ثيم"
+
+
+}
