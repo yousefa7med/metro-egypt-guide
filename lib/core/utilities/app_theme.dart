@@ -15,15 +15,20 @@ abstract class AppTheme {
       onSecondary: Colors.blueAccent,
       error: Colors.red,
       onError: Colors.white,
-      surface: AppColor.primaryColor,
-      onSurface: Colors.white,
+      surface: Color(0xFFF9F9F9),
+
+      onSurface: Colors.black,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        textStyle: TextStyle()
+        textStyle: TextStyle(),
       ),
     ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColor.line1Color,
+      foregroundColor: Colors.white,
+    )
   );
 
   // <=========================Dark Theme==============================>

@@ -1,0 +1,95 @@
+import 'package:flutter/material.dart';
+import 'package:metro_egypt_guide/core/utilities/app_color.dart';
+import 'package:metro_egypt_guide/features/home/presentation/views/home_view.dart';
+import 'package:metro_egypt_guide/features/lines/presentation/views/lines_view.dart';
+import 'package:metro_egypt_guide/features/settings/presentation/views/settings_view.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+
+class MainView extends StatefulWidget {
+  const MainView({super.key});
+
+  @override
+  State<MainView> createState() => _MainViewState();
+}
+
+class _MainViewState extends State<MainView> {
+  late PersistentTabController _controller;
+
+  @override
+  void initState() {
+    _controller = PersistentTabController(initialIndex: 0);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PersistentTabView(
+      navBarStyle: NavBarStyle.style6,
+      controller: _controller,
+      context,
+      screens: [HomeView(), LinesView(), SettingsView()],
+      items: _navBarsItems(),
+      handleAndroidBackButtonPress: true,
+      resizeToAvoidBottomInset: true,
+      stateManagement: true,
+      hideNavigationBarWhenKeyboardAppears: true,
+      popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
+      animationSettings: const NavBarAnimationSettings(
+        navBarItemAnimation: ItemAnimationSettings(
+          duration: Duration(milliseconds: 400),
+          curve: Curves.ease,
+        ),
+        screenTransitionAnimation: ScreenTransitionAnimationSettings(
+          animateTabTransition: true,
+          duration: Duration(milliseconds: 200),
+          screenTransitionAnimationType: ScreenTransitionAnimationType.slide,
+        ),
+      ),
+      confineToSafeArea: true,
+      navBarHeight: kBottomNavigationBarHeight,
+    );
+  }
+}
+
+List<PersistentBottomNavBarItem> _navBarsItems() => [
+  PersistentBottomNavBarItem(
+    icon: Icon(Icons.home),
+    title: ("Home"),
+    activeColorPrimary: AppColor.primaryColor,
+    inactiveColorPrimary: Colors.grey,
+
+    routeAndNavigatorSettings: RouteAndNavigatorSettings(
+      initialRoute: "/",
+      routes: {
+        "/settings": (final context) => const SettingsView(),
+        "/lines": (final context) => const LinesView(),
+      },
+    ),
+  ),
+  PersistentBottomNavBarItem(
+    icon: Icon(Icons.route),
+    title: ("Lines"),
+    activeColorPrimary: AppColor.primaryColor,
+    inactiveColorPrimary: Colors.grey,
+    routeAndNavigatorSettings: RouteAndNavigatorSettings(
+      initialRoute: "/",
+      routes: {
+        "/home": (final context) => const HomeView(),
+        "/settings": (final context) => const SettingsView(),
+      },
+    ),
+  ),
+  PersistentBottomNavBarItem(
+    icon: Icon(Icons.settings),
+    title: ("Settings"),
+    activeColorPrimary: AppColor.primaryColor,
+    inactiveColorPrimary: Colors.grey,
+    routeAndNavigatorSettings: RouteAndNavigatorSettings(
+      initialRoute: "/",
+      routes: {
+        "/settings": (final context) => const SettingsView(),
+        "/lines": (final context) => const LinesView(),
+      },
+    ),
+  ),
+];

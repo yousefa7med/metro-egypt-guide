@@ -5,7 +5,9 @@ import 'package:metro_egypt_guide/core/Helper/cashe_helper/cashe_keys.dart';
 part 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
-  ThemeCubit() : super(ThemeInitialState());
+  ThemeCubit() : super(ThemeInitialState()) {
+    _loadTheme();
+  }
   ThemeModeState currentTheme = ThemeModeState.system;
   static ThemeCubit get(BuildContext context) => BlocProvider.of(context);
 
