@@ -11,7 +11,7 @@ abstract class AppTheme {
       brightness: Brightness.light,
       primary: AppColor.primaryColor,
       onPrimary: Colors.white,
-      secondary: Colors.blueAccent,
+      secondary: const Color.fromARGB(255, 17, 230, 21),
       onSecondary: Colors.blueAccent,
       error: Colors.red,
       onError: Colors.white,
@@ -26,9 +26,9 @@ abstract class AppTheme {
       ),
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColor.line1Color,
+      backgroundColor: AppColor.primaryColor,
       foregroundColor: Colors.white,
-    )
+    ),
   );
 
   // <=========================Dark Theme==============================>

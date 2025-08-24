@@ -1,122 +1,123 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class AppTextStyle {
   // <========================= Regular style ==============================>
 
-  static const TextStyle regular14 = TextStyle(
+  static TextStyle regular14 = TextStyle(
     fontWeight: FontWeight.normal,
-    fontSize: 14,
+    fontSize: 14.sp,
   );
-  static const TextStyle regular16 = TextStyle(
+  static TextStyle regular16 = TextStyle(
     fontWeight: FontWeight.normal,
-    fontSize: 16,
+    fontSize: 16.sp,
   );
-  static const TextStyle regular18 = TextStyle(
+  static TextStyle regular18 = TextStyle(
     fontWeight: FontWeight.normal,
-    fontSize: 18,
+    fontSize: 18.sp,
   );
-  static const TextStyle regular20 = TextStyle(
+  static TextStyle regular20 = TextStyle(
     fontWeight: FontWeight.normal,
-    fontSize: 20,
+    fontSize: 20.sp,
   );
-  static const TextStyle regular22 = TextStyle(
+  static TextStyle regular22 = TextStyle(
     fontWeight: FontWeight.normal,
-    fontSize: 22,
+    fontSize: 22.sp,
   );
-  static const TextStyle regular24 = TextStyle(
+  static TextStyle regular24 = TextStyle(
     fontWeight: FontWeight.normal,
-    fontSize: 24,
+    fontSize: 24.sp,
   );
-  static const TextStyle regular26 = TextStyle(
+  static TextStyle regular26 = TextStyle(
     fontWeight: FontWeight.normal,
-    fontSize: 26,
+    fontSize: 26.sp,
   );
   // <========================= Medium style ==============================>
-  static const TextStyle medium14 = TextStyle(
+  static TextStyle medium14 = TextStyle(
     fontWeight: FontWeight.w500,
-    fontSize: 14,
+    fontSize: 14.sp,
   );
-  static const TextStyle medium16 = TextStyle(
+  static TextStyle medium16 = TextStyle(
     fontWeight: FontWeight.w500,
-    fontSize: 16,
+    fontSize: 16.sp,
   );
-  static const TextStyle medium18 = TextStyle(
+  static TextStyle medium18 = TextStyle(
     fontWeight: FontWeight.w500,
-    fontSize: 18,
+    fontSize: 18.sp,
   );
-  static const TextStyle medium20 = TextStyle(
+  static TextStyle medium20 = TextStyle(
     fontWeight: FontWeight.w500,
-    fontSize: 20,
+    fontSize: 20.sp,
   );
-  static const TextStyle medium22 = TextStyle(
+  static TextStyle medium22 = TextStyle(
     fontWeight: FontWeight.w500,
-    fontSize: 22,
+    fontSize: 22.sp,
   );
-  static const TextStyle medium24 = TextStyle(
+  static TextStyle medium24 = TextStyle(
     fontWeight: FontWeight.w500,
-    fontSize: 24,
+    fontSize: 24.sp,
   );
-  static const TextStyle medium26 = TextStyle(
+  static TextStyle medium26 = TextStyle(
     fontWeight: FontWeight.w500,
-    fontSize: 26,
+    fontSize: 26.sp,
   );
   // <========================= semi Bold style ==============================>
-    static const TextStyle semiBold14 = TextStyle(
+  static TextStyle semiBold14 = TextStyle(
     fontWeight: FontWeight.w600,
-    fontSize: 14,
+    fontSize: 14.sp.sp,
   );
-  static const TextStyle semiBold16 = TextStyle(
+  static TextStyle semiBold16 = TextStyle(
     fontWeight: FontWeight.w600,
-    fontSize: 16,
+    fontSize: 16.sp,
   );
-  static const TextStyle semiBold18 = TextStyle(
+  static TextStyle semiBold18 = TextStyle(
     fontWeight: FontWeight.w600,
-    fontSize: 18,
+    fontSize: 18.sp,
   );
-  static const TextStyle semiBold20 = TextStyle(
+  static TextStyle semiBold20 = TextStyle(
     fontWeight: FontWeight.w600,
-    fontSize: 20,
+    fontSize: 20.sp,
   );
-  static const TextStyle semiBold22 = TextStyle(
+  static TextStyle semiBold22 = TextStyle(
     fontWeight: FontWeight.w600,
-    fontSize: 22,
+    fontSize: 22.sp,
   );
-  static const TextStyle semiBold24 = TextStyle(
+  static TextStyle semiBold24 = TextStyle(
     fontWeight: FontWeight.w600,
-    fontSize: 24,
+    fontSize: 24.sp,
   );
-  static const TextStyle semiBold26 = TextStyle(
+  static TextStyle semiBold26 = TextStyle(
     fontWeight: FontWeight.w600,
-    fontSize: 26,
+    fontSize: 26.sp,
   );
   // <========================= bold style ==============================>
 
-    static const TextStyle bold14 = TextStyle(
+  static TextStyle bold14 = TextStyle(
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 14.sp,
   );
-  static const TextStyle bold16 = TextStyle(
+  static TextStyle bold16 = TextStyle(
     fontWeight: FontWeight.bold,
-    fontSize: 16,
+    fontSize: 16.sp,
   );
-  static const TextStyle bold18 = TextStyle(
+  static TextStyle bold18 = TextStyle(
     fontWeight: FontWeight.bold,
-    fontSize: 18,
+    fontSize: 18.sp,
   );
-  static const TextStyle bold20 = TextStyle(
+  static TextStyle bold20 = TextStyle(
     fontWeight: FontWeight.bold,
-    fontSize: 20,
+    fontSize: 20.sp,
   );
-  static const TextStyle bold22 = TextStyle(
+  static TextStyle bold22 = TextStyle(
     fontWeight: FontWeight.bold,
-    fontSize: 22,
+    fontSize: 22.sp,
   );
-  static const TextStyle bold24 = TextStyle(
+  static TextStyle bold24 = TextStyle(
     fontWeight: FontWeight.bold,
-    fontSize: 24,
+    fontSize: 24.sp,
   );
-  static const TextStyle bold26 = TextStyle(
+  static TextStyle bold26 = TextStyle(
     fontWeight: FontWeight.bold,
-    fontSize: 26,
+    fontSize: 26.sp,
   );
 }
