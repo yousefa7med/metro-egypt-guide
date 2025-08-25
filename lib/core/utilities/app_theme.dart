@@ -7,11 +7,11 @@ abstract class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
 
-    colorScheme: ColorScheme(
+    colorScheme: const ColorScheme(
       brightness: Brightness.light,
       primary: AppColor.primaryColor,
       onPrimary: Colors.white,
-      secondary: const Color.fromARGB(255, 17, 230, 21),
+      secondary: Color.fromARGB(255, 17, 230, 21),
       onSecondary: Colors.blueAccent,
       error: Colors.red,
       onError: Colors.white,
@@ -21,11 +21,14 @@ abstract class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        textStyle: TextStyle(),
+        backgroundColor: AppColor.primaryColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(12),
+        ),
+        foregroundColor: Colors.white,
       ),
     ),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: AppColor.primaryColor,
       foregroundColor: Colors.white,
     ),
