@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:metro_egypt_guide/core/utilities/app_color.dart';
+import 'package:metro_egypt_guide/features/home/controller/trip_cubit/trip_cubit.dart';
 import 'package:metro_egypt_guide/features/home/presentation/views/home_view.dart';
 import 'package:metro_egypt_guide/features/lines/presentation/views/lines_view.dart';
 import 'package:metro_egypt_guide/features/settings/presentation/views/settings_view.dart';
+import 'package:metro_egypt_guide/generated/l10n.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class MainView extends StatefulWidget {
@@ -27,8 +30,8 @@ class _MainViewState extends State<MainView> {
       navBarStyle: NavBarStyle.style6,
       controller: _controller,
       context,
-      screens: [HomeView(), LinesView(), SettingsView()],
-      items: _navBarsItems(),
+      screens:_screenList(),
+      items: _navBarsItems(context),
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset: true,
       stateManagement: true,
@@ -51,10 +54,16 @@ class _MainViewState extends State<MainView> {
   }
 }
 
-List<PersistentBottomNavBarItem> _navBarsItems() => [
+List<Widget> _screenList( ) => [
+  BlocProvider(create: (context) => TripCubit(), child: const HomeView()),
+  const LinesView(),
+  const SettingsView(),
+];
+
+List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) => [
   PersistentBottomNavBarItem(
-    icon: Icon(Icons.home),
-    title: ("Home"),
+    icon: const Icon(Icons.home),
+    title: (S.of(context).Home),
     activeColorPrimary: AppColor.primaryColor,
     inactiveColorPrimary: Colors.grey,
 
@@ -67,21 +76,22 @@ List<PersistentBottomNavBarItem> _navBarsItems() => [
     ),
   ),
   PersistentBottomNavBarItem(
-    icon: Icon(Icons.route),
-    title: ("Lines"),
+    icon: const Icon(Icons.route),
+    title: (S.of(context).Lines),
     activeColorPrimary: AppColor.primaryColor,
     inactiveColorPrimary: Colors.grey,
     routeAndNavigatorSettings: RouteAndNavigatorSettings(
       initialRoute: "/",
       routes: {
         "/home": (final context) => const HomeView(),
+
         "/settings": (final context) => const SettingsView(),
       },
     ),
   ),
   PersistentBottomNavBarItem(
-    icon: Icon(Icons.settings),
-    title: ("Settings"),
+    icon: const Icon(Icons.settings),
+    title: (S.of(context).Settings),
     activeColorPrimary: AppColor.primaryColor,
     inactiveColorPrimary: Colors.grey,
     routeAndNavigatorSettings: RouteAndNavigatorSettings(
