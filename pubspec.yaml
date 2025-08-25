@@ -29,12 +29,14 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.8
+  dartz: ^0.10.1
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
   flutter_localization: ^0.3.3
   flutter_screenutil: ^5.9.3
   gap: ^3.0.1
+  geolocator: ^14.0.2
   persistent_bottom_nav_bar: ^6.2.1
   shared_preferences: ^2.5.3
 
