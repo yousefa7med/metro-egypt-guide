@@ -34,6 +34,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "Line3": MessageLookupByLibrary.simpleMessage("Line 3"),
     "LineDetails": MessageLookupByLibrary.simpleMessage("Line Details"),
     "Lines": MessageLookupByLibrary.simpleMessage("Lines"),
+    "LocationPermanentlyDenied": MessageLookupByLibrary.simpleMessage(
+      "\'Location permissions are permanently denied, we cannot request permissions.\'",
+    ),
+    "LocationPermissionRequired": MessageLookupByLibrary.simpleMessage(
+      "Location permission required",
+    ),
+    "PleaseOpenLocation": MessageLookupByLibrary.simpleMessage(
+      "Please Open Location",
+    ),
     "SelectMetroLine": MessageLookupByLibrary.simpleMessage(
       "Select Metro Line",
     ),

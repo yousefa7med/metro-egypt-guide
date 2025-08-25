@@ -200,6 +200,36 @@ class S {
   String get Theme {
     return Intl.message('Theme', name: 'Theme', desc: '', args: []);
   }
+
+  /// `Please Open Location`
+  String get PleaseOpenLocation {
+    return Intl.message(
+      'Please Open Location',
+      name: 'PleaseOpenLocation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location permission required`
+  String get LocationPermissionRequired {
+    return Intl.message(
+      'Location permission required',
+      name: 'LocationPermissionRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `'Location permissions are permanently denied, we cannot request permissions.'`
+  String get LocationPermanentlyDenied {
+    return Intl.message(
+      '\'Location permissions are permanently denied, we cannot request permissions.\'',
+      name: 'LocationPermanentlyDenied',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

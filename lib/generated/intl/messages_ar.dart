@@ -34,6 +34,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "Line3": MessageLookupByLibrary.simpleMessage("الخط الثالث"),
     "LineDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الخط"),
     "Lines": MessageLookupByLibrary.simpleMessage("خطوط المترو"),
+    "LocationPermanentlyDenied": MessageLookupByLibrary.simpleMessage(
+      "\'تم رفض أذونات الموقع بشكل دائم، ولا يمكننا طلب الأذونات.\'",
+    ),
+    "LocationPermissionRequired": MessageLookupByLibrary.simpleMessage(
+      "اذن الموقع مطلوب",
+    ),
+    "PleaseOpenLocation": MessageLookupByLibrary.simpleMessage(
+      "من فضلك افتح الموقع",
+    ),
     "SelectMetroLine": MessageLookupByLibrary.simpleMessage("اختر خط المترو"),
     "Settings": MessageLookupByLibrary.simpleMessage("الاعدادت"),
     "Theme": MessageLookupByLibrary.simpleMessage("ثيم"),
