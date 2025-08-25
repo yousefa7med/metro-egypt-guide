@@ -22,19 +22,27 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "AllLines": MessageLookupByLibrary.simpleMessage("جميع الخطوط"),
     "Arabic": MessageLookupByLibrary.simpleMessage("اللغة العربية"),
     "Dark": MessageLookupByLibrary.simpleMessage("داكن"),
     "English": MessageLookupByLibrary.simpleMessage("اللغة الانجليزية"),
+    "FindRoute": MessageLookupByLibrary.simpleMessage("ارني عن الطريق"),
     "Home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
     "Light": MessageLookupByLibrary.simpleMessage("فاتح"),
+    "Line1": MessageLookupByLibrary.simpleMessage("الخط الأول"),
+    "Line2": MessageLookupByLibrary.simpleMessage("الخط الثاني"),
+    "Line3": MessageLookupByLibrary.simpleMessage("الخط الثالث"),
+    "LineDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الخط"),
     "Lines": MessageLookupByLibrary.simpleMessage("خطوط المترو"),
     "SelectMetroLine": MessageLookupByLibrary.simpleMessage("اختر خط المترو"),
     "Settings": MessageLookupByLibrary.simpleMessage("الاعدادت"),
     "Theme": MessageLookupByLibrary.simpleMessage("ثيم"),
+    "finalStation": MessageLookupByLibrary.simpleMessage("محطة النهاية"),
     "lang": MessageLookupByLibrary.simpleMessage("اللغة"),
     "metroGuide": MessageLookupByLibrary.simpleMessage("مرشد المترو "),
     "nearestStation": MessageLookupByLibrary.simpleMessage("اقرب محطة"),
     "preTheme": MessageLookupByLibrary.simpleMessage("اختر الثيم الذي تفضله"),
     "selectLang": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
+    "startStation": MessageLookupByLibrary.simpleMessage("محطة البداية"),
   };
 }

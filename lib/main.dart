@@ -30,7 +30,6 @@ class MetroGuide extends StatelessWidget {
         designSize: const Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
-        // Use builder only if you need to use library outside ScreenUtilInit context
         builder: (_, child) {
           return BlocBuilder<ThemeCubit, ThemeState>(
             builder: (context, state) {
@@ -41,7 +40,7 @@ class MetroGuide extends StatelessWidget {
                     darkTheme: AppTheme.darkTheme,
                     themeMode: ThemeCubit.get(context).getTheme(),
                     locale: Locale(LocalizationCubit.get(context).getLang()),
-                    localizationsDelegates: [
+                    localizationsDelegates: const [
                       S.delegate,
                       GlobalMaterialLocalizations.delegate,
                       GlobalWidgetsLocalizations.delegate,

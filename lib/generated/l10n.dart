@@ -69,11 +69,30 @@ class S {
     );
   }
 
-  // skipped getter for the 'start station' key
+  /// `Start Station`
+  String get startStation {
+    return Intl.message(
+      'Start Station',
+      name: 'startStation',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'final station' key
+  /// `Final Station`
+  String get finalStation {
+    return Intl.message(
+      'Final Station',
+      name: 'finalStation',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Find Route' key
+  /// `Find Route`
+  String get FindRoute {
+    return Intl.message('Find Route', name: 'FindRoute', desc: '', args: []);
+  }
 
   /// `Home`
   String get Home {
@@ -102,15 +121,35 @@ class S {
 
   // skipped getter for the 'Chooose A Metro Line' key
 
-  // skipped getter for the 'Line 1' key
+  /// `Line 1`
+  String get Line1 {
+    return Intl.message('Line 1', name: 'Line1', desc: '', args: []);
+  }
 
-  // skipped getter for the 'Line 2' key
+  /// `Line 2`
+  String get Line2 {
+    return Intl.message('Line 2', name: 'Line2', desc: '', args: []);
+  }
 
-  // skipped getter for the 'Line 3' key
+  /// `Line 3`
+  String get Line3 {
+    return Intl.message('Line 3', name: 'Line3', desc: '', args: []);
+  }
 
-  // skipped getter for the 'Line Details' key
+  /// `Line Details`
+  String get LineDetails {
+    return Intl.message(
+      'Line Details',
+      name: 'LineDetails',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'All Lines' key
+  /// `All Lines`
+  String get AllLines {
+    return Intl.message('All Lines', name: 'AllLines', desc: '', args: []);
+  }
 
   /// `Language`
   String get lang {

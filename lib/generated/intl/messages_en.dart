@@ -22,17 +22,24 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "AllLines": MessageLookupByLibrary.simpleMessage("All Lines"),
     "Arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "Dark": MessageLookupByLibrary.simpleMessage("Dark"),
     "English": MessageLookupByLibrary.simpleMessage("English"),
+    "FindRoute": MessageLookupByLibrary.simpleMessage("Find Route"),
     "Home": MessageLookupByLibrary.simpleMessage("Home"),
     "Light": MessageLookupByLibrary.simpleMessage("Light"),
+    "Line1": MessageLookupByLibrary.simpleMessage("Line 1"),
+    "Line2": MessageLookupByLibrary.simpleMessage("Line 2"),
+    "Line3": MessageLookupByLibrary.simpleMessage("Line 3"),
+    "LineDetails": MessageLookupByLibrary.simpleMessage("Line Details"),
     "Lines": MessageLookupByLibrary.simpleMessage("Lines"),
     "SelectMetroLine": MessageLookupByLibrary.simpleMessage(
       "Select Metro Line",
     ),
     "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "Theme": MessageLookupByLibrary.simpleMessage("Theme"),
+    "finalStation": MessageLookupByLibrary.simpleMessage("Final Station"),
     "lang": MessageLookupByLibrary.simpleMessage("Language"),
     "metroGuide": MessageLookupByLibrary.simpleMessage("Metro Guide"),
     "nearestStation": MessageLookupByLibrary.simpleMessage("Nearest Station"),
@@ -40,5 +47,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Choose your preferred theme",
     ),
     "selectLang": MessageLookupByLibrary.simpleMessage("Select your language"),
+    "startStation": MessageLookupByLibrary.simpleMessage("Start Station"),
   };
 }
