@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:metro_egypt_guide/core/Helper/metro_helper/models/station_model.dart';
 import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
 import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
 import 'package:metro_egypt_guide/core/widgets/align_text.dart';
@@ -39,6 +39,35 @@ class FindRouteSection extends StatelessWidget {
                   controller: TripCubit.get(context).startStationController,
                   hintText: S.of(context).startStation,
                   dropdownMenuEntry: TripCubit.get(context).startStationList,
+                  onSelected: TripCubit.get(
+                    context,
+                  ).startStationsOnSelectedFunction(context),
+                  //                (value) {
+                  //   value = TripCubit.get(context).startStationController.text;
+                  //   TripCubit.get(context).lastFinalStation ??= StationModel();
+
+                  //   if (TripCubit.get(context).lastFinalStation!.name != null &&
+                  //       !TripCubit.get(context).startStationList.any(
+                  //         (e) => e.value == TripCubit.get(context).lastFinalStation!.name,
+                  //       )) {
+                  //     TripCubit.get(context).startStationList.insert(
+                  //       TripCubit.get(context).lastFinalStation!.index!,
+                  //       DropdownMenuEntry(
+                  //         value: TripCubit.get(context).lastFinalStation!.name!,
+                  //         label: TripCubit.get(context).lastFinalStation!.name!,
+                  //       ),
+                  //     );
+                  //   }
+
+                  //   TripCubit.get(context).lastFinalStation!.name = value;
+                  //   TripCubit.get(context).lastFinalStation!.index = TripCubit.get(
+                  //     context,
+                  //   ).startStationList.indexWhere((e) => e.value == value);
+
+                  //   TripCubit.get(
+                  //     context,
+                  //   ).startStationList.removeWhere((e) => e.value == value);
+                  // }
                 ),
                 const Gap(10),
                 AlignText(child: Text(S.of(context).finalStation)),
@@ -47,6 +76,39 @@ class FindRouteSection extends StatelessWidget {
                   controller: TripCubit.get(context).finalStationController,
                   hintText: S.of(context).finalStation,
                   dropdownMenuEntry: TripCubit.get(context).finalStationList,
+                  onSelected: TripCubit.get(
+                    context,
+                  ).finalStationsOnSelectedFunction(context),
+                  // onSelected: (value) {
+                  //   value = TripCubit.get(context).finalStationController.text;
+                  //   TripCubit.get(context).lastFinalStation ??= StationModel();
+
+                  //   if (TripCubit.get(context).lastFinalStation!.name != null &&
+                  //       !TripCubit.get(context).startStationList.any(
+                  //         (e) =>
+                  //             e.value ==
+                  //             TripCubit.get(context).lastFinalStation!.name,
+                  //       )) {
+                  //     TripCubit.get(context).startStationList.insert(
+                  //       TripCubit.get(context).lastFinalStation!.index!,
+                  //       DropdownMenuEntry(
+                  //         value: TripCubit.get(context).lastFinalStation!.name!,
+                  //         label: TripCubit.get(context).lastFinalStation!.name!,
+                  //       ),
+                  //     );
+                  //   }
+
+                  //   TripCubit.get(context).lastFinalStation!.name = value;
+                  //   TripCubit.get(
+                  //     context,
+                  //   ).lastFinalStation!.index = TripCubit.get(
+                  //     context,
+                  //   ).startStationList.indexWhere((e) => e.value == value);
+
+                  //   TripCubit.get(
+                  //     context,
+                  //   ).startStationList.removeWhere((e) => e.value == value);
+                  // },
                 ),
                 const Gap(30),
                 AppButton(

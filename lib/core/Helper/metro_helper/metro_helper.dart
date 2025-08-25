@@ -699,8 +699,8 @@ class Metro {
     details.setStationCount(result.length);
     if (result.isNotEmpty) {
       final line = _cheackSameLine(
-        result[0].name,
-        result[result.length - 1].name,
+        result[0].name!,
+        result[result.length - 1].name!,
       );
       if (line != null) {
         _sameLineDetails(result, line);
@@ -720,11 +720,11 @@ class Metro {
     int last = 0;
     for (var i = 0; i < result.length - 2; i++) {
       if (commonStations.any((e) => e.name == result[i + 1]) &&
-          _cheackSameLine(result[i].name, result[i + 2].name) == null) {
+          _cheackSameLine(result[i].name!, result[i + 2].name!) == null) {
         final route = result.sublist(last, i + 2);
         details.routes.add(route);
         final direction = _getDirection(
-          _cheackSameLine(result[i].name, result[i + 1].name)!,
+          _cheackSameLine(result[i].name!, result[i + 1].name!)!,
           start,
           end,
         );
@@ -737,11 +737,11 @@ class Metro {
     details.routes.add(finalRoute);
     final finalDirection = _getDirection(
       _cheackSameLine(
-        finalRoute[0].name,
-        finalRoute[finalRoute.length - 1].name,
+        finalRoute[0].name!,
+        finalRoute[finalRoute.length - 1].name!,
       )!,
-      finalRoute[0].name,
-      finalRoute[finalRoute.length - 1].name,
+      finalRoute[0].name!,
+      finalRoute[finalRoute.length - 1].name!,
     );
     details.directions.add(finalDirection);
   }
@@ -749,7 +749,7 @@ class Metro {
   void _sameLineDetails(List<StationModel> result, List<StationModel> line) {
     details.routes.add(result);
     details.directions.add(
-      _getDirection(line, result[0].name, result[result.length - 1].name),
+      _getDirection(line, result[0].name!, result[result.length - 1].name!),
     );
   }
 
@@ -839,7 +839,7 @@ class Metro {
         if (visited.any((e) => e.name == neighbor.name)) continue;
 
         final newPath = _findShortestPath(
-          neighbor.name,
+          neighbor.name!,
           end,
           Set.from(visited),
           List.from(path),
