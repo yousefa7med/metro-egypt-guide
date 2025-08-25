@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:metro_egypt_guide/core/Helper/functions/functions.dart';
 import 'package:metro_egypt_guide/core/utilities/app_color.dart';
 import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
 import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
 import 'package:metro_egypt_guide/core/widgets/app_card.dart';
+import 'package:metro_egypt_guide/features/home/controller/trip_cubit/trip_cubit.dart';
 import 'package:metro_egypt_guide/features/home/presentation/widgets/app_icon.dart';
 import 'package:metro_egypt_guide/generated/l10n.dart';
 
@@ -26,20 +28,24 @@ class NearestStationSection extends StatelessWidget {
 
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 10.0),
-            child: Row(
-              children: [
-                const CircleAvatar(
-                  radius: 8,
-                  backgroundColor: AppColor.line3Color,
-                ),
-                const Gap(10),
-                Text(
-                  'Imbaba',
-                  style: AppTextStyle.medium16.copyWith(
-                    fontFamily: AppFontFamily.inter,
-                  ),
-                ),
-              ],
+            child: BlocBuilder<TripCubit, TripState>(
+              builder: (context, state) {
+                return Row(
+                  children: [
+                    const CircleAvatar(
+                      radius: 8,
+                      backgroundColor: AppColor.line3Color,
+                    ),
+                    const Gap(10),
+                    Text(
+                      'Imbaba',
+                      style: AppTextStyle.medium16.copyWith(
+                        fontFamily: AppFontFamily.inter,
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
 

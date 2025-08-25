@@ -8,7 +8,12 @@ class AppIcon extends StatelessWidget {
     return CircleAvatar(
       backgroundColor: const Color(0xffE9D4D5),
       radius: 22,
-      child: IconButton(onPressed: () {}, icon: icon),
+      child: IconButton(
+        onPressed: () {
+
+        },
+        icon: icon,
+      ),
     );
   }
 }
