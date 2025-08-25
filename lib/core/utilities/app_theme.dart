@@ -29,6 +29,13 @@ abstract class AppTheme {
       backgroundColor: AppColor.primaryColor,
       foregroundColor: Colors.white,
     ),
+
+    cardTheme: CardThemeData(
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadiusGeometry.circular(16),
+      ),
+    ),
   );
 
   // <=========================Dark Theme==============================>

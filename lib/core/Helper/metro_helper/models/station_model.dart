@@ -1,12 +1,10 @@
+import 'package:flutter/material.dart';
 
 class StationModel {
-  String? name;
+  final String name;
   int? index;
-  double? longitudee;
-  double? latitude;
-  StationModel({
-     this.name,
-     this.latitude,
-     this.longitudee,
-  });
+  final double longitudee;
+  final double latitude;
+  final Color lineColor;
+  StationModel({required this.name, required this.latitude, required this.longitudee, required this.lineColor});
 }

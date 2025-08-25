@@ -1,9 +1,11 @@
+import 'package:metro_egypt_guide/core/Helper/metro_helper/models/station_model.dart';
+
 class TripDetailsModel {
   int? stationCount;
   int? time;
   int? ticketPrice;
-  List<List<String>> routes = [];
-  List<String> directions = [];
+  List<List<StationModel>> routes = [];
+  List<StationModel> directions = [];
 
   void clear() {
     directions.clear();
