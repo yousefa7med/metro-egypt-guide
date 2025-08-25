@@ -30,7 +30,7 @@ class NearestStationSection extends StatelessWidget {
               children: [
                 const CircleAvatar(
                   radius: 8,
-                  backgroundColor: AppColor.line1Color,
+                  backgroundColor: AppColor.line3Color,
                 ),
                 const Gap(10),
                 Text(
@@ -63,23 +63,3 @@ class NearestStationSection extends StatelessWidget {
     );
   }
 }
-// Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceAround,
-
-//               children: [
-//                 Text(
-//                   S.of(context).nearestStation,
-//                   style: AppTextStyle.semiBold18.copyWith(
-//                     fontFamily: AppFontFamily.inter,
-//                   ),
-//                 ),
-
-// ),
-//               ],
-//             ),
-
-//           ],
-//         ),
