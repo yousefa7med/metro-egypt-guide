@@ -21,7 +21,10 @@
     "preTheme":"اختر الثيم الذي تفضله",
         "Light":"فاتح",
     "Dark":"داكن",
-    "Theme":"ثيم"
+    "Theme":"ثيم",
+"PleaseOpenLocation":"من فضلك افتح الموقع",
+"LocationPermissionRequired":"اذن الموقع مطلوب",
+"LocationPermanentlyDenied":"'تم رفض أذونات الموقع بشكل دائم، ولا يمكننا طلب الأذونات.'"
 
 
 }

@@ -19,9 +19,11 @@
     "English":"English",
     "Arabic":"Arabic",
     "preTheme":"Choose your preferred theme",
-        "Light":"Light",
+    "Light":"Light",
     "Dark":"Dark",
-    "Theme":"Theme"
-
+    "Theme":"Theme",
+    "PleaseOpenLocation":"Please Open Location",
+    "LocationPermissionRequired":"Location permission required",
+    "LocationPermanentlyDenied":"'Location permissions are permanently denied, we cannot request permissions.'"
 
 }
