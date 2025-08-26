@@ -1,15 +1,24 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:metro_egypt_guide/core/Helper/functions/app_dialog.dart';
 import 'package:metro_egypt_guide/core/Helper/metro_helper/metro_helper.dart';
 import 'package:metro_egypt_guide/core/Helper/metro_helper/models/station_model.dart';
+import 'package:metro_egypt_guide/core/navigations/navigations.dart';
+import 'package:metro_egypt_guide/generated/l10n.dart';
 
 part 'trip_state.dart';
 
 class TripCubit extends Cubit<TripState> {
   TripCubit() : super(TripInitialState()) {
     _init();
+    _initPosition();
   }
   Metro metro = Metro();
+
+  Position? position;
+  StationModel? nearestStation;
   static TripCubit get(context) => BlocProvider.of(context);
   final List<DropdownMenuEntry<String>> startStationList = [];
   final List<DropdownMenuEntry<String>> finalStationList = [];
@@ -18,72 +27,168 @@ class TripCubit extends Cubit<TripState> {
   StationModel? lastStartStation;
   StationModel? lastFinalStation;
   void _init() {
-    for (var station in allStation) {
+    for (var station in allStations) {
       startStationList.add(DropdownMenuEntry(value: station, label: station));
       finalStationList.add(DropdownMenuEntry(value: station, label: station));
     }
   }
 
-  void changeState() => emit(TripDetailsChangesState());
-
-  Function(dynamic)? startStationsOnSelectedFunction(BuildContext context) {
+  Function(dynamic)? startStationsOnSelectedFunction() {
     return (value) {
-      value = TripCubit.get(context).startStationController.text;
-      TripCubit.get(context).lastStartStation ??= StationModel();
+      value = startStationController.text;
+      lastStartStation ??= StationModel();
 
-      if (TripCubit.get(context).lastStartStation!.name != null &&
-          !TripCubit.get(context).finalStationList.any(
-            (e) => e.value == TripCubit.get(context).lastStartStation!.name,
-          )) {
-        TripCubit.get(context).finalStationList.insert(
-          TripCubit.get(context).lastStartStation!.index!,
+      if (lastStartStation!.name != null &&
+          !finalStationList.any((e) => e.value == lastStartStation!.name)) {
+        finalStationList.insert(
+          lastStartStation!.index!,
           DropdownMenuEntry(
-            value: TripCubit.get(context).lastStartStation!.name!,
-            label: TripCubit.get(context).lastStartStation!.name!,
+            value: lastStartStation!.name!,
+            label: lastStartStation!.name!,
           ),
         );
       }
 
-      TripCubit.get(context).lastStartStation!.name = value;
-      TripCubit.get(context).lastStartStation!.index = TripCubit.get(
-        context,
-      ).finalStationList.indexWhere((e) => e.value == value);
+      lastStartStation!.name = value;
+      lastStartStation!.index = finalStationList.indexWhere(
+        (e) => e.value == value,
+      );
 
-      TripCubit.get(
-        context,
-      ).finalStationList.removeWhere((e) => e.value == value);
+      finalStationList.removeWhere((e) => e.value == value);
 
       emit(TripDetailsChangesState());
     };
   }
 
-  Function(dynamic)? finalStationsOnSelectedFunction(BuildContext context) {
+  Function(dynamic)? finalStationsOnSelectedFunction() {
     return (value) {
-      value = TripCubit.get(context).finalStationController.text;
-      TripCubit.get(context).lastFinalStation ??= StationModel();
+      value = finalStationController.text;
+      lastFinalStation ??= StationModel();
 
-      if (TripCubit.get(context).lastFinalStation!.name != null &&
-          !TripCubit.get(context).startStationList.any(
-            (e) => e.value == TripCubit.get(context).lastFinalStation!.name,
-          )) {
-        TripCubit.get(context).startStationList.insert(
-          TripCubit.get(context).lastFinalStation!.index!,
+      if (lastFinalStation!.name != null &&
+          !startStationList.any((e) => e.value == lastFinalStation!.name)) {
+        startStationList.insert(
+          lastFinalStation!.index!,
           DropdownMenuEntry(
-            value: TripCubit.get(context).lastFinalStation!.name!,
-            label: TripCubit.get(context).lastFinalStation!.name!,
+            value: lastFinalStation!.name!,
+            label: lastFinalStation!.name!,
           ),
         );
       }
 
-      TripCubit.get(context).lastFinalStation!.name = value;
-      TripCubit.get(context).lastFinalStation!.index = TripCubit.get(
-        context,
-      ).startStationList.indexWhere((e) => e.value == value);
+      lastFinalStation!.name = value;
+      lastFinalStation!.index = startStationList.indexWhere(
+        (e) => e.value == value,
+      );
 
-      TripCubit.get(
-        context,
-      ).startStationList.removeWhere((e) => e.value == value);
+      startStationList.removeWhere((e) => e.value == value);
       emit(TripDetailsChangesState());
     };
+  }
+
+  Future<Position?> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return null;
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return null;
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      return null;
+    }
+    return await Geolocator.getCurrentPosition();
+  }
+
+  Future<void> _initPosition() async {
+    position = await _determinePosition();
+    emit(PositionExistState());
+  }
+
+  Future<Either<Position, String>> _getPosition(BuildContext context) async {
+    bool serviceEnabled;
+    LocationPermission permission;
+    final s = S.of(context);
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Right(s.PleaseOpenLocation);
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Right(s.LocationPermissionRequired);
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Right(s.LocationPermanentlyDenied);
+    }
+
+    return Left(await Geolocator.getCurrentPosition());
+  }
+
+  Future<void> getPosition(BuildContext context) async {
+    final result = await _getPosition(context);
+    result.fold(
+      (p) {
+        position = p;
+        nearestStation = getNearestStation(
+          position!.latitude,
+          position!.longitude,
+        )!;
+        emit(TripDetailsChangesState());
+      },
+      (msg) {
+        appDialog(
+          context: context,
+          msg: msg,
+          onPressed: () async {
+            if (S.of(context).LocationPermissionRequired == msg) {
+              await Geolocator.requestPermission();
+            } else if (S.of(context).PleaseOpenLocation == msg) {
+              AppNavigation.pop(context: context);
+              await Geolocator.openLocationSettings();
+            } else if (S.of(context).LocationPermanentlyDenied == msg) {
+              await Geolocator.openAppSettings();
+            }
+          },
+        );
+      },
+    );
+  }
+
+  StationModel? getNearestStation(double latitude, double longitude) {
+    var lowestDistance = 999999999.9;
+    double distance;
+    StationModel? station;
+    for (var elemnet in [
+      ...line1,
+      ...line2,
+      ...line3Branch1,
+      ...line3Branch2,
+      ...line3Main,
+    ]) {
+      distance = Geolocator.distanceBetween(
+        latitude,
+        longitude,
+        elemnet.latitude!,
+        elemnet.longitudee!,
+      );
+      if (lowestDistance > distance) {
+        lowestDistance = distance;
+        station = elemnet;
+      }
+    }
+    return station;
   }
 }

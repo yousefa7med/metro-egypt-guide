@@ -557,7 +557,7 @@ List<StationModel> line3Branch2 = [
 ];
 
 List<StationModel> commonStations = [
-   StationModel(
+  StationModel(
     lineColor: AppColor.line3Color,
     name: "Nasser",
     latitude: 30.0536,
@@ -594,8 +594,8 @@ List<StationModel> commonStations = [
     longitudee: 31.2131,
   ),
 ];
-  final List<String> allStation = [
-    "Helwan",
+final List<String> allStations = [
+   "Helwan",
     "Ain Helwan",
     "Helwan University",
     "Wadi Hof",
@@ -614,7 +614,6 @@ List<StationModel> commonStations = [
     "El Sayeda Zeinab",
     "Saad Zaghloul",
     "Sadat",
-    "Nasser",
     "Orabi",
     "El Shohadaa",
     "Ghamra",
@@ -629,18 +628,14 @@ List<StationModel> commonStations = [
     "Ain Shams",
     "Ezbet El Nakhl",
     "Al Marg",
-    "New El-Marg",
-    "Shubra El Kheima",
+    "New El-Marg", "Shubra El Kheima",
     "Koliet El Zeraa",
     "Mezallat",
     "Khalafawy",
     "St. Teresa",
     "Rod El Farag",
     "Masarra",
-    "El Shohadaa",
-    "Attaba",
     "Naguib",
-    "Sadat",
     "Opera",
     "Dokki",
     "El Bohoth",
@@ -650,7 +645,7 @@ List<StationModel> commonStations = [
     "Omm El Misryeen",
     "Sakiat Mekky",
     "El-Mounib",
-    "Adly Mansour",
+     "Adly Mansour",
     "El Haykestep",
     "Omar Ibn El Khattab",
     "Qobaa",
@@ -673,18 +668,17 @@ List<StationModel> commonStations = [
     "Maspero",
     "Safaa Hegazy",
     "Kit Kat",
-    "Tawfikia",
-    "Wadi El Nile",
-    "Gamat El Dowal",
-    "Boulak El Dakrour",
-    "Cairo University",
-    "Sudan",
+        "Sudan",
     "Imbaba",
     "El-Bohy",
     "El-Qawmia",
     "Ring Road",
     "Rod al-Farag Corridor",
-  ];
+    "Tawfikia",
+    "Wadi El Nile",
+    "Gamat El Dowal",
+    "Boulak El Dakrour",
+];
 
 class Metro {
   TripDetailsModel details = TripDetailsModel();
