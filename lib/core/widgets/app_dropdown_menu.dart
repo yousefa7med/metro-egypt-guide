@@ -15,19 +15,21 @@ class AppDropdownMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownMenu(
-      inputDecorationTheme: InputDecorationTheme(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-      ),
-      onSelected: onSelected,
-      menuHeight: 200,
-      hintText: hintText,
+    return SizedBox(
       width: 370,
-      controller: controller,
-      enableSearch: true,
-      requestFocusOnTap: true,
-      enableFilter: true,
-      dropdownMenuEntries: dropdownMenuEntry,
+      child: DropdownMenu(
+     
+        onSelected: onSelected,
+        menuHeight: 200,
+
+        hintText: hintText,
+        width: 370,
+        controller: controller,
+        enableSearch: true,
+        requestFocusOnTap: true,
+        enableFilter: true,
+        dropdownMenuEntries: dropdownMenuEntry,
+      ),
     );
   }
 }

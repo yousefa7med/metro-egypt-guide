@@ -32,7 +32,6 @@ class NearestStationSection extends StatelessWidget {
             padding: const EdgeInsets.only(top: 10.0),
             child: BlocBuilder<TripCubit, TripState>(
               builder: (context, state) {
-                print(TripCubit.get(context).nearestStation?.name);
                 return TripCubit.get(context).nearestStation != null
                     ? Row(
                         children: [

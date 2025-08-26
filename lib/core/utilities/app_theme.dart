@@ -39,6 +39,12 @@ abstract class AppTheme {
         borderRadius: BorderRadiusGeometry.circular(16),
       ),
     ),
+    dropdownMenuTheme: DropdownMenuThemeData(
+            inputDecorationTheme: InputDecorationTheme(
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+      
+    )
   );
 
   // <=========================Dark Theme==============================>
