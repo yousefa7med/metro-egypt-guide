@@ -1,15 +1,18 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:metro_egypt_guide/core/Helper/cashe_helper/cashe_helper.dart';
 import 'package:metro_egypt_guide/core/Helper/cashe_helper/cashe_keys.dart';
 part 'theme_state.dart';
 
-class ThemeCubit extends Cubit<ThemeState> {
-  ThemeCubit() : super(ThemeInitialState()) {
+class AppCubit extends Cubit<AppState> {
+  AppCubit() : super(AppInitialState()) {
     _loadTheme();
+    _loadLang();
   }
   ThemeModeState currentTheme = ThemeModeState.system;
-  static ThemeCubit get(BuildContext context) => BlocProvider.of(context);
+  static AppCubit get(BuildContext context) => BlocProvider.of(context);
 
   ThemeMode getTheme() {
     switch (currentTheme) {
@@ -38,6 +41,46 @@ class ThemeCubit extends Cubit<ThemeState> {
       orElse: () => ThemeModeState.system,
     );
     emit(ThemeChangesState());
+  }
+
+  // <============================= Localization ==================================>
+  String currentLang = '';
+
+  Future<void> setLang(String lang) async {
+    currentLang = lang;
+    await CasheHelper().saveData(key: CasheKeys.lang, value: currentLang);
+    emit(LocalizationChangesState());
+  }
+
+  void _loadLang() {
+    String savedLang =
+        CasheHelper().getData(CasheKeys.lang) as String? ??
+        PlatformDispatcher.instance.locale.languageCode;
+
+    switch (savedLang) {
+      case 'ar':
+        {
+          currentLang = savedLang;
+        }
+
+      default:
+        {
+          currentLang = 'en';
+        }
+    }
+    emit(LocalizationChangesState());
+  }
+
+  String getLang() {
+    switch (currentLang) {
+      case 'ar':
+        return 'ar';
+
+      default:
+        {
+          return 'en';
+        }
+    }
   }
 }
 

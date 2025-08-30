@@ -1,8 +1,9 @@
 part of 'theme_cubit.dart';
 
+sealed class AppState {}
 
-sealed class ThemeState {}
+final class AppInitialState extends AppState {}
 
-final class ThemeInitialState extends ThemeState {}
+final class ThemeChangesState extends AppState {}
 
-final class ThemeChangesState extends ThemeState {}
+final class LocalizationChangesState extends AppState {}

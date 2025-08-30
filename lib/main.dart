@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metro_egypt_guide/core/Helper/cashe_helper/cashe_helper.dart';
 import 'package:metro_egypt_guide/core/config/configrations.dart';
-import 'package:metro_egypt_guide/core/controllers/localization_cubit/localization_cubit.dart';
 import 'package:metro_egypt_guide/core/controllers/theme_cubit/theme_cubit.dart';
 import 'package:metro_egypt_guide/core/utilities/app_theme.dart';
 import 'package:metro_egypt_guide/features/main/presentation/views/main_view.dart';
@@ -23,8 +22,8 @@ class MetroGuide extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => LocalizationCubit()),
-        BlocProvider(create: (context) => ThemeCubit()),
+        BlocProvider(create: (context) => AppCubit()),
+        BlocProvider(create: (context) => AppCubit()),
       ],
 
       child: ScreenUtilInit(
@@ -32,28 +31,24 @@ class MetroGuide extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (_, child) {
-          return BlocBuilder<ThemeCubit, ThemeState>(
+          return BlocBuilder<AppCubit, AppState>(
             builder: (context, state) {
-              return BlocBuilder<LocalizationCubit, LocalizationState>(
-                builder: (context, state) {
-                  return MaterialApp(
-                                        onGenerateRoute: AppRouter.generateRoute,
+              return MaterialApp(
+                onGenerateRoute: AppRouter.generateRoute,
 
-                    theme: AppTheme.lightTheme,
-                    darkTheme: AppTheme.darkTheme,
-                    themeMode: ThemeCubit.get(context).getTheme(),
-                    locale: Locale(LocalizationCubit.get(context).getLang()),
-                    localizationsDelegates: const [
-                      S.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                    ],
-                    supportedLocales: S.delegate.supportedLocales,
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
+                themeMode: AppCubit.get(context).getTheme(),
+                locale: Locale(AppCubit.get(context).getLang()),
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
 
-                    home: const MainView(),
-                  );
-                },
+                home: const MainView(),
               );
             },
           );
