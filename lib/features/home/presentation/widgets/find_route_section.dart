@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:metro_egypt_guide/core/config/configrations.dart';
+import 'package:metro_egypt_guide/core/navigations/navigations.dart';
 import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
 import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
 import 'package:metro_egypt_guide/core/widgets/align_text.dart';
@@ -55,7 +57,12 @@ class FindRouteSection extends StatelessWidget {
                 ),
                 const Gap(30),
                 AppButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(
+                      context,
+                      rootNavigator: true,
+                    ).pushNamed(AppRoutes.detailsView);
+                  },
                   child: Text(
                     S.of(context).FindRoute,
                     style: AppTextStyle.regular16.copyWith(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metro_egypt_guide/core/Helper/cashe_helper/cashe_helper.dart';
+import 'package:metro_egypt_guide/core/config/configrations.dart';
 import 'package:metro_egypt_guide/core/controllers/localization_cubit/localization_cubit.dart';
 import 'package:metro_egypt_guide/core/controllers/theme_cubit/theme_cubit.dart';
 import 'package:metro_egypt_guide/core/utilities/app_theme.dart';
@@ -36,6 +37,8 @@ class MetroGuide extends StatelessWidget {
               return BlocBuilder<LocalizationCubit, LocalizationState>(
                 builder: (context, state) {
                   return MaterialApp(
+                                        onGenerateRoute: AppRouter.generateRoute,
+
                     theme: AppTheme.lightTheme,
                     darkTheme: AppTheme.darkTheme,
                     themeMode: ThemeCubit.get(context).getTheme(),

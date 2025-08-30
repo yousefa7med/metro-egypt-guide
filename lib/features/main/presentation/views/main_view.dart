@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:metro_egypt_guide/core/Helper/functions/functions.dart';
+import 'package:metro_egypt_guide/core/config/configrations.dart';
 import 'package:metro_egypt_guide/core/utilities/app_color.dart';
 import 'package:metro_egypt_guide/features/home/controller/trip_cubit/trip_cubit.dart';
 import 'package:metro_egypt_guide/features/home/presentation/views/home_view.dart';
@@ -25,13 +27,21 @@ class _MainViewState extends State<MainView> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return PersistentTabView(
       navBarStyle: NavBarStyle.style6,
       controller: _controller,
       context,
-      screens:_screenList(),
-      items: _navBarsItems(context),
+      screens: isArabic() ? _screenList().reversed.toList() : _screenList(),
+      items: isArabic()
+          ? _navBarsItems(context).reversed.toList()
+          : _navBarsItems(context),
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset: true,
       stateManagement: true,
@@ -54,7 +64,7 @@ class _MainViewState extends State<MainView> {
   }
 }
 
-List<Widget> _screenList( ) => [
+List<Widget> _screenList() => [
   BlocProvider(create: (context) => TripCubit(), child: const HomeView()),
   const LinesView(),
   const SettingsView(),
@@ -62,16 +72,19 @@ List<Widget> _screenList( ) => [
 
 List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) => [
   PersistentBottomNavBarItem(
-    icon: const Icon(Icons.home),
+    icon: const Padding(
+      padding: EdgeInsets.only(top: 8.0),
+      child: Icon(Icons.home),
+    ),
     title: (S.of(context).Home),
     activeColorPrimary: AppColor.primaryColor,
     inactiveColorPrimary: Colors.grey,
 
     routeAndNavigatorSettings: RouteAndNavigatorSettings(
-      initialRoute: "/",
+      initialRoute: AppRoutes.homeView,
       routes: {
-        "/settings": (final context) => const SettingsView(),
-        "/lines": (final context) => const LinesView(),
+       AppRoutes.settingsView: (final context) => const SettingsView(),
+        AppRoutes.linesView: (final context) => const LinesView(),
       },
     ),
   ),
@@ -81,11 +94,11 @@ List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) => [
     activeColorPrimary: AppColor.primaryColor,
     inactiveColorPrimary: Colors.grey,
     routeAndNavigatorSettings: RouteAndNavigatorSettings(
-      initialRoute: "/",
+      initialRoute: AppRoutes.linesView,
       routes: {
-        "/home": (final context) => const HomeView(),
+       AppRoutes.homeView: (final context) => const HomeView(),
 
-        "/settings": (final context) => const SettingsView(),
+       AppRoutes.settingsView: (final context) => const SettingsView(),
       },
     ),
   ),
@@ -95,10 +108,10 @@ List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) => [
     activeColorPrimary: AppColor.primaryColor,
     inactiveColorPrimary: Colors.grey,
     routeAndNavigatorSettings: RouteAndNavigatorSettings(
-      initialRoute: "/",
+      initialRoute:AppRoutes.settingsView,
       routes: {
-        "/settings": (final context) => const SettingsView(),
-        "/lines": (final context) => const LinesView(),
+     AppRoutes.settingsView: (final context) => const SettingsView(),
+        AppRoutes.linesView: (final context) => const LinesView(),
       },
     ),
   ),

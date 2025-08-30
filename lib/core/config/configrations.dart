@@ -1,8 +1,10 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:metro_egypt_guide/core/transitions/page_route_builder_method.dart';
 import 'package:metro_egypt_guide/features/details/presentation/views/details_view.dart';
+import 'package:metro_egypt_guide/features/home/controller/trip_cubit/trip_cubit.dart';
 import 'package:metro_egypt_guide/features/home/presentation/views/home_view.dart';
 import 'package:metro_egypt_guide/features/lines/presentation/views/lines_view.dart';
 import 'package:metro_egypt_guide/features/main/presentation/views/main_view.dart';
@@ -15,7 +17,8 @@ class AppRouter {
         return pageRouteBuilderMethod(
           settings: settings,
           pageBuilder: (context, animation, secondaryAnimation) =>
-              const HomeView(),
+             BlocProvider(create: (context) => TripCubit(), child: const HomeView()),
+
         );
       case AppRoutes.mainView:
         return pageRouteBuilderMethod(

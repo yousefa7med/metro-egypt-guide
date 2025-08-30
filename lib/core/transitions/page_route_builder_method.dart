@@ -8,7 +8,7 @@ PageRouteBuilder<dynamic> pageRouteBuilderMethod({
 }) {
   return PageRouteBuilder(
     settings: settings,
-    transitionDuration: const Duration(milliseconds: 550),
+    transitionDuration: const Duration(milliseconds: 230),
     transitionsBuilder: slideTransitionBuilder,
     pageBuilder: pageBuilder,
   );

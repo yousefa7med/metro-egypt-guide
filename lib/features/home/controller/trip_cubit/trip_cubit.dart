@@ -13,7 +13,6 @@ part 'trip_state.dart';
 class TripCubit extends Cubit<TripState> {
   TripCubit() : super(TripInitialState()) {
     _init();
-    _initPosition();
   }
   Metro metro = Metro();
 
@@ -92,6 +91,7 @@ class TripCubit extends Cubit<TripState> {
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
+      print('!serviceEnabled');
       return null;
     }
 
@@ -99,10 +99,14 @@ class TripCubit extends Cubit<TripState> {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
+        print('permission == LocationPermission.denied');
+
         return null;
       }
     }
     if (permission == LocationPermission.deniedForever) {
+      print('permission == LocationPermission.deniedForever');
+
       return null;
     }
     return await Geolocator.getCurrentPosition();
@@ -137,16 +141,19 @@ class TripCubit extends Cubit<TripState> {
     return Left(await Geolocator.getCurrentPosition());
   }
 
-  Future<void> getPosition(BuildContext context) async {
+  Future<void> getNearestStation(BuildContext context) async {
     final result = await _getPosition(context);
     result.fold(
       (p) {
         position = p;
-        nearestStation = getNearestStation(
+        nearestStation = getNearestStationModel(
           position!.latitude,
           position!.longitude,
         )!;
-        emit(TripDetailsChangesState());
+
+        startStationController.text = nearestStation!.name!;
+        startStationsOnSelectedFunction()!(nearestStation!.name!);
+        emit(PositionExistState());
       },
       (msg) {
         appDialog(
@@ -167,7 +174,7 @@ class TripCubit extends Cubit<TripState> {
     );
   }
 
-  StationModel? getNearestStation(double latitude, double longitude) {
+  StationModel? getNearestStationModel(double latitude, double longitude) {
     var lowestDistance = 999999999.9;
     double distance;
     StationModel? station;
@@ -190,5 +197,12 @@ class TripCubit extends Cubit<TripState> {
       }
     }
     return station;
+  }
+
+  @override
+  Future<void> close() {
+    startStationController.dispose();
+    finalStationController.dispose();
+    return super.close();
   }
 }
