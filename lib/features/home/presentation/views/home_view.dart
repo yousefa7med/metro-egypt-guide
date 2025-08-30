@@ -7,6 +7,7 @@ import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
 
 import 'package:metro_egypt_guide/core/widgets/costum_app_bar.dart';
 import 'package:metro_egypt_guide/features/home/controller/trip_cubit/trip_cubit.dart';
+import 'package:metro_egypt_guide/features/home/presentation/widgets/destination_section.dart';
 
 import 'package:metro_egypt_guide/features/home/presentation/widgets/find_route_section.dart';
 import 'package:metro_egypt_guide/features/home/presentation/widgets/nearest_station_Section.dart';
@@ -35,6 +36,8 @@ class HomeView extends StatelessWidget {
         children: [
           Gap(15),
           NearestStationSection(),
+          Gap(15),
+DestinationSection(),
           Gap(15),
           FindRouteSection(),
         ],
