@@ -38,10 +38,8 @@ class _MainViewState extends State<MainView> {
       navBarStyle: NavBarStyle.style6,
       controller: _controller,
       context,
-      screens: isArabic() ? _screenList().reversed.toList() : _screenList(),
-      items: isArabic()
-          ? _navBarsItems(context).reversed.toList()
-          : _navBarsItems(context),
+      screens: _screenList(),
+      items:  _navBarsItems(context),
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset: true,
       stateManagement: true,

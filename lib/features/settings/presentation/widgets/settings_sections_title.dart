@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:metro_egypt_guide/core/utilities/app_color.dart';
 import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
 import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
 import 'package:metro_egypt_guide/features/home/presentation/widgets/app_icon.dart';
-import 'package:metro_egypt_guide/generated/l10n.dart';
 
 class SettingsSectionsTitle extends StatelessWidget {
   const SettingsSectionsTitle({super.key, required this.icon, required this.title, required this.subTitle});
