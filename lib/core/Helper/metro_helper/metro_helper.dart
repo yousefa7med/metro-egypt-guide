@@ -681,27 +681,29 @@ final List<String> allStations = [
 ];
 
 class Metro {
-  TripDetailsModel details = TripDetailsModel();
+  TripDetailsModel? details ;
 
-  TripDetailsModel getTripDetails(String start, String end) {
+  TripDetailsModel? getTripDetails(String start, String end) {
     final visited = <StationModel>{};
     final path = <StationModel>[];
 
-    final result = _findShortestPath(start, end, visited, path);
-    print(result);
-    details.setTicketPrice(result.length);
-    details.setStationCount(result.length);
-    if (result.isNotEmpty) {
-      final line = _cheackSameLine(
-        result[0].name!,
-        result[result.length - 1].name!,
-      );
-      if (line != null) {
-        _sameLineDetails(result, line);
-      } else {
-        _transportBetweenLinesDetails(result, start, end);
-      }
+    if ((start.isNotEmpty &&end.isNotEmpty)) {
+  final result = _findShortestPath(start, end, visited, path);
+  print(result);
+  details!.setTicketPrice(result.length);
+  details!.setStationCount(result.length);
+  if (result.isNotEmpty) {
+    final line = _cheackSameLine(
+      result[0].name!,
+      result[result.length - 1].name!,
+    );
+    if (line != null) {
+      _sameLineDetails(result, line);
+    } else {
+      _transportBetweenLinesDetails(result, start, end);
     }
+  }
+}
 
     return details;
   }
@@ -716,19 +718,19 @@ class Metro {
       if (commonStations.any((e) => e.name == result[i + 1]) &&
           _cheackSameLine(result[i].name!, result[i + 2].name!) == null) {
         final route = result.sublist(last, i + 2);
-        details.routes.add(route);
+        details!.routes.add(route);
         final direction = _getDirection(
           _cheackSameLine(result[i].name!, result[i + 1].name!)!,
           start,
           end,
         );
 
-        details.directions.add(direction);
+        details!.directions.add(direction);
         last = i + 2;
       }
     }
     final finalRoute = result.sublist(last);
-    details.routes.add(finalRoute);
+    details!.routes.add(finalRoute);
     final finalDirection = _getDirection(
       _cheackSameLine(
         finalRoute[0].name!,
@@ -737,12 +739,12 @@ class Metro {
       finalRoute[0].name!,
       finalRoute[finalRoute.length - 1].name!,
     );
-    details.directions.add(finalDirection);
+    details!.directions.add(finalDirection);
   }
 
   void _sameLineDetails(List<StationModel> result, List<StationModel> line) {
-    details.routes.add(result);
-    details.directions.add(
+    details!.routes.add(result);
+    details!.directions.add(
       _getDirection(line, result[0].name!, result[result.length - 1].name!),
     );
   }

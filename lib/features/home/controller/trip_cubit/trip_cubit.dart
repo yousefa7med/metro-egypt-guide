@@ -5,6 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:metro_egypt_guide/core/Helper/functions/app_dialog.dart';
 import 'package:metro_egypt_guide/core/Helper/metro_helper/metro_helper.dart';
 import 'package:metro_egypt_guide/core/Helper/metro_helper/models/station_model.dart';
+import 'package:metro_egypt_guide/core/Helper/metro_helper/models/trip_details_model.dart';
 import 'package:metro_egypt_guide/core/navigations/navigations.dart';
 import 'package:metro_egypt_guide/generated/l10n.dart';
 
@@ -84,9 +85,6 @@ class TripCubit extends Cubit<TripState> {
       emit(TripDetailsChangesState());
     };
   }
-
-
-
 
   Future<Either<Position, String>> _getPosition(BuildContext context) async {
     bool serviceEnabled;
@@ -173,6 +171,13 @@ class TripCubit extends Cubit<TripState> {
       }
     }
     return station;
+  }
+
+  TripDetailsModel? getDetails() {
+return metro.getTripDetails(
+      startStationController.text,
+      finalStationController.text,
+    );
   }
 
   @override

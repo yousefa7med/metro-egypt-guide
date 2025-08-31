@@ -21,7 +21,6 @@ class HomeView extends StatelessWidget {
     TripCubit.get(context).getNearestStation(context);
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(0, 13, 13, 214),
       appBar: CostumAppBar(
         title: Text(
           S.of(context).metroGuide,
