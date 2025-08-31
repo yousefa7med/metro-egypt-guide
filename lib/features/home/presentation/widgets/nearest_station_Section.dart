@@ -64,23 +64,20 @@ class NearestStationSection extends StatelessWidget {
                   ? const EdgeInsets.only(left: 8.0)
                   : const EdgeInsets.only(right: 8.0),
               child: AppIcon(
-                icon: const Icon(
-                  Icons.location_on,
-                  color: AppColor.primaryColor,
-                  size: 28,
+                icon: IconButton(
+                  icon: const Icon(
+                    Icons.location_on,
+                    color: AppColor.primaryColor,
+                    size: 28,
+                  ),
+                  onPressed: () async {
+                    showSnackBar(context, 'Please wait');
+                    await TripCubit.get(
+                      context,
+                    ).getNearestStation(context, userPressed: true);
+                  },
                 ),
-                onPressed: () async {
-                  final tripCub = TripCubit.get(context);
-
-                  showSnackBar(context, 'Please wait');
-                  await TripCubit.get(context).getNearestStation(context);
-
-                  tripCub.startStationController.text =
-                      tripCub.nearestStation!.name!;
-                  tripCub.startStationsOnSelectedFunction()!(
-                    tripCub.nearestStation!.name!,
-                  );
-                },
+                backgroundColorIcon: AppColor.backgroundLocationIconColor,
               ),
             ),
           ),

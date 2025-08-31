@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 
 
 class AppIcon extends StatelessWidget {
-  const AppIcon({super.key, required this.icon,required this.onPressed});
+  const AppIcon({super.key, required this.icon, required this.backgroundColorIcon});
   final Widget icon;
-  final void Function()? onPressed;
+    final Color  backgroundColorIcon;
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      backgroundColor: const Color(0xffE9D4D5),
+      backgroundColor:backgroundColorIcon ,
       radius: 22,
-      child: IconButton(
-        onPressed: onPressed,
-        icon: icon,
-      ),
+      child: icon,
     );
   }
 }

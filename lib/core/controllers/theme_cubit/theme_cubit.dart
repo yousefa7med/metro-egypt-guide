@@ -26,7 +26,7 @@ class AppCubit extends Cubit<AppState> {
     }
   }
 
-  Future<void> saveTheme(ThemeModeState theme) async {
+  Future<void> setTheme(ThemeModeState theme) async {
     currentTheme = theme;
     await CasheHelper().saveData(key: CasheKeys.theme, value: theme.name);
     emit(ThemeChangesState());

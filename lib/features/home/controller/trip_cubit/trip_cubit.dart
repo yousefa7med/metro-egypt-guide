@@ -141,7 +141,10 @@ class TripCubit extends Cubit<TripState> {
     return Left(await Geolocator.getCurrentPosition());
   }
 
-  Future<void> getNearestStation(BuildContext context) async {
+  Future<void> getNearestStation(
+    BuildContext context, {
+    bool userPressed = false,
+  }) async {
     final result = await _getPosition(context);
     result.fold(
       (p) {
@@ -150,9 +153,11 @@ class TripCubit extends Cubit<TripState> {
           position!.latitude,
           position!.longitude,
         )!;
+        if (userPressed) {
+          startStationController.text = nearestStation!.name!;
+          startStationsOnSelectedFunction()!(nearestStation!.name!);
+        }
 
-        startStationController.text = nearestStation!.name!;
-        startStationsOnSelectedFunction()!(nearestStation!.name!);
         emit(PositionExistState());
       },
       (msg) {

@@ -48,5 +48,34 @@ abstract class AppTheme {
   );
 
   // <=========================Dark Theme==============================>
-  static final ThemeData darkTheme = ThemeData(brightness: Brightness.dark);
+  static final ThemeData darkTheme = ThemeData(brightness: Brightness.dark,
+      elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColor.primaryColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(12),
+        ),
+        foregroundColor: Colors.white,
+      ),
+    ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColor.primaryColor,
+      foregroundColor: Colors.white,
+    ),
+
+    cardTheme: CardThemeData(
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadiusGeometry.circular(16),
+      ),
+    ),
+    dropdownMenuTheme: DropdownMenuThemeData(
+            inputDecorationTheme: InputDecorationTheme(
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+      
+    )
+  
+  
+  );
 }
