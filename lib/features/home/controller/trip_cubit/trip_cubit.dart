@@ -85,37 +85,8 @@ class TripCubit extends Cubit<TripState> {
     };
   }
 
-  Future<Position?> _determinePosition() async {
-    bool serviceEnabled;
-    LocationPermission permission;
 
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      print('!serviceEnabled');
-      return null;
-    }
 
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        print('permission == LocationPermission.denied');
-
-        return null;
-      }
-    }
-    if (permission == LocationPermission.deniedForever) {
-      print('permission == LocationPermission.deniedForever');
-
-      return null;
-    }
-    return await Geolocator.getCurrentPosition();
-  }
-
-  Future<void> _initPosition() async {
-    position = await _determinePosition();
-    emit(PositionExistState());
-  }
 
   Future<Either<Position, String>> _getPosition(BuildContext context) async {
     bool serviceEnabled;
