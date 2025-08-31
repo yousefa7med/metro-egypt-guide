@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:metro_egypt_guide/core/controllers/theme_cubit/theme_cubit.dart';
 import 'package:metro_egypt_guide/core/utilities/app_color.dart';
-import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
-import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
+
 import 'package:metro_egypt_guide/core/widgets/app_card.dart';
 import 'package:metro_egypt_guide/features/home/presentation/widgets/app_icon.dart';
+import 'package:metro_egypt_guide/features/settings/presentation/widgets/settings_sections_title.dart';
 import 'package:metro_egypt_guide/features/settings/presentation/widgets/theme_container.dart';
 import 'package:metro_egypt_guide/generated/l10n.dart';
 
@@ -20,30 +20,14 @@ class ChangeThemeSection extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              children: [
-                const AppIcon(
+            SettingsSectionsTitle(icon: const AppIcon(
                   icon: Icon(Icons.color_lens),
                   backgroundColorIcon: AppColor.backgroundThemeColor,
                 ),
-                const Gap(10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      S.of(context).Theme,
-                      style: AppTextStyle.semiBold16.copyWith(
-                        fontFamily: AppFontFamily.inter,
-                      ),
-                    ),
-                    Text(
-                      S.of(context).preTheme,
-                      style: const TextStyle(fontFamily: AppFontFamily.inter),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                title:    S.of(context).Theme,
+                subTitle:    S.of(context).preTheme,
+                )
+         ,
             const Gap(20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

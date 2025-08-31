@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
 import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
 import 'package:metro_egypt_guide/core/widgets/costum_app_bar.dart';
+import 'package:metro_egypt_guide/features/settings/presentation/widgets/change_lang_srectiona.dart';
 import 'package:metro_egypt_guide/features/settings/presentation/widgets/change_theme_srectiona.dart';
 import 'package:metro_egypt_guide/generated/l10n.dart';
 
@@ -27,7 +28,8 @@ class SettingsView extends StatelessWidget {
           Gap(10),
           
 ChangeThemeSection(),
-
+          Gap(10),
+ChangeLangSection(),
 
 
         ],
