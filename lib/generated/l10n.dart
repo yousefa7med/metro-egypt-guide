@@ -230,6 +230,11 @@ class S {
       args: [],
     );
   }
+
+  /// `Please Wait`
+  String get pleaseWait {
+    return Intl.message('Please Wait', name: 'pleaseWait', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

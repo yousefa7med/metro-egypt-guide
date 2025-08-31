@@ -71,7 +71,7 @@ class NearestStationSection extends StatelessWidget {
                     size: 28,
                   ),
                   onPressed: () async {
-                    showSnackBar(context, 'Please wait');
+                    showSnackBar(context, S.of(context).pleaseWait);
                     await TripCubit.get(
                       context,
                     ).getNearestStation(context, userPressed: true);

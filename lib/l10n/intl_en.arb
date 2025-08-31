@@ -25,5 +25,5 @@
     "PleaseOpenLocation":"Please Open Location",
     "LocationPermissionRequired":"Location permission required",
     "LocationPermanentlyDenied":"'Location permissions are permanently denied, we cannot request permissions.'"
-
+,"pleaseWait":"Please Wait"
 }

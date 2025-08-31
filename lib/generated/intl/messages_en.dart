@@ -52,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lang": MessageLookupByLibrary.simpleMessage("Language"),
     "metroGuide": MessageLookupByLibrary.simpleMessage("Metro Guide"),
     "nearestStation": MessageLookupByLibrary.simpleMessage("Nearest Station"),
+    "pleaseWait": MessageLookupByLibrary.simpleMessage("Please Wait"),
     "preTheme": MessageLookupByLibrary.simpleMessage(
       "Choose your preferred theme",
     ),

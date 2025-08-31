@@ -23,16 +23,7 @@ class SettingsView extends StatelessWidget {
       ),
 
       body: const Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Gap(10),
-          
-ChangeThemeSection(),
-          Gap(10),
-ChangeLangSection(),
-
-
-        ],
+        children: [Gap(20), ChangeThemeSection(), Gap(10), ChangeLangSection()],
       ),
     );
   }

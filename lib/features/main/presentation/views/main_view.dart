@@ -35,6 +35,7 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
+      
       navBarStyle: NavBarStyle.style6,
       controller: _controller,
       context,
@@ -70,6 +71,7 @@ List<Widget> _screenList() => [
 
 List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) => [
   PersistentBottomNavBarItem(
+    
     icon: const Padding(
       padding: EdgeInsets.only(top: 8.0),
       child: Icon(Icons.home),

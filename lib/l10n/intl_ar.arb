@@ -25,6 +25,6 @@
 "PleaseOpenLocation":"من فضلك افتح الموقع",
 "LocationPermissionRequired":"اذن الموقع مطلوب",
 "LocationPermanentlyDenied":"'تم رفض أذونات الموقع بشكل دائم، ولا يمكننا طلب الأذونات.'"
-
+,"pleaseWait":"الرجاء الانتظار"
 
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:metro_egypt_guide/core/Helper/functions/functions.dart';
 import 'package:metro_egypt_guide/core/controllers/theme_cubit/theme_cubit.dart';
 import 'package:metro_egypt_guide/core/utilities/app_color.dart';
 
@@ -18,7 +19,6 @@ class ChangeLangSection extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SettingsSectionsTitle(
               icon: const AppIcon(
@@ -29,25 +29,58 @@ class ChangeLangSection extends StatelessWidget {
               subTitle: S.of(context).selectLang,
             ),
             const Gap(20),
-
-            LangContainer(
-              langCode: "En",
-              langName: S.of(context).English,
-              onTap: () {
-                AppCubit.get(context).setLang('en');
-              },
-            ),
-            const Gap(15),
-            LangContainer(
-              langCode: "Ar",
-              langName: S.of(context).Arabic,
-              onTap: () {
-                AppCubit.get(context).setLang('ar');
-              },
-            ),
+            const ChangeLangColumn(),
           ],
         ),
       ),
+    );
+  }
+}
+
+class ChangeLangColumn extends StatefulWidget {
+  const ChangeLangColumn({super.key});
+
+  @override
+  State<ChangeLangColumn> createState() => _ChangeLangColumnState();
+}
+
+class _ChangeLangColumnState extends State<ChangeLangColumn> {
+  late bool isAarbic;
+  @override
+  void initState() {
+    isAarbic = isArabic();
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        LangContainer(
+          langCode: "En",
+          lang: !isAarbic,
+          langName: S.of(context).English,
+          onTap: () {
+            AppCubit.get(context).setLang('en');
+            setState(() {
+              isAarbic = false;
+            });
+          },
+        ),
+        const Gap(15),
+        LangContainer(
+          langCode: "Ar",
+          lang: isAarbic,
+          langName: S.of(context).Arabic,
+          onTap: () {
+            AppCubit.get(context).setLang('ar');
+            setState(() {
+              isAarbic = true;
+            });
+          },
+        ),
+      ],
     );
   }
 }

@@ -36,7 +36,7 @@ class MetroGuide extends StatelessWidget {
               return MaterialApp(
                 onGenerateRoute: AppRouter.generateRoute,
                 // themeAnimationCurve: Curves.easeIn,
-                // themeAnimationDuration: const Duration(milliseconds: 400),
+                // themeAnimationDuration: const Duration(milliseconds: 200),
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,
                 themeMode: AppCubit.get(context).getTheme(),

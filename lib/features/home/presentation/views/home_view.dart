@@ -34,10 +34,10 @@ class HomeView extends StatelessWidget {
       body: const Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Gap(15),
+          Gap(20),
           NearestStationSection(),
           Gap(15),
-DestinationSection(),
+          DestinationSection(),
           Gap(15),
           FindRouteSection(),
         ],

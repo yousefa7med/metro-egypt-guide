@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lang": MessageLookupByLibrary.simpleMessage("اللغة"),
     "metroGuide": MessageLookupByLibrary.simpleMessage("مرشد المترو "),
     "nearestStation": MessageLookupByLibrary.simpleMessage("اقرب محطة"),
+    "pleaseWait": MessageLookupByLibrary.simpleMessage("الرجاء الانتظار"),
     "preTheme": MessageLookupByLibrary.simpleMessage("اختر الثيم الذي تفضله"),
     "selectLang": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
     "startStation": MessageLookupByLibrary.simpleMessage("محطة البداية"),
