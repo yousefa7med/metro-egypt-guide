@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "AllLines": MessageLookupByLibrary.simpleMessage("جميع الخطوط"),
     "Arabic": MessageLookupByLibrary.simpleMessage("اللغة العربية"),
     "Dark": MessageLookupByLibrary.simpleMessage("داكن"),
+    "EGY": MessageLookupByLibrary.simpleMessage("جنيه"),
     "English": MessageLookupByLibrary.simpleMessage("اللغة الانجليزية"),
     "FindRoute": MessageLookupByLibrary.simpleMessage("ارني عن الطريق"),
     "Home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
@@ -46,13 +47,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "SelectMetroLine": MessageLookupByLibrary.simpleMessage("اختر خط المترو"),
     "Settings": MessageLookupByLibrary.simpleMessage("الاعدادت"),
     "Theme": MessageLookupByLibrary.simpleMessage("ثيم"),
+    "Transfer": MessageLookupByLibrary.simpleMessage("تحويلة"),
+    "backToHome": MessageLookupByLibrary.simpleMessage(
+      "العودة للصفحة الرئيسية",
+    ),
+    "checkDetails": MessageLookupByLibrary.simpleMessage(
+      "يرجي التأكد من محطة البداية والنهاية",
+    ),
     "finalStation": MessageLookupByLibrary.simpleMessage("محطة النهاية"),
     "lang": MessageLookupByLibrary.simpleMessage("اللغة"),
     "metroGuide": MessageLookupByLibrary.simpleMessage("مرشد المترو "),
+    "min": MessageLookupByLibrary.simpleMessage("دقيقة"),
     "nearestStation": MessageLookupByLibrary.simpleMessage("اقرب محطة"),
     "pleaseWait": MessageLookupByLibrary.simpleMessage("الرجاء الانتظار"),
     "preTheme": MessageLookupByLibrary.simpleMessage("اختر الثيم الذي تفضله"),
+    "routeDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطريق"),
     "selectLang": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
     "startStation": MessageLookupByLibrary.simpleMessage("محطة البداية"),
+    "tripInfo": MessageLookupByLibrary.simpleMessage("معلومات الرحلة"),
   };
 }

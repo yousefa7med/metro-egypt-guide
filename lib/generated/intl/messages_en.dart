@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "AllLines": MessageLookupByLibrary.simpleMessage("All Lines"),
     "Arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "Dark": MessageLookupByLibrary.simpleMessage("Dark"),
+    "EGY": MessageLookupByLibrary.simpleMessage("EGY"),
     "English": MessageLookupByLibrary.simpleMessage("English"),
     "FindRoute": MessageLookupByLibrary.simpleMessage("Find Route"),
     "Home": MessageLookupByLibrary.simpleMessage("Home"),
@@ -48,15 +49,23 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "Theme": MessageLookupByLibrary.simpleMessage("Theme"),
+    "Transfer": MessageLookupByLibrary.simpleMessage("Transfer"),
+    "backToHome": MessageLookupByLibrary.simpleMessage("Back To Home"),
+    "checkDetails": MessageLookupByLibrary.simpleMessage(
+      "Please check your start station and final station",
+    ),
     "finalStation": MessageLookupByLibrary.simpleMessage("Final Station"),
     "lang": MessageLookupByLibrary.simpleMessage("Language"),
     "metroGuide": MessageLookupByLibrary.simpleMessage("Metro Guide"),
+    "min": MessageLookupByLibrary.simpleMessage("min"),
     "nearestStation": MessageLookupByLibrary.simpleMessage("Nearest Station"),
     "pleaseWait": MessageLookupByLibrary.simpleMessage("Please Wait"),
     "preTheme": MessageLookupByLibrary.simpleMessage(
       "Choose your preferred theme",
     ),
+    "routeDetails": MessageLookupByLibrary.simpleMessage("Route Details"),
     "selectLang": MessageLookupByLibrary.simpleMessage("Select your language"),
     "startStation": MessageLookupByLibrary.simpleMessage("Start Station"),
+    "tripInfo": MessageLookupByLibrary.simpleMessage("Trip Information"),
   };
 }

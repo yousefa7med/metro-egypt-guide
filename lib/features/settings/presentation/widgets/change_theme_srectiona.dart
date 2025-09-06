@@ -21,9 +21,12 @@ class ChangeThemeSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SettingsSectionsTitle(
-              icon: const AppIcon(
-                icon: Icon(Icons.color_lens),
-                backgroundColorIcon: AppColor.backgroundThemeColor,
+              icon: AppIcon(
+                icon: const Icon(
+                  Icons.color_lens,
+                  color: AppColor.themeIconColor,
+                ),
+                backgroundColorIcon: AppColor.themeIconColor.withAlpha(29),
               ),
               title: S.of(context).Theme,
               subTitle: S.of(context).preTheme,

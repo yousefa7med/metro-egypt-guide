@@ -235,6 +235,56 @@ class S {
   String get pleaseWait {
     return Intl.message('Please Wait', name: 'pleaseWait', desc: '', args: []);
   }
+
+  /// `Please check your start station and final station`
+  String get checkDetails {
+    return Intl.message(
+      'Please check your start station and final station',
+      name: 'checkDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Route Details`
+  String get routeDetails {
+    return Intl.message(
+      'Route Details',
+      name: 'routeDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Trip Information`
+  String get tripInfo {
+    return Intl.message(
+      'Trip Information',
+      name: 'tripInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EGY`
+  String get EGY {
+    return Intl.message('EGY', name: 'EGY', desc: '', args: []);
+  }
+
+  /// `min`
+  String get min {
+    return Intl.message('min', name: 'min', desc: '', args: []);
+  }
+
+  /// `Transfer`
+  String get Transfer {
+    return Intl.message('Transfer', name: 'Transfer', desc: '', args: []);
+  }
+
+  /// `Back To Home`
+  String get backToHome {
+    return Intl.message('Back To Home', name: 'backToHome', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

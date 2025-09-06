@@ -26,5 +26,14 @@
 "LocationPermissionRequired":"اذن الموقع مطلوب",
 "LocationPermanentlyDenied":"'تم رفض أذونات الموقع بشكل دائم، ولا يمكننا طلب الأذونات.'"
 ,"pleaseWait":"الرجاء الانتظار"
-
+,"checkDetails":"يرجي التأكد من محطة البداية والنهاية"
+,
+"routeDetails":"تفاصيل الطريق"
+,
+"tripInfo":"معلومات الرحلة",
+"EGY":"جنيه",
+"min":"دقيقة",
+"Transfer":"تحويلة"
+,
+"backToHome":"العودة للصفحة الرئيسية"
 }

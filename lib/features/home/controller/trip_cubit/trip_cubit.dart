@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:metro_egypt_guide/core/Helper/functions/app_dialog.dart';
 import 'package:metro_egypt_guide/core/Helper/metro_helper/metro_helper.dart';
+import 'package:metro_egypt_guide/core/Helper/metro_helper/models/line_model.dart';
 import 'package:metro_egypt_guide/core/Helper/metro_helper/models/station_model.dart';
 import 'package:metro_egypt_guide/core/Helper/metro_helper/models/trip_details_model.dart';
 import 'package:metro_egypt_guide/core/navigations/navigations.dart';
@@ -153,11 +154,11 @@ class TripCubit extends Cubit<TripState> {
     double distance;
     StationModel? station;
     for (var elemnet in [
-      ...line1,
-      ...line2,
-      ...line3Branch1,
-      ...line3Branch2,
-      ...line3Main,
+      ...line1.stations,
+      ...line2.stations,
+      ...line3Branch1.stations,
+      ...line3Branch2.stations,
+      ...line3Main.stations,
     ]) {
       distance = Geolocator.distanceBetween(
         latitude,
@@ -173,8 +174,10 @@ class TripCubit extends Cubit<TripState> {
     return station;
   }
 
-  TripDetailsModel? getDetails() {
-return metro.getTripDetails(
+  TripDetailsModel getDetails() {
+    print(startStationController.text);
+    print(finalStationController.text);
+    return metro.getTripDetails(
       startStationController.text,
       finalStationController.text,
     );

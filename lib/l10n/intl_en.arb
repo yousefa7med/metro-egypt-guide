@@ -26,4 +26,11 @@
     "LocationPermissionRequired":"Location permission required",
     "LocationPermanentlyDenied":"'Location permissions are permanently denied, we cannot request permissions.'"
 ,"pleaseWait":"Please Wait"
+,"checkDetails":"Please check your start station and final station",
+"routeDetails":"Route Details",
+"tripInfo":"Trip Information",
+"EGY":"EGY",
+"min":"min",
+"Transfer":"Transfer",
+"backToHome":"Back To Home"
 }

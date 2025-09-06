@@ -21,9 +21,9 @@ class ChangeLangSection extends StatelessWidget {
         child: Column(
           children: [
             SettingsSectionsTitle(
-              icon: const AppIcon(
-                icon: Icon(Icons.language_outlined),
-                backgroundColorIcon: AppColor.backgroundLangColor,
+              icon: AppIcon(
+                icon: const Icon(Icons.language_outlined,color: AppColor.langIconColor,),
+                backgroundColorIcon: AppColor.langIconColor.withAlpha(29),
               ),
               title: S.of(context).lang,
               subTitle: S.of(context).selectLang,
