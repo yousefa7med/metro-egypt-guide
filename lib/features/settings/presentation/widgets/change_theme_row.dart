@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:metro_egypt_guide/core/controllers/theme_cubit/theme_cubit.dart';
@@ -16,14 +15,16 @@ class _ChangeThemeRowState extends State<ChangeThemeRow> {
   late bool isLight;
   @override
   void initState() {
-    isLight = (AppCubit.get(context).currentTheme == ThemeModeState.light)
-        ? true
-        : false;
+
+    
+
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    isLight =    Theme.of(context).brightness == Brightness.light;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -40,7 +41,7 @@ class _ChangeThemeRowState extends State<ChangeThemeRow> {
               isLight = true;
             });
           },
-          theme: isLight,
+          isSelected: isLight,
         ),
         const Gap(10),
         ThemeContainer(
@@ -57,7 +58,7 @@ class _ChangeThemeRowState extends State<ChangeThemeRow> {
               isLight = false;
             });
           },
-          theme: !isLight,
+          isSelected: !isLight,
         ),
       ],
     );

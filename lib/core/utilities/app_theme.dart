@@ -40,16 +40,16 @@ abstract class AppTheme {
       ),
     ),
     dropdownMenuTheme: DropdownMenuThemeData(
-            inputDecorationTheme: InputDecorationTheme(
+      inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
       ),
-      
-    )
+    ),
   );
 
   // <=========================Dark Theme==============================>
-  static final ThemeData darkTheme = ThemeData(brightness: Brightness.dark,
-      elevatedButtonTheme: ElevatedButtonThemeData(
+  static final ThemeData darkTheme = ThemeData(
+    brightness: Brightness.dark,
+    elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColor.primaryColor,
         shape: RoundedRectangleBorder(
@@ -60,7 +60,7 @@ abstract class AppTheme {
     ),
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColor.primaryColor,
-      foregroundColor: Colors.white,
+      foregroundColor: Colors.black,
     ),
 
     cardTheme: CardThemeData(
@@ -70,12 +70,9 @@ abstract class AppTheme {
       ),
     ),
     dropdownMenuTheme: DropdownMenuThemeData(
-            inputDecorationTheme: InputDecorationTheme(
+      inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
       ),
-      
-    )
-  
-  
+    ),
   );
 }

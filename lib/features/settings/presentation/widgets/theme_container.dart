@@ -9,12 +9,12 @@ class ThemeContainer extends StatelessWidget {
     required this.icon,
     required this.themeType,
     this.onTap,
-    required this.theme,
+    required this.isSelected,
   });
   final Widget icon;
   final String themeType;
   final void Function()? onTap;
-  final bool theme;
+  final bool isSelected;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -23,9 +23,9 @@ class ThemeContainer extends StatelessWidget {
         height: 80.h,
         width: 130.w,
         decoration: BoxDecoration(
-          color: theme ? AppColor.selectedSetting : null,
+          color: isSelected ? AppColor.selectedSetting : null,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: theme ? Colors.blue : Colors.grey),
+          border: Border.all(color: isSelected ? Colors.blue : Colors.grey),
         ),
         child: Center(
           child: Column(

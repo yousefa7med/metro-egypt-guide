@@ -6,8 +6,6 @@ import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
 import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
 
 import 'package:metro_egypt_guide/core/widgets/costum_app_bar.dart';
-import 'package:metro_egypt_guide/features/home/controller/trip_cubit/trip_cubit.dart';
-import 'package:metro_egypt_guide/features/home/presentation/widgets/destination_section.dart';
 
 import 'package:metro_egypt_guide/features/home/presentation/widgets/find_route_section.dart';
 import 'package:metro_egypt_guide/features/home/presentation/widgets/nearest_station_Section.dart';
@@ -18,28 +16,31 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TripCubit.get(context).getNearestStation(context);
-
-    return Scaffold(
-      appBar: CostumAppBar(
-        title: Text(
-          S.of(context).metroGuide,
-          style: AppTextStyle.regular20.copyWith(
-            fontFamily: AppFontFamily.inter,
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        appBar: CostumAppBar(
+          title: Text(
+            S.of(context).metroGuide,
+            style: AppTextStyle.regular20.copyWith(
+              fontFamily: AppFontFamily.inter,
+            ),
           ),
         ),
-      ),
 
-      body: const Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Gap(20),
-          NearestStationSection(),
-          Gap(15),
-          DestinationSection(),
-          Gap(15),
-          FindRouteSection(),
-        ],
+        body: const Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Gap(20),
+            NearestStationSection(),
+            Gap(15),
+            // DestinationSection(),
+            Gap(15),
+            FindRouteSection(),
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:metro_egypt_guide/core/transitions/page_route_builder_method.dart';
@@ -16,9 +14,10 @@ class AppRouter {
       case AppRoutes.homeView:
         return pageRouteBuilderMethod(
           settings: settings,
-          pageBuilder: (context, animation, secondaryAnimation) =>
-             BlocProvider(create: (context) => TripCubit(), child: const HomeView()),
-
+          pageBuilder: (context, animation, secondaryAnimation) => BlocProvider(
+            create: (context) => TripCubit(),
+            child: const HomeView(),
+          ),
         );
       case AppRoutes.mainView:
         return pageRouteBuilderMethod(
@@ -44,7 +43,6 @@ class AppRouter {
           pageBuilder: (context, animation, secondaryAnimation) =>
               const DetailsView(),
         );
-     
 
       default:
         return pageRouteBuilderMethod(
@@ -62,5 +60,4 @@ abstract class AppRoutes {
   static const String linesView = '/linesView';
   static const String settingsView = '/settingsView';
   static const String detailsView = '/DetailsView';
-
 }
