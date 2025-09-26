@@ -17,6 +17,8 @@ class SettingsView extends StatelessWidget {
         title: Text(
           S.of(context).Settings,
           style: AppTextStyle.regular20.copyWith(
+            color: Colors.white,
+
             fontFamily: AppFontFamily.inter,
           ),
         ),

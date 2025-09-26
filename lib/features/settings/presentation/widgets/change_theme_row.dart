@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:metro_egypt_guide/core/controllers/theme_cubit/theme_cubit.dart';
+import 'package:metro_egypt_guide/core/controllers/app_cubit/app_cubit.dart';
 import 'package:metro_egypt_guide/features/settings/presentation/widgets/theme_container.dart';
 import 'package:metro_egypt_guide/generated/l10n.dart';
 
@@ -15,16 +15,12 @@ class _ChangeThemeRowState extends State<ChangeThemeRow> {
   late bool isLight;
   @override
   void initState() {
-
-    
-
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    isLight =    Theme.of(context).brightness == Brightness.light;
+    isLight = Theme.of(context).brightness == Brightness.light;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -35,11 +31,11 @@ class _ChangeThemeRowState extends State<ChangeThemeRow> {
             size: 34,
           ),
           themeType: S.of(context).Light,
-          onTap: () {
-            AppCubit.get(context).setTheme(ThemeModeState.light);
+          onTap: () async {
             setState(() {
               isLight = true;
             });
+          await  AppCubit.get(context).setTheme(ThemeModeState.light);
           },
           isSelected: isLight,
         ),
@@ -52,11 +48,11 @@ class _ChangeThemeRowState extends State<ChangeThemeRow> {
           ),
           themeType: S.of(context).Dark,
 
-          onTap: () {
-            AppCubit.get(context).setTheme(ThemeModeState.dark);
+          onTap: () async {
             setState(() {
               isLight = false;
             });
+         await   AppCubit.get(context).setTheme(ThemeModeState.dark);
           },
           isSelected: !isLight,
         ),

@@ -269,7 +269,6 @@ class Metro {
     for (var line in allLines) {
       if (!line.stations.any((e) => e.name == start)) continue;
 
-      final index = line.stations.indexWhere((e) => e.name == start);
       final neighbors = _getNeighbors(start);
 
       for (var neighbor in neighbors) {

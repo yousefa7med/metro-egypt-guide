@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:metro_egypt_guide/core/config/configrations.dart';
 import 'package:metro_egypt_guide/core/utilities/app_color.dart';
 import 'package:metro_egypt_guide/features/home/controller/trip_cubit/trip_cubit.dart';
 import 'package:metro_egypt_guide/features/home/presentation/views/home_view.dart';
@@ -34,15 +33,14 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
-      
       navBarStyle: NavBarStyle.style6,
       controller: _controller,
       context,
       screens: _screenList(),
-      items:  _navBarsItems(context),
+      items: _navBarsItems(context),
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset: true,
-      stateManagement: true,
+
       hideNavigationBarWhenKeyboardAppears: true,
       popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
       animationSettings: const NavBarAnimationSettings(
@@ -70,7 +68,6 @@ List<Widget> _screenList() => [
 
 List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) => [
   PersistentBottomNavBarItem(
-    
     icon: const Padding(
       padding: EdgeInsets.only(top: 8.0),
       child: Icon(Icons.home),
@@ -78,40 +75,17 @@ List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) => [
     title: (S.of(context).Home),
     activeColorPrimary: AppColor.primaryColor,
     inactiveColorPrimary: Colors.grey,
-
-    routeAndNavigatorSettings: RouteAndNavigatorSettings(
-      initialRoute: AppRoutes.homeView,
-      routes: {
-       AppRoutes.settingsView: (final context) => const SettingsView(),
-        AppRoutes.linesView: (final context) => const LinesView(),
-      },
-    ),
   ),
   PersistentBottomNavBarItem(
     icon: const Icon(Icons.route),
     title: (S.of(context).Lines),
     activeColorPrimary: AppColor.primaryColor,
     inactiveColorPrimary: Colors.grey,
-    routeAndNavigatorSettings: RouteAndNavigatorSettings(
-      initialRoute: AppRoutes.linesView,
-      routes: {
-       AppRoutes.homeView: (final context) => const HomeView(),
-
-       AppRoutes.settingsView: (final context) => const SettingsView(),
-      },
-    ),
   ),
   PersistentBottomNavBarItem(
     icon: const Icon(Icons.settings),
     title: (S.of(context).Settings),
     activeColorPrimary: AppColor.primaryColor,
     inactiveColorPrimary: Colors.grey,
-    routeAndNavigatorSettings: RouteAndNavigatorSettings(
-      initialRoute:AppRoutes.settingsView,
-      routes: {
-     AppRoutes.settingsView: (final context) => const SettingsView(),
-        AppRoutes.linesView: (final context) => const LinesView(),
-      },
-    ),
   ),
 ];

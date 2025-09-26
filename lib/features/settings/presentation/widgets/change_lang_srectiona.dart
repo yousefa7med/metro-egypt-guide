@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:metro_egypt_guide/core/Helper/functions/functions.dart';
-import 'package:metro_egypt_guide/core/controllers/theme_cubit/theme_cubit.dart';
+import 'package:metro_egypt_guide/core/controllers/app_cubit/app_cubit.dart';
 import 'package:metro_egypt_guide/core/utilities/app_color.dart';
 
 import 'package:metro_egypt_guide/core/widgets/app_card.dart';
@@ -64,11 +64,11 @@ class _ChangeLangColumnState extends State<ChangeLangColumn> {
           langCode: "En",
           lang: !isAarbic,
           langName: S.of(context).English,
-          onTap: () {
-            AppCubit.get(context).setLang('en');
+          onTap: () async {
             setState(() {
               isAarbic = false;
             });
+            await AppCubit.get(context).setLang('en');
           },
         ),
         const Gap(15),
@@ -76,11 +76,11 @@ class _ChangeLangColumnState extends State<ChangeLangColumn> {
           langCode: "Ar",
           lang: isAarbic,
           langName: S.of(context).Arabic,
-          onTap: () {
-            AppCubit.get(context).setLang('ar');
+          onTap: () async {
             setState(() {
               isAarbic = true;
             });
+            await AppCubit.get(context).setLang('ar');
           },
         ),
       ],

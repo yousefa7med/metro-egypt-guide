@@ -1,4 +1,4 @@
-part of 'theme_cubit.dart';
+part of 'app_cubit.dart';
 
 sealed class AppState {}
 

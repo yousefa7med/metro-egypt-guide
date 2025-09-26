@@ -1,16 +1,14 @@
+import 'dart:isolate';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:metro_egypt_guide/core/Helper/cashe_helper/cashe_helper.dart';
 import 'package:metro_egypt_guide/core/Helper/cashe_helper/cashe_keys.dart';
-part 'theme_state.dart';
+part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
-  AppCubit() : super(AppInitialState()) {
-    _loadTheme();
-    _loadLang();
-  }
+  AppCubit() : super(AppInitialState());
   ThemeModeState currentTheme = ThemeModeState.system;
   static AppCubit get(BuildContext context) => BlocProvider.of(context);
 
@@ -32,7 +30,16 @@ class AppCubit extends Cubit<AppState> {
     emit(ThemeChangesState());
   }
 
-  _loadTheme() {
+void init()  {
+
+
+      _loadTheme();
+      _loadLang();
+
+
+  }
+
+  void _loadTheme() {
     String savedTheme =
         CasheHelper().getData(CasheKeys.theme) as String? ?? "system";
 

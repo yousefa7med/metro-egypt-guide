@@ -24,7 +24,8 @@ class HomeView extends StatelessWidget {
         appBar: CostumAppBar(
           title: Text(
             S.of(context).metroGuide,
-            style: AppTextStyle.regular20.copyWith(
+            style: AppTextStyle.regular20.copyWith(            color: Colors.white,
+
               fontFamily: AppFontFamily.inter,
             ),
           ),

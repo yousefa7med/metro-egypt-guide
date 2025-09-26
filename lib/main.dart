@@ -3,16 +3,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metro_egypt_guide/core/Helper/cashe_helper/cashe_helper.dart';
 import 'package:metro_egypt_guide/core/config/configrations.dart';
-import 'package:metro_egypt_guide/core/controllers/theme_cubit/theme_cubit.dart';
+import 'package:metro_egypt_guide/core/controllers/app_cubit/app_cubit.dart';
 import 'package:metro_egypt_guide/core/utilities/app_theme.dart';
-import 'package:metro_egypt_guide/features/main/presentation/views/main_view.dart';
+
 import 'package:metro_egypt_guide/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CasheHelper().init();
-  runApp(const MetroGuide());
+
+
+  runApp(
+    BlocProvider(create: (context) => AppCubit()..init(), child: const MetroGuide()),
+  );
 }
 
 class MetroGuide extends StatelessWidget {
@@ -20,41 +24,35 @@ class MetroGuide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => AppCubit()),
-        BlocProvider(create: (context) => AppCubit()),
-      ],
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return BlocBuilder<AppCubit, AppState>(
+          builder: (context, state) {
+            return MaterialApp(
+              onGenerateRoute: AppRouter.generateRoute,
+              themeAnimationCurve: Curves.easeInCirc,
+              themeAnimationDuration: const Duration(milliseconds: 300),
+              theme: AppTheme.lightTheme,
+              darkTheme: AppTheme.darkTheme,
+              themeMode: AppCubit.get(context).getTheme(),
 
-      child: ScreenUtilInit(
-        designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (_, child) {
-          return BlocBuilder<AppCubit, AppState>(
-            builder: (context, state) {
-              return MaterialApp(
-                onGenerateRoute: AppRouter.generateRoute,
-                // themeAnimationCurve: Curves.easeIn,
-                // themeAnimationDuration: const Duration(milliseconds: 200),
-                theme: AppTheme.lightTheme,
-                darkTheme: AppTheme.darkTheme,
-                themeMode: AppCubit.get(context).getTheme(),
-                locale: Locale(AppCubit.get(context).getLang()),
-                localizationsDelegates: const [
-                  S.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: S.delegate.supportedLocales,
+              locale: Locale(AppCubit.get(context).getLang()),
+              localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: S.delegate.supportedLocales,
 
-                home: const MainView(),
-              );
-            },
-          );
-        },
-      ),
+              initialRoute: AppRoutes.splashView,
+            );
+          },
+        );
+      },
     );
   }
 }
