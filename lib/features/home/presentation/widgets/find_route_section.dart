@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/trip_details_model.dart';
-import 'package:metro_egypt_guide/core/config/configrations.dart';
 import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
 import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
 import 'package:metro_egypt_guide/core/widgets/align_text.dart';
@@ -58,12 +56,7 @@ class FindRouteSection extends StatelessWidget {
                 const Gap(30),
                 AppButton(
                   onPressed: () {
-                    TripDetailsModel? d = TripCubit.get(context).getDetails();
-
-                    Navigator.of(
-                      context,
-                      rootNavigator: true,
-                    ).pushNamed(AppRoutes.detailsView);
+                  
                   },
                   child: Text(
                     S.of(context).FindRoute,

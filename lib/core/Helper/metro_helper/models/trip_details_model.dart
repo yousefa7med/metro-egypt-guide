@@ -11,7 +11,7 @@ class TripDetailsModel {
   int? time;
   int? ticketPrice;
   List<List<StationModel>> routes = [];
-  List<StationModel> directions = [];
+  Set<StationModel> directions = {};
 
   void clear() {
     directions.clear();
