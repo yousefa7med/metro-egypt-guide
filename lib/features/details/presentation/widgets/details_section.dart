@@ -31,8 +31,8 @@ class DetailsSection extends StatelessWidget {
               children: [
                 InfoContainer(
                   color: AppColor.line1Color,
-                  icon: Icons.payments,
-                  data: "25 ${S.of(context).EGY}",
+                  icon: Icons.schedule,
+                  data: "15 ${S.of(context).min}",
                 ),
                 const Gap(15),
                 InfoContainer(
@@ -43,8 +43,8 @@ class DetailsSection extends StatelessWidget {
                 const Gap(15),
                 InfoContainer(
                   color: AppColor.line3Color,
-                  icon: Icons.payments,
-                  data: "25 ${S.of(context).EGY}",
+                  icon: Icons.call_split,
+                  data: "2 ${S.of(context).Transfer}",
                 ),
               ],
             ),

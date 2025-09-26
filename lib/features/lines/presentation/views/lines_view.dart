@@ -19,7 +19,10 @@ class LinesView extends StatelessWidget {
         ),
       ),
 
-      body: const Center(child: Text('Lines ')),
+      body: const SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(children: []),
+      ),
     );
   }
 }
