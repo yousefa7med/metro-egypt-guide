@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:metro_egypt_guide/core/Helper/functions/show_snackBer.dart';
+import 'package:metro_egypt_guide/core/Helper/metro_helper/models/trip_details_model.dart';
+import 'package:metro_egypt_guide/core/config/configrations.dart';
+import 'package:metro_egypt_guide/core/errors/app_exeption.dart';
+import 'package:metro_egypt_guide/core/navigations/navigations.dart';
 import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
 import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
 import 'package:metro_egypt_guide/core/widgets/align_text.dart';
@@ -16,7 +21,13 @@ class FindRouteSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TripCubit, TripState>(
+      buildWhen: (prev, curr) {
+        return curr is PositionSuccessState || curr is TripDetailsChangesState;
+      },
       builder: (context, state) {
+        print(
+          '==========================================findRoute==========================================',
+        );
         return AppCard(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -56,7 +67,19 @@ class FindRouteSection extends StatelessWidget {
                 const Gap(30),
                 AppButton(
                   onPressed: () {
-                  
+                    TripDetailsModel? details;
+                    // try {
+                      details = TripCubit.get(context).getTripDetails(context);    AppNavigation.pushName(
+                      rootNavigator: true,
+                      context: context,
+                      route: AppRoutes.detailsView,
+                      argument: details,
+                    );
+                    // } on AppException catch (e) {
+                    //   showSnackBar(context, e.message);
+                    // }
+
+                
                   },
                   child: Text(
                     S.of(context).FindRoute,

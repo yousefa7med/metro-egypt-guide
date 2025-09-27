@@ -6,4 +6,7 @@ final class TripInitialState extends TripState {}
 
 final class TripDetailsChangesState extends TripState {}
 
-final class PositionExistState extends TripState {}
+
+final class PositionSuccessState extends TripState {}
+
+final class PositionLoadingState extends TripState {}

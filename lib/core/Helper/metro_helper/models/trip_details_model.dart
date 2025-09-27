@@ -8,8 +8,9 @@ class TripDetailsModel {
   String? finalStation;
 
   int? stationCount;
-  int? time;
+  double time = 0;
   int? ticketPrice;
+  int? transfer;
   List<List<StationModel>> routes = [];
   Set<StationModel> directions = {};
 
@@ -17,15 +18,15 @@ class TripDetailsModel {
     directions.clear();
     routes.clear();
     stationCount = null;
-    time = null;
+    time = 0;
     ticketPrice = null;
     startStation = null;
     finalStation = null;
   }
 
-  void setStationCount(int stationCount) => this.stationCount = stationCount;
+  void calcStationCount(int stationCount) => this.stationCount = stationCount;
 
-  void setTicketPrice(int numOfStation) {
+  void calcTicketPrice(int numOfStation) {
     if (numOfStation <= 9) {
       ticketPrice = 8;
     } else if (numOfStation <= 16) {
@@ -67,6 +68,18 @@ class TripDetailsModel {
       );
 
       print(direction.name);
+    }
+  }
+
+  void calcTransfer() => transfer = directions.length - 1;
+
+  bool validDetails() {
+    return !(routes.isEmpty || directions.isEmpty);
+  }
+
+  void calcTime() {
+    for (var route in routes) {
+      time = route[0].travellingTime! * route.length;
     }
   }
 }

@@ -34,6 +34,17 @@ class TripCubit extends Cubit<TripState> {
     }
   }
 
+  TripDetailsModel getTripDetails(BuildContext context) {
+    // try {
+    return metro.getTripDetails(
+      startStationController.text.trim(),
+      finalStationController.text.trim(),
+    );
+    // } catch (e) {
+    //   throw TripDetailsException(message: S.of(context).checkDetails);
+    // }
+  }
+
   Function(dynamic)? startStationsOnSelectedFunction() {
     return (value) {
       value = startStationController.text;
@@ -115,20 +126,27 @@ class TripCubit extends Cubit<TripState> {
     BuildContext context, {
     bool userPressed = false,
   }) async {
+    emit(PositionLoadingState());
+
+    final stopwatch = Stopwatch()..start();
+
     final result = await _getPosition(context);
+    stopwatch.stop();
+
+    print('حخسهفهخى time: ${stopwatch.elapsedMilliseconds} ms');
+
     result.fold(
-      (p) {
-        position = p;
-        nearestStation = getNearestStationModel(
-          position!.latitude,
-          position!.longitude,
+      (position) {
+        nearestStation = _getNearestStationModel(
+          position.latitude,
+          position.longitude,
         )!;
         if (userPressed) {
           startStationController.text = nearestStation!.name!;
           startStationsOnSelectedFunction()!(nearestStation!.name!);
         }
 
-        emit(PositionExistState());
+        emit(PositionSuccessState());
       },
       (msg) {
         appDialog(
@@ -149,7 +167,7 @@ class TripCubit extends Cubit<TripState> {
     );
   }
 
-  StationModel? getNearestStationModel(double latitude, double longitude) {
+  StationModel? _getNearestStationModel(double latitude, double longitude) {
     var lowestDistance = 999999999.9;
     double distance;
     StationModel? station;

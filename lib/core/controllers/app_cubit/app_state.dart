@@ -7,3 +7,5 @@ final class AppInitialState extends AppState {}
 final class ThemeChangesState extends AppState {}
 
 final class LocalizationChangesState extends AppState {}
+
+final class ChoosedStationState extends AppState {}

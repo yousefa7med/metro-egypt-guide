@@ -1,6 +1,7 @@
 import 'package:metro_egypt_guide/core/Helper/metro_helper/models/line_model.dart';
 import 'package:metro_egypt_guide/core/Helper/metro_helper/models/station_model.dart';
 import 'package:metro_egypt_guide/core/Helper/metro_helper/models/trip_details_model.dart';
+import 'package:metro_egypt_guide/core/errors/app_exeption.dart';
 import 'package:metro_egypt_guide/core/utilities/app_color.dart';
 
 List<LineModel> allLines = [
@@ -114,8 +115,8 @@ class Metro {
 
     final result = _findShortestPath(start, end, visited, path);
 
-    details.setTicketPrice(result.length);
-    details.setStationCount(result.length);
+    details.calcTicketPrice(result.length);
+    details.calcStationCount(result.length);
     if (result.isNotEmpty) {
       final line = _cheackSameLine(
         result[0].name!,
@@ -127,6 +128,10 @@ class Metro {
         _transportBetweenLinesDetails(result, start, end);
       }
     }
+    if (!details.validDetails()) {
+      throw TripDetailsException(message: "فبلفرلااىتةنومكز"); //!
+    }
+
     details.startStation = start;
     details.finalStation = end;
 
@@ -140,6 +145,8 @@ class Metro {
     for (var element in details.directions) {
       directions.add(element.name!);
     }
+    details.calcTransfer();
+    details.calcTime();
     clearIt = true;
     return details;
   }

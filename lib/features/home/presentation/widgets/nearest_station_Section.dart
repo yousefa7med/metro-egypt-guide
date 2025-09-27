@@ -17,7 +17,6 @@ class NearestStationSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return AppCard(
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -32,16 +31,37 @@ class NearestStationSection extends StatelessWidget {
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 10.0),
             child: BlocBuilder<TripCubit, TripState>(
+              buildWhen: (prev, curr) {
+                return curr is PositionSuccessState ||
+                    curr is PositionLoadingState;
+              },
               builder: (context, state) {
-                return TripCubit.get(context).nearestStation != null
-                    ? StationRow(
-                        color: TripCubit.get(
-                          context,
-                        ).nearestStation!.lineColor!,
+                print(
+                  '==========================================nearestStation==========================================',
+                );
+                if (state is PositionLoadingState) {
+                  return SizedBox(
+                    height: 19.h,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
 
-                        station: TripCubit.get(context).nearestStation!.name!,
-                      )
-                    : SizedBox(height: 19.h);
+                      child: Transform.scale(
+                        scale: 0.7,
+                        child: const CircularProgressIndicator(strokeWidth: 5),
+                      ),
+                    ),
+                  );
+                } else if (state is PositionSuccessState) {
+                  return TripCubit.get(context).nearestStation != null
+                      ? StationRow(
+                          color: TripCubit.get(
+                            context,
+                          ).nearestStation!.lineColor!,
+                          station: TripCubit.get(context).nearestStation!.name!,
+                        )
+                      : SizedBox(height: 19.h);
+                }
+                return SizedBox(height: 19.h);
               },
             ),
           ),
@@ -60,10 +80,15 @@ class NearestStationSection extends StatelessWidget {
                     size: 28,
                   ),
                   onPressed: () async {
+                    final stopwatch = Stopwatch()..start();
                     showSnackBar(context, S.of(context).pleaseWait);
                     await TripCubit.get(
                       context,
                     ).getNearestStation(context, userPressed: true);
+
+                    stopwatch.stop();
+
+                    print('Elapsed time: ${stopwatch.elapsedMilliseconds} ms');
                   },
                 ),
                 backgroundColorIcon: AppColor.primaryColor.withAlpha(29),

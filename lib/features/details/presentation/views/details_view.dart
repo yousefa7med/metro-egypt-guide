@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/line_model.dart';
+import 'package:metro_egypt_guide/core/Helper/metro_helper/models/trip_details_model.dart';
 import 'package:metro_egypt_guide/core/navigations/navigations.dart';
 
 import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
 import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
 import 'package:metro_egypt_guide/core/widgets/app_button.dart';
-import 'package:metro_egypt_guide/core/widgets/app_card.dart';
 
 import 'package:metro_egypt_guide/core/widgets/costum_app_bar.dart';
 import 'package:metro_egypt_guide/core/widgets/routeViewer.dart';
@@ -20,6 +20,8 @@ class DetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TripDetailsModel details =
+        ModalRoute.of(context)!.settings.arguments as TripDetailsModel;
     return Scaffold(
       appBar: CostumAppBar(
         backArrow: true,
@@ -36,17 +38,28 @@ class DetailsView extends StatelessWidget {
           children: [
             const Gap(20),
 
-            const StartAndFinalStationSection(),
-            const Gap(15),
-            const DetailsSection(),
-            const Gap(30),
-
-            AppCard(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: RouteViewer(route: line3Main.stations),
-              ),
+            StartAndFinalStationSection(
+              start: details.startStation!,
+              end: details.finalStation!,
             ),
+            const Gap(15),
+            DetailsSection(
+              time: details.time.ceil(),
+              price: details.ticketPrice!,
+              transfer: details.transfer!,
+            ),
+            const Gap(30),
+            ListView.builder(
+              shrinkWrap: true,
+
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: details.routes.length,
+
+              itemBuilder: (context, index) {
+                return RouteViewer(route: details.routes[index]);
+              },
+            ),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: AppButton(
@@ -61,6 +74,8 @@ class DetailsView extends StatelessWidget {
                 ),
               ),
             ),
+
+            Gap(45.h),
           ],
         ),
       ),

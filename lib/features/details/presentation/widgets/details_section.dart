@@ -9,8 +9,15 @@ import 'package:metro_egypt_guide/features/details/presentation/widgets/info_con
 import 'package:metro_egypt_guide/generated/l10n.dart';
 
 class DetailsSection extends StatelessWidget {
-  const DetailsSection({super.key});
-
+  const DetailsSection({
+    super.key,
+    required this.time,
+    required this.price,
+    required this.transfer,
+  });
+  final int time;
+  final int price;
+  final int transfer;
   @override
   Widget build(BuildContext context) {
     return AppCard(
@@ -32,19 +39,19 @@ class DetailsSection extends StatelessWidget {
                 InfoContainer(
                   color: AppColor.line1Color,
                   icon: Icons.schedule,
-                  data: "15 ${S.of(context).min}",
+                  data: "$time ${S.of(context).min}",
                 ),
                 const Gap(15),
                 InfoContainer(
                   color: AppColor.primaryColor,
                   icon: Icons.payments,
-                  data: "25 ${S.of(context).EGY}",
+                  data: "$price ${S.of(context).EGY}",
                 ),
                 const Gap(15),
                 InfoContainer(
                   color: AppColor.line3Color,
                   icon: Icons.call_split,
-                  data: "2 ${S.of(context).Transfer}",
+                  data: "$transfer ${S.of(context).Transfer}",
                 ),
               ],
             ),

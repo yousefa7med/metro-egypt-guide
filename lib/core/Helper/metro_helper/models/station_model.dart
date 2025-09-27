@@ -3,13 +3,20 @@ import 'package:metro_egypt_guide/core/utilities/app_color.dart';
 import 'package:metro_egypt_guide/generated/l10n.dart';
 
 class StationModel {
-   String? name;
+  String? name;
   int? index;
-   double? longitudee;
-   double? latitude;
-   Color? lineColor;
-  StationModel({ this.name,  this.latitude,  this.longitudee,  this.lineColor});
-    static String getLine(Color lineColor, BuildContext context) {
+  double? travellingTime;
+  double? longitudee;
+  double? latitude;
+  Color? lineColor;
+  StationModel({
+    this.name,
+    this.latitude,
+    this.longitudee,
+    this.lineColor,
+    this.travellingTime,
+  });
+  static String getLine(Color lineColor, BuildContext context) {
     if (AppColor.line1Color == lineColor) {
       return S.of(context).Line1;
     } else if (AppColor.line2Color == lineColor) {
