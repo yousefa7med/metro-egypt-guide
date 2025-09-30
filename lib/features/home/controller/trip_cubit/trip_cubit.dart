@@ -1,13 +1,11 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:metro_egypt_guide/core/Helper/functions/app_dialog.dart';
 import 'package:metro_egypt_guide/core/Helper/metro_helper/metro_helper.dart';
 import 'package:metro_egypt_guide/core/Helper/metro_helper/models/line_model.dart';
 import 'package:metro_egypt_guide/core/Helper/metro_helper/models/station_model.dart';
 import 'package:metro_egypt_guide/core/Helper/metro_helper/models/trip_details_model.dart';
-import 'package:metro_egypt_guide/core/navigations/navigations.dart';
+import 'package:metro_egypt_guide/core/errors/app_exeption.dart';
 import 'package:metro_egypt_guide/generated/l10n.dart';
 
 part 'trip_state.dart';
@@ -34,15 +32,14 @@ class TripCubit extends Cubit<TripState> {
     }
   }
 
-  TripDetailsModel getTripDetails(BuildContext context) {
-    // try {
-    return metro.getTripDetails(
-      startStationController.text.trim(),
-      finalStationController.text.trim(),
-    );
-    // } catch (e) {
-    //   throw TripDetailsException(message: S.of(context).checkDetails);
-    // }
+  TripDetailsModel getTripDetails() {
+    try {
+      final String start = startStationController.text.trim();
+      final String end = finalStationController.text.trim();
+      return metro.getTripDetails(start, end);
+    } catch (e) {
+      throw TripDetailsException(message: S.current.checkDetails);
+    }
   }
 
   Function(dynamic)? startStationsOnSelectedFunction() {
@@ -98,73 +95,45 @@ class TripCubit extends Cubit<TripState> {
     };
   }
 
-  Future<Either<Position, String>> _getPosition(BuildContext context) async {
+  Future<Position> _getPosition() async {
     bool serviceEnabled;
     LocationPermission permission;
-    final s = S.of(context);
+
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      return Right(s.PleaseOpenLocation);
+      throw TripDetailsException(message: S.current.PleaseOpenLocation);
     }
 
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        return Right(s.LocationPermissionRequired);
+        TripDetailsException(message: S.current.LocationPermissionRequired);
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      return Right(s.LocationPermanentlyDenied);
+      TripDetailsException(message: S.current.LocationPermanentlyDenied);
     }
 
-    return Left(await Geolocator.getCurrentPosition());
+    return await Geolocator.getCurrentPosition();
   }
 
-  Future<void> getNearestStation(
-    BuildContext context, {
-    bool userPressed = false,
-  }) async {
+  Future<void> getNearestStation({bool userPressed = false}) async {
     emit(PositionLoadingState());
 
-    final stopwatch = Stopwatch()..start();
+    final position = await _getPosition();
 
-    final result = await _getPosition(context);
-    stopwatch.stop();
+    nearestStation = _getNearestStationModel(
+      position.latitude,
+      position.longitude,
+    )!;
+    if (userPressed) {
+      startStationController.text = nearestStation!.name!;
+      startStationsOnSelectedFunction()!(nearestStation!.name!);
+    }
 
-    print('حخسهفهخى time: ${stopwatch.elapsedMilliseconds} ms');
-
-    result.fold(
-      (position) {
-        nearestStation = _getNearestStationModel(
-          position.latitude,
-          position.longitude,
-        )!;
-        if (userPressed) {
-          startStationController.text = nearestStation!.name!;
-          startStationsOnSelectedFunction()!(nearestStation!.name!);
-        }
-
-        emit(PositionSuccessState());
-      },
-      (msg) {
-        appDialog(
-          context: context,
-          msg: msg,
-          onPressed: () async {
-            if (S.of(context).LocationPermissionRequired == msg) {
-              await Geolocator.requestPermission();
-            } else if (S.of(context).PleaseOpenLocation == msg) {
-              AppNavigation.pop(context: context);
-              await Geolocator.openLocationSettings();
-            } else if (S.of(context).LocationPermanentlyDenied == msg) {
-              await Geolocator.openAppSettings();
-            }
-          },
-        );
-      },
-    );
+    emit(PositionSuccessState());
   }
 
   StationModel? _getNearestStationModel(double latitude, double longitude) {

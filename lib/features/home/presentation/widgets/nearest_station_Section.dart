@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:metro_egypt_guide/core/Helper/functions/app_dialog.dart';
 import 'package:metro_egypt_guide/core/Helper/functions/functions.dart';
 import 'package:metro_egypt_guide/core/Helper/functions/show_snackBer.dart';
+import 'package:metro_egypt_guide/core/errors/app_exeption.dart';
+import 'package:metro_egypt_guide/core/navigations/navigations.dart';
 import 'package:metro_egypt_guide/core/utilities/app_color.dart';
 import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
 import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
@@ -43,7 +47,9 @@ class NearestStationSection extends StatelessWidget {
                   return SizedBox(
                     height: 19.h,
                     child: Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: isArabic()
+                          ? Alignment.centerRight
+                          : Alignment.centerLeft,
 
                       child: Transform.scale(
                         scale: 0.7,
@@ -80,15 +86,33 @@ class NearestStationSection extends StatelessWidget {
                     size: 28,
                   ),
                   onPressed: () async {
-                    final stopwatch = Stopwatch()..start();
                     showSnackBar(context, S.of(context).pleaseWait);
-                    await TripCubit.get(
-                      context,
-                    ).getNearestStation(context, userPressed: true);
+                    try {
+                      await TripCubit.get(
+                        context,
+                      ).getNearestStation(userPressed: true);
+                    } on TripDetailsException catch (e) {
+                      appDialog(
+                        context: context,
+                        msg: e.message,
+                        onPressed: () async {
+                          if (S.of(context).LocationPermissionRequired ==
+                              e.message) {
+                            await Geolocator.requestPermission();
+                          } else if (S.of(context).PleaseOpenLocation ==
+                              e.message) {
+                            AppNavigation.pop(context: context);
+                            await Geolocator.openLocationSettings();
+                          } else if (S.of(context).LocationPermanentlyDenied ==
+                              e.message) {
+                            await Geolocator.openAppSettings();
+                          }
+                          Navigator.pop(context);
+                        },
+                      );
+                    }
 
-                    stopwatch.stop();
 
-                    print('Elapsed time: ${stopwatch.elapsedMilliseconds} ms');
                   },
                 ),
                 backgroundColorIcon: AppColor.primaryColor.withAlpha(29),

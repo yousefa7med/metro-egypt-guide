@@ -66,20 +66,19 @@ class FindRouteSection extends StatelessWidget {
                 ),
                 const Gap(30),
                 AppButton(
-                  onPressed: () {
+                  onPressed: () async {
                     TripDetailsModel? details;
-                    // try {
-                      details = TripCubit.get(context).getTripDetails(context);    AppNavigation.pushName(
-                      rootNavigator: true,
-                      context: context,
-                      route: AppRoutes.detailsView,
-                      argument: details,
-                    );
-                    // } on AppException catch (e) {
-                    //   showSnackBar(context, e.message);
-                    // }
-
-                
+                    try {
+                      details = await TripCubit.get(context).getTripDetails();
+                      AppNavigation.pushName(
+                        rootNavigator: true,
+                        context: context,
+                        route: AppRoutes.detailsView,
+                        argument: details,
+                      );
+                    } on AppException catch (e) {
+                      showSnackBar(context, e.message);
+                    }
                   },
                   child: Text(
                     S.of(context).FindRoute,
