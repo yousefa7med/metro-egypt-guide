@@ -8,4 +8,5 @@ abstract class AppColor {
   static const Color themeIconColor = Color(0xff9336EC);
   static const Color langIconColor = Color(0xff2FA94A);
   static const Color selectedSetting = Color.fromARGB(29, 33, 149, 243);
+  static const Color darkSurface = Color(0xff1C1C22);
 }

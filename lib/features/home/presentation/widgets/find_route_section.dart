@@ -16,8 +16,7 @@ import 'package:metro_egypt_guide/features/home/controller/trip_cubit/trip_cubit
 import 'package:metro_egypt_guide/generated/l10n.dart';
 
 class FindRouteSection extends StatelessWidget {
-  const FindRouteSection({super.key});
-
+  const FindRouteSection({super.key,  });
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TripCubit, TripState>(
@@ -66,10 +65,10 @@ class FindRouteSection extends StatelessWidget {
                 ),
                 const Gap(30),
                 AppButton(
-                  onPressed: () async {
+                  onPressed: ()  {
                     TripDetailsModel? details;
                     try {
-                      details = await TripCubit.get(context).getTripDetails();
+                      details = TripCubit.get(context).getTripDetails();
                       AppNavigation.pushName(
                         rootNavigator: true,
                         context: context,
