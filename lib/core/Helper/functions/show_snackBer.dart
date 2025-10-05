@@ -11,7 +11,11 @@ void showSnackBar(BuildContext context, String message) {
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
 
-      margin: const EdgeInsets.only(right: 30, left: 30),
+      margin: EdgeInsets.only(
+        right: 30,
+        left: 30,
+        bottom: MediaQuery.of(context).viewInsets.bottom + 30,
+      ),
       elevation: 6,
     ),
   );

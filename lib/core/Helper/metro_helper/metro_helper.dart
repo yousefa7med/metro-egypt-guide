@@ -115,8 +115,6 @@ class Metro {
 
     final result = _findShortestPath(start, end, visited, path);
 
-    details.calcTicketPrice(result.length);
-    details.calcStationCount(result.length);
     if (result.isNotEmpty) {
       final line = _cheackSameLine(
         result[0].name!,
@@ -145,8 +143,12 @@ class Metro {
     for (var element in details.directions) {
       directions.add(element.name!);
     }
+    details.calcTicketPrice(result.length);
+    details.calcStationCount(result.length);
     details.calcTransfer();
     details.calcTime();
+    // details.line3Handeling();
+
     clearIt = true;
     return details;
   }

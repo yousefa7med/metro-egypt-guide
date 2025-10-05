@@ -29,13 +29,9 @@ class AppCubit extends Cubit<AppState> {
     emit(ThemeChangesState());
   }
 
-void init()  {
-
-
-      _loadTheme();
-      _loadLang();
-
-
+  void init() {
+    _loadTheme();
+    _loadLang();
   }
 
   void _loadTheme() {
