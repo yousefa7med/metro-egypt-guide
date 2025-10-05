@@ -7,6 +7,7 @@ import 'package:metro_egypt_guide/core/navigations/navigations.dart';
 import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
 import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
 import 'package:metro_egypt_guide/core/widgets/app_button.dart';
+import 'package:metro_egypt_guide/core/widgets/app_card.dart';
 
 import 'package:metro_egypt_guide/core/widgets/costum_app_bar.dart';
 import 'package:metro_egypt_guide/core/widgets/routeViewer.dart';
@@ -58,7 +59,10 @@ class DetailsView extends StatelessWidget {
               itemCount: details.routes.length,
 
               itemBuilder: (context, index) {
-                return RouteViewer(route: details.routes[index]);
+                return AppCard(child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: RouteViewer(route: details.routes[index]),
+                ));
               },
             ),
 
