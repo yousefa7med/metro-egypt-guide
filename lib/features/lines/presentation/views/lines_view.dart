@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
 import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
 import 'package:metro_egypt_guide/core/widgets/costum_app_bar.dart';
+import 'package:metro_egypt_guide/features/lines/presentation/widgets/metro_map_previewer.dart';
 import 'package:metro_egypt_guide/generated/l10n.dart';
 
 class LinesView extends StatelessWidget {
@@ -13,7 +14,8 @@ class LinesView extends StatelessWidget {
       appBar: CostumAppBar(
         title: Text(
           S.of(context).Lines,
-          style: AppTextStyle.regular20.copyWith(            color: Colors.white,
+          style: AppTextStyle.regular20.copyWith(
+            color: Colors.white,
 
             fontFamily: AppFontFamily.inter,
           ),
@@ -22,7 +24,7 @@ class LinesView extends StatelessWidget {
 
       body: const SingleChildScrollView(
         physics: BouncingScrollPhysics(),
-        child: Column(children: []),
+        child: Column(children: [MetroMapPreviewer()]),
       ),
     );
   }

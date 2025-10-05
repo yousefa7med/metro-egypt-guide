@@ -37,6 +37,7 @@ dependencies:
   gap: ^3.0.1
   geolocator: ^14.0.2
   persistent_bottom_nav_bar_v2: ^6.1.0
+  photo_view: ^0.15.0
   shared_preferences: ^2.5.3
   timeline_tile: ^2.0.0
 

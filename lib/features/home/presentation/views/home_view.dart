@@ -33,6 +33,8 @@ class HomeView extends StatelessWidget {
         ),
 
         body: const SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [

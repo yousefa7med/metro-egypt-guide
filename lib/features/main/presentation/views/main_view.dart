@@ -15,7 +15,7 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PersistentTabView(
       tabs: _tabs(context),
-      navBarBuilder: (navBarConfig) => Style7BottomNavBar(
+      navBarBuilder: (navBarConfig) => Style6BottomNavBar(
         navBarConfig: navBarConfig,
         height: 58,
         navBarDecoration: NavBarDecoration(

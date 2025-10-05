@@ -34,6 +34,8 @@ class DetailsView extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+
         child: Column(
           children: [
             const Gap(20),
