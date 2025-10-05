@@ -13,9 +13,11 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CasheHelper().init();
 
-
   runApp(
-    BlocProvider(create: (context) => AppCubit()..init(), child: const MetroGuide()),
+    BlocProvider(
+      create: (context) => AppCubit()..init(),
+      child: const MetroGuide(),
+    ),
   );
 }
 
