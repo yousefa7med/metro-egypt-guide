@@ -8,11 +8,62 @@ class TripDetailsModel {
   String? finalStation;
 
   int? stationCount;
-  double time = 0;
+  double time;
   int? ticketPrice;
   int? transfer;
   List<List<StationModel>> routes = [];
   Set<StationModel> directions = {};
+
+  TripDetailsModel({
+    this.startStation,
+    this.finalStation,
+    this.stationCount,
+    this.time = 0,
+    this.transfer,
+    this.ticketPrice,
+  });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'startStation': startStation,
+      'finalStation': finalStation,
+      'stationCount': stationCount,
+      'time': time,
+      'ticketPrice': ticketPrice,
+      'transfer': transfer,
+      'routes': routes
+          .map((route) => route.map((station) => station.toMap()).toList())
+          .toList(),
+      'directions': directions.map((station) => station.toMap()).toList(),
+    };
+  }
+
+  factory TripDetailsModel.fromMap(Map<String, dynamic> map) {
+    final TripDetailsModel model = TripDetailsModel();
+
+    model.startStation = map['startStation'];
+    model.finalStation = map['finalStation'];
+    model.stationCount = map['stationCount'];
+    model.time = map['time'];
+    model.ticketPrice = map['ticketPrice'];
+    model.transfer = map['transfer'];
+    if (map['routes'] != null) {
+      model.routes = (map['routes'] as List<List<StationModel>>)
+          .map(
+            (route) => (route as List)
+                .map((station) => StationModel.fromMap(station))
+                .toList(),
+          )
+          .toList();
+    }
+    if (map['directions'] != null) {
+      model.directions = (map['directions'] as List)
+          .map((station) => StationModel.fromMap(station))
+          .toSet();
+    }
+
+    return model;
+  }
 
   void clear() {
     directions.clear();
@@ -38,15 +89,15 @@ class TripDetailsModel {
     }
   }
 
-  static String getLine(Color lineColor, BuildContext context) {
+  static String getLine(Color lineColor) {
     if (AppColor.line1Color == lineColor) {
-      return S.of(context).Line1;
+      return S.current.Line1;
     } else if (AppColor.line2Color == lineColor) {
-      return S.of(context).Line2;
+      return S.current.Line2;
     } else if (AppColor.line3Color == lineColor) {
-      return S.of(context).Line3;
+      return S.current.Line3;
     }
-    return S.of(context).Line3;
+    return S.current.Line3;
   }
 
   void printDetails() {
@@ -80,6 +131,12 @@ class TripDetailsModel {
   void calcTime() {
     for (var route in routes) {
       time = route[0].travellingTime! * route.length;
+    }
+  }
+
+  void line3Handeling() {
+    for (var i = 1; i < routes.length; i++) {
+      routes[i][0].name == "Kit-Kat";
     }
   }
 }

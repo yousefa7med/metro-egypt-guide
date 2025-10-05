@@ -14,8 +14,32 @@ class StationModel {
     this.latitude,
     this.longitudee,
     this.lineColor,
+    this.index,
     this.travellingTime,
   });
+  Map<String, dynamic> toMap() {
+    return {
+      "name": name,
+      "index": index,
+      "travellingTime": travellingTime,
+      "longitudee": longitudee,
+      'latitude': latitude,
+      'lineColor': lineColor,
+    };
+  }
+
+  factory StationModel.fromMap(Map<String, dynamic> map) {
+    return StationModel(
+      name: map["name"],
+      index: map["index"],
+      travellingTime: map["travellingTime"],
+      longitudee: map["longitudee"],
+      latitude: map['latitude'],
+
+      lineColor: map['lineColor'],
+    );
+  }
+
   static String getLine(Color lineColor, BuildContext context) {
     if (AppColor.line1Color == lineColor) {
       return S.of(context).Line1;
