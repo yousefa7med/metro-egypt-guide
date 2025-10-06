@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:metro_egypt_guide/core/utilities/app_color.dart';
-import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
+import 'package:go_metro/core/utilities/app_color.dart';
+import 'package:go_metro/core/utilities/app_text_style.dart';
 
 class LangContainer extends StatelessWidget {
   const LangContainer({

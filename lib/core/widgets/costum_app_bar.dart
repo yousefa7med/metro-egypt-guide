@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:metro_egypt_guide/core/utilities/assets.dart';
+import 'package:go_metro/core/utilities/assets.dart';
 
 class CostumAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CostumAppBar({super.key, required this.title, this.backArrow = false});

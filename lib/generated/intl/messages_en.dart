@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "Theme": MessageLookupByLibrary.simpleMessage("Theme"),
     "Transfer": MessageLookupByLibrary.simpleMessage("Transfer"),
+    "addToFav": MessageLookupByLibrary.simpleMessage("Add To Favourite"),
     "backToHome": MessageLookupByLibrary.simpleMessage("Back To Home"),
     "checkDetails": MessageLookupByLibrary.simpleMessage(
       "Please check your start station and final station",

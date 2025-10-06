@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/line_model.dart';
-import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
-import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
-import 'package:metro_egypt_guide/core/widgets/app_card.dart';
-import 'package:metro_egypt_guide/core/widgets/costum_app_bar.dart';
-import 'package:metro_egypt_guide/features/lines/presentation/widgets/line_viewer.dart';
-import 'package:metro_egypt_guide/features/lines/presentation/widgets/metro_map_previewer.dart';
-import 'package:metro_egypt_guide/generated/l10n.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/line_model.dart';
+import 'package:go_metro/core/utilities/app_font_family.dart';
+import 'package:go_metro/core/utilities/app_text_style.dart';
+import 'package:go_metro/core/widgets/app_card.dart';
+import 'package:go_metro/core/widgets/costum_app_bar.dart';
+import 'package:go_metro/features/lines/presentation/widgets/line_viewer.dart';
+import 'package:go_metro/features/lines/presentation/widgets/metro_map_previewer.dart';
+import 'package:go_metro/generated/l10n.dart';
 
 class LinesView extends StatelessWidget {
   const LinesView({super.key});
@@ -64,4 +64,3 @@ class LinesView extends StatelessWidget {
     );
   }
 }
-

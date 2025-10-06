@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/trip_details_model.dart';
-import 'package:metro_egypt_guide/core/navigations/navigations.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
+import 'package:go_metro/core/navigations/navigations.dart';
 
-import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
-import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
-import 'package:metro_egypt_guide/core/widgets/app_button.dart';
-import 'package:metro_egypt_guide/core/widgets/app_card.dart';
+import 'package:go_metro/core/utilities/app_font_family.dart';
+import 'package:go_metro/core/utilities/app_text_style.dart';
+import 'package:go_metro/core/widgets/app_button.dart';
+import 'package:go_metro/core/widgets/app_card.dart';
 
-import 'package:metro_egypt_guide/core/widgets/costum_app_bar.dart';
-import 'package:metro_egypt_guide/core/widgets/routeViewer.dart';
-import 'package:metro_egypt_guide/features/details/presentation/widgets/details_section.dart';
-import 'package:metro_egypt_guide/features/details/presentation/widgets/start_and_final_station_section.dart';
+import 'package:go_metro/core/widgets/costum_app_bar.dart';
+import 'package:go_metro/core/widgets/routeViewer.dart';
+import 'package:go_metro/features/details/presentation/widgets/details_section.dart';
+import 'package:go_metro/features/details/presentation/widgets/start_and_final_station_section.dart';
 
-import 'package:metro_egypt_guide/generated/l10n.dart';
+import 'package:go_metro/generated/l10n.dart';
 
 class DetailsView extends StatelessWidget {
   const DetailsView({super.key});
@@ -38,31 +38,31 @@ class DetailsView extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
 
         child: Column(
+          spacing: 15,
           children: [
-            const Gap(20),
+            const Gap(5),
 
             StartAndFinalStationSection(
               start: details.startStation!,
               end: details.finalStation!,
             ),
-            const Gap(15),
             DetailsSection(
               time: details.time.ceil(),
               price: details.ticketPrice!,
               transfer: details.transfer!,
             ),
-            const Gap(30),
             ListView.builder(
               shrinkWrap: true,
-
               physics: const NeverScrollableScrollPhysics(),
               itemCount: details.routes.length,
 
               itemBuilder: (context, index) {
-                return AppCard(child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: RouteViewer(route: details.routes[index]),
-                ));
+                return AppCard(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: RouteViewer(route: details.routes[index]),
+                  ),
+                );
               },
             ),
 
@@ -81,7 +81,7 @@ class DetailsView extends StatelessWidget {
               ),
             ),
 
-            Gap(45.h),
+            Gap(15.h),
           ],
         ),
       ),

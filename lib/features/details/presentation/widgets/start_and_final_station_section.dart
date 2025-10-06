@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/trip_details_model.dart';
-import 'package:metro_egypt_guide/core/utilities/app_color.dart';
-import 'package:metro_egypt_guide/core/widgets/app_card.dart';
-import 'package:metro_egypt_guide/features/details/presentation/widgets/station_container.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
+import 'package:go_metro/core/utilities/app_color.dart';
+
+import 'package:go_metro/core/widgets/app_card.dart';
+import 'package:go_metro/features/details/presentation/widgets/station_container.dart';
 
 class StartAndFinalStationSection extends StatelessWidget {
   const StartAndFinalStationSection({
@@ -24,7 +25,7 @@ class StartAndFinalStationSection extends StatelessWidget {
               title: "From",
               station: start,
               color: AppColor.line2Color,
-              line: TripDetailsModel.getLine(AppColor.line2Color ),
+              line: TripDetailsModel.getLine(AppColor.line2Color),
             ),
             const Gap(15),
             StationContainer(

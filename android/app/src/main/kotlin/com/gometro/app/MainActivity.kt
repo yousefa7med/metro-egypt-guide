@@ -1,4 +1,4 @@
-package com.example.metro_egypt_guide
+package com.GoMetro.app
 
 import io.flutter.embedding.android.FlutterActivity
 

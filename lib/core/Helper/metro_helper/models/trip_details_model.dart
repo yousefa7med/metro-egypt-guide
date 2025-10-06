@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/station_model.dart';
-import 'package:metro_egypt_guide/core/utilities/app_color.dart';
-import 'package:metro_egypt_guide/generated/l10n.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
+import 'package:go_metro/core/utilities/app_color.dart';
+import 'package:go_metro/generated/l10n.dart';
 
 class TripDetailsModel {
   String? startStation;

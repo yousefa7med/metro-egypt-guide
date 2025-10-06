@@ -285,6 +285,16 @@ class S {
   String get backToHome {
     return Intl.message('Back To Home', name: 'backToHome', desc: '', args: []);
   }
+
+  /// `Add To Favourite`
+  String get addToFav {
+    return Intl.message(
+      'Add To Favourite',
+      name: 'addToFav',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

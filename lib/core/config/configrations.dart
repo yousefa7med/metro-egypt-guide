@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:metro_egypt_guide/core/transitions/page_route_builder_method.dart';
-import 'package:metro_egypt_guide/features/details/presentation/views/details_view.dart';
-import 'package:metro_egypt_guide/features/home/controller/trip_cubit/trip_cubit.dart';
-import 'package:metro_egypt_guide/features/home/presentation/views/home_view.dart';
-import 'package:metro_egypt_guide/features/lines/presentation/views/lines_view.dart';
-import 'package:metro_egypt_guide/features/main/presentation/views/main_view.dart';
-import 'package:metro_egypt_guide/features/settings/presentation/views/settings_view.dart';
-import 'package:metro_egypt_guide/features/splash_view/splash_view.dart';
+import 'package:go_metro/core/transitions/page_route_builder_method.dart';
+import 'package:go_metro/features/details/presentation/views/details_view.dart';
+import 'package:go_metro/features/home/controller/trip_cubit/trip_cubit.dart';
+import 'package:go_metro/features/home/presentation/views/home_view.dart';
+import 'package:go_metro/features/lines/presentation/views/lines_view.dart';
+import 'package:go_metro/features/main/presentation/views/main_view.dart';
+import 'package:go_metro/features/settings/presentation/views/settings_view.dart';
+import 'package:go_metro/features/splash_view/splash_view.dart';
 
 class AppRouter {
   static Route? generateRoute(RouteSettings settings) {

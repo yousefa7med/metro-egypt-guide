@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:metro_egypt_guide/core/utilities/app_color.dart';
+import 'package:go_metro/core/utilities/app_color.dart';
 
 abstract class AppTheme {
   // <=========================Light Theme==============================>

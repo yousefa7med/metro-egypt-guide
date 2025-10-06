@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:metro_egypt_guide/core/Helper/functions/functions.dart';
-import 'package:metro_egypt_guide/core/utilities/app_color.dart';
-import 'package:metro_egypt_guide/features/home/controller/trip_cubit/trip_cubit.dart';
-import 'package:metro_egypt_guide/features/home/presentation/views/home_view.dart';
-import 'package:metro_egypt_guide/features/lines/presentation/views/lines_view.dart';
-import 'package:metro_egypt_guide/features/settings/presentation/views/settings_view.dart';
-import 'package:metro_egypt_guide/generated/l10n.dart';
+import 'package:go_metro/core/Helper/functions/functions.dart';
+import 'package:go_metro/core/utilities/app_color.dart';
+import 'package:go_metro/features/home/controller/trip_cubit/trip_cubit.dart';
+import 'package:go_metro/features/home/presentation/views/home_view.dart';
+import 'package:go_metro/features/lines/presentation/views/lines_view.dart';
+import 'package:go_metro/features/settings/presentation/views/settings_view.dart';
+import 'package:go_metro/generated/l10n.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class MainView extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/station_model.dart';
-import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
+import 'package:go_metro/core/utilities/app_text_style.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class RouteViewer extends StatelessWidget {
@@ -11,7 +11,7 @@ class RouteViewer extends StatelessWidget {
     final color = route[0].lineColor!;
     return ListView.builder(
       shrinkWrap: true,
-        
+
       physics: const NeverScrollableScrollPhysics(),
       itemCount: route.length,
       itemBuilder: (context, index) {

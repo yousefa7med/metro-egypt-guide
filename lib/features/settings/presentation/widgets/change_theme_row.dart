@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:metro_egypt_guide/core/controllers/app_cubit/app_cubit.dart';
-import 'package:metro_egypt_guide/features/settings/presentation/widgets/theme_container.dart';
-import 'package:metro_egypt_guide/generated/l10n.dart';
+import 'package:go_metro/core/controllers/app_cubit/app_cubit.dart';
+import 'package:go_metro/features/settings/presentation/widgets/theme_container.dart';
+import 'package:go_metro/generated/l10n.dart';
 
 class ChangeThemeRow extends StatefulWidget {
   const ChangeThemeRow({super.key});
@@ -35,7 +35,7 @@ class _ChangeThemeRowState extends State<ChangeThemeRow> {
             setState(() {
               isLight = true;
             });
-          await  AppCubit.get(context).setTheme(ThemeModeState.light);
+            await AppCubit.get(context).setTheme(ThemeModeState.light);
           },
           isSelected: isLight,
         ),
@@ -52,7 +52,7 @@ class _ChangeThemeRowState extends State<ChangeThemeRow> {
             setState(() {
               isLight = false;
             });
-         await   AppCubit.get(context).setTheme(ThemeModeState.dark);
+            await AppCubit.get(context).setTheme(ThemeModeState.dark);
           },
           isSelected: !isLight,
         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/station_model.dart';
-import 'package:metro_egypt_guide/core/utilities/app_color.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
+import 'package:go_metro/core/utilities/app_color.dart';
 
 class LineModel {
   final List<StationModel> stations;

@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:metro_egypt_guide/core/Helper/functions/app_dialog.dart';
-import 'package:metro_egypt_guide/core/Helper/functions/functions.dart';
-import 'package:metro_egypt_guide/core/Helper/functions/show_snackBer.dart';
-import 'package:metro_egypt_guide/core/errors/app_exeption.dart';
-import 'package:metro_egypt_guide/core/navigations/navigations.dart';
-import 'package:metro_egypt_guide/core/utilities/app_color.dart';
-import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
-import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
-import 'package:metro_egypt_guide/core/widgets/app_card.dart';
-import 'package:metro_egypt_guide/core/widgets/station_row.dart';
-import 'package:metro_egypt_guide/features/home/controller/trip_cubit/trip_cubit.dart';
-import 'package:metro_egypt_guide/features/home/presentation/widgets/app_icon.dart';
-import 'package:metro_egypt_guide/generated/l10n.dart';
+import 'package:go_metro/core/Helper/functions/app_dialog.dart';
+import 'package:go_metro/core/Helper/functions/functions.dart';
+import 'package:go_metro/core/Helper/functions/show_snackBer.dart';
+import 'package:go_metro/core/errors/app_exeption.dart';
+import 'package:go_metro/core/navigations/navigations.dart';
+import 'package:go_metro/core/utilities/app_color.dart';
+import 'package:go_metro/core/utilities/app_font_family.dart';
+import 'package:go_metro/core/utilities/app_text_style.dart';
+import 'package:go_metro/core/widgets/app_card.dart';
+import 'package:go_metro/core/widgets/station_row.dart';
+import 'package:go_metro/features/home/controller/trip_cubit/trip_cubit.dart';
+import 'package:go_metro/features/home/presentation/widgets/app_icon.dart';
+import 'package:go_metro/generated/l10n.dart';
 
 class NearestStationSection extends StatelessWidget {
   const NearestStationSection({super.key});
@@ -111,8 +111,6 @@ class NearestStationSection extends StatelessWidget {
                         },
                       );
                     }
-
-
                   },
                 ),
                 backgroundColorIcon: AppColor.primaryColor.withAlpha(29),

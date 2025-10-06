@@ -1,8 +1,8 @@
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/line_model.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/station_model.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/trip_details_model.dart';
-import 'package:metro_egypt_guide/core/errors/app_exeption.dart';
-import 'package:metro_egypt_guide/core/utilities/app_color.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/line_model.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
+import 'package:go_metro/core/errors/app_exeption.dart';
+import 'package:go_metro/core/utilities/app_color.dart';
 
 List<LineModel> allLines = [
   line1,
@@ -267,9 +267,9 @@ class Metro {
     List<StationModel> path,
   ) {
     if (visited.any((e) => e.name == start)) return [];
-
-    visited.add(_getStation(start)!);
-    path.add(_getStation(start)!);
+    StationModel startStation = _getStationSafe(start);
+    visited.add(startStation);
+    path.add(startStation);
 
     if (start == end) return List.from(path);
 
@@ -310,14 +310,17 @@ class Metro {
       if (index < line.stations.length - 1) {
         neighbors.add(line.stations[index + 1]);
       }
-
-      for (var s in line.stations) {
-        if (s.name == station && s.name != station) {
-          neighbors.add(s);
-        }
-      }
     }
 
     return neighbors.toSet().toList();
+  }
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  StationModel _getStationSafe(String name) {
+    final station = _getStation(name);
+    if (station == null) {
+      throw TripDetailsException(message: "Station $name not found");
+    }
+    return station;
   }
 }

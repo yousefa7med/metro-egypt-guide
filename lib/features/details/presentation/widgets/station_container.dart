@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
-import 'package:metro_egypt_guide/core/widgets/station_row.dart';
-import 'package:metro_egypt_guide/features/home/presentation/widgets/app_icon.dart';
+import 'package:go_metro/core/utilities/app_text_style.dart';
+import 'package:go_metro/core/widgets/station_row.dart';
+import 'package:go_metro/features/home/presentation/widgets/app_icon.dart';
 
 class StationContainer extends StatelessWidget {
   const StationContainer({

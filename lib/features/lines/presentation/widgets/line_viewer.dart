@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/station_model.dart';
-import 'package:metro_egypt_guide/core/widgets/routeViewer.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
+import 'package:go_metro/core/widgets/routeViewer.dart';
 
 class LineViewer extends StatelessWidget {
   const LineViewer({super.key, required this.line, required this.name});

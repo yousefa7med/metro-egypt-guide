@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import 'package:metro_egypt_guide/core/utilities/app_color.dart';
+import 'package:go_metro/core/utilities/app_color.dart';
 
-import 'package:metro_egypt_guide/core/widgets/app_card.dart';
-import 'package:metro_egypt_guide/features/home/presentation/widgets/app_icon.dart';
-import 'package:metro_egypt_guide/features/settings/presentation/widgets/change_theme_row.dart';
-import 'package:metro_egypt_guide/features/settings/presentation/widgets/settings_sections_title.dart';
-import 'package:metro_egypt_guide/generated/l10n.dart';
+import 'package:go_metro/core/widgets/app_card.dart';
+import 'package:go_metro/features/home/presentation/widgets/app_icon.dart';
+import 'package:go_metro/features/settings/presentation/widgets/change_theme_row.dart';
+import 'package:go_metro/features/settings/presentation/widgets/settings_sections_title.dart';
+import 'package:go_metro/generated/l10n.dart';
 
 class ChangeThemeSection extends StatelessWidget {
   const ChangeThemeSection({super.key});

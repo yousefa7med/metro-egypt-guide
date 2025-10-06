@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:metro_egypt_guide/core/utilities/app_color.dart';
-import 'package:metro_egypt_guide/features/home/presentation/widgets/app_icon.dart';
+import 'package:go_metro/core/utilities/app_color.dart';
+import 'package:go_metro/features/home/presentation/widgets/app_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatelessWidget {

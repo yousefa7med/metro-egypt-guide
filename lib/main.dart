@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:metro_egypt_guide/core/Helper/cashe_helper/cashe_helper.dart';
-import 'package:metro_egypt_guide/core/config/configrations.dart';
-import 'package:metro_egypt_guide/core/controllers/app_cubit/app_cubit.dart';
-import 'package:metro_egypt_guide/core/utilities/app_theme.dart';
+import 'package:go_metro/core/Helper/cashe_helper/cashe_helper.dart';
+import 'package:go_metro/core/config/configrations.dart';
+import 'package:go_metro/core/controllers/app_cubit/app_cubit.dart';
+import 'package:go_metro/core/utilities/app_theme.dart';
 
-import 'package:metro_egypt_guide/generated/l10n.dart';
+import 'package:go_metro/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
@@ -35,8 +35,8 @@ class MetroGuide extends StatelessWidget {
           builder: (context, state) {
             return MaterialApp(
               onGenerateRoute: AppRouter.generateRoute,
-              // themeAnimationCurve: Curves.easeInCirc,
-              // themeAnimationDuration: const Duration(milliseconds: 300),
+              themeAnimationCurve: Curves.easeInOut,
+              themeAnimationDuration: const Duration(milliseconds: 150),
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
               themeMode: AppCubit.get(context).getTheme(),

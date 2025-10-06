@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/metro_helper.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/line_model.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/station_model.dart';
-import 'package:metro_egypt_guide/core/Helper/metro_helper/models/trip_details_model.dart';
-import 'package:metro_egypt_guide/core/errors/app_exeption.dart';
-import 'package:metro_egypt_guide/generated/l10n.dart';
+import 'package:go_metro/core/Helper/metro_helper/metro_helper.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/line_model.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
+import 'package:go_metro/core/errors/app_exeption.dart';
+import 'package:go_metro/generated/l10n.dart';
 
 part 'trip_state.dart';
 
@@ -42,7 +42,7 @@ class TripCubit extends Cubit<TripState> {
     }
   }
 
-  Function(dynamic)? startStationsOnSelectedFunction() {
+  Function(dynamic)? startStationsOnSelectedFunction({BuildContext? context}) {
     return (value) {
       value = startStationController.text;
       lastStartStation ??= StationModel();
@@ -64,12 +64,14 @@ class TripCubit extends Cubit<TripState> {
       );
 
       finalStationList.removeWhere((e) => e.value == value);
-
+      if (context != null) {
+        FocusScope.of(context).unfocus();
+      }
       emit(TripDetailsChangesState());
     };
   }
 
-  Function(dynamic)? finalStationsOnSelectedFunction() {
+  Function(dynamic)? finalStationsOnSelectedFunction({BuildContext? context}) {
     return (value) {
       value = finalStationController.text;
       lastFinalStation ??= StationModel();
@@ -91,6 +93,11 @@ class TripCubit extends Cubit<TripState> {
       );
 
       startStationList.removeWhere((e) => e.value == value);
+
+      if (context != null) {
+        FocusScope.of(context).unfocus();
+      }
+
       emit(TripDetailsChangesState());
     };
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:metro_egypt_guide/core/utilities/assets.dart';
+import 'package:go_metro/core/utilities/assets.dart';
 import 'package:photo_view/photo_view.dart';
 
 class MetroMapPreviewer extends StatelessWidget {

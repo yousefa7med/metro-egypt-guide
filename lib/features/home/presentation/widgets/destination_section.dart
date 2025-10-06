@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:metro_egypt_guide/core/widgets/app_card.dart';
+import 'package:go_metro/core/widgets/app_card.dart';
 
 class DestinationSection extends StatelessWidget {
   const DestinationSection({super.key});

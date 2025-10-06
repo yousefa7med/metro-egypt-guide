@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
 
-import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
-import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
+import 'package:go_metro/core/utilities/app_font_family.dart';
+import 'package:go_metro/core/utilities/app_text_style.dart';
 
-import 'package:metro_egypt_guide/core/widgets/costum_app_bar.dart';
+import 'package:go_metro/core/widgets/costum_app_bar.dart';
 
-import 'package:metro_egypt_guide/features/home/presentation/widgets/find_route_section.dart';
-import 'package:metro_egypt_guide/features/home/presentation/widgets/nearest_station_Section.dart';
-import 'package:metro_egypt_guide/generated/l10n.dart';
+import 'package:go_metro/features/home/presentation/widgets/find_route_section.dart';
+import 'package:go_metro/features/home/presentation/widgets/nearest_station_Section.dart';
+import 'package:go_metro/generated/l10n.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

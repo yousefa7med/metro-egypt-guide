@@ -48,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Settings": MessageLookupByLibrary.simpleMessage("الاعدادت"),
     "Theme": MessageLookupByLibrary.simpleMessage("ثيم"),
     "Transfer": MessageLookupByLibrary.simpleMessage("تحويلة"),
+    "addToFav": MessageLookupByLibrary.simpleMessage("اضافة الي المفضلة"),
     "backToHome": MessageLookupByLibrary.simpleMessage(
       "العودة للصفحة الرئيسية",
     ),

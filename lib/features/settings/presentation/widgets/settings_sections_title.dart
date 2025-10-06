@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
-import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
-import 'package:metro_egypt_guide/features/home/presentation/widgets/app_icon.dart';
+import 'package:go_metro/core/utilities/app_font_family.dart';
+import 'package:go_metro/core/utilities/app_text_style.dart';
+import 'package:go_metro/features/home/presentation/widgets/app_icon.dart';
 
 class SettingsSectionsTitle extends StatelessWidget {
-  const SettingsSectionsTitle({super.key, required this.icon, required this.title, required this.subTitle});
+  const SettingsSectionsTitle({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.subTitle,
+  });
   final AppIcon icon;
   final String title;
   final String subTitle;
@@ -13,7 +18,7 @@ class SettingsSectionsTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-       icon,
+        icon,
         const Gap(10),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,7 +30,7 @@ class SettingsSectionsTitle extends StatelessWidget {
               ),
             ),
             Text(
-            subTitle,
+              subTitle,
               style: const TextStyle(fontFamily: AppFontFamily.inter),
             ),
           ],

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:metro_egypt_guide/core/utilities/app_font_family.dart';
-import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
-import 'package:metro_egypt_guide/core/widgets/costum_app_bar.dart';
-import 'package:metro_egypt_guide/features/settings/presentation/widgets/change_lang_srectiona.dart';
-import 'package:metro_egypt_guide/features/settings/presentation/widgets/change_theme_srectiona.dart';
-import 'package:metro_egypt_guide/features/settings/presentation/widgets/contact_us.dart';
-import 'package:metro_egypt_guide/generated/l10n.dart';
+import 'package:go_metro/core/utilities/app_font_family.dart';
+import 'package:go_metro/core/utilities/app_text_style.dart';
+import 'package:go_metro/core/widgets/costum_app_bar.dart';
+import 'package:go_metro/features/settings/presentation/widgets/change_lang_srectiona.dart';
+import 'package:go_metro/features/settings/presentation/widgets/change_theme_srectiona.dart';
+import 'package:go_metro/features/settings/presentation/widgets/contact_us.dart';
+import 'package:go_metro/generated/l10n.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});
