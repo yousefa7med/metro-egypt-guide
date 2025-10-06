@@ -5,6 +5,7 @@ import 'package:metro_egypt_guide/core/utilities/app_text_style.dart';
 import 'package:metro_egypt_guide/core/widgets/costum_app_bar.dart';
 import 'package:metro_egypt_guide/features/settings/presentation/widgets/change_lang_srectiona.dart';
 import 'package:metro_egypt_guide/features/settings/presentation/widgets/change_theme_srectiona.dart';
+import 'package:metro_egypt_guide/features/settings/presentation/widgets/contact_us.dart';
 import 'package:metro_egypt_guide/generated/l10n.dart';
 
 class SettingsView extends StatelessWidget {
@@ -25,7 +26,13 @@ class SettingsView extends StatelessWidget {
       ),
 
       body: const Column(
-        children: [Gap(20), ChangeThemeSection(), Gap(10), ChangeLangSection()],
+        spacing: 15,
+        children: [
+          Gap(5),
+          ChangeThemeSection(),
+          ChangeLangSection(),
+          ContactUs(),
+        ],
       ),
     );
   }

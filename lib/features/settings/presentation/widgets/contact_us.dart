@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:metro_egypt_guide/core/utilities/app_color.dart';
+import 'package:metro_egypt_guide/features/home/presentation/widgets/app_icon.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+class ContactUs extends StatelessWidget {
+  const ContactUs({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      spacing: 15,
+      children: [
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 48.0),
+          child: Row(
+            spacing: 10,
+            children: [
+              Expanded(child: Divider(color: Colors.grey)),
+              Text(
+                'Contact Us',
+                style: TextStyle(fontSize: 14, color: Colors.grey),
+              ),
+
+              Expanded(child: Divider(color: Colors.grey)),
+            ],
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            AppIcon(
+              radius: 24,
+
+              icon: IconButton(
+                onPressed: () async {
+                  await launchUrl(
+                    Uri.parse("https://www.linkedin.com/in/1youssef-ahmed/"),
+                  );
+                },
+                icon: const Icon(FontAwesomeIcons.linkedin),
+              ),
+              backgroundColorIcon: const Color(0xFF0A66C2),
+            ),
+            AppIcon(
+              radius: 24,
+              icon: IconButton(
+                onPressed: () async {
+                  await launchUrl(Uri.parse('https://github.com/yousefa7med'));
+                },
+                icon: const Icon(FontAwesomeIcons.github),
+              ),
+              backgroundColorIcon: const Color(0xFF24292e),
+            ),
+            AppIcon(
+              radius: 24,
+
+              icon: IconButton(
+                onPressed: () async {
+                  await launchUrl(
+                    Uri.parse('mailto:youssefahmedserag@gmail.com'),
+                  );
+                },
+                icon: const Icon(FontAwesomeIcons.envelope),
+              ),
+              backgroundColorIcon: AppColor.primaryColor,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
