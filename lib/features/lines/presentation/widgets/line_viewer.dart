@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
 import 'package:go_metro/core/widgets/routeViewer.dart';
+import 'package:go_metro/core/widgets/station_row.dart';
 
 class LineViewer extends StatelessWidget {
   const LineViewer({super.key, required this.line, required this.name});
@@ -16,7 +17,7 @@ class LineViewer extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           side: const BorderSide(color: Colors.grey, width: 1),
         ),
-        title: Text(name),
+        title: StationRow(color: line[0].lineColor!, station: name),
         children: [RouteViewer(route: line)],
       ),
     );

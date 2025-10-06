@@ -169,8 +169,7 @@ class TripCubit extends Cubit<TripState> {
   }
 
   TripDetailsModel getDetails() {
-    print(startStationController.text);
-    print(finalStationController.text);
+
     return metro.getTripDetails(
       startStationController.text,
       finalStationController.text,

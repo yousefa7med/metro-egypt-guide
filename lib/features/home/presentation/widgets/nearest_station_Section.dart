@@ -40,9 +40,7 @@ class NearestStationSection extends StatelessWidget {
                     curr is PositionLoadingState;
               },
               builder: (context, state) {
-                print(
-                  '==========================================nearestStation==========================================',
-                );
+      
                 if (state is PositionLoadingState) {
                   return SizedBox(
                     height: 19.h,

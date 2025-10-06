@@ -24,9 +24,7 @@ class FindRouteSection extends StatelessWidget {
         return curr is PositionSuccessState || curr is TripDetailsChangesState;
       },
       builder: (context, state) {
-        print(
-          '==========================================findRoute==========================================',
-        );
+
         return AppCard(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
