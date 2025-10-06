@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
 import 'package:go_metro/core/navigations/navigations.dart';
 
@@ -18,11 +19,11 @@ import 'package:go_metro/generated/l10n.dart';
 
 class DetailsView extends StatelessWidget {
   const DetailsView({super.key});
-
   @override
   Widget build(BuildContext context) {
     final TripDetailsModel details =
         ModalRoute.of(context)!.settings.arguments as TripDetailsModel;
+    final StationModel lastStation = details.getLastStation();
     return Scaffold(
       appBar: CostumAppBar(
         backArrow: true,
@@ -45,13 +46,19 @@ class DetailsView extends StatelessWidget {
             StartAndFinalStationSection(
               start: details.startStation!,
               end: details.finalStation!,
+              startLine: TripDetailsModel.getLineByColor(
+                details.routes[0][0].lineColor!,
+              ),
+              startColor: details.routes[0][0].lineColor!,
+              lastLine: TripDetailsModel.getLineByColor(lastStation.lineColor!),
+              lastColor: lastStation.lineColor!,
             ),
             DetailsSection(
               time: details.time.ceil(),
               price: details.ticketPrice!,
               transfer: details.transfer!,
             ),
-            ListView.builder(
+            ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: details.routes.length,
@@ -63,6 +70,9 @@ class DetailsView extends StatelessWidget {
                     child: RouteViewer(route: details.routes[index]),
                   ),
                 );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return const Gap(15);
               },
             ),
 

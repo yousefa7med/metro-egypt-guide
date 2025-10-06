@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "يرجي التأكد من محطة البداية والنهاية",
     ),
     "finalStation": MessageLookupByLibrary.simpleMessage("محطة النهاية"),
+    "from": MessageLookupByLibrary.simpleMessage("من"),
     "lang": MessageLookupByLibrary.simpleMessage("اللغة"),
     "metroGuide": MessageLookupByLibrary.simpleMessage("مرشد المترو "),
     "min": MessageLookupByLibrary.simpleMessage("دقيقة"),
@@ -65,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "routeDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطريق"),
     "selectLang": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
     "startStation": MessageLookupByLibrary.simpleMessage("محطة البداية"),
+    "to": MessageLookupByLibrary.simpleMessage("الى"),
     "tripInfo": MessageLookupByLibrary.simpleMessage("معلومات الرحلة"),
   };
 }

@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please check your start station and final station",
     ),
     "finalStation": MessageLookupByLibrary.simpleMessage("Final Station"),
+    "from": MessageLookupByLibrary.simpleMessage("From"),
     "lang": MessageLookupByLibrary.simpleMessage("Language"),
     "metroGuide": MessageLookupByLibrary.simpleMessage("Metro Guide"),
     "min": MessageLookupByLibrary.simpleMessage("min"),
@@ -67,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "routeDetails": MessageLookupByLibrary.simpleMessage("Route Details"),
     "selectLang": MessageLookupByLibrary.simpleMessage("Select your language"),
     "startStation": MessageLookupByLibrary.simpleMessage("Start Station"),
+    "to": MessageLookupByLibrary.simpleMessage("To"),
     "tripInfo": MessageLookupByLibrary.simpleMessage("Trip Information"),
   };
 }

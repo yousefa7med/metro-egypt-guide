@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
-import 'package:go_metro/core/utilities/app_color.dart';
+
 
 import 'package:go_metro/core/widgets/app_card.dart';
 import 'package:go_metro/features/details/presentation/widgets/station_container.dart';
+import 'package:go_metro/generated/l10n.dart';
 
 class StartAndFinalStationSection extends StatelessWidget {
   const StartAndFinalStationSection({
     super.key,
     required this.start,
     required this.end,
+    required this.startLine,
+    required this.startColor, required this.lastLine, required this.lastColor,
   });
   final String start;
   final String end;
+  final String startLine;
+  final String lastLine;
+  final Color startColor;
+  final Color lastColor;
+
   @override
   Widget build(BuildContext context) {
     return AppCard(
@@ -22,17 +29,17 @@ class StartAndFinalStationSection extends StatelessWidget {
         child: Column(
           children: [
             StationContainer(
-              title: "From",
+              title: S.of(context).from,
               station: start,
-              color: AppColor.line2Color,
-              line: TripDetailsModel.getLine(AppColor.line2Color),
+              color: startColor,
+              line: startLine,
             ),
             const Gap(15),
             StationContainer(
-              title: "To",
+              title: S.of(context).to,
               station: end,
-              color: AppColor.line3Color,
-              line: TripDetailsModel.getLine(AppColor.line3Color),
+              color: lastColor,
+              line: lastLine
             ),
           ],
         ),

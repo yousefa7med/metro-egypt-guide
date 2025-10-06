@@ -33,5 +33,9 @@
 "min":"min",
 "Transfer":"Transfer",
 "backToHome":"Back To Home",
-"addToFav": "Add To Favourite"
+"addToFav": "Add To Favourite",
+"from":"From",
+"to":"To"
+
+
 }

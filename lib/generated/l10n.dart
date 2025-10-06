@@ -295,6 +295,16 @@ class S {
       args: [],
     );
   }
+
+  /// `From`
+  String get from {
+    return Intl.message('From', name: 'from', desc: '', args: []);
+  }
+
+  /// `To`
+  String get to {
+    return Intl.message('To', name: 'to', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

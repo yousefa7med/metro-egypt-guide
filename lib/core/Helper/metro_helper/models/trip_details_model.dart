@@ -89,7 +89,7 @@ class TripDetailsModel {
     }
   }
 
-  static String getLine(Color lineColor) {
+  static String getLineByColor(Color lineColor) {
     if (AppColor.line1Color == lineColor) {
       return S.current.Line1;
     } else if (AppColor.line2Color == lineColor) {
@@ -98,6 +98,10 @@ class TripDetailsModel {
       return S.current.Line3;
     }
     return S.current.Line3;
+  }
+
+  StationModel getLastStation() {
+   return routes[routes.length - 1][routes[routes.length - 1].length - 1];
   }
 
   void printDetails() {
