@@ -12,7 +12,7 @@ class ContactUs extends StatelessWidget {
     return Column(
       spacing: 15,
       children: [
-        const Padding(
+         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 48.0),
           child: Row(
             spacing: 10,
@@ -36,7 +36,7 @@ class ContactUs extends StatelessWidget {
               icon: IconButton(
                 onPressed: () async {
                   await launchUrl(
-                    Uri.parse("https://www.linkedin.com/in/1youssef-ahmed/"),
+                    Uri.parse("https://www.linkedin.com/in/1youssef-ahmed/"),mode:LaunchMode.externalApplication,
                   );
                 },
                 icon: const Icon(FontAwesomeIcons.linkedin),
@@ -47,7 +47,7 @@ class ContactUs extends StatelessWidget {
               radius: 24,
               icon: IconButton(
                 onPressed: () async {
-                  await launchUrl(Uri.parse('https://github.com/yousefa7med'));
+                  await launchUrl(Uri.parse('https://github.com/yousefa7med'),mode:LaunchMode.externalApplication);
                 },
                 icon: const Icon(FontAwesomeIcons.github),
               ),
@@ -59,7 +59,7 @@ class ContactUs extends StatelessWidget {
               icon: IconButton(
                 onPressed: () async {
                   await launchUrl(
-                    Uri.parse('mailto:youssefahmedserag@gmail.com'),
+                    Uri.parse('mailto:youssefahmedserag@gmail.com'),mode:LaunchMode.externalApplication,
                   );
                 },
                 icon: const Icon(FontAwesomeIcons.envelope),

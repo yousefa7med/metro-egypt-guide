@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
+import 'package:go_metro/generated/l10n.dart';
 
 class LineModel {
   final List<StationModel> stations;
@@ -159,7 +160,8 @@ LineModel line1 = LineModel(
       lineColor: AppColor.line1Color,
     ),
     StationModel(
-      name: "El-Sadat",
+      name: "El-Sadat",    transferBetween: S.current.transferBetween12,
+
 
       latitude: 30.0444,
       longitudee: 31.2356,
@@ -168,6 +170,7 @@ LineModel line1 = LineModel(
     ),
     StationModel(
       name: "Nasser",
+    transferBetween: S.current.transferBetween13,
 
       latitude: 30.0536,
       longitudee: 31.2389,
@@ -183,7 +186,7 @@ LineModel line1 = LineModel(
       lineColor: AppColor.line1Color,
     ),
     StationModel(
-      name: "El-Shohadaa",
+      name: "El-Shohadaa", transferBetween: S.current.transferBetween12,
       latitude: 30.0620,
       longitudee: 31.2461,
       travellingTime: 2,
@@ -357,14 +360,15 @@ LineModel line2 = LineModel(
       lineColor: AppColor.line2Color,
       name: "El-Shohadaa",
       travellingTime: 2,
-
+ transferBetween: S.current.transferBetween12,
       latitude: 30.0619,
       longitudee: 31.2461,
     ),
     StationModel(
       lineColor: AppColor.line2Color,
       travellingTime: 2,
-      name: "Attaba",
+      name: "Attaba",    transferBetween: S.current.transferBetween23,
+
       latitude: 30.0525,
       longitudee: 31.2469,
     ),
@@ -379,6 +383,7 @@ LineModel line2 = LineModel(
       lineColor: AppColor.line2Color,
       name: "El-Sadat",
       travellingTime: 2,
+    transferBetween: S.current.transferBetween12,
 
       latitude: 30.0444,
       longitudee: 31.2356,
@@ -409,7 +414,7 @@ LineModel line2 = LineModel(
     StationModel(
       lineColor: AppColor.line2Color,
       travellingTime: 2,
-      name: "Cairo University",
+      name: "Cairo University", transferBetween: S.current.transferBetween23,
 
       latitude: 30.0272,
       longitudee: 31.2011,
@@ -471,7 +476,7 @@ LineModel line3Main = LineModel(
     ),
     StationModel(
       lineColor: AppColor.line3Color,
-      name: "El-Haykestep", //!
+      name: "El-Haikstep", 
       travellingTime: 1.5,
 
       latitude: 30.1439,
@@ -480,7 +485,7 @@ LineModel line3Main = LineModel(
     StationModel(
       lineColor: AppColor.line3Color,
       travellingTime: 1.5,
-      name: "Omar Ibn El-Khattab", //!
+      name: "Omar Ibn El-Khattab", 
 
       latitude: 30.1406,
       longitudee: 31.3930,
@@ -488,7 +493,7 @@ LineModel line3Main = LineModel(
     StationModel(
       travellingTime: 1.5,
       lineColor: AppColor.line3Color,
-      name: "Qobaa", //!
+      name: "Qebaa", 
 
       latitude: 30.1347,
       longitudee: 31.3839,
@@ -496,14 +501,14 @@ LineModel line3Main = LineModel(
     StationModel(
       travellingTime: 1.5,
       lineColor: AppColor.line3Color,
-      name: "Hesham Barakat", //!
+      name: "Hesham Barakat", 
 
       latitude: 30.1311,
       longitudee: 31.3728,
     ),
     StationModel(
       lineColor: AppColor.line3Color,
-      name: "El-Nozha", //!
+      name: "Nozha", 
 
       latitude: 30.1283,
       travellingTime: 1.5,
@@ -520,14 +525,14 @@ LineModel line3Main = LineModel(
     StationModel(
       lineColor: AppColor.line3Color,
       travellingTime: 1.5,
-      name: "Alf Maskan", //!
+      name: "Alf Masken", 
 
       latitude: 30.1170,
       longitudee: 31.3397,
     ),
     StationModel(
       lineColor: AppColor.line3Color,
-      name: "Heliopolis", //!
+      name: "Heliopolis", 
       travellingTime: 1.5,
 
       latitude: 30.1081,
@@ -609,11 +614,14 @@ LineModel line3Main = LineModel(
       lineColor: AppColor.line3Color,
       name: "Attaba",
       travellingTime: 1.5,
+    transferBetween: S.current.transferBetween23,
 
       latitude: 30.0525,
       longitudee: 31.2469,
     ),
     StationModel(
+          transferBetween: S.current.transferBetween13,
+
       lineColor: AppColor.line3Color,
       travellingTime: 1.5,
       name: "Nasser",
@@ -735,7 +743,7 @@ LineModel line3Branch2 = LineModel(
       lineColor: AppColor.line3Color,
       travellingTime: 1.5,
       name: "Cairo University",
-
+ transferBetween: S.current.transferBetween23,
       latitude: 30.0261,
       longitudee: 31.2011,
     ),
@@ -744,6 +752,7 @@ LineModel line3Branch2 = LineModel(
 
 List<StationModel> commonStations = [
   StationModel(
+    transferBetween: S.current.transferBetween13,
     lineColor: AppColor.line3Color,
     name: "Nasser",
     latitude: 30.0536,
@@ -751,6 +760,8 @@ List<StationModel> commonStations = [
     travellingTime: 1.5,
   ),
   StationModel(
+    transferBetween: S.current.transferBetween23,
+
     lineColor: AppColor.line3Color,
     name: "Attaba",
     latitude: 30.0525,
@@ -758,6 +769,8 @@ List<StationModel> commonStations = [
     travellingTime: 1.5,
   ),
   StationModel(
+    transferBetween: S.current.transferBetween12,
+
     lineColor: AppColor.line2Color,
     name: "El-Shohadaa",
     latitude: 30.0619,
@@ -765,13 +778,17 @@ List<StationModel> commonStations = [
     travellingTime: 2,
   ),
   StationModel(
+    transferBetween: S.current.transferBetween12,
+
     lineColor: AppColor.line1Color,
-    name: "El Sadat",
+    name: "El-Sadat",
     latitude: 30.0444,
     longitudee: 31.2356,
     travellingTime: 2,
   ),
   StationModel(
+    transferBetween: S.current.transferBetween23,
+
     lineColor: AppColor.line3Color,
     name: "Cairo University",
     latitude: 30.0261,
@@ -782,6 +799,8 @@ List<StationModel> commonStations = [
 ];
 
 final kitKat = StationModel(
+      transferBetween: S.current.transferBetween33,
+
   lineColor: AppColor.line3Color,
   name: "Kit-Kat",
 
