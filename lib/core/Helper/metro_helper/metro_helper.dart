@@ -1,16 +1,10 @@
-import 'package:go_metro/core/Helper/metro_helper/models/line_model.dart';
+import 'dart:collection';
+
 import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/line_model.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
 import 'package:go_metro/core/errors/app_exeption.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
-
-List<LineModel> allLines = [
-  line1,
-  line2,
-  line3Main,
-  line3Branch1,
-  line3Branch2,
-];
 
 final List<String> allStations = [
   "Helwan",
@@ -65,14 +59,14 @@ final List<String> allStations = [
   "Sakyet-Mekky",
   "El-Moneeb",
   "Adly Mansour",
-  "El-Haykestep", //!
-  "Omar Ibn El-Khattab", //!
-  "Qobaa", //!
-  "Hesham Barakat", //!
-  "El-Nozha", //!
+  "El-Haikstep",
+  "Omar Ibn El-Khattab",
+  "Qebaa",
+  "Hesham Barakat",
+  "Nozha",
   "El-Shams Club",
-  "Alf Maskan", //!
-  "Heliopolis", //!
+  "Alf Masken",
+  "Heliopolis",
   "Haroun",
   "El-Ahram",
   "Kolleyet El-Banat",
@@ -100,126 +94,280 @@ final List<String> allStations = [
 ];
 
 class Metro {
+  TripDetailsModel details = TripDetailsModel();
+  final List<LineModel> allLine = [
+    line1,
+    line2,
+    line3Main,
+    line3Branch1,
+    line3Branch2,
+  ];
+
   Metro._internal();
   static final Metro _instance = Metro._internal();
   factory Metro() => _instance;
 
-  TripDetailsModel details = TripDetailsModel();
-  bool clearIt = true;
+  // الدالة الرئيسية لإيجاد تفاصيل الرحلة
   TripDetailsModel getTripDetails(String start, String end) {
-    final visited = <StationModel>{};
-    final path = <StationModel>[];
-    if (clearIt) {
-      details.clear();
-    }
+    details.clear(); // تنظيف التفاصيل السابقة
 
-    final result = _findShortestPath(start, end, visited, path);
+    // إيجاد أقصر مسار بأقل عدد من التحويلات باستخدام BFS
+    List<StationModel> path = _findShortestPath(start, end);
 
-    if (result.isNotEmpty) {
-      final line = _cheackSameLine(
-        result[0].name!,
-        result[result.length - 1].name!,
+    if (path.isEmpty) {
+      throw TripDetailsException(
+        message: "لم يتم العثور على مسار بين $start و $end",
       );
-      if (line != null) {
-        _sameLineDetails(result, line);
-      } else {
-        _transportBetweenLinesDetails(result, start, end);
-      }
-    }
-    if (!details.validDetails()) {
-      throw TripDetailsException(message: "فبلفرلااىتةنومكز"); //!
     }
 
+    // تقسيم المسار إلى routes و directions
+    _processPath(path);
+
+    // تحديث التفاصيل
     details.startStation = start;
     details.finalStation = end;
-
-    List<String> route = [];
-    List<String> directions = [];
-    for (var element in details.routes) {
-      for (var ee in element) {
-        route.add(ee.name!);
-      }
-    }
-    for (var element in details.directions) {
-      directions.add(element.name!);
-    }
-    details.calcTicketPrice(result.length);
-    details.calcStationCount(result.length);
+    details.calcStationCount(path.length);
+    details.calcTicketPrice(path.length);
     details.calcTransfer();
     details.calcTime();
-    // details.line3Handeling();
 
-    clearIt = true;
     return details;
   }
 
-  //<===========================internal func===========================================>
-  void _transportBetweenLinesDetails(
-    List<StationModel> result,
-    String start,
-    String end,
-  ) {
-    int last = 0;
-    LineModel prevLine = _cheackSameLine(result[0].name!, result[1].name!)!;
-    LineModel? currLine;
-    for (var i = 1; i < result.length - 2; i++) {
-      currLine = _cheackSameLine(result[i].name!, result[i + 1].name!);
-      if (prevLine != currLine &&
-          commonStations.any((e) => e.name == result[i].name!) &&
-          prevLine.stations.any((e) => e.name == result[i].name) &&
-          currLine!.stations.any((e) => e.name == result[i].name)) {
-        final route = result.sublist(last, i + 1);
-        details.routes.add(route);
-        final direction = _getDirection(
-          _cheackSameLine(result[last].name!, result[i].name!)!,
-          result[last].name!,
-          result[i].name!,
+  // بناء الرسم البياني
+  Map<String, List<MapEntry<StationModel, LineModel>>> _buildGraph() {
+    Map<String, List<MapEntry<StationModel, LineModel>>> graph = {};
+
+    // إضافة الروابط بين المحطات المتتالية في كل خط
+    for (var line in allLine) {
+      for (int i = 0; i < line.stations.length; i++) {
+        var current = line.stations[i];
+        if (!graph.containsKey(current.name)) {
+          graph[current.name!] = [];
+        }
+        // إضافة المحطة السابقة (إذا وجدت)
+        if (i > 0) {
+          var prev = line.stations[i - 1];
+          graph[current.name!]!.add(MapEntry(prev, line));
+        }
+        // إضافة المحطة التالية (إذا وجدت)
+        if (i < line.stations.length - 1) {
+          var next = line.stations[i + 1];
+          graph[current.name!]!.add(MapEntry(next, line));
+        }
+      }
+    }
+    return graph;
+  }
+
+  // إيجاد أقصر مسار بأقل عدد من التحويلات باستخدام BFS
+  List<StationModel> _findShortestPath(String start, String end) {
+    var graph = _buildGraph();
+    var visited = <String, int>{}; // تخزين أقل عدد محطات لكل محطة
+    var parent = <String, StationModel>{};
+    var lineUsed = <String, LineModel>{};
+    var transfers = <String, int>{}; // تخزين عدد التحويلات لكل محطة
+    var queue = Queue<List<dynamic>>(); // [station, line, transfers, distance]
+    var startStation = _getStationSafe(start);
+    var bestPaths = <List<StationModel>>[]; // تخزين أفضل المسارات
+    var minDistance = double.infinity; // أقل عدد محطات
+
+    queue.add([startStation, null, 0, 0]); // [محطة, خط, عدد التحويلات, المسافة]
+    visited[start] = 0;
+    transfers[start] = 0;
+
+    while (queue.isNotEmpty) {
+      var current = queue.removeFirst();
+      var currentStation = current[0] as StationModel;
+      var currentLine = current[1] as LineModel?;
+      var currentTransfers = current[2] as int;
+      var currentDistance = current[3] as int;
+
+      // إذا وصلنا إلى المحطة النهائية
+      if (currentStation.name == end) {
+        if (currentDistance <= minDistance) {
+          if (currentDistance < minDistance) {
+            bestPaths.clear();
+            minDistance = currentDistance.toDouble();
+          }
+          // إعادة بناء المسار
+          List<StationModel> path = [];
+          var curr = currentStation;
+          while (curr.name != start) {
+            path.add(curr);
+            curr = parent[curr.name]!;
+          }
+          path.add(startStation);
+          bestPaths.add(path.reversed.toList());
+        }
+        continue;
+      }
+
+      // جلب الجيران
+      var neighbors = graph[currentStation.name] ?? [];
+      for (var neighborEntry in neighbors) {
+        var neighbor = neighborEntry.key;
+        var line = neighborEntry.value;
+        var newTransfers = currentTransfers;
+
+        // التحقق من التحويل عند Kit-Kat
+        if (currentLine != null &&
+            line != currentLine &&
+            currentStation.name != start) {
+          if (currentStation.name == "Kit-Kat") {
+            // زيادة عدد التحويلات فقط إذا كان الانتقال بين line3Branch1 و line3Branch2
+            bool isBranch1ToBranch2 =
+                (currentLine == line3Branch1 && line == line3Branch2) ||
+                (currentLine == line3Branch2 && line == line3Branch1);
+            if (isBranch1ToBranch2) {
+              newTransfers = currentTransfers + 1;
+            }
+          } else {
+            // زيادة عدد التحويلات لأي تغيير خط آخر
+            newTransfers = currentTransfers + 1;
+          }
+        }
+
+        var newDistance = currentDistance + 1;
+        if (!visited.containsKey(neighbor.name) ||
+            newDistance <= visited[neighbor.name]!) {
+          if (!visited.containsKey(neighbor.name) ||
+              newDistance < visited[neighbor.name]!) {
+            visited[neighbor.name!] = newDistance;
+            transfers[neighbor.name!] = newTransfers;
+            parent[neighbor.name!] = currentStation;
+            lineUsed[neighbor.name!] = line;
+            queue.add([neighbor, line, newTransfers, newDistance]);
+          } else if (newDistance == visited[neighbor.name]! &&
+              newTransfers < transfers[neighbor.name]!) {
+            // إذا كان عدد المحطات متساويًا ولكن عدد التحويلات أقل
+            transfers[neighbor.name!] = newTransfers;
+            parent[neighbor.name!] = currentStation;
+            lineUsed[neighbor.name!] = line;
+            queue.add([neighbor, line, newTransfers, newDistance]);
+          }
+        }
+      }
+    }
+
+    // اختيار المسار بأقل عدد من التحويلات من بين المسارات ذات الحد الأدنى من المحطات
+    if (bestPaths.isEmpty) return [];
+
+    var minTransfers = double.infinity;
+    List<StationModel> bestPath = [];
+    for (var path in bestPaths) {
+      int pathTransfers = 0;
+      LineModel? prevLine;
+      for (int i = 1; i < path.length; i++) {
+        var currLine = _getLineForStations(path[i - 1].name!, path[i].name!);
+        if (currLine != null && prevLine != null && currLine != prevLine) {
+          if (path[i - 1].name == "Kit-Kat") {
+            bool isBranch1ToBranch2 =
+                (prevLine == line3Branch1 && currLine == line3Branch2) ||
+                (prevLine == line3Branch2 && currLine == line3Branch1);
+            if (isBranch1ToBranch2) {
+              pathTransfers++;
+            }
+          } else {
+            pathTransfers++;
+          }
+        }
+        prevLine = currLine;
+      }
+      if (pathTransfers < minTransfers) {
+        minTransfers = pathTransfers.toDouble();
+        bestPath = path;
+      }
+    }
+
+    return bestPath.isEmpty ? bestPaths[0] : bestPath;
+  }
+
+  // تقسيم المسار إلى routes و directions مع استثناء Kit-Kat
+  void _processPath(List<StationModel> path) {
+    if (path.isEmpty) return;
+
+    List<StationModel> currentRoute = [path[0]];
+    LineModel? currentLine = path.length > 1
+        ? _getLineForStations(path[0].name!, path[1].name!)
+        : null;
+    details.directions.add(path[0]); // إضافة محطة البداية
+
+    for (int i = 1; i < path.length; i++) {
+      var currStation = path[i];
+      var prevStation = path[i - 1];
+      var nextLine = _getLineForStations(prevStation.name!, currStation.name!);
+
+      // التحقق من ما إذا كان يجب التقسيم أم لا
+      bool shouldSplit =
+          nextLine != currentLine &&
+              (prevStation.name != "Kit-Kat" ||
+                  _isBranch1ToBranch2(currentLine, nextLine)) ||
+          i == path.length - 1;
+
+      if (shouldSplit) {
+        if (i == path.length - 1) {
+          currentRoute.add(currStation);
+        }
+        details.routes.add(List.from(currentRoute));
+        if (currentLine != null) {
+          details.directions.add(
+            _getDirection(
+              currentLine,
+              currentRoute.first.name!,
+              currentRoute.last.name!,
+            ),
+          );
+        }
+        currentRoute = [currStation];
+        currentLine = nextLine;
+      } else {
+        // إذا لم يكن تقسيم (مثل main-branch عبر Kit-Kat)، استمر في الـ route وحدث currentLine
+        currentRoute.add(currStation);
+        currentLine = nextLine; // تحديث الخط للجزء التالي
+      }
+    }
+
+    // إضافة المسار الأخير إذا لم يتم إضافته
+    if (currentRoute.length > 1 ||
+        (currentRoute.length == 1 && details.routes.isEmpty)) {
+      details.routes.add(currentRoute);
+      if (currentLine != null) {
+        details.directions.add(
+          _getDirection(
+            currentLine,
+            currentRoute.first.name!,
+            currentRoute.last.name!,
+          ),
         );
-
-        details.directions.add(direction);
-        last = i + 1;
       }
     }
-    final finalRoute = result.sublist(last);
-    clearIt = false;
-    getTripDetails(
-      finalRoute[0].name!,
-      finalRoute[finalRoute.length - 1].name!,
-    );
   }
 
-  void _sameLineDetails(List<StationModel> result, LineModel line) {
-    details.routes.add(result);
-    details.directions.add(
-      _getDirection(line, result[0].name!, result[result.length - 1].name!),
-    );
+  // دالة مساعدة للتحقق من ما إذا كان التغيير بين branch1 و branch2
+  bool _isBranch1ToBranch2(LineModel? line1, LineModel? line2) {
+    if (line1 == null || line2 == null) return false;
+    return (line1 == line3Branch1 && line2 == line3Branch2) ||
+        (line1 == line3Branch2 && line2 == line3Branch1);
   }
 
-  StationModel _getDirection(LineModel line, String start, String end) {
-    int indexS = line.stations.indexWhere((e) => e.name == start);
-    int indexF = line.stations.indexWhere((e) => e.name == end);
-
-    if ((indexF - indexS) > 0) {
-      return line.stations[line.stations.length - 1];
-    } else {
-      return line.stations[0];
-    }
-  }
-
-  StationModel? _getStation(String name) {
-    for (var line in allLines) {
-      if (line.stations.any((e) => e.name == name)) {
-        return line.stations.firstWhere((e) => e.name == name);
+  // جلب الخط الذي يحتوي على محطتين متتاليتين
+  LineModel? _getLineForStations(String firstStation, String secondStation) {
+    for (var line in allLine) {
+      var stations = line.stations.map((e) => e.name).toList();
+      int firstIndex = stations.indexOf(firstStation);
+      int secondIndex = stations.indexOf(secondStation);
+      if (firstIndex != -1 &&
+          secondIndex != -1 &&
+          (firstIndex - secondIndex).abs() == 1) {
+        return line;
       }
     }
-    return null;
-  }
-
-  LineModel? _cheackSameLine(String firstStation, String secondStation) {
-    if ((line3Main.stations.any((e) => e.name == firstStation) &&
-            line3Branch1.stations.any((e) => e.name == secondStation)) ||
-        (line3Branch1.stations.any((e) => e.name == firstStation) &&
-            line3Main.stations.any((e) => e.name == secondStation))) {
+    // التعامل مع التفرعات (مثل Line 3)
+    if (line3Main.stations.any((e) => e.name == firstStation) &&
+            line3Branch1.stations.any((e) => e.name == secondStation) ||
+        line3Branch1.stations.any((e) => e.name == firstStation) &&
+            line3Main.stations.any((e) => e.name == secondStation)) {
       return LineModel(
         lineColor: AppColor.line3Color,
         lineName: 'Line3 & Branch1',
@@ -228,10 +376,10 @@ class Metro {
           ...line3Branch1.stations.where((e) => e.name != kitKat.name),
         ],
       );
-    } else if ((line3Main.stations.any((e) => e.name == firstStation) &&
-            line3Branch2.stations.any((e) => e.name == secondStation)) ||
-        (line3Branch2.stations.any((e) => e.name == firstStation) &&
-            line3Main.stations.any((e) => e.name == secondStation))) {
+    } else if (line3Main.stations.any((e) => e.name == firstStation) &&
+            line3Branch2.stations.any((e) => e.name == secondStation) ||
+        line3Branch2.stations.any((e) => e.name == firstStation) &&
+            line3Main.stations.any((e) => e.name == secondStation)) {
       return LineModel(
         lineColor: AppColor.line3Color,
         lineName: 'Line3 & Branch2',
@@ -240,87 +388,28 @@ class Metro {
           ...line3Branch2.stations.where((e) => e.name != kitKat.name),
         ],
       );
-    } else if (line3Main.stations.any((e) => e.name == firstStation) &&
-        line3Main.stations.any((e) => e.name == secondStation)) {
-      return line3Main;
-    } else if (line3Branch1.stations.any((e) => e.name == firstStation) &&
-        line3Branch1.stations.any((e) => e.name == secondStation)) {
-      return line3Branch1;
-    } else if (line3Branch2.stations.any((e) => e.name == firstStation) &&
-        line3Branch2.stations.any((e) => e.name == secondStation)) {
-      return line3Branch2;
-    } else if (line2.stations.any((e) => e.name == firstStation) &&
-        line2.stations.any((e) => e.name == secondStation)) {
-      return line2;
-    } else if (line1.stations.any((e) => e.name == firstStation) &&
-        line1.stations.any((e) => e.name == secondStation)) {
-      return line1;
     }
-
     return null;
   }
 
-  List<StationModel> _findShortestPath(
-    String start,
-    String end,
-    Set<StationModel> visited,
-    List<StationModel> path,
-  ) {
-    if (visited.any((e) => e.name == start)) return [];
-    StationModel startStation = _getStationSafe(start);
-    visited.add(startStation);
-    path.add(startStation);
-
-    if (start == end) return List.from(path);
-
-    List<StationModel> shortest = [];
-
-    for (var line in allLines) {
-      if (!line.stations.any((e) => e.name == start)) continue;
-
-      final neighbors = _getNeighbors(start);
-
-      for (var neighbor in neighbors) {
-        if (visited.any((e) => e.name == neighbor.name)) continue;
-
-        final newPath = _findShortestPath(
-          neighbor.name!,
-          end,
-          Set.from(visited),
-          List.from(path),
-        );
-        if (newPath.isNotEmpty &&
-            (shortest.isEmpty || newPath.length < shortest.length)) {
-          shortest = newPath;
-        }
-      }
+  // إرجاع محطة الوجهة (الاتجاه) بناءً على الخط
+  StationModel _getDirection(LineModel line, String start, String end) {
+    int indexS = line.stations.indexWhere((e) => e.name == start);
+    int indexF = line.stations.indexWhere((e) => e.name == end);
+    if ((indexF - indexS) > 0) {
+      return line.stations[line.stations.length - 1];
+    } else {
+      return line.stations[0];
     }
-
-    return shortest;
   }
 
-  List<StationModel> _getNeighbors(String station) {
-    final neighbors = <StationModel>[];
-
-    for (var line in allLines) {
-      final index = line.stations.indexWhere((e) => e.name == station);
-      if (index == -1) continue;
-
-      if (index > 0) neighbors.add(line.stations[index - 1]);
-      if (index < line.stations.length - 1) {
-        neighbors.add(line.stations[index + 1]);
-      }
-    }
-
-    return neighbors.toSet().toList();
-  }
-  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+  // جلب المحطة بأمان
   StationModel _getStationSafe(String name) {
-    final station = _getStation(name);
-    if (station == null) {
-      throw TripDetailsException(message: "Station $name not found");
+    for (var line in allLine) {
+      if (line.stations.any((e) => e.name == name)) {
+        return line.stations.firstWhere((e) => e.name == name);
+      }
     }
-    return station;
+    throw TripDetailsException(message: "Station $name not found");
   }
 }
