@@ -38,7 +38,7 @@ class RouteViewer extends StatelessWidget {
                 ),
               ],
             ),
-            child: Text(route[index].name!, style: AppTextStyle.medium14),
+            child: Text(route[index].getStationName()!, style: AppTextStyle.medium14),
           ),
         );
       },

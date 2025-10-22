@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
 import 'package:go_metro/core/navigations/navigations.dart';
 
 import 'package:go_metro/core/utilities/app_font_family.dart';
 import 'package:go_metro/core/utilities/app_text_style.dart';
+import 'package:go_metro/core/widgets/align_text.dart';
 import 'package:go_metro/core/widgets/app_button.dart';
 import 'package:go_metro/core/widgets/app_card.dart';
 
@@ -23,7 +23,6 @@ class DetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     final TripDetailsModel details =
         ModalRoute.of(context)!.settings.arguments as TripDetailsModel;
-    final StationModel lastStation = details.getLastStation();
     return Scaffold(
       appBar: CostumAppBar(
         backArrow: true,
@@ -44,14 +43,18 @@ class DetailsView extends StatelessWidget {
             const Gap(5),
 
             StartAndFinalStationSection(
-              start: details.startStation!,
-              end: details.finalStation!,
+     
+              start: details.getStationName(Station.start)!,
+              end: details.getStationName(Station.last)!,
               startLine: TripDetailsModel.getLineByColor(
                 details.routes[0][0].lineColor!,
               ),
               startColor: details.routes[0][0].lineColor!,
-              lastLine: TripDetailsModel.getLineByColor(lastStation.lineColor!),
-              lastColor: lastStation.lineColor!,
+              lastLine: TripDetailsModel.getLineByColor(
+                details.routes[details.routes.length - 1][0].lineColor!,
+              ),
+              lastColor:
+                  details.routes[details.routes.length - 1][0].lineColor!,
             ),
             DetailsSection(
               time: details.time.ceil(),
@@ -72,7 +75,23 @@ class DetailsView extends StatelessWidget {
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
-                return const Gap(15);
+                return Column(
+                  children: [
+                    const Gap(15),
+
+                    AppCard(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: AlignText(
+                          child: Text(
+                            "${details.routes[index].last.transferBetween} ",
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Gap(15),
+                  ],
+                );
               },
             ),
 

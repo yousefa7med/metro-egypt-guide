@@ -92,16 +92,16 @@ final List<String> allStations = [
   "Gamet El-Dowel",
   "Boulak El-Dakrour",
 ];
-
-class Metro {
-  TripDetailsModel details = TripDetailsModel();
-  final List<LineModel> allLine = [
+ final List<LineModel> allLine = [
     line1,
     line2,
     line3Main,
     line3Branch1,
     line3Branch2,
   ];
+class Metro {
+  TripDetailsModel details = TripDetailsModel();
+ 
 
   Metro._internal();
   static final Metro _instance = Metro._internal();

@@ -65,10 +65,13 @@ class _ChangeLangColumnState extends State<ChangeLangColumn> {
           lang: !isAarbic,
           langName: S.of(context).English,
           onTap: () async {
-            setState(() {
-              isAarbic = false;
-            });
-            await AppCubit.get(context).setLang('en');
+            if (isAarbic) {
+              setState(() {
+                isAarbic = false;
+              });
+              await AppCubit.get(context).setLang('en');
+
+            }
           },
         ),
         const Gap(15),
@@ -77,10 +80,13 @@ class _ChangeLangColumnState extends State<ChangeLangColumn> {
           lang: isAarbic,
           langName: S.of(context).Arabic,
           onTap: () async {
-            setState(() {
-              isAarbic = true;
-            });
-            await AppCubit.get(context).setLang('ar');
+            if (!isAarbic) {
+              setState(() {
+                isAarbic = true;
+              });
+              await AppCubit.get(context).setLang('ar');
+
+            }
           },
         ),
       ],

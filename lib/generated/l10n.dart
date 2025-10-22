@@ -381,35 +381,100 @@ class S {
     );
   }
 
-  // skipped getter for the 'El-Maasara' key
+  /// `El-Maasara`
+  String get El_Maasara {
+    return Intl.message('El-Maasara', name: 'El_Maasara', desc: '', args: []);
+  }
 
-  // skipped getter for the 'Tora_El-Asmant' key
+  /// `Tora El-Asmant`
+  String get Tora_El_Asmant {
+    return Intl.message(
+      'Tora El-Asmant',
+      name: 'Tora_El_Asmant',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Kozzika`
   String get Kozzika {
     return Intl.message('Kozzika', name: 'Kozzika', desc: '', args: []);
   }
 
-  // skipped getter for the 'Tora_El-Balad' key
+  /// `Tora El-Balad`
+  String get Tora_El_Balad {
+    return Intl.message(
+      'Tora El-Balad',
+      name: 'Tora_El_Balad',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Sakanat_El-Maadi' key
+  /// `Sakanat El-Maadi`
+  String get Sakanat_El_Maadi {
+    return Intl.message(
+      'Sakanat El-Maadi',
+      name: 'Sakanat_El_Maadi',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'El-Maadi' key
+  /// `El-Maadi`
+  String get El_Maadi {
+    return Intl.message('El-Maadi', name: 'El_Maadi', desc: '', args: []);
+  }
 
-  // skipped getter for the 'Hadayek_El-Maadi' key
+  /// `Hadayek El-Maadi`
+  String get Hadayek_El_Maadi {
+    return Intl.message(
+      'Hadayek El-Maadi',
+      name: 'Hadayek_El_Maadi',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Dar_El-Salam' key
+  /// `Dar El-Salam`
+  String get Dar_El_Salam {
+    return Intl.message(
+      'Dar El-Salam',
+      name: 'Dar_El_Salam',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'El-Zahraa' key
+  /// `El-Zahraa`
+  String get El_Zahraa {
+    return Intl.message('El-Zahraa', name: 'El_Zahraa', desc: '', args: []);
+  }
 
   /// `Mar Girgis`
   String get Mar_Girgis {
     return Intl.message('Mar Girgis', name: 'Mar_Girgis', desc: '', args: []);
   }
 
-  // skipped getter for the 'El-Malek_El-Saleh' key
+  /// `El-Malek El-Saleh`
+  String get El_Malek_El_saleh {
+    return Intl.message(
+      'El-Malek El-Saleh',
+      name: 'El_Malek_El_saleh',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'El-Sayeda_Zeinab' key
+  /// `El-Sayeda Zeinab`
+  String get El_Sayeda_Zeinab {
+    return Intl.message(
+      'El-Sayeda Zeinab',
+      name: 'El_Sayeda_Zeinab',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Saad Zaghloul`
   String get Saad_Zaghloul {
@@ -421,54 +486,165 @@ class S {
     );
   }
 
-  // skipped getter for the 'El-Sadat' key
+  /// `El-Sadat`
+  String get El_Sadat {
+    return Intl.message('El-Sadat', name: 'El_Sadat', desc: '', args: []);
+  }
 
   /// `Orabi`
   String get Orabi {
     return Intl.message('Orabi', name: 'Orabi', desc: '', args: []);
   }
 
-  // skipped getter for the 'El-Shohadaa' key
+  /// `El-Shohadaa`
+  String get El_Shohadaa {
+    return Intl.message('El-Shohadaa', name: 'El_Shohadaa', desc: '', args: []);
+  }
 
   /// `Ghamra`
   String get Ghamra {
     return Intl.message('Ghamra', name: 'Ghamra', desc: '', args: []);
   }
 
-  // skipped getter for the 'El-Demerdash' key
+  /// `El-Demerdash`
+  String get El_Demerdash {
+    return Intl.message(
+      'El-Demerdash',
+      name: 'El_Demerdash',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Manshyet_El-Sadr' key
+  /// `Manshyet El-Sadr`
+  String get Manshyet_El_Sadr {
+    return Intl.message(
+      'Manshyet El-Sadr',
+      name: 'Manshyet_El_Sadr',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Kobry_El-Qubba' key
+  /// `Kobry El-Qubba`
+  String get Kobry_El_Qubba {
+    return Intl.message(
+      'Kobry El-Qubba',
+      name: 'Kobry_El_Qubba',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Hammamet_El-Qubba' key
+  /// `Hammamet El-Qubba`
+  String get Hammamet_El_Qubba {
+    return Intl.message(
+      'Hammamet El-Qubba',
+      name: 'Hammamet_El_Qubba',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Saray_El-Qubba' key
+  /// `Saray El-Qubba`
+  String get Saray_El_Qubba {
+    return Intl.message(
+      'Saray El-Qubba',
+      name: 'Saray_El_Qubba',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Hadayek_El-Zaytoun' key
+  /// `Hadayek El-Zaytoun`
+  String get Hadayek_El_Zaytoun {
+    return Intl.message(
+      'Hadayek El-Zaytoun',
+      name: 'Hadayek_El_Zaytoun',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Helmayet_El-Zaytoun' key
+  /// `Helmayet El-Zaytoun`
+  String get Helmayet_El_Zaytoun {
+    return Intl.message(
+      'Helmayet El-Zaytoun',
+      name: 'Helmayet_El_Zaytoun',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'El-Mattareya' key
+  /// `El-Mattareya`
+  String get El_Mattareya {
+    return Intl.message(
+      'El-Mattareya',
+      name: 'El_Mattareya',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Ain Shams`
   String get Ain_Shams {
     return Intl.message('Ain Shams', name: 'Ain_Shams', desc: '', args: []);
   }
 
-  // skipped getter for the 'Ezbet_El-Nakhl' key
+  /// `Ezbet El-Nakhl`
+  String get Ezbet_El_Nakhl {
+    return Intl.message(
+      'Ezbet El-Nakhl',
+      name: 'Ezbet_El_Nakhl',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Al-Marg' key
+  /// `Al-Marg`
+  String get Al_Marg {
+    return Intl.message('Al-Marg', name: 'Al_Marg', desc: '', args: []);
+  }
 
-  // skipped getter for the 'New_El-Marg' key
+  /// `New El-Marg`
+  String get New_El_Marg {
+    return Intl.message('New El-Marg', name: 'New_El_Marg', desc: '', args: []);
+  }
 
-  // skipped getter for the 'Shubra_El-Kheima' key
+  /// `Shubra El-Kheima`
+  String get Shubra_El_Kheima {
+    return Intl.message(
+      'Shubra El-Kheima',
+      name: 'Shubra_El_Kheima',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Koleyet_El-Zeraa' key
+  /// `Koleyet El-Zeraa`
+  String get Koleyet_El_Zeraa {
+    return Intl.message(
+      'Koleyet El-Zeraa',
+      name: 'Koleyet_El_Zeraa',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'El-Mezallat' key
+  /// `El-Mezallat`
+  String get El_Mezallat {
+    return Intl.message('El-Mezallat', name: 'El_Mezallat', desc: '', args: []);
+  }
 
-  // skipped getter for the 'El-Khalafawy' key
+  /// `El-Khalafawy`
+  String get El_Khalafawy {
+    return Intl.message(
+      'El-Khalafawy',
+      name: 'El_Khalafawy',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Saint Theresa`
   String get Saint_Theresa {
@@ -480,7 +656,15 @@ class S {
     );
   }
 
-  // skipped getter for the 'Rod_El-Farag' key
+  /// `Rod El-Farag`
+  String get Rod_El_Farag {
+    return Intl.message(
+      'Rod El-Farag',
+      name: 'Rod_El_Farag',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Massara`
   String get Massara {
@@ -502,7 +686,10 @@ class S {
     return Intl.message('Dokki', name: 'Dokki', desc: '', args: []);
   }
 
-  // skipped getter for the 'El-Behoos' key
+  /// `El-Behoos`
+  String get El_Behoos {
+    return Intl.message('El-Behoos', name: 'El_Behoos', desc: '', args: []);
+  }
 
   /// `Cairo University`
   String get Cairo_University {
@@ -524,11 +711,30 @@ class S {
     return Intl.message('Giza', name: 'Giza', desc: '', args: []);
   }
 
-  // skipped getter for the 'Omm_El-Masryeen' key
+  /// `Omm El-Masryeen`
+  String get Omm_El_Masryeen {
+    return Intl.message(
+      'Omm El-Masryeen',
+      name: 'Omm_El_Masryeen',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Sakyet-Mekky' key
+  /// `Sakyet-Mekky`
+  String get Sakyet_Mekky {
+    return Intl.message(
+      'Sakyet-Mekky',
+      name: 'Sakyet_Mekky',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'El-Moneeb' key
+  /// `El-Moneeb`
+  String get El_Moneeb {
+    return Intl.message('El-Moneeb', name: 'El_Moneeb', desc: '', args: []);
+  }
 
   /// `Adly Mansour`
   String get Adly_Mansour {
@@ -540,9 +746,20 @@ class S {
     );
   }
 
-  // skipped getter for the 'El-Haikstep' key
+  /// `El-Haikstep`
+  String get El_Haikstep {
+    return Intl.message('El-Haikstep', name: 'El_Haikstep', desc: '', args: []);
+  }
 
-  // skipped getter for the 'Omar_Ibn El-Khattab' key
+  /// `Omar Ibn El-Khattab`
+  String get Omar_Ibn_El_Khattab {
+    return Intl.message(
+      'Omar Ibn El-Khattab',
+      name: 'Omar_Ibn_El_Khattab',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Qebaa`
   String get Qebaa {
@@ -564,7 +781,15 @@ class S {
     return Intl.message('Nozha', name: 'Nozha', desc: '', args: []);
   }
 
-  // skipped getter for the 'El-Shams_Club' key
+  /// `El-Shams Club`
+  String get El_Shams_Club {
+    return Intl.message(
+      'El-Shams Club',
+      name: 'El_Shams_Club',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Alf Masken`
   String get Alf_Masken {
@@ -581,9 +806,20 @@ class S {
     return Intl.message('Haroun', name: 'Haroun', desc: '', args: []);
   }
 
-  // skipped getter for the 'El-Ahram' key
+  /// `El-Ahram`
+  String get El_Ahram {
+    return Intl.message('El-Ahram', name: 'El_Ahram', desc: '', args: []);
+  }
 
-  // skipped getter for the 'Kolleyet_El-Banat' key
+  /// `Kolleyet El-Banat`
+  String get Kolleyet_El_Banat {
+    return Intl.message(
+      'Kolleyet El-Banat',
+      name: 'Kolleyet_El_Banat',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Stadium`
   String get Stadium {
@@ -595,16 +831,30 @@ class S {
     return Intl.message('Fair Zone', name: 'Fair_Zone', desc: '', args: []);
   }
 
-  // skipped getter for the 'El-Abassiya' key
+  /// `El-Abassiya`
+  String get El_Abassiya {
+    return Intl.message('El-Abassiya', name: 'El_Abassiya', desc: '', args: []);
+  }
 
   /// `Abdou Pasha`
   String get Abdou_Pasha {
     return Intl.message('Abdou Pasha', name: 'Abdou_Pasha', desc: '', args: []);
   }
 
-  // skipped getter for the 'El-Geish' key
+  /// `El-Geish`
+  String get El_Geish {
+    return Intl.message('El-Geish', name: 'El_Geish', desc: '', args: []);
+  }
 
-  // skipped getter for the 'Bab_El-Shaariya' key
+  /// `Bab El-Shaariya`
+  String get Bab_El_Shaariya {
+    return Intl.message(
+      'Bab El-Shaariya',
+      name: 'Bab_El_Shaariya',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Attaba`
   String get Attaba {
@@ -631,7 +881,10 @@ class S {
     );
   }
 
-  // skipped getter for the 'Kit-Kat' key
+  /// `Kit-Kat`
+  String get Kit_Kat {
+    return Intl.message('Kit-Kat', name: 'Kit_Kat', desc: '', args: []);
+  }
 
   /// `Sudan`
   String get Sudan {
@@ -643,9 +896,15 @@ class S {
     return Intl.message('Imbaba', name: 'Imbaba', desc: '', args: []);
   }
 
-  // skipped getter for the 'El-Bohy' key
+  /// `El-Bohy`
+  String get El_Bohy {
+    return Intl.message('El-Bohy', name: 'El_Bohy', desc: '', args: []);
+  }
 
-  // skipped getter for the 'El-Qawmia' key
+  /// `El-Qawmia`
+  String get El_Qawmia {
+    return Intl.message('El-Qawmia', name: 'El_Qawmia', desc: '', args: []);
+  }
 
   /// `Ring Road`
   String get Ring_Road {
@@ -667,11 +926,35 @@ class S {
     return Intl.message('Tawfikia', name: 'Tawfikia', desc: '', args: []);
   }
 
-  // skipped getter for the 'Wadi_El-Nile' key
+  /// `Wadi El-Nile`
+  String get Wadi_El_Nile {
+    return Intl.message(
+      'Wadi El-Nile',
+      name: 'Wadi_El_Nile',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Gamet_El-Dowel' key
+  /// `Gamet El-Dowel`
+  String get Gamet_El_Dowel {
+    return Intl.message(
+      'Gamet El-Dowel',
+      name: 'Gamet_El_Dowel',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'Boulak_El-Dakrour' key
+  /// `Boulak El-Dakrour`
+  String get Boulak_El_Dakrour {
+    return Intl.message(
+      'Boulak El-Dakrour',
+      name: 'Boulak_El_Dakrour',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

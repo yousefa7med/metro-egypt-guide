@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_metro/core/Helper/cashe_helper/cashe_helper.dart';
 import 'package:go_metro/core/config/configrations.dart';
 import 'package:go_metro/core/controllers/app_cubit/app_cubit.dart';
+import 'package:go_metro/core/observer.dart';
 import 'package:go_metro/core/utilities/app_theme.dart';
 
 import 'package:go_metro/generated/l10n.dart';
@@ -12,7 +13,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CasheHelper().init();
-
+  Bloc.observer = AppBlocObserver();
   runApp(
     BlocProvider(
       create: (context) => AppCubit()..init(),

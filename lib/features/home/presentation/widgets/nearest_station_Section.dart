@@ -61,7 +61,7 @@ class NearestStationSection extends StatelessWidget {
                           color: TripCubit.get(
                             context,
                           ).nearestStation!.lineColor!,
-                          station: TripCubit.get(context).nearestStation!.name!,
+                          station: TripCubit.get(context).nearestStation!.getStationName()!,
                         )
                       : SizedBox(height: 19.h);
                 }
