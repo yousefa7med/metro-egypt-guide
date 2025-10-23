@@ -184,19 +184,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "routeDetails": MessageLookupByLibrary.simpleMessage("Route Details"),
     "selectLang": MessageLookupByLibrary.simpleMessage("Select your language"),
     "startStation": MessageLookupByLibrary.simpleMessage("Start Station"),
+    "station": MessageLookupByLibrary.simpleMessage("Station"),
     "to": MessageLookupByLibrary.simpleMessage("To"),
     "transferBetween12": MessageLookupByLibrary.simpleMessage(
-      "is Transfer station between Line 1 and Line 2",
+      "is Transfer station between\nLine 1 and Line 2",
     ),
     "transferBetween13": MessageLookupByLibrary.simpleMessage(
-      "is Transfer station between Line 1 and Line 3",
+      "is Transfer station between\nLine 1 and Line 3",
     ),
     "transferBetween23": MessageLookupByLibrary.simpleMessage(
-      "is Transfer station between Line 2 and Line 3",
+      "is Transfer station between\nLine 2 and Line 3",
     ),
     "transferBetween33": MessageLookupByLibrary.simpleMessage(
-      "is Transfer station between imbaba branch and cairo Uni branch",
+      "is Transfer station between\nimbaba branch and cairo Uni branch",
     ),
+    "transferFrom": MessageLookupByLibrary.simpleMessage("Transfer From"),
     "tripInfo": MessageLookupByLibrary.simpleMessage("Trip Information"),
   };
 }

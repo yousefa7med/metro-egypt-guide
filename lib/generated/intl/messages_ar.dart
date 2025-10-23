@@ -154,19 +154,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "routeDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطريق"),
     "selectLang": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
     "startStation": MessageLookupByLibrary.simpleMessage("محطة البداية"),
+    "station": MessageLookupByLibrary.simpleMessage("محطة"),
     "to": MessageLookupByLibrary.simpleMessage("الى"),
     "transferBetween12": MessageLookupByLibrary.simpleMessage(
-      "محطة تبادلية بين الخط الاول والثاني",
+      "هي محطة تبادلية بين الخط الاول والثاني",
     ),
     "transferBetween13": MessageLookupByLibrary.simpleMessage(
-      "محطة تبادلية بين الخط الاول والثالث",
+      "هي محطة تبادلية بين الخط الاول والثالث",
     ),
     "transferBetween23": MessageLookupByLibrary.simpleMessage(
-      "محطة تبادلية بين الخط الثاني والثالث",
+      "هي محطة تبادلية بين الخط الثاني والثالث",
     ),
     "transferBetween33": MessageLookupByLibrary.simpleMessage(
-      "محطة تبادلية بين فرع امبابة وفرع جامعة القاهرة",
+      "محطة تبادلية بين إتجاه امبابة و إتجاه جامعة القاهرة",
     ),
+    "transferFrom": MessageLookupByLibrary.simpleMessage("حول من"),
     "tripInfo": MessageLookupByLibrary.simpleMessage("معلومات الرحلة"),
   };
 }

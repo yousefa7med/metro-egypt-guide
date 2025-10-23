@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:go_metro/core/Helper/functions/app_dialog.dart';
 import 'package:go_metro/core/Helper/functions/functions.dart';
 import 'package:go_metro/core/Helper/functions/show_snackBer.dart';
 import 'package:go_metro/core/errors/app_exeption.dart';
-import 'package:go_metro/core/navigations/navigations.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
 import 'package:go_metro/core/utilities/app_font_family.dart';
 import 'package:go_metro/core/utilities/app_text_style.dart';
@@ -40,7 +38,6 @@ class NearestStationSection extends StatelessWidget {
                     curr is PositionLoadingState;
               },
               builder: (context, state) {
-      
                 if (state is PositionLoadingState) {
                   return SizedBox(
                     height: 19.h,
@@ -61,7 +58,9 @@ class NearestStationSection extends StatelessWidget {
                           color: TripCubit.get(
                             context,
                           ).nearestStation!.lineColor!,
-                          station: TripCubit.get(context).nearestStation!.getStationName()!,
+                          station: TripCubit.get(
+                            context,
+                          ).nearestStation!.getStationName()!,
                         )
                       : SizedBox(height: 19.h);
                 }
@@ -90,24 +89,7 @@ class NearestStationSection extends StatelessWidget {
                         context,
                       ).getNearestStation(userPressed: true);
                     } on TripDetailsException catch (e) {
-                      appDialog(
-                        context: context,
-                        msg: e.message,
-                        onPressed: () async {
-                          if (S.of(context).LocationPermissionRequired ==
-                              e.message) {
-                            await Geolocator.requestPermission();
-                          } else if (S.of(context).PleaseOpenLocation ==
-                              e.message) {
-                            AppNavigation.pop(context: context);
-                            await Geolocator.openLocationSettings();
-                          } else if (S.of(context).LocationPermanentlyDenied ==
-                              e.message) {
-                            await Geolocator.openAppSettings();
-                          }
-                          Navigator.pop(context);
-                        },
-                      );
+                      appDialog(context: context, msg: e.message);
                     }
                   },
                 ),

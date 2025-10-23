@@ -70,7 +70,6 @@ class _ChangeLangColumnState extends State<ChangeLangColumn> {
                 isAarbic = false;
               });
               await AppCubit.get(context).setLang('en');
-
             }
           },
         ),
@@ -85,7 +84,6 @@ class _ChangeLangColumnState extends State<ChangeLangColumn> {
                 isAarbic = true;
               });
               await AppCubit.get(context).setLang('ar');
-
             }
           },
         ),

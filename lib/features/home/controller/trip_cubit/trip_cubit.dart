@@ -324,12 +324,14 @@ class TripCubit extends Cubit<TripState> {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        TripDetailsException(message: S.current.LocationPermissionRequired);
+        throw TripDetailsException(
+          message: S.current.LocationPermissionRequired,
+        );
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      TripDetailsException(message: S.current.LocationPermanentlyDenied);
+      throw TripDetailsException(message: S.current.LocationPermanentlyDenied);
     }
 
     return await Geolocator.getCurrentPosition();

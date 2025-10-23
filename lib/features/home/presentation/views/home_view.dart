@@ -6,7 +6,6 @@ import 'package:go_metro/core/utilities/app_font_family.dart';
 import 'package:go_metro/core/utilities/app_text_style.dart';
 
 import 'package:go_metro/core/widgets/costum_app_bar.dart';
-import 'package:go_metro/features/home/controller/trip_cubit/trip_cubit.dart';
 
 import 'package:go_metro/features/home/presentation/widgets/find_route_section.dart';
 import 'package:go_metro/features/home/presentation/widgets/nearest_station_Section.dart';
@@ -17,8 +16,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("rebuild home view");
-    TripCubit.get(context).init();
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();

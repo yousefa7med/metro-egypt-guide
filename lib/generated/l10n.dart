@@ -59,6 +59,11 @@ class S {
     return Intl.message('Metro Guide', name: 'metroGuide', desc: '', args: []);
   }
 
+  /// `Station`
+  String get station {
+    return Intl.message('Station', name: 'station', desc: '', args: []);
+  }
+
   /// `Nearest Station`
   String get nearestStation {
     return Intl.message(
@@ -281,6 +286,16 @@ class S {
     return Intl.message('Transfer', name: 'Transfer', desc: '', args: []);
   }
 
+  /// `Transfer From`
+  String get transferFrom {
+    return Intl.message(
+      'Transfer From',
+      name: 'transferFrom',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Back To Home`
   String get backToHome {
     return Intl.message('Back To Home', name: 'backToHome', desc: '', args: []);
@@ -306,40 +321,40 @@ class S {
     return Intl.message('To', name: 'to', desc: '', args: []);
   }
 
-  /// `is Transfer station between Line 1 and Line 2`
+  /// `is Transfer station between\nLine 1 and Line 2`
   String get transferBetween12 {
     return Intl.message(
-      'is Transfer station between Line 1 and Line 2',
+      'is Transfer station between\nLine 1 and Line 2',
       name: 'transferBetween12',
       desc: '',
       args: [],
     );
   }
 
-  /// `is Transfer station between Line 1 and Line 3`
+  /// `is Transfer station between\nLine 1 and Line 3`
   String get transferBetween13 {
     return Intl.message(
-      'is Transfer station between Line 1 and Line 3',
+      'is Transfer station between\nLine 1 and Line 3',
       name: 'transferBetween13',
       desc: '',
       args: [],
     );
   }
 
-  /// `is Transfer station between Line 2 and Line 3`
+  /// `is Transfer station between\nLine 2 and Line 3`
   String get transferBetween23 {
     return Intl.message(
-      'is Transfer station between Line 2 and Line 3',
+      'is Transfer station between\nLine 2 and Line 3',
       name: 'transferBetween23',
       desc: '',
       args: [],
     );
   }
 
-  /// `is Transfer station between imbaba branch and cairo Uni branch`
+  /// `is Transfer station between\nimbaba branch and cairo Uni branch`
   String get transferBetween33 {
     return Intl.message(
-      'is Transfer station between imbaba branch and cairo Uni branch',
+      'is Transfer station between\nimbaba branch and cairo Uni branch',
       name: 'transferBetween33',
       desc: '',
       args: [],
