@@ -23,6 +23,8 @@ class DetailsSection extends StatelessWidget {
   final int stationCount;
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     return AppCard(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -30,7 +32,7 @@ class DetailsSection extends StatelessWidget {
           children: [
             AlignText(
               child: Text(
-                S.of(context).tripInfo,
+             s.tripInfo,
                 style: AppTextStyle.semiBold16.copyWith(
                   fontFamily: AppFontFamily.inter,
                 ),
@@ -51,23 +53,23 @@ class DetailsSection extends StatelessWidget {
                 InfoContainer(
                   color: AppColor.line2Color,
                   icon: Icons.schedule,
-                  data: "$time ${S.of(context).min}",
+                  data: "$time ${s.min}",
                 ),
                 InfoContainer(
                   color: AppColor.line3Color,
                   icon: Icons.payments,
-                  data: "$price ${S.of(context).EGY}",
+                  data: "$price ${s.EGY}",
                 ),
                 InfoContainer(
                   color: AppColor.line1Color,
                   icon: Icons.call_split,
-                  data: "$transfer ${S.of(context).Transfer}",
+                  data: "$transfer ${s.Transfer}",
                 ),
 
                 InfoContainer(
                   color: AppColor.line2Color,
                   icon: Icons.train,
-                  data: "$stationCount ${S.of(context).station}",
+                  data: "$stationCount ${s.station}",
                 ),
               ],
             ),

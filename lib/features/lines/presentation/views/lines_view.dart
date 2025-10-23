@@ -14,10 +14,12 @@ class LinesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     return Scaffold(
       appBar: CostumAppBar(
         title: Text(
-          S.of(context).Lines,
+        s.Lines,
           style: AppTextStyle.regular20.copyWith(
             color: Colors.white,
 
@@ -41,8 +43,8 @@ class LinesView extends StatelessWidget {
             AppCard(
               child: Column(
                 children: [
-                  LineViewer(line: line1.stations, name: S.of(context).Line1),
-                  LineViewer(line: line2.stations, name: S.of(context).Line2),
+                  LineViewer(line: line1.stations, name: s.Line1),
+                  LineViewer(line: line2.stations, name: s.Line2),
                   LineViewer(
                     line: [
                       ...line3Main.stations,
@@ -53,7 +55,7 @@ class LinesView extends StatelessWidget {
                         (e) => e.name != kitKat.name,
                       ),
                     ],
-                    name: S.of(context).Line3,
+                    name: s.Line3,
                   ),
                 ],
               ),

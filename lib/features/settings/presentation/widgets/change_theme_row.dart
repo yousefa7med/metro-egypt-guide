@@ -20,6 +20,8 @@ class _ChangeThemeRowState extends State<ChangeThemeRow> {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     isLight = Theme.of(context).brightness == Brightness.light;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -30,7 +32,7 @@ class _ChangeThemeRowState extends State<ChangeThemeRow> {
             color: Colors.amber,
             size: 34,
           ),
-          themeType: S.of(context).Light,
+          themeType: s.Light,
           onTap: () async {
             setState(() {
               isLight = true;
@@ -46,7 +48,7 @@ class _ChangeThemeRowState extends State<ChangeThemeRow> {
             size: 34,
             color: Colors.blue,
           ),
-          themeType: S.of(context).Dark,
+          themeType: s.Dark,
 
           onTap: () async {
             setState(() {

@@ -20,6 +20,8 @@ class FindRouteSection extends StatelessWidget {
   const FindRouteSection({super.key});
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     return BlocListener<AppCubit, AppState>(
       listener: (context, state) {
         if (state is LocalizationChangesState) {
@@ -40,29 +42,29 @@ class FindRouteSection extends StatelessWidget {
                 children: [
                   AlignText(
                     child: Text(
-                      S.of(context).FindRoute,
+                     s.FindRoute,
                       style: AppTextStyle.semiBold16.copyWith(
                         fontFamily: AppFontFamily.inter,
                       ),
                     ),
                   ),
                   const Gap(10),
-                  AlignText(child: Text(S.of(context).startStation)),
+                  AlignText(child: Text(s.startStation)),
                   const Gap(10),
                   AppDropdownMenu(
                     controller: TripCubit.get(context).startStationController,
-                    hintText: S.of(context).startStation,
+                    hintText: s.startStation,
                     dropdownMenuEntry: TripCubit.get(context).startStationList,
                     onSelected: TripCubit.get(
                       context,
                     ).startStationsOnSelectedFunction(context: context),
                   ),
                   const Gap(10),
-                  AlignText(child: Text(S.of(context).finalStation)),
+                  AlignText(child: Text(s.finalStation)),
                   const Gap(10),
                   AppDropdownMenu(
                     controller: TripCubit.get(context).finalStationController,
-                    hintText: S.of(context).finalStation,
+                    hintText: s.finalStation,
                     dropdownMenuEntry: TripCubit.get(context).finalStationList,
                     onSelected: TripCubit.get(
                       context,
@@ -90,7 +92,7 @@ class FindRouteSection extends StatelessWidget {
                       }
                     },
                     child: Text(
-                      S.of(context).FindRoute,
+                   s.FindRoute,
                       style: AppTextStyle.regular16.copyWith(
                         fontFamily: AppFontFamily.inter,
                       ),

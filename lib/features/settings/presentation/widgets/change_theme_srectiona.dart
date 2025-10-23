@@ -14,6 +14,8 @@ class ChangeThemeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     return AppCard(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -28,8 +30,8 @@ class ChangeThemeSection extends StatelessWidget {
                 ),
                 backgroundColorIcon: AppColor.themeIconColor.withAlpha(29),
               ),
-              title: S.of(context).Theme,
-              subTitle: S.of(context).preTheme,
+              title: s.Theme,
+              subTitle: s.preTheme,
             ),
             const Gap(20),
             const ChangeThemeRow(),

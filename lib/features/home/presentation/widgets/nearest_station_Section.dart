@@ -19,12 +19,14 @@ class NearestStationSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     return AppCard(
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: ListTile(
           title: Text(
-            S.of(context).nearestStation,
+    s.nearestStation,
             style: AppTextStyle.semiBold18.copyWith(
               fontFamily: AppFontFamily.inter,
             ),
@@ -83,7 +85,7 @@ class NearestStationSection extends StatelessWidget {
                     size: 28,
                   ),
                   onPressed: () async {
-                    showSnackBar(context, S.of(context).pleaseWait);
+                    showSnackBar(context,s.pleaseWait);
                     try {
                       await TripCubit.get(
                         context,

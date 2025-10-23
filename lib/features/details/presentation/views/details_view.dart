@@ -22,13 +22,15 @@ class DetailsView extends StatelessWidget {
   const DetailsView({super.key});
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     final TripDetailsModel details =
         ModalRoute.of(context)!.settings.arguments as TripDetailsModel;
     return Scaffold(
       appBar: CostumAppBar(
         backArrow: true,
         title: Text(
-          S.of(context).routeDetails,
+          s.routeDetails,
           style: AppTextStyle.regular20.copyWith(
             color: Colors.white,
             fontFamily: AppFontFamily.inter,
@@ -90,7 +92,7 @@ class DetailsView extends StatelessWidget {
                               StationRow(
                                 color: details.routes[index].last.lineColor!,
                                 station:
-                                    "${S.of(context).transferFrom} ${details.routes[index].last.getStationName()}",
+                                    "${s.transferFrom} ${details.routes[index].last.getStationName()}",
                               ),
 
                               AlignText(
@@ -120,7 +122,7 @@ class DetailsView extends StatelessWidget {
                     AppNavigation.pop(context: context);
                   },
                   child: Text(
-                    S.of(context).backToHome,
+                    s.backToHome,
                     style: AppTextStyle.regular16.copyWith(
                       fontFamily: AppFontFamily.inter,
                     ),

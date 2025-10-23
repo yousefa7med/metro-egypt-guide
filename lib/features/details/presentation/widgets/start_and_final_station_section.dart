@@ -24,20 +24,22 @@ class StartAndFinalStationSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     return AppCard(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             StationContainer(
-              title: S.of(context).from,
+              title: s.from,
               station: start,
               color: startColor,
               line: startLine,
             ),
             const Gap(15),
             StationContainer(
-              title: S.of(context).to,
+              title: s.to,
               station: end,
               color: lastColor,
               line: lastLine,

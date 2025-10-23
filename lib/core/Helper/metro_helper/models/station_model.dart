@@ -43,14 +43,15 @@ class StationModel {
   }
 
   static String getLine(Color lineColor, BuildContext context) {
+    final s = S.of(context);
     if (AppColor.line1Color == lineColor) {
-      return S.of(context).Line1;
+      return s.Line1;
     } else if (AppColor.line2Color == lineColor) {
-      return S.of(context).Line2;
+      return s.Line2;
     } else if (AppColor.line3Color == lineColor) {
-      return S.of(context).Line3;
+      return s.Line3;
     }
-    return S.of(context).Line3;
+    return s.Line3;
   }
 
   String? getStationName() {
