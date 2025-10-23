@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_metro/core/utilities/app_text_style.dart';
 
 class InfoContainer extends StatelessWidget {
@@ -15,8 +14,7 @@ class InfoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80.h,
-      width: 90.w,
+
       decoration: BoxDecoration(
         color: color.withAlpha(29),
         borderRadius: BorderRadius.circular(16),
@@ -24,8 +22,8 @@ class InfoContainer extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Icon(icon, color: color, size: 28),
-          Text(data, style: AppTextStyle.semiBold14.copyWith(color: color)),
+          Icon(icon, color: color, size: 32),
+          Text(data, style: AppTextStyle.semiBold16.copyWith(color: color)),
         ],
       ),
     );

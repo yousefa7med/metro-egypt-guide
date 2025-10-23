@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
 import 'package:go_metro/core/utilities/app_font_family.dart';
@@ -14,10 +15,12 @@ class DetailsSection extends StatelessWidget {
     required this.time,
     required this.price,
     required this.transfer,
+    required this.stationCount,
   });
   final int time;
   final int price;
   final int transfer;
+  final int stationCount;
   @override
   Widget build(BuildContext context) {
     return AppCard(
@@ -34,27 +37,44 @@ class DetailsSection extends StatelessWidget {
               ),
             ),
             const Gap(10),
-            Row(
+            GridView(
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 25,
+                crossAxisSpacing: 25,
+                childAspectRatio: (4.6 / 4).r,
+              ),
               children: [
                 InfoContainer(
-                  color: AppColor.line1Color,
+                  color: AppColor.line2Color,
                   icon: Icons.schedule,
                   data: "$time ${S.of(context).min}",
                 ),
-                const Gap(15),
                 InfoContainer(
-                  color: AppColor.primaryColor,
+                  color: AppColor.line3Color,
                   icon: Icons.payments,
                   data: "$price ${S.of(context).EGY}",
                 ),
-                const Gap(15),
                 InfoContainer(
-                  color: AppColor.line3Color,
+                  color: AppColor.line1Color,
                   icon: Icons.call_split,
                   data: "$transfer ${S.of(context).Transfer}",
                 ),
+
+                InfoContainer(
+                  color: AppColor.line2Color,
+                  icon: Icons.train,
+                  data: "$stationCount ${S.of(context).station}",
+                ),
               ],
             ),
+
+            // Row(
+
+            // ),
           ],
         ),
       ),

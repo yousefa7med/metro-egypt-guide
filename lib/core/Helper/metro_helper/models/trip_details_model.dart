@@ -140,9 +140,9 @@ class TripDetailsModel {
 
   String? getStationName(Station stationT) {
     String station;
-   stationT == Station.start ?
-       station = startStation ?? "" :  station = finalStation ?? "";
-    
+    stationT == Station.start
+        ? station = startStation ?? ""
+        : station = finalStation ?? "";
 
     final s = S.current;
 
