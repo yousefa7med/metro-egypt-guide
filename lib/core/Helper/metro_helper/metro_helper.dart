@@ -5,6 +5,7 @@ import 'package:go_metro/core/Helper/metro_helper/models/line_model.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
 import 'package:go_metro/core/errors/app_exeption.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
+import 'package:go_metro/generated/l10n.dart';
 
 final List<String> allStations = [
   "Helwan",
@@ -92,16 +93,16 @@ final List<String> allStations = [
   "Gamet El-Dowel",
   "Boulak El-Dakrour",
 ];
- final List<LineModel> allLine = [
-    line1,
-    line2,
-    line3Main,
-    line3Branch1,
-    line3Branch2,
-  ];
+final List<LineModel> allLine = [
+  line1,
+  line2,
+  line3Main,
+  line3Branch1,
+  line3Branch2,
+];
+
 class Metro {
   TripDetailsModel details = TripDetailsModel();
- 
 
   Metro._internal();
   static final Metro _instance = Metro._internal();
@@ -115,9 +116,7 @@ class Metro {
     List<StationModel> path = _findShortestPath(start, end);
 
     if (path.isEmpty) {
-      throw TripDetailsException(
-        message: "لم يتم العثور على مسار بين $start و $end",
-      );
+      throw TripDetailsException(message: S.current.checkDetails);
     }
 
     // تقسيم المسار إلى routes و directions
@@ -126,6 +125,7 @@ class Metro {
     // تحديث التفاصيل
     details.startStation = start;
     details.finalStation = end;
+    details.directions.remove(details.directions.first);
     details.calcStationCount(path.length);
     details.calcTicketPrice(path.length);
     details.calcTransfer();
@@ -283,7 +283,7 @@ class Metro {
     return bestPath.isEmpty ? bestPaths[0] : bestPath;
   }
 
-  // تقسيم المسار إلى routes و directions مع استثناء Kit-Kat
+  // تقسيم المسار إلى routes و directions مع استثناء Kit-Kat والتعامل مع المحطة الأخيرة
   void _processPath(List<StationModel> path) {
     if (path.isEmpty) return;
 
@@ -301,9 +301,49 @@ class Metro {
       // التحقق من ما إذا كان يجب التقسيم أم لا
       bool shouldSplit =
           nextLine != currentLine &&
-              (prevStation.name != "Kit-Kat" ||
-                  _isBranch1ToBranch2(currentLine, nextLine)) ||
-          i == path.length - 1;
+          (prevStation.name != "Kit-Kat" ||
+              _isBranch1ToBranch2(currentLine, nextLine));
+
+      // التحقق من المحطة الأخيرة
+      if (i == path.length - 1) {
+        // جلب الخطوط التي تحتوي على المحطة الأخيرة
+        var lastStationLines = allLine
+            .where(
+              (line) => line.stations.any((s) => s.name == currStation.name),
+            )
+            .toList();
+        bool isLastStationOnCurrentLine =
+            currentLine != null &&
+            lastStationLines.any((line) => line == currentLine);
+
+        // إذا كانت المحطة الأخيرة على خط مختلف
+        if (!isLastStationOnCurrentLine && lastStationLines.isNotEmpty) {
+          // إغلاق الـ route الحالي حتى المحطة قبل الأخيرة
+          if (currentRoute.length > 1 ||
+              (currentRoute.length == 1 && details.routes.isEmpty)) {
+            details.routes.add(List.from(currentRoute));
+            if (currentLine != null) {
+              details.directions.add(
+                _getDirection(
+                  currentLine,
+                  currentRoute.first.name!,
+                  currentRoute.last.name!,
+                ),
+              );
+            }
+          }
+          // إنشاء route جديد للمحطة الأخيرة
+          currentRoute = [currStation];
+          currentLine = lastStationLines.firstWhere(
+            (line) => line.stations.any((s) => s.name == currStation.name),
+          );
+          details.routes.add(List.from(currentRoute));
+          details.directions.add(
+            _getDirection(currentLine, currStation.name!, currStation.name!),
+          );
+          continue;
+        }
+      }
 
       if (shouldSplit) {
         if (i == path.length - 1) {
