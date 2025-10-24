@@ -1,7 +1,9 @@
 {
     "metroGuide":"Metro Guide",
     "station":"Station",
-
+"enableLocation":"Enable Location",
+"cancel":"Cancel",
+"openSettings":"Open Settings",
     "nearestStation":"Nearest Station",
     "startStation":"Start Station",
     "finalStation":"Final Station",

@@ -64,6 +64,31 @@ class S {
     return Intl.message('Station', name: 'station', desc: '', args: []);
   }
 
+  /// `Enable Location`
+  String get enableLocation {
+    return Intl.message(
+      'Enable Location',
+      name: 'enableLocation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Open Settings`
+  String get openSettings {
+    return Intl.message(
+      'Open Settings',
+      name: 'openSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Nearest Station`
   String get nearestStation {
     return Intl.message(

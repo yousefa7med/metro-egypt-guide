@@ -140,15 +140,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "backToHome": MessageLookupByLibrary.simpleMessage(
       "العودة للصفحة الرئيسية",
     ),
+    "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "checkDetails": MessageLookupByLibrary.simpleMessage(
       "يرجي التأكد من محطة البداية والنهاية",
     ),
+    "enableLocation": MessageLookupByLibrary.simpleMessage("تفعيل الموقع"),
     "finalStation": MessageLookupByLibrary.simpleMessage("محطة النهاية"),
     "from": MessageLookupByLibrary.simpleMessage("من"),
     "lang": MessageLookupByLibrary.simpleMessage("اللغة"),
     "metroGuide": MessageLookupByLibrary.simpleMessage("مرشد المترو "),
     "min": MessageLookupByLibrary.simpleMessage("دقيقة"),
     "nearestStation": MessageLookupByLibrary.simpleMessage("اقرب محطة"),
+    "openSettings": MessageLookupByLibrary.simpleMessage("فتح الاعدادات"),
     "pleaseWait": MessageLookupByLibrary.simpleMessage("الرجاء الانتظار"),
     "preTheme": MessageLookupByLibrary.simpleMessage("اختر الثيم الذي تفضله"),
     "routeDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطريق"),

@@ -168,15 +168,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "Wadi_Hof": MessageLookupByLibrary.simpleMessage("Wadi Hof"),
     "addToFav": MessageLookupByLibrary.simpleMessage("Add To Favourite"),
     "backToHome": MessageLookupByLibrary.simpleMessage("Back To Home"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "checkDetails": MessageLookupByLibrary.simpleMessage(
       "Please check your start station and final station",
     ),
+    "enableLocation": MessageLookupByLibrary.simpleMessage("Enable Location"),
     "finalStation": MessageLookupByLibrary.simpleMessage("Final Station"),
     "from": MessageLookupByLibrary.simpleMessage("From"),
     "lang": MessageLookupByLibrary.simpleMessage("Language"),
     "metroGuide": MessageLookupByLibrary.simpleMessage("Metro Guide"),
     "min": MessageLookupByLibrary.simpleMessage("min"),
     "nearestStation": MessageLookupByLibrary.simpleMessage("Nearest Station"),
+    "openSettings": MessageLookupByLibrary.simpleMessage("Open Settings"),
     "pleaseWait": MessageLookupByLibrary.simpleMessage("Please Wait"),
     "preTheme": MessageLookupByLibrary.simpleMessage(
       "Choose your preferred theme",

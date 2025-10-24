@@ -3,7 +3,9 @@
     "nearestStation":"اقرب محطة",
     "station":"محطة",
     "transferFrom":"حول من",
-
+"enableLocation":"تفعيل الموقع",
+"cancel":"إلغاء",
+"openSettings":"فتح الاعدادات",
     "startStation":"محطة البداية",
     "finalStation":"محطة النهاية",
     "FindRoute":"ارني عن الطريق",
