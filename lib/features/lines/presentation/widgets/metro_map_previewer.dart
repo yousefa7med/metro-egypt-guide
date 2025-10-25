@@ -23,7 +23,7 @@ class MetroMapPreviewer extends StatelessWidget {
               ),
             ),
             child: Opacity(
-              opacity: 0.7,
+              opacity: 0.79,
               child: Image.asset(
                 Assets.imagesMetroMap,
                 width: 250,

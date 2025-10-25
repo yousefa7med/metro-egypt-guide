@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_metro/core/Helper/functions/functions.dart';
+import 'package:go_metro/core/controllers/app_cubit/app_cubit.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
 import 'package:go_metro/features/home/controller/trip_cubit/trip_cubit.dart';
 import 'package:go_metro/features/home/presentation/views/home_view.dart';
@@ -23,7 +24,13 @@ class MainView extends StatelessWidget {
           // color: Theme.of(context).colorScheme.surface,
         ),
       ),
-
+      onTabChanged: (value) {
+        if (value == 1) {
+          AppCubit.get(context).lineController1.collapse();
+          AppCubit.get(context).lineController2.collapse();
+          AppCubit.get(context).lineController3.collapse();
+        }
+      },
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset: true,
     );
