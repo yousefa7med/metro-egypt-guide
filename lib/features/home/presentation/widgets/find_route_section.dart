@@ -21,10 +21,11 @@ class FindRouteSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-
+    print('rebuild finddddddddddddddddddd');
     return BlocListener<AppCubit, AppState>(
       listener: (context, state) {
         if (state is LocalizationChangesState) {
+          print(" initttttttttttttttttttttttttttttttt");
           TripCubit.get(context).init();
         }
       },
@@ -42,7 +43,7 @@ class FindRouteSection extends StatelessWidget {
                 children: [
                   AlignText(
                     child: Text(
-                     s.FindRoute,
+                      s.FindRoute,
                       style: AppTextStyle.semiBold16.copyWith(
                         fontFamily: AppFontFamily.inter,
                       ),
@@ -92,7 +93,7 @@ class FindRouteSection extends StatelessWidget {
                       }
                     },
                     child: Text(
-                   s.FindRoute,
+                      s.FindRoute,
                       style: AppTextStyle.regular16.copyWith(
                         fontFamily: AppFontFamily.inter,
                       ),

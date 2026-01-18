@@ -26,7 +26,7 @@ class NearestStationSection extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: ListTile(
           title: Text(
-    s.nearestStation,
+            s.nearestStation,
             style: AppTextStyle.semiBold18.copyWith(
               fontFamily: AppFontFamily.inter,
             ),
@@ -41,19 +41,7 @@ class NearestStationSection extends StatelessWidget {
               },
               builder: (context, state) {
                 if (state is PositionLoadingState) {
-                  return SizedBox(
-                    height: 19.h,
-                    child: Align(
-                      alignment: isArabic()
-                          ? Alignment.centerRight
-                          : Alignment.centerLeft,
-
-                      child: Transform.scale(
-                        scale: 0.7,
-                        child: const CircularProgressIndicator(strokeWidth: 5),
-                      ),
-                    ),
-                  );
+                  return SizedBox(height: 19.h);
                 } else if (state is PositionSuccessState) {
                   return TripCubit.get(context).nearestStation != null
                       ? StationRow(
@@ -71,32 +59,47 @@ class NearestStationSection extends StatelessWidget {
             ),
           ),
 
-          trailing: Transform.scale(
-            scale: 1.23,
-            child: Padding(
-              padding: isArabic()
-                  ? const EdgeInsets.only(left: 8.0)
-                  : const EdgeInsets.only(right: 8.0),
-              child: AppIcon(
-                icon: IconButton(
-                  icon: const Icon(
-                    Icons.location_on,
-                    color: AppColor.primaryColor,
-                    size: 28,
-                  ),
-                  onPressed: () async {
-                    showSnackBar(context,s.pleaseWait);
-                    try {
-                      await TripCubit.get(
-                        context,
-                      ).getNearestStation(userPressed: true);
-                    } on TripDetailsException catch (e) {
-                      appDialog(context: context, msg: e.message);
-                    }
-                  },
-                ),
-                backgroundColorIcon: AppColor.primaryColor.withAlpha(29),
-              ),
+          trailing: Padding(
+            padding: isArabic()
+                ? const EdgeInsets.only(left: 8.0)
+                : const EdgeInsets.only(right: 8.0),
+            child: BlocBuilder<TripCubit, TripState>(
+              buildWhen: (prev, curr) {
+                return curr is PositionSuccessState ||
+                    curr is PositionLoadingState;
+              },
+              builder: (context, state) {
+                if (state is PositionLoadingState) {
+                  return Transform.scale(
+                    scale: 0.8,
+                    child: const CircularProgressIndicator(strokeWidth: 5),
+                  );
+                } else {
+                  return Transform.scale(
+                    scale: 1.23,
+                    child: AppIcon(
+                      icon: IconButton(
+                        icon: const Icon(
+                          Icons.location_on,
+                          color: AppColor.primaryColor,
+                          size: 28,
+                        ),
+                        onPressed: () async {
+                          showSnackBar(context, s.pleaseWait);
+                          try {
+                            await TripCubit.get(
+                              context,
+                            ).getNearestStation(userPressed: true);
+                          } on TripDetailsException catch (e) {
+                            appDialog(context: context, msg: e.message);
+                          }
+                        },
+                      ),
+                      backgroundColorIcon: AppColor.primaryColor.withAlpha(29),
+                    ),
+                  );
+                }
+              },
             ),
           ),
         ),

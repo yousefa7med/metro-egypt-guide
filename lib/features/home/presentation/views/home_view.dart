@@ -8,7 +8,7 @@ import 'package:go_metro/core/utilities/app_text_style.dart';
 import 'package:go_metro/core/widgets/costum_app_bar.dart';
 
 import 'package:go_metro/features/home/presentation/widgets/find_route_section.dart';
-import 'package:go_metro/features/home/presentation/widgets/nearest_station_Section.dart';
+import 'package:go_metro/features/home/presentation/widgets/nearest_station_section.dart';
 import 'package:go_metro/generated/l10n.dart';
 
 class HomeView extends StatelessWidget {

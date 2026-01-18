@@ -21,7 +21,6 @@ class MainView extends StatelessWidget {
         height: 58,
         navBarDecoration: NavBarDecoration(
           color: isDark(context) ? AppColor.darkSurface : Colors.white,
-          // color: Theme.of(context).colorScheme.surface,
         ),
       ),
       onTabChanged: (value) {

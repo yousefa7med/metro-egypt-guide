@@ -218,8 +218,8 @@ class TripCubit extends Cubit<TripState> {
   void init() {
     startStationList.clear();
     finalStationList.clear();
-    startStationController.text = '';
-    finalStationController.text = '';
+    startStationController.clear();
+    finalStationController.clear();
     if (isArabic()) {
       String localStation;
       for (var station in allStations) {
