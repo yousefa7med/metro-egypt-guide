@@ -21,11 +21,9 @@ class FindRouteSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-    print('rebuild finddddddddddddddddddd');
     return BlocListener<AppCubit, AppState>(
       listener: (context, state) {
         if (state is LocalizationChangesState) {
-          print(" initttttttttttttttttttttttttttttttt");
           TripCubit.get(context).init();
         }
       },

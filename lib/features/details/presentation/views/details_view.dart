@@ -97,7 +97,7 @@ class DetailsView extends StatelessWidget {
 
                               AlignText(
                                 child: Text(
-                                  "${details.routes[index].last.transferBetween} ",
+                                  "${details.routes[index].last.getStationName()} ${details.routes[index].last.transferBetween} ",
                                   style: AppTextStyle.medium14.copyWith(
                                     fontSize: 16,
                                     fontFamily: AppFontFamily.roboto,
@@ -130,7 +130,7 @@ class DetailsView extends StatelessWidget {
                 ),
               ),
 
-            Gap(15.h),
+              Gap(15.h),
             ],
           ),
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
 import 'package:go_metro/features/home/presentation/widgets/app_icon.dart';
+import 'package:go_metro/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatelessWidget {
@@ -12,18 +13,18 @@ class ContactUs extends StatelessWidget {
     return Column(
       spacing: 15,
       children: [
-         const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 48.0),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 48.0),
           child: Row(
             spacing: 10,
             children: [
-              Expanded(child: Divider(color: Colors.grey)),
+              const Expanded(child: Divider(color: Colors.grey)),
               Text(
-                'Contact Us',
-                style: TextStyle(fontSize: 14, color: Colors.grey),
+                S.of(context).contactUs,
+                style: const TextStyle(fontSize: 14, color: Colors.grey),
               ),
 
-              Expanded(child: Divider(color: Colors.grey)),
+              const Expanded(child: Divider(color: Colors.grey)),
             ],
           ),
         ),
@@ -36,7 +37,8 @@ class ContactUs extends StatelessWidget {
               icon: IconButton(
                 onPressed: () async {
                   await launchUrl(
-                    Uri.parse("https://www.linkedin.com/in/1youssef-ahmed/"),mode:LaunchMode.externalApplication,
+                    Uri.parse("https://www.linkedin.com/in/1youssef-ahmed/"),
+                    mode: LaunchMode.externalApplication,
                   );
                 },
                 icon: const Icon(FontAwesomeIcons.linkedin),
@@ -47,7 +49,10 @@ class ContactUs extends StatelessWidget {
               radius: 24,
               icon: IconButton(
                 onPressed: () async {
-                  await launchUrl(Uri.parse('https://github.com/yousefa7med'),mode:LaunchMode.externalApplication);
+                  await launchUrl(
+                    Uri.parse('https://github.com/yousefa7med'),
+                    mode: LaunchMode.externalApplication,
+                  );
                 },
                 icon: const Icon(FontAwesomeIcons.github),
               ),
@@ -59,7 +64,8 @@ class ContactUs extends StatelessWidget {
               icon: IconButton(
                 onPressed: () async {
                   await launchUrl(
-                    Uri.parse('mailto:youssefahmedserag@gmail.com'),mode:LaunchMode.externalApplication,
+                    Uri.parse('mailto:youssefahmedserag@gmail.com'),
+                    mode: LaunchMode.externalApplication,
                   );
                 },
                 icon: const Icon(FontAwesomeIcons.envelope),

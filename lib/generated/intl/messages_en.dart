@@ -172,6 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkDetails": MessageLookupByLibrary.simpleMessage(
       "Please check your start station and final station",
     ),
+    "contactUs": MessageLookupByLibrary.simpleMessage("Contact us"),
     "enableLocation": MessageLookupByLibrary.simpleMessage("Enable Location"),
     "finalStation": MessageLookupByLibrary.simpleMessage("Final Station"),
     "from": MessageLookupByLibrary.simpleMessage("From"),

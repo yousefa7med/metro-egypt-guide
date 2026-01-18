@@ -144,6 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkDetails": MessageLookupByLibrary.simpleMessage(
       "يرجي التأكد من محطة البداية والنهاية",
     ),
+    "contactUs": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
     "enableLocation": MessageLookupByLibrary.simpleMessage("تفعيل الموقع"),
     "finalStation": MessageLookupByLibrary.simpleMessage("محطة النهاية"),
     "from": MessageLookupByLibrary.simpleMessage("من"),

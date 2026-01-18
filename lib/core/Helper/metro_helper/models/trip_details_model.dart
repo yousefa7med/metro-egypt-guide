@@ -133,8 +133,9 @@ class TripDetailsModel {
   }
 
   void calcTime() {
+    time = 0;
     for (var route in routes) {
-      time = route[0].travellingTime! * route.length;
+      time += route[0].travellingTime! * route.length;
     }
   }
 

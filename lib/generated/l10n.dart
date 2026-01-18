@@ -166,6 +166,11 @@ class S {
     return Intl.message('Line 3', name: 'Line3', desc: '', args: []);
   }
 
+  /// `Contact us`
+  String get contactUs {
+    return Intl.message('Contact us', name: 'contactUs', desc: '', args: []);
+  }
+
   /// `Line Details`
   String get LineDetails {
     return Intl.message(
