@@ -1,10 +1,10 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CasheHelper {
+class CacheHelper {
   static late SharedPreferences sharedPreferences;
-  CasheHelper._internal();
-  static final CasheHelper _instance = CasheHelper._internal();
-  factory CasheHelper() => _instance;
+  CacheHelper._internal();
+  static final CacheHelper _instance = CacheHelper._internal();
+  factory CacheHelper() => _instance;
 
   Future<SharedPreferences> init() async {
     sharedPreferences = await SharedPreferences.getInstance();

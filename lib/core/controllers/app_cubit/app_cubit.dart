@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_metro/core/Helper/cashe_helper/cashe_helper.dart';
-import 'package:go_metro/core/Helper/cashe_helper/cashe_keys.dart';
+import 'package:go_metro/core/Helper/cashe_helper/cache_helper.dart';
+import 'package:go_metro/core/Helper/cashe_helper/cache_keys.dart';
 part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
@@ -29,7 +29,7 @@ class AppCubit extends Cubit<AppState> {
 
   Future<void> setTheme(ThemeModeState theme) async {
     currentTheme = theme;
-    await CasheHelper().saveData(key: CasheKeys.theme, value: theme.name);
+    await CacheHelper().saveData(key: CacheKeys.theme, value: theme.name);
     emit(ThemeChangesState());
   }
 
@@ -40,7 +40,7 @@ class AppCubit extends Cubit<AppState> {
 
   void _loadTheme() {
     String savedTheme =
-        CasheHelper().getData(CasheKeys.theme) as String? ?? "system";
+        CacheHelper().getData(CacheKeys.theme) as String? ?? "system";
 
     currentTheme = ThemeModeState.values.firstWhere(
       (e) => e.name == savedTheme,
@@ -54,13 +54,13 @@ class AppCubit extends Cubit<AppState> {
 
   Future<void> setLang(String lang) async {
     currentLang = lang;
-    await CasheHelper().saveData(key: CasheKeys.lang, value: currentLang);
+    await CacheHelper().saveData(key: CacheKeys.lang, value: currentLang);
     emit(LocalizationChangesState());
   }
 
   void _loadLang() {
     String savedLang =
-        CasheHelper().getData(CasheKeys.lang) as String? ??
+        CacheHelper().getData(CacheKeys.lang) as String? ??
         PlatformDispatcher.instance.locale.languageCode;
 
     switch (savedLang) {

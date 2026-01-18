@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_metro/core/Helper/cashe_helper/cashe_helper.dart';
+import 'package:go_metro/core/Helper/cashe_helper/cache_helper.dart';
 import 'package:go_metro/core/config/configrations.dart';
 import 'package:go_metro/core/controllers/app_cubit/app_cubit.dart';
 import 'package:go_metro/core/observer.dart';
@@ -12,7 +12,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await CasheHelper().init();
+  await CacheHelper().init();
   Bloc.observer = AppBlocObserver();
   runApp(
     BlocProvider(
