@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:go_metro/core/Helper/functions/functions.dart';
 import 'package:go_metro/core/Helper/functions/show_snackBer.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
 import 'package:go_metro/core/config/configrations.dart';
@@ -25,8 +26,8 @@ class FindRouteSection extends StatelessWidget {
     return BlocListener<AppCubit, AppState>(
       listenWhen: (previous, current) => current is LocalizationChangesState,
       listener: (context, state) {
-        print(" in listener  -->${AppCubit.get(context).isArabic}");
-        TripCubit.get(context).init(context);
+        print(" in listener  -->${isArabic()}");
+        TripCubit.get(context).init();
       },
       child: BlocBuilder<TripCubit, TripState>(
         buildWhen: (prev, curr) {
@@ -39,10 +40,10 @@ class FindRouteSection extends StatelessWidget {
 
           for (var element in TripCubit.get(context).startStationList) {
             log(element.label);
-            log('in builder-->   ${AppCubit.get(context).isArabic}');
+            log('in builder-->   ${isArabic()}');
           }
           print(
-            'in builderafter for  -->   ${AppCubit.get(context).isArabic}',
+            'in builderafter for  -->   ${isArabic()}',
           );
 
           return AppCard(
@@ -59,60 +60,60 @@ class FindRouteSection extends StatelessWidget {
                     ),
                   ),
                   const Gap(10),
-                  Text(s.startStation),
-                  const Gap(10),
-                  AppDropdownMenu(
-                    controller: TripCubit.get(context).startStationController,
-                    hintText: s.startStation,
+        Text(s.startStation),
+        const Gap(10),
+        AppDropdownMenu(
+          controller: TripCubit.get(context).startStationController,
+          hintText: s.startStation,
                     dropdownMenuEntry: TripCubit.get(context).startStationList,
                     onSelected: TripCubit.get(
                       context,
                     ).startStationsOnSelectedFunction(context: context),
-                  ),
-                  const Gap(10),
-                  Text(s.finalStation),
-                  const Gap(10),
-                  AppDropdownMenu(
-                    controller: TripCubit.get(context).finalStationController,
-                    hintText: s.finalStation,
+        ),
+        const Gap(10),
+        Text(s.finalStation),
+        const Gap(10),
+        AppDropdownMenu(
+          controller: TripCubit.get(context).finalStationController,
+          hintText: s.finalStation,
                     dropdownMenuEntry: TripCubit.get(context).finalStationList,
                     onSelected: TripCubit.get(
                       context,
                     ).finalStationsOnSelectedFunction(context: context),
-                  ),
-                  const Gap(30),
-                  AppButton(
-                    onPressed: () async {
-                      TripDetailsModel? details;
-                      try {
+        ),
+        const Gap(30),
+        AppButton(
+          onPressed: () async {
+            TripDetailsModel? details;
+            try {
                         details = TripCubit.get(context).getTripDetails();
-                        // await  Navigator.pushNamed(
-                        //     context,
-                        //     AppRoutes.detailsView,
-                        //     arguments: details,
-                        //   );
-                        AppNavigation.pushName(
-                          // rootNavigator: true,
-                          context: context,
-                          route: AppRoutes.detailsView,
-                          argument: details,
-                        );
-                      } on AppException catch (e) {
-                        showSnackBar(context, e.message);
-                      }
-                    },
-                    child: Text(
-                      s.FindRoute,
-                      style: AppTextStyle.regular16.copyWith(
-                        fontFamily: AppFontFamily.inter,
-                      ),
-                    ),
-                  ),
+              // await  Navigator.pushNamed(
+              //     context,
+              //     AppRoutes.detailsView,
+              //     arguments: details,
+              //   );
+              AppNavigation.pushName(
+                // rootNavigator: true,
+                context: context,
+                route: AppRoutes.detailsView,
+                argument: details,
+              );
+            } on AppException catch (e) {
+              showSnackBar(context, e.message);
+            }
+          },
+          child: Text(
+            s.FindRoute,
+            style: AppTextStyle.regular16.copyWith(
+              fontFamily: AppFontFamily.inter,
+            ),
+          ),
+        ),
                   const Gap(5),
                 ],
               ),
-            ),
-          );
+          ),
+        );
         },
       ),
     );
