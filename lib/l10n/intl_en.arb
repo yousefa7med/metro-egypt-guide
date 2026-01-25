@@ -17,7 +17,9 @@
     "Line2":"Line 2",
     "Line3":"Line 3",
 "contactUs":"Contact us",
-
+"favTrips":"Favourite Trips",
+"seeAll":"See All",
+"remfromFav":"Remove From Favourite",
     "LineDetails":"Line Details",
     "AllLines":"All Lines",
     "lang":"Language",

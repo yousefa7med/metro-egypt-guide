@@ -6,6 +6,7 @@ import 'package:go_metro/core/utilities/app_font_family.dart';
 import 'package:go_metro/core/utilities/app_text_style.dart';
 
 import 'package:go_metro/core/widgets/costum_app_bar.dart';
+// import 'package:go_metro/features/home/presentation/widgets/favourite_section.dart';
 
 import 'package:go_metro/features/home/presentation/widgets/find_route_section.dart';
 import 'package:go_metro/features/home/presentation/widgets/nearest_station_section.dart';
@@ -37,13 +38,15 @@ class HomeView extends StatelessWidget {
 
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+
+            spacing: 15,
             children: [
-              Gap(20),
+              Gap(5),
               NearestStationSection(),
-              Gap(15),
-              // DestinationSection(),
-              Gap(15),
+  
               FindRouteSection(),
+
+              // FavouriteSection(),
             ],
           ),
         ),

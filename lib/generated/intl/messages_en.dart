@@ -174,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "contactUs": MessageLookupByLibrary.simpleMessage("Contact us"),
     "enableLocation": MessageLookupByLibrary.simpleMessage("Enable Location"),
+    "favTrips": MessageLookupByLibrary.simpleMessage("Favourite Trips"),
     "finalStation": MessageLookupByLibrary.simpleMessage("Final Station"),
     "from": MessageLookupByLibrary.simpleMessage("From"),
     "lang": MessageLookupByLibrary.simpleMessage("Language"),
@@ -185,7 +186,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "preTheme": MessageLookupByLibrary.simpleMessage(
       "Choose your preferred theme",
     ),
+    "remfromFav": MessageLookupByLibrary.simpleMessage("Remove From Favourite"),
     "routeDetails": MessageLookupByLibrary.simpleMessage("Route Details"),
+    "seeAll": MessageLookupByLibrary.simpleMessage("See All"),
     "selectLang": MessageLookupByLibrary.simpleMessage("Select your language"),
     "startStation": MessageLookupByLibrary.simpleMessage("Start Station"),
     "station": MessageLookupByLibrary.simpleMessage("Station"),

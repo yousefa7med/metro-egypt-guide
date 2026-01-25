@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -9,7 +11,6 @@ import 'package:go_metro/core/errors/app_exeption.dart';
 import 'package:go_metro/core/navigations/navigations.dart';
 import 'package:go_metro/core/utilities/app_font_family.dart';
 import 'package:go_metro/core/utilities/app_text_style.dart';
-import 'package:go_metro/core/widgets/align_text.dart';
 import 'package:go_metro/core/widgets/app_button.dart';
 import 'package:go_metro/core/widgets/app_card.dart';
 import 'package:go_metro/core/widgets/app_dropdown_menu.dart';
@@ -22,33 +23,43 @@ class FindRouteSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = S.of(context);
     return BlocListener<AppCubit, AppState>(
+      listenWhen: (previous, current) => current is LocalizationChangesState,
       listener: (context, state) {
-        if (state is LocalizationChangesState) {
-          TripCubit.get(context).init();
-        }
+        print(" in listener  -->${AppCubit.get(context).isArabic}");
+        TripCubit.get(context).init(context);
       },
       child: BlocBuilder<TripCubit, TripState>(
         buildWhen: (prev, curr) {
           return curr is PositionSuccessState ||
-              curr is TripDetailsChangesState;
+              curr is TripDetailsChangesState ||
+              curr is TripInitialState;
         },
         builder: (context, state) {
+          print('find route re build');
+
+          for (var element in TripCubit.get(context).startStationList) {
+            log(element.label);
+            log('in builder-->   ${AppCubit.get(context).isArabic}');
+          }
+          print(
+            'in builderafter for  -->   ${AppCubit.get(context).isArabic}',
+          );
+
           return AppCard(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AlignText(
-                    child: Text(
-                      s.FindRoute,
-                      style: AppTextStyle.semiBold16.copyWith(
-                        fontFamily: AppFontFamily.inter,
-                      ),
+                  Text(
+                    s.FindRoute,
+                    style: AppTextStyle.semiBold16.copyWith(
+                      fontFamily: AppFontFamily.inter,
                     ),
                   ),
                   const Gap(10),
-                  AlignText(child: Text(s.startStation)),
+                  Text(s.startStation),
                   const Gap(10),
                   AppDropdownMenu(
                     controller: TripCubit.get(context).startStationController,
@@ -59,7 +70,7 @@ class FindRouteSection extends StatelessWidget {
                     ).startStationsOnSelectedFunction(context: context),
                   ),
                   const Gap(10),
-                  AlignText(child: Text(s.finalStation)),
+                  Text(s.finalStation),
                   const Gap(10),
                   AppDropdownMenu(
                     controller: TripCubit.get(context).finalStationController,
@@ -71,17 +82,17 @@ class FindRouteSection extends StatelessWidget {
                   ),
                   const Gap(30),
                   AppButton(
-                    onPressed: () {
+                    onPressed: () async {
                       TripDetailsModel? details;
                       try {
                         details = TripCubit.get(context).getTripDetails();
-
-                        for (var element in details.directions) {
-                          print(element.name);
-                        }
-
+                        // await  Navigator.pushNamed(
+                        //     context,
+                        //     AppRoutes.detailsView,
+                        //     arguments: details,
+                        //   );
                         AppNavigation.pushName(
-                          rootNavigator: true,
+                          // rootNavigator: true,
                           context: context,
                           route: AppRoutes.detailsView,
                           argument: details,

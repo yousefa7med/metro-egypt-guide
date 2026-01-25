@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
 import 'package:go_metro/generated/l10n.dart';
+import 'package:objectbox/objectbox.dart';
 
+@Entity()
 class TripDetailsModel {
+  @Id()
+  int id = 0;
   String? startStation;
   String? finalStation;
 

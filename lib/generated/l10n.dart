@@ -171,6 +171,31 @@ class S {
     return Intl.message('Contact us', name: 'contactUs', desc: '', args: []);
   }
 
+  /// `Favourite Trips`
+  String get favTrips {
+    return Intl.message(
+      'Favourite Trips',
+      name: 'favTrips',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See All`
+  String get seeAll {
+    return Intl.message('See All', name: 'seeAll', desc: '', args: []);
+  }
+
+  /// `Remove From Favourite`
+  String get remfromFav {
+    return Intl.message(
+      'Remove From Favourite',
+      name: 'remfromFav',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Line Details`
   String get LineDetails {
     return Intl.message(

@@ -4,7 +4,6 @@ import 'package:gap/gap.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
 import 'package:go_metro/core/utilities/app_font_family.dart';
 import 'package:go_metro/core/utilities/app_text_style.dart';
-import 'package:go_metro/core/widgets/align_text.dart';
 import 'package:go_metro/core/widgets/app_card.dart';
 import 'package:go_metro/features/details/presentation/widgets/info_container.dart';
 import 'package:go_metro/generated/l10n.dart';
@@ -29,13 +28,12 @@ class DetailsSection extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AlignText(
-              child: Text(
-             s.tripInfo,
-                style: AppTextStyle.semiBold16.copyWith(
-                  fontFamily: AppFontFamily.inter,
-                ),
+            Text(
+              s.tripInfo,
+              style: AppTextStyle.semiBold16.copyWith(
+                fontFamily: AppFontFamily.inter,
               ),
             ),
             const Gap(10),
