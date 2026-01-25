@@ -1,22 +1,17 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppButton extends StatelessWidget {
-  const AppButton({super.key, required this.onPressed, required this.child});
+  const AppButton({super.key, required this.onPressed, required this.child,this.style});
   final void Function() onPressed;
   final Widget child;
+ final ButtonStyle? style;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       height: 35.h,
-      child: ElevatedButton(
-       
-
-        onPressed: onPressed,
-        child: child,
-      ),
+      child: ElevatedButton(style: style, onPressed: onPressed, child: child),
     );
   }
 }

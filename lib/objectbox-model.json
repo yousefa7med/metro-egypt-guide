@@ -1,0 +1,62 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:7949484007253030855",
+      "lastPropertyId": "7:7106177291251770016",
+      "name": "TripDetailsModel",
+      "properties": [
+        {
+          "id": "1:8809862854439754622",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6124837144412894975",
+          "name": "startStation",
+          "type": 9
+        },
+        {
+          "id": "3:6302689968758583531",
+          "name": "finalStation",
+          "type": 9
+        },
+        {
+          "id": "4:5571798139807381854",
+          "name": "stationCount",
+          "type": 6
+        },
+        {
+          "id": "5:8636709145791095562",
+          "name": "time",
+          "type": 8
+        },
+        {
+          "id": "6:6692501342521473387",
+          "name": "ticketPrice",
+          "type": 6
+        },
+        {
+          "id": "7:7106177291251770016",
+          "name": "transfer",
+          "type": 6
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:7949484007253030855",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

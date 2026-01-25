@@ -1,3 +1,6 @@
+import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
+import 'package:go_metro/objectbox.g.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper {
@@ -29,4 +32,20 @@ class CacheHelper {
 
   Future<bool> removeData(String key) async =>
       await sharedPreferences.remove(key);
+}
+
+class ObjectBox {
+  late final Store store;
+  late final Box<TripDetailsModel> detailsBox;
+
+  // Singleton
+  static final ObjectBox _instance = ObjectBox._internal();
+  factory ObjectBox() => _instance;
+
+  ObjectBox._internal();
+
+  Future<void> init() async {
+    store = await openStore();
+    detailsBox = store.box<TripDetailsModel>();
+  }
 }

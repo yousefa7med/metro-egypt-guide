@@ -6,7 +6,7 @@ import 'package:go_metro/core/navigations/navigations.dart';
 
 import 'package:go_metro/core/utilities/app_font_family.dart';
 import 'package:go_metro/core/utilities/app_text_style.dart';
-import 'package:go_metro/core/widgets/align_text.dart';
+
 import 'package:go_metro/core/widgets/app_button.dart';
 import 'package:go_metro/core/widgets/app_card.dart';
 
@@ -47,8 +47,8 @@ class DetailsView extends StatelessWidget {
               const Gap(0.0005),
 
               StartAndFinalStationSection(
-                start: details.getStationName(Station.start)!,
-                end: details.getStationName(Station.last)!,
+                start: details.stationName(details.startStation!)!,
+                end: details.stationName(details.finalStation!)!,
                 startLine: TripDetailsModel.getLineByColor(
                   details.routes[0][0].lineColor!,
                 ),
@@ -87,6 +87,7 @@ class DetailsView extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             spacing: 10,
                             children: [
                               StationRow(
@@ -95,15 +96,13 @@ class DetailsView extends StatelessWidget {
                                     "${s.transferFrom} ${details.routes[index].last.getStationName()}",
                               ),
 
-                              AlignText(
-                                child: Text(
-                                  "${details.routes[index].last.getStationName()} ${details.routes[index].last.transferBetween} ",
-                                  style: AppTextStyle.medium14.copyWith(
-                                    fontSize: 16,
-                                    fontFamily: AppFontFamily.roboto,
-                                  ),
-                                  maxLines: 2,
+                              Text(
+                                "${details.routes[index].last.getStationName()} ${details.routes[index].last.transferBetween} ",
+                                style: AppTextStyle.medium14.copyWith(
+                                  fontSize: 16,
+                                  fontFamily: AppFontFamily.roboto,
                                 ),
+                                maxLines: 2,
                               ),
                             ],
                           ),
@@ -114,7 +113,10 @@ class DetailsView extends StatelessWidget {
                   );
                 },
               ),
-
+              // const Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: 16.0),
+              //   child: FavButton(),
+              // ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: AppButton(
@@ -138,3 +140,51 @@ class DetailsView extends StatelessWidget {
     );
   }
 }
+
+// class FavButton extends StatelessWidget {
+//   const FavButton({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final s = S.of(context);
+//     return BlocBuilder<TripCubit, TripState>(
+//       buildWhen: (previous, current) =>
+//           current is AddToFavoutiteState || current is RemoveFromFavoutiteState,
+//       builder: (context, state) {
+//         return OutlinedButton(
+//           style: OutlinedButton.styleFrom(
+//             side: const BorderSide(color: AppColor.primaryColor, width: 3),
+//             shape: RoundedRectangleBorder(
+//               borderRadius: BorderRadiusGeometry.circular(12),
+//             ),
+//           ),
+//           onPressed: () {
+//             // isFav = !isFav;
+//           },
+//           child: SizedBox(
+//             height: 35.h,
+//             child: Row(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               children: [
+//                 Icon(
+//                   TripCubit.get(context).isFav
+//                       ? Icons.star_outline
+//                       : Icons.star,
+//                   color: AppColor.primaryColor,
+//                   size: 26,
+//                 ),
+//                 const Gap(4),
+//                 Text(
+//                   TripCubit.get(context).isFav ? s.remfromFav : s.addToFav,
+//                   style: AppTextStyle.medium16.copyWith(
+//                     fontFamily: AppFontFamily.inter,
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         );
+//       },
+//     );
+//   }
+// }

@@ -12,6 +12,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await ObjectBox().init();
   await CacheHelper().init();
   Bloc.observer = AppBlocObserver();
   runApp(

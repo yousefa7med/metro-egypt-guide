@@ -16,7 +16,7 @@ class AppRouter {
         return pageRouteBuilderMethod(
           settings: settings,
           pageBuilder: (context, animation, secondaryAnimation) => BlocProvider(
-            create: (context) => TripCubit(),
+            create: (context) => TripCubit()..init(),
             child: const HomeView(),
           ),
         );
