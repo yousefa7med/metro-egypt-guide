@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_metro/core/Helper/functions/app_dialog.dart';
 import 'package:go_metro/core/Helper/functions/functions.dart';
 import 'package:go_metro/core/Helper/functions/show_snackBer.dart';
-import 'package:go_metro/core/errors/app_exeption.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
 import 'package:go_metro/core/utilities/app_font_family.dart';
 import 'package:go_metro/core/utilities/app_text_style.dart';
@@ -34,27 +33,36 @@ class NearestStationSection extends StatelessWidget {
 
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 10.0),
-            child: BlocBuilder<TripCubit, TripState>(
+            child: BlocConsumer<TripCubit, TripState>(
+              listenWhen: (previous, curr) =>
+                  curr is PositionFailureState || curr is PositionLoadingState,
+              listener: (context, state) {
+                switch (state) {
+                  case PositionLoadingState():
+                    showSnackBar(context, s.pleaseWait);
+                  case PositionFailureState(:final errMsg):
+                    appDialog(context: context, msg: errMsg);
+
+                  default:
+                }
+              },
               buildWhen: (prev, curr) {
                 return curr is PositionSuccessState ||
                     curr is PositionLoadingState;
               },
               builder: (context, state) {
-                if (state is PositionLoadingState) {
-                  return SizedBox(height: 19.h);
-                } else if (state is PositionSuccessState) {
-                  return TripCubit.get(context).nearestStation != null
-                      ? StationRow(
-                          color: TripCubit.get(
-                            context,
-                          ).nearestStation!.lineColor!,
-                          station: TripCubit.get(
-                            context,
-                          ).nearestStation!.getStationName()!,
-                        )
-                      : SizedBox(height: 19.h);
+                switch (state) {
+                  case PositionLoadingState():
+                    return SizedBox(height: 19.h);
+                  case PositionSuccessState(:final nearestStation):
+                    return StationRow(
+                      color: nearestStation.lineColor!,
+                      station: nearestStation.getStationName()!,
+                    );
+
+                  default:
+                    return SizedBox(height: 19.h);
                 }
-                return SizedBox(height: 19.h);
               },
             ),
           ),
@@ -85,14 +93,7 @@ class NearestStationSection extends StatelessWidget {
                           size: 28,
                         ),
                         onPressed: () async {
-                          showSnackBar(context, s.pleaseWait);
-                          try {
-                            await TripCubit.get(
-                              context,
-                            ).getNearestStation(userPressed: true);
-                          } on TripDetailsException catch (e) {
-                            appDialog(context: context, msg: e.message);
-                          }
+                          await TripCubit.get(context).getNearestStation();
                         },
                       ),
                       backgroundColorIcon: AppColor.primaryColor.withAlpha(29),

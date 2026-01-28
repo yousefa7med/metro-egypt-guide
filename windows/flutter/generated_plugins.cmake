@@ -5,6 +5,7 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   flutter_localization
   geolocator_windows
+  objectbox_flutter_libs
   url_launcher_windows
 )
 

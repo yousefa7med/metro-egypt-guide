@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_metro/core/Helper/metro_helper/metro_helper.dart';
 import 'package:go_metro/core/transitions/page_route_builder_method.dart';
 import 'package:go_metro/features/details/presentation/views/details_view.dart';
 import 'package:go_metro/features/home/controller/trip_cubit/trip_cubit.dart';
@@ -16,7 +17,7 @@ class AppRouter {
         return pageRouteBuilderMethod(
           settings: settings,
           pageBuilder: (context, animation, secondaryAnimation) => BlocProvider(
-            create: (context) => TripCubit()..init(),
+            create: (context) => TripCubit(metro: Metro()),
             child: const HomeView(),
           ),
         );
