@@ -104,9 +104,7 @@ final List<LineModel> allLine = [
 class Metro {
   TripDetailsModel details = TripDetailsModel();
 
-  Metro._internal();
-  static final Metro _instance = Metro._internal();
-  factory Metro() => _instance;
+
 
   // الدالة الرئيسية لإيجاد تفاصيل الرحلة
   TripDetailsModel getTripDetails(String start, String end) {

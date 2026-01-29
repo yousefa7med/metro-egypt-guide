@@ -5,9 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper {
   static late SharedPreferences sharedPreferences;
-  CacheHelper._internal();
-  static final CacheHelper _instance = CacheHelper._internal();
-  factory CacheHelper() => _instance;
+
 
   Future<SharedPreferences> init() async {
     sharedPreferences = await SharedPreferences.getInstance();
@@ -34,15 +32,10 @@ class CacheHelper {
       await sharedPreferences.remove(key);
 }
 
-class ObjectBox {
+class ObjectBoxServices {
   late final Store store;
   late final Box<TripDetailsModel> detailsBox;
 
-  // Singleton
-  static final ObjectBox _instance = ObjectBox._internal();
-  factory ObjectBox() => _instance;
-
-  ObjectBox._internal();
 
   Future<void> init() async {
     store = await openStore();

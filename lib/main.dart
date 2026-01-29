@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_metro/core/Helper/cashe_helper/cache_helper.dart';
+import 'package:go_metro/core/Helper/metro_helper/metro_helper.dart';
 import 'package:go_metro/core/config/configrations.dart';
 import 'package:go_metro/core/controllers/app_cubit/app_cubit.dart';
 import 'package:go_metro/core/observer.dart';
 import 'package:go_metro/core/utilities/app_theme.dart';
+import 'package:go_metro/features/home/controller/trip_cubit/trip_cubit.dart';
 
 import 'package:go_metro/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
 
-  await ObjectBox().init();
-  await CacheHelper().init();
+  await getIt<ObjectBoxServices>().init();
+  await getIt<CacheHelper>().init();
   Bloc.observer = AppBlocObserver();
   runApp(
     BlocProvider(
@@ -60,4 +64,16 @@ class MetroGuide extends StatelessWidget {
       },
     );
   }
+}
+
+final getIt = GetIt.instance;
+
+void configureDependencies() {
+  // Register your services
+  getIt.registerSingleton<Metro>(Metro());
+  getIt.registerSingleton<CacheHelper>(CacheHelper());
+  getIt.registerSingleton<ObjectBoxServices>(ObjectBoxServices());
+  getIt.registerLazySingleton<TripCubit>(
+    () => TripCubit(metro: getIt<Metro>()),
+  );
 }

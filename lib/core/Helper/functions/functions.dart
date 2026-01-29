@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_metro/core/Helper/cashe_helper/cache_helper.dart';
 import 'package:go_metro/core/Helper/cashe_helper/cache_keys.dart';
 
 bool isArabic() {
-  return CacheHelper.sharedPreferences.get(CacheKeys.lang) == "ar";
+  return GetIt.instance<CacheHelper>().getData(CacheKeys.lang) == "ar";
 }
 
 bool isDark(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_metro/core/Helper/functions/functions.dart';
-import 'package:go_metro/core/Helper/metro_helper/metro_helper.dart';
 import 'package:go_metro/core/config/configrations.dart';
 import 'package:go_metro/core/controllers/app_cubit/app_cubit.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
@@ -57,7 +57,7 @@ List<PersistentTabConfig> _tabs(BuildContext context) => [
     //   routes: {AppRoutes.detailsView: (context) => const DetailsView()},
     // ),
     screen: BlocProvider(
-      create: (context) => TripCubit(metro: Metro()),
+      create: (context) => GetIt.instance<TripCubit>(),
       child: const HomeView(),
     ),
     item: ItemConfig(
