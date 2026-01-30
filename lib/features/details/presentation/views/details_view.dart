@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:go_metro/core/Helper/functions/functions.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
 import 'package:go_metro/core/navigations/navigations.dart';
 
@@ -114,7 +115,9 @@ class DetailsView extends StatelessWidget {
                     );
                   },
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: isArabic()
+                    ? const EdgeInsets.only(right: 16)
+                    : const EdgeInsets.only(left: 16),
               ),
             ],
 

@@ -23,10 +23,11 @@ class TripCubit extends Cubit<TripState> with StationNameMixin {
   final TextEditingController startStationController = TextEditingController();
   final TextEditingController finalStationController = TextEditingController();
 
-  TripDetailsModel getTripDetails() {
+  TripDetailsModel getTripDetails(String? start, String? end) {
     try {
-      final String start = startStationController.text.trim();
-      final String end = finalStationController.text.trim();
+      if (start == null || start.isEmpty || end == null || end.isEmpty) {
+        throw Exception();
+      }
       return metro.getTripDetails(start, end);
     } catch (e) {
       throw TripDetailsException(message: S.current.checkDetails);

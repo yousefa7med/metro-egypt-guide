@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:gap/gap.dart';
+import 'package:go_metro/core/Helper/functions/functions.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/line_model.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
 import 'package:go_metro/core/utilities/app_font_family.dart';
@@ -93,7 +94,9 @@ class _LineViewerState extends State<LineViewer> {
           duration: const Duration(milliseconds: 650),
           sliver: isExpanded1
               ? SliverPadding(
-                  padding: const EdgeInsets.only(right: 16, left: 36),
+                  padding: isArabic()
+                      ? const EdgeInsets.only(left: 16, right: 36)
+                      : const EdgeInsets.only(right: 16, left: 36),
                   sliver: SliverList.builder(
                     itemCount: line1.stations.length,
                     itemBuilder: (ctx, index) {
@@ -172,7 +175,9 @@ class _LineViewerState extends State<LineViewer> {
           duration: const Duration(milliseconds: 650),
           sliver: isExpanded2
               ? SliverPadding(
-                  padding: const EdgeInsets.only(right: 16, left: 36),
+                  padding: isArabic()
+                      ? const EdgeInsets.only(left: 16, right: 36)
+                      : const EdgeInsets.only(right: 16, left: 36),
                   sliver: SliverList.builder(
                     itemCount: line2.stations.length,
                     itemBuilder: (ctx, index) {
@@ -256,7 +261,9 @@ class _LineViewerState extends State<LineViewer> {
           duration: const Duration(milliseconds: 650),
           sliver: isExpanded3
               ? SliverPadding(
-                  padding: const EdgeInsets.only(right: 16, left: 36),
+                  padding: isArabic()
+                      ? const EdgeInsets.only(left: 16, right: 36)
+                      : const EdgeInsets.only(right: 16, left: 36),
                   sliver: SliverList.builder(
                     itemCount: line3.length,
                     itemBuilder: (ctx, index) {
