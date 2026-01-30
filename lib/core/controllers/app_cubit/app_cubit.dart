@@ -30,7 +30,10 @@ class AppCubit extends Cubit<AppState> {
 
   Future<void> setTheme(ThemeModeState theme) async {
     currentTheme = theme;
-   GetIt.instance<CacheHelper>().saveData(key: CacheKeys.theme, value: theme.name);
+    GetIt.instance<CacheHelper>().saveData(
+      key: CacheKeys.theme,
+      value: theme.name,
+    );
     emit(ThemeChangesState());
   }
 
@@ -41,7 +44,8 @@ class AppCubit extends Cubit<AppState> {
 
   void _loadTheme() {
     String savedTheme =
-      GetIt.instance<CacheHelper>().getData(CacheKeys.theme) as String? ?? "system";
+        GetIt.instance<CacheHelper>().getData(CacheKeys.theme) as String? ??
+        "system";
 
     currentTheme = ThemeModeState.values.firstWhere(
       (e) => e.name == savedTheme,
@@ -55,13 +59,16 @@ class AppCubit extends Cubit<AppState> {
 
   Future<void> setLang(String lang) async {
     currentLang = lang;
-    await GetIt.instance<CacheHelper>().saveData(key: CacheKeys.lang, value: currentLang);
+    await GetIt.instance<CacheHelper>().saveData(
+      key: CacheKeys.lang,
+      value: currentLang,
+    );
     emit(LocalizationChangesState());
   }
 
   void _loadLang() {
     String savedLang =
-      GetIt.instance<CacheHelper>().getData(CacheKeys.lang) as String? ??
+        GetIt.instance<CacheHelper>().getData(CacheKeys.lang) as String? ??
         PlatformDispatcher.instance.locale.languageCode;
 
     switch (savedLang) {

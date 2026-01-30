@@ -19,8 +19,8 @@ final class PositionFailureState extends TripState {
   PositionFailureState({required this.errMsg});
 }
 
-// final class AddToFavoutiteState extends TripState {}
+final class AddToFavoutiteState extends TripState {}
 
-// final class RemoveFromFavoutiteState extends TripState {}
+final class RemoveFromFavoutiteState extends TripState {}
 
-// final class AllFavChangesState extends TripState {}
+final class AllFavChangesState extends TripState {}

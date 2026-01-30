@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
@@ -16,7 +18,6 @@ class TripCubit extends Cubit<TripState> with StationNameMixin {
 
   Metro metro;
 
-  
   static TripCubit get(context) => BlocProvider.of(context);
 
   final TextEditingController startStationController = TextEditingController();
@@ -38,21 +39,21 @@ class TripCubit extends Cubit<TripState> with StationNameMixin {
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-     emit( PositionFailureState(errMsg:  S.current.PleaseOpenLocation));
+      emit(PositionFailureState(errMsg: S.current.PleaseOpenLocation));
     }
 
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-     emit( PositionFailureState(errMsg:
-        S.current.LocationPermissionRequired,)
+        emit(
+          PositionFailureState(errMsg: S.current.LocationPermissionRequired),
         );
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      emit( PositionFailureState(errMsg: S.current.LocationPermanentlyDenied));
+      emit(PositionFailureState(errMsg: S.current.LocationPermanentlyDenied));
     }
 
     return await Geolocator.getCurrentPosition();
@@ -60,16 +61,15 @@ class TripCubit extends Cubit<TripState> with StationNameMixin {
 
   Future<void> getNearestStation() async {
     emit(PositionLoadingState());
-
+    log('getNearestStation');
     final position = await _getPosition();
 
     final nearestStation = _getNearestStationModel(
       position.latitude,
       position.longitude,
     )!;
-      String? nearestStationName = nearestStation.getStationName();
-      startStationController.text = nearestStationName??'';
-    
+    String? nearestStationName = nearestStation.getStationName();
+    startStationController.text = nearestStationName ?? '';
 
     emit(PositionSuccessState(nearestStation: nearestStation));
   }

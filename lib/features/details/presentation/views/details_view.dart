@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -9,9 +11,9 @@ import 'package:go_metro/core/utilities/app_text_style.dart';
 
 import 'package:go_metro/core/widgets/app_button.dart';
 import 'package:go_metro/core/widgets/app_card.dart';
+import 'package:go_metro/core/widgets/app_time_line_tile.dart';
 
 import 'package:go_metro/core/widgets/costum_app_bar.dart';
-import 'package:go_metro/core/widgets/routeViewer.dart';
 import 'package:go_metro/core/widgets/station_row.dart';
 import 'package:go_metro/features/details/presentation/widgets/details_section.dart';
 import 'package:go_metro/features/details/presentation/widgets/start_and_final_station_section.dart';
@@ -38,15 +40,13 @@ class DetailsView extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
+        child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
+          slivers: [
+            const SliverToBoxAdapter(child: Gap(20)),
 
-          child: Column(
-            spacing: 15,
-            children: [
-              const Gap(0.0005),
-
-              StartAndFinalStationSection(
+            SliverToBoxAdapter(
+              child: StartAndFinalStationSection(
                 start: details.stationName(details.startStation!)!,
                 end: details.stationName(details.finalStation!)!,
                 startLine: TripDetailsModel.getLineByColor(
@@ -59,65 +59,69 @@ class DetailsView extends StatelessWidget {
                 lastColor:
                     details.routes[details.routes.length - 1][0].lineColor!,
               ),
-              DetailsSection(
+            ),
+            const SliverToBoxAdapter(child: Gap(15)),
+
+            SliverToBoxAdapter(
+              child: DetailsSection(
                 time: details.time.ceil(),
                 price: details.ticketPrice!,
                 transfer: details.transfer!,
                 stationCount: details.stationCount!,
               ),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: details.routes.length,
+            ),
+            const SliverToBoxAdapter(child: Gap(15)),
 
-                itemBuilder: (context, index) {
-                  return AppCard(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: RouteViewer(route: details.routes[index]),
-                    ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return Column(
+            SliverList.builder(
+              itemCount: details.routes.length - 1,
+              itemBuilder: (context, index) => AppCard(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 10,
                     children: [
-                      const Gap(15),
-
-                      AppCard(
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            spacing: 10,
-                            children: [
-                              StationRow(
-                                color: details.routes[index].last.lineColor!,
-                                station:
-                                    "${s.transferFrom} ${details.routes[index].last.getStationName()}",
-                              ),
-
-                              Text(
-                                "${details.routes[index].last.getStationName()} ${details.routes[index].last.transferBetween} ",
-                                style: AppTextStyle.medium14.copyWith(
-                                  fontSize: 16,
-                                  fontFamily: AppFontFamily.roboto,
-                                ),
-                                maxLines: 2,
-                              ),
-                            ],
-                          ),
-                        ),
+                      StationRow(
+                        color: details.routes[index].last.lineColor!,
+                        station:
+                            "${s.transferFrom} ${details.routes[index].last.getStationName()}",
                       ),
-                      const Gap(15),
+
+                      Text(
+                        "${details.routes[index].last.getStationName()} ${details.routes[index].last.transferBetween} ",
+                        style: AppTextStyle.medium14.copyWith(
+                          fontSize: 16,
+                          fontFamily: AppFontFamily.roboto,
+                        ),
+                        maxLines: 2,
+                      ),
                     ],
-                  );
-                },
+                  ),
+                ),
               ),
-              // const Padding(
-              //   padding: EdgeInsets.symmetric(horizontal: 16.0),
-              //   child: FavButton(),
-              // ),
-              Padding(
+            ),
+            for (var route in details.routes) ...[
+              // المسار نفسه (المحطات) بتعمل Lazy Loading
+              SliverPadding(
+                sliver: SliverList.builder(
+                  itemCount: route.length,
+                  itemBuilder: (context, index) {
+                    log('builder $index');
+                    return AppTimeLineTile(
+                      index: index,
+                      stations: route,
+                      color: route[1].lineColor!,
+                    );
+                  },
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+              ),
+            ],
+
+            const SliverToBoxAdapter(child: Gap(15)),
+
+            SliverToBoxAdapter(
+              child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: AppButton(
                   onPressed: () {
@@ -131,10 +135,9 @@ class DetailsView extends StatelessWidget {
                   ),
                 ),
               ),
-
-              Gap(15.h),
-            ],
-          ),
+            ),
+            SliverToBoxAdapter(child: Gap(15.h)),
+          ],
         ),
       ),
     );

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
 import 'package:go_metro/core/utilities/app_font_family.dart';
 import 'package:go_metro/core/utilities/app_text_style.dart';
 import 'package:go_metro/core/widgets/app_card.dart';
 import 'package:go_metro/core/widgets/costum_app_bar.dart';
 import 'package:go_metro/features/lines/presentation/widgets/line_viewer.dart';
+
 import 'package:go_metro/features/lines/presentation/widgets/metro_map_previewer.dart';
 import 'package:go_metro/generated/l10n.dart';
 
@@ -26,26 +28,23 @@ class LinesView extends StatelessWidget {
         ),
       ),
 
-      body: const SingleChildScrollView(
+      body: const CustomScrollView(
         physics: BouncingScrollPhysics(),
-        child: Column(
-          spacing: 15,
-          children: [
-            Gap(5),
-            AppCard(
+        slivers: [
+          SliverToBoxAdapter(child: Gap(20)),
+          SliverToBoxAdapter(
+            child: AppCard(
               child: Padding(
                 padding: EdgeInsets.all(16.0),
                 child: MetroMapPreviewer(),
               ),
             ),
-            AppCard(
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: LinesViewer(),
-              ),
-            ),
-          ],
-        ),
+          ),
+
+          LineViewer(),
+
+          // 2. المحطات (Lazy Loading)
+        ],
       ),
     );
   }

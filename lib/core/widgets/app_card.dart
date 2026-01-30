@@ -10,8 +10,7 @@ class AppCard extends StatelessWidget {
       child: SizedBox(
         width: MediaQuery.sizeOf(context).width - 32,
         child: Card(
-          
-          shadowColor: const Color.fromARGB(255, 135, 135, 135),
+          shadowColor: const Color.fromARGB(95, 135, 135, 135),
 
           child: child,
         ),

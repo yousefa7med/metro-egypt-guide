@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_metro/core/Helper/functions/functions.dart';
-import 'package:go_metro/core/config/configrations.dart';
 import 'package:go_metro/core/controllers/app_cubit/app_cubit.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
-import 'package:go_metro/features/details/presentation/views/details_view.dart';
 import 'package:go_metro/features/home/controller/trip_cubit/trip_cubit.dart';
 import 'package:go_metro/features/home/presentation/views/home_view.dart';
 import 'package:go_metro/features/lines/presentation/views/lines_view.dart';
@@ -42,22 +40,11 @@ class MainView extends StatelessWidget {
 List<PersistentTabConfig> _tabs(BuildContext context) => [
   PersistentTabConfig(
 
-    navigatorConfig: NavigatorConfig(
-      onGenerateRoute: (settings) {
-        if (settings.name == AppRoutes.detailsView) {
-          return MaterialPageRoute(
-            builder: (context) => const DetailsView(),
-            settings: settings, // علشان الـ arguments توصل
-          );
-        }
-        return null;
-      },
-    ),
     // navigatorConfig: NavigatorConfig(
     //   routes: {AppRoutes.detailsView: (context) => const DetailsView()},
     // ),
-    screen: BlocProvider(
-      create: (context) => GetIt.instance<TripCubit>(),
+    screen: BlocProvider.value(
+      value: GetIt.instance<TripCubit>(),
       child: const HomeView(),
     ),
     item: ItemConfig(
@@ -86,6 +73,3 @@ List<PersistentTabConfig> _tabs(BuildContext context) => [
     ),
   ),
 ];
-
-
-

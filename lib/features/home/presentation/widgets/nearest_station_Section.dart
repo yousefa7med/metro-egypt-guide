@@ -80,7 +80,10 @@ class NearestStationSection extends StatelessWidget {
                 if (state is PositionLoadingState) {
                   return Transform.scale(
                     scale: 0.8,
-                    child: const CircularProgressIndicator(strokeWidth: 5),
+                    child: const CircularProgressIndicator(
+                      strokeWidth: 5,
+                      color: AppColor.primaryColor,
+                    ),
                   );
                 } else {
                   return Transform.scale(

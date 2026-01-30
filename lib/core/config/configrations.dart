@@ -16,10 +16,11 @@ class AppRouter {
       case AppRoutes.homeView:
         return pageRouteBuilderMethod(
           settings: settings,
-          pageBuilder: (context, animation, secondaryAnimation) => BlocProvider(
-            create: (context) => GetIt.instance<TripCubit>(),
-            child: const HomeView(),
-          ),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              BlocProvider.value(
+                value: GetIt.instance<TripCubit>(),
+                child: const HomeView(),
+              ),
         );
       case AppRoutes.mainView:
         return pageRouteBuilderMethod(

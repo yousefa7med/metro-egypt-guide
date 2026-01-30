@@ -91,7 +91,7 @@ class _FindRouteFormState extends State<FindRouteForm> with StationNameMixin {
               //     arguments: details,
               //   );
               AppNavigation.pushName(
-                // rootNavigator: true,
+                rootNavigator: true,
                 context: context,
                 route: AppRoutes.detailsView,
                 argument: details,
