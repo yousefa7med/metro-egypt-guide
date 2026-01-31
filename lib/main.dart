@@ -20,6 +20,8 @@ Future<void> main() async {
   await getIt<ObjectBoxServices>().init();
   await getIt<CacheHelper>().init();
   Bloc.observer = AppBlocObserver();
+  // getIt<ObjectBoxServices>().detailsBox.removeAll();
+
   runApp(
     BlocProvider(
       create: (context) => AppCubit()..init(),

@@ -102,13 +102,9 @@ final List<LineModel> allLine = [
 ];
 
 class Metro {
-  TripDetailsModel details = TripDetailsModel();
-
-
-
   // الدالة الرئيسية لإيجاد تفاصيل الرحلة
   TripDetailsModel getTripDetails(String start, String end) {
-    details.clear(); // تنظيف التفاصيل السابقة
+    TripDetailsModel details = TripDetailsModel();
 
     // إيجاد أقصر مسار بأقل عدد من التحويلات باستخدام BFS
     List<StationModel> path = _findShortestPath(start, end);
@@ -118,7 +114,7 @@ class Metro {
     }
 
     // تقسيم المسار إلى routes و directions
-    _processPath(path);
+    _processPath(path, details);
 
     // تحديث التفاصيل
     details.startStation = start;
@@ -128,7 +124,7 @@ class Metro {
     details.calcTicketPrice(path.length);
     details.calcTransfer();
     details.calcTime();
-
+    details.setColors();
     return details;
   }
 
@@ -282,7 +278,7 @@ class Metro {
   }
 
   // تقسيم المسار إلى routes و directions مع استثناء Kit-Kat والتعامل مع المحطة الأخيرة
-  void _processPath(List<StationModel> path) {
+  void _processPath(List<StationModel> path, TripDetailsModel details) {
     if (path.isEmpty) return;
 
     List<StationModel> currentRoute = [path[0]];

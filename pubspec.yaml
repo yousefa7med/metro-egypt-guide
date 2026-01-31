@@ -36,6 +36,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   font_awesome_flutter: ^10.9.1
   gap: ^3.0.1
+  equatable: ^2.0.8
   geolocator: ^14.0.2
   objectbox: ^5.1.0
   objectbox_flutter_libs: ^5.1.0

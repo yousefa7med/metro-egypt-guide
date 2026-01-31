@@ -4,51 +4,66 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:7949484007253030855",
-      "lastPropertyId": "7:7106177291251770016",
+      "id": "1:7550343634550854417",
+      "lastPropertyId": "12:5706528965651627420",
       "name": "TripDetailsModel",
       "properties": [
         {
-          "id": "1:8809862854439754622",
+          "id": "1:3411210631891118254",
           "name": "id",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "2:6124837144412894975",
+          "id": "2:3452321596232686419",
           "name": "startStation",
           "type": 9
         },
         {
-          "id": "3:6302689968758583531",
+          "id": "3:661791038983604534",
           "name": "finalStation",
           "type": 9
         },
         {
-          "id": "4:5571798139807381854",
+          "id": "4:1655135241548333685",
           "name": "stationCount",
           "type": 6
         },
         {
-          "id": "5:8636709145791095562",
+          "id": "5:2306957780748800444",
           "name": "time",
           "type": 8
         },
         {
-          "id": "6:6692501342521473387",
+          "id": "6:4155350882499762217",
           "name": "ticketPrice",
           "type": 6
         },
         {
-          "id": "7:7106177291251770016",
+          "id": "7:1695552649970896872",
           "name": "transfer",
+          "type": 6
+        },
+        {
+          "id": "8:3834310563968879556",
+          "name": "isFav",
+          "type": 1
+        },
+        {
+          "id": "11:7060455526065150359",
+          "name": "startColorValue",
+          "type": 6
+        },
+        {
+          "id": "12:5706528965651627420",
+          "name": "finalColorValue",
           "type": 6
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:7949484007253030855",
+  "lastEntityId": "1:7550343634550854417",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
@@ -56,7 +71,10 @@
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    1545752483839365043,
+    5729817248310010087
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

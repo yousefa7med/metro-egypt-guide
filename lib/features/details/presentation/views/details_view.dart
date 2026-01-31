@@ -17,6 +17,7 @@ import 'package:go_metro/core/widgets/app_time_line_tile.dart';
 import 'package:go_metro/core/widgets/costum_app_bar.dart';
 import 'package:go_metro/core/widgets/station_row.dart';
 import 'package:go_metro/features/details/presentation/widgets/details_section.dart';
+import 'package:go_metro/features/details/presentation/widgets/fav_button.dart';
 import 'package:go_metro/features/details/presentation/widgets/start_and_final_station_section.dart';
 
 import 'package:go_metro/generated/l10n.dart';
@@ -111,7 +112,7 @@ class DetailsView extends StatelessWidget {
                     return AppTimeLineTile(
                       index: index,
                       stations: route,
-                      color: route[1].lineColor!,
+                      color: route[0].lineColor!,
                     );
                   },
                 ),
@@ -120,6 +121,9 @@ class DetailsView extends StatelessWidget {
                     : const EdgeInsets.only(left: 16),
               ),
             ],
+
+            const SliverToBoxAdapter(child: Gap(15)),
+            const SliverToBoxAdapter(child: FavButton()),
 
             const SliverToBoxAdapter(child: Gap(15)),
 
@@ -146,51 +150,3 @@ class DetailsView extends StatelessWidget {
     );
   }
 }
-
-// class FavButton extends StatelessWidget {
-//   const FavButton({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final s = S.of(context);
-//     return BlocBuilder<TripCubit, TripState>(
-//       buildWhen: (previous, current) =>
-//           current is AddToFavoutiteState || current is RemoveFromFavoutiteState,
-//       builder: (context, state) {
-//         return OutlinedButton(
-//           style: OutlinedButton.styleFrom(
-//             side: const BorderSide(color: AppColor.primaryColor, width: 3),
-//             shape: RoundedRectangleBorder(
-//               borderRadius: BorderRadiusGeometry.circular(12),
-//             ),
-//           ),
-//           onPressed: () {
-//             // isFav = !isFav;
-//           },
-//           child: SizedBox(
-//             height: 35.h,
-//             child: Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 Icon(
-//                   TripCubit.get(context).isFav
-//                       ? Icons.star_outline
-//                       : Icons.star,
-//                   color: AppColor.primaryColor,
-//                   size: 26,
-//                 ),
-//                 const Gap(4),
-//                 Text(
-//                   TripCubit.get(context).isFav ? s.remfromFav : s.addToFav,
-//                   style: AppTextStyle.medium16.copyWith(
-//                     fontFamily: AppFontFamily.inter,
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         );
-//       },
-//     );
-//   }
-// }

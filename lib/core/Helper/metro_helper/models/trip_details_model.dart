@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
 import 'package:go_metro/core/Helper/mixins/station_name_mixin.dart';
@@ -6,18 +7,20 @@ import 'package:go_metro/generated/l10n.dart';
 import 'package:objectbox/objectbox.dart';
 
 @Entity()
-class TripDetailsModel with StationNameMixin {
+class TripDetailsModel extends Equatable with StationNameMixin {
   @Id()
   int id = 0;
   String? startStation;
   String? finalStation;
-
+  int? startColorValue;
+  int? finalColorValue;
   int? stationCount;
   double time;
   int? ticketPrice;
   int? transfer;
   List<List<StationModel>> routes = [];
   Set<StationModel> directions = {};
+  bool isFav = false;
 
   TripDetailsModel({
     this.startStation,
@@ -27,6 +30,15 @@ class TripDetailsModel with StationNameMixin {
     this.transfer,
     this.ticketPrice,
   });
+  Color get startColor => Color(startColorValue!);
+  Color get finalColor => Color(finalColorValue!);
+  set startColor(Color color) => startColorValue = color.toARGB32();
+  set finalColor(Color color) => finalColorValue = color.toARGB32();
+
+  void setColors() {
+    startColor = routes[0][1].lineColor!;
+    finalColor = routes[routes.length - 1][0].lineColor!;
+  }
 
   Map<String, dynamic> toMap() {
     return {
@@ -78,6 +90,8 @@ class TripDetailsModel with StationNameMixin {
     ticketPrice = null;
     startStation = null;
     finalStation = null;
+    startColorValue = null;
+    finalColorValue = null;
   }
 
   void calcStationCount(int stationCount) => this.stationCount = stationCount;
@@ -144,7 +158,21 @@ class TripDetailsModel with StationNameMixin {
     }
   }
 
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+    id,
+    startStation,
+    finalStation,
+    startColorValue,
+    finalColorValue,
+    stationCount,
+    time,
 
+    ticketPrice,
+    transfer,
+    routes,
+    directions,
+    isFav,
+  ];
 }
-
-

@@ -20,50 +20,68 @@ export 'package:objectbox/objectbox.dart'; // so that callers only have to impor
 
 final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
-    id: const obx_int.IdUid(1, 7949484007253030855),
+    id: const obx_int.IdUid(1, 7550343634550854417),
     name: 'TripDetailsModel',
-    lastPropertyId: const obx_int.IdUid(7, 7106177291251770016),
+    lastPropertyId: const obx_int.IdUid(12, 5706528965651627420),
     flags: 0,
     properties: <obx_int.ModelProperty>[
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(1, 8809862854439754622),
+        id: const obx_int.IdUid(1, 3411210631891118254),
         name: 'id',
         type: 6,
         flags: 1,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(2, 6124837144412894975),
+        id: const obx_int.IdUid(2, 3452321596232686419),
         name: 'startStation',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(3, 6302689968758583531),
+        id: const obx_int.IdUid(3, 661791038983604534),
         name: 'finalStation',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(4, 5571798139807381854),
+        id: const obx_int.IdUid(4, 1655135241548333685),
         name: 'stationCount',
         type: 6,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(5, 8636709145791095562),
+        id: const obx_int.IdUid(5, 2306957780748800444),
         name: 'time',
         type: 8,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(6, 6692501342521473387),
+        id: const obx_int.IdUid(6, 4155350882499762217),
         name: 'ticketPrice',
         type: 6,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(7, 7106177291251770016),
+        id: const obx_int.IdUid(7, 1695552649970896872),
         name: 'transfer',
+        type: 6,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(8, 3834310563968879556),
+        name: 'isFav',
+        type: 1,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(11, 7060455526065150359),
+        name: 'startColorValue',
+        type: 6,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(12, 5706528965651627420),
+        name: 'finalColorValue',
         type: 6,
         flags: 0,
       ),
@@ -116,13 +134,13 @@ obx_int.ModelDefinition getObjectBoxModel() {
     // Typically, this is done with `dart run build_runner build`.
     generatorVersion: obx_int.GeneratorVersion.v2025_12_16,
     entities: _entities,
-    lastEntityId: const obx_int.IdUid(1, 7949484007253030855),
+    lastEntityId: const obx_int.IdUid(1, 7550343634550854417),
     lastIndexId: const obx_int.IdUid(0, 0),
     lastRelationId: const obx_int.IdUid(0, 0),
     lastSequenceId: const obx_int.IdUid(0, 0),
     retiredEntityUids: const [],
     retiredIndexUids: const [],
-    retiredPropertyUids: const [],
+    retiredPropertyUids: const [1545752483839365043, 5729817248310010087],
     retiredRelationUids: const [],
     modelVersion: 5,
     modelVersionParserMinimum: 5,
@@ -145,7 +163,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
         final finalStationOffset = object.finalStation == null
             ? null
             : fbb.writeString(object.finalStation!);
-        fbb.startTable(8);
+        fbb.startTable(13);
         fbb.addInt64(0, object.id);
         fbb.addOffset(1, startStationOffset);
         fbb.addOffset(2, finalStationOffset);
@@ -153,6 +171,9 @@ obx_int.ModelDefinition getObjectBoxModel() {
         fbb.addFloat64(4, object.time);
         fbb.addInt64(5, object.ticketPrice);
         fbb.addInt64(6, object.transfer);
+        fbb.addBool(7, object.isFav);
+        fbb.addInt64(10, object.startColorValue);
+        fbb.addInt64(11, object.finalColorValue);
         fbb.finish(fbb.endTable());
         return object.id;
       },
@@ -186,14 +207,32 @@ obx_int.ModelDefinition getObjectBoxModel() {
           rootOffset,
           14,
         );
-        final object = TripDetailsModel(
-          startStation: startStationParam,
-          finalStation: finalStationParam,
-          stationCount: stationCountParam,
-          time: timeParam,
-          transfer: transferParam,
-          ticketPrice: ticketPriceParam,
-        )..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+        final object =
+            TripDetailsModel(
+                startStation: startStationParam,
+                finalStation: finalStationParam,
+                stationCount: stationCountParam,
+                time: timeParam,
+                transfer: transferParam,
+                ticketPrice: ticketPriceParam,
+              )
+              ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0)
+              ..isFav = const fb.BoolReader().vTableGet(
+                buffer,
+                rootOffset,
+                18,
+                false,
+              )
+              ..startColorValue = const fb.Int64Reader().vTableGetNullable(
+                buffer,
+                rootOffset,
+                24,
+              )
+              ..finalColorValue = const fb.Int64Reader().vTableGetNullable(
+                buffer,
+                rootOffset,
+                26,
+              );
 
         return object;
       },
@@ -238,5 +277,20 @@ class TripDetailsModel_ {
   /// See [TripDetailsModel.transfer].
   static final transfer = obx.QueryIntegerProperty<TripDetailsModel>(
     _entities[0].properties[6],
+  );
+
+  /// See [TripDetailsModel.isFav].
+  static final isFav = obx.QueryBooleanProperty<TripDetailsModel>(
+    _entities[0].properties[7],
+  );
+
+  /// See [TripDetailsModel.startColorValue].
+  static final startColorValue = obx.QueryIntegerProperty<TripDetailsModel>(
+    _entities[0].properties[8],
+  );
+
+  /// See [TripDetailsModel.finalColorValue].
+  static final finalColorValue = obx.QueryIntegerProperty<TripDetailsModel>(
+    _entities[0].properties[9],
   );
 }

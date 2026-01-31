@@ -10,9 +10,6 @@ part 'app_state.dart';
 class AppCubit extends Cubit<AppState> {
   AppCubit() : super(AppInitialState());
 
-  ExpansibleController lineController1 = ExpansibleController();
-  ExpansibleController lineController2 = ExpansibleController();
-  ExpansibleController lineController3 = ExpansibleController();
   ThemeModeState currentTheme = ThemeModeState.system;
   static AppCubit get(BuildContext context) => BlocProvider.of(context);
 
@@ -97,13 +94,7 @@ class AppCubit extends Cubit<AppState> {
     }
   }
 
-  @override
-  Future<void> close() {
-    lineController1.dispose();
-    lineController2.dispose();
-    lineController3.dispose();
-    return super.close();
-  }
+
 }
 
 enum ThemeModeState { light, dark, system }

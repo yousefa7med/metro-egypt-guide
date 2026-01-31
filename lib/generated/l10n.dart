@@ -181,11 +181,6 @@ class S {
     );
   }
 
-  /// `See All`
-  String get seeAll {
-    return Intl.message('See All', name: 'seeAll', desc: '', args: []);
-  }
-
   /// `Remove From Favourite`
   String get remfromFav {
     return Intl.message(
@@ -374,6 +369,26 @@ class S {
   /// `To`
   String get to {
     return Intl.message('To', name: 'to', desc: '', args: []);
+  }
+
+  /// `See More`
+  String get seeMore {
+    return Intl.message('See More', name: 'seeMore', desc: '', args: []);
+  }
+
+  /// `See Less`
+  String get seeLess {
+    return Intl.message('See Less', name: 'seeLess', desc: '', args: []);
+  }
+
+  /// `Add Trips To Favourite`
+  String get addTrips {
+    return Intl.message(
+      'Add Trips To Favourite',
+      name: 'addTrips',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `is Transfer station between\nLine 1 and Line 2`

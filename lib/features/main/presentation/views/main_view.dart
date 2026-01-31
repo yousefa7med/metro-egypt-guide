@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_metro/core/Helper/functions/functions.dart';
-import 'package:go_metro/core/controllers/app_cubit/app_cubit.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
 import 'package:go_metro/features/home/controller/trip_cubit/trip_cubit.dart';
 import 'package:go_metro/features/home/presentation/views/home_view.dart';
@@ -16,6 +15,7 @@ class MainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
+      // stateManagement: false,
       tabs: _tabs(context),
       navBarBuilder: (navBarConfig) => Style6BottomNavBar(
         navBarConfig: navBarConfig,
@@ -24,13 +24,7 @@ class MainView extends StatelessWidget {
           color: isDark(context) ? AppColor.darkSurface : Colors.white,
         ),
       ),
-      onTabChanged: (value) {
-        if (value == 1) {
-          AppCubit.get(context).lineController1.collapse();
-          AppCubit.get(context).lineController2.collapse();
-          AppCubit.get(context).lineController3.collapse();
-        }
-      },
+
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset: true,
     );
@@ -39,7 +33,6 @@ class MainView extends StatelessWidget {
 
 List<PersistentTabConfig> _tabs(BuildContext context) => [
   PersistentTabConfig(
-
     // navigatorConfig: NavigatorConfig(
     //   routes: {AppRoutes.detailsView: (context) => const DetailsView()},
     // ),

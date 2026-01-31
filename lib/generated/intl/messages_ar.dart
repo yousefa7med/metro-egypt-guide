@@ -137,6 +137,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Wadi_El_Nile": MessageLookupByLibrary.simpleMessage("وادي النيل"),
     "Wadi_Hof": MessageLookupByLibrary.simpleMessage("وادي حوف"),
     "addToFav": MessageLookupByLibrary.simpleMessage("اضافة الي المفضلة"),
+    "addTrips": MessageLookupByLibrary.simpleMessage("اضف رحلات الي المفضلة"),
     "backToHome": MessageLookupByLibrary.simpleMessage(
       "العودة للصفحة الرئيسية",
     ),
@@ -158,7 +159,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "preTheme": MessageLookupByLibrary.simpleMessage("اختر الثيم الذي تفضله"),
     "remfromFav": MessageLookupByLibrary.simpleMessage("الحذف من المفضلة"),
     "routeDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطريق"),
-    "seeAll": MessageLookupByLibrary.simpleMessage("إظهار الكل"),
+    "seeLess": MessageLookupByLibrary.simpleMessage("إخفاء"),
+    "seeMore": MessageLookupByLibrary.simpleMessage("إظهار الكل"),
     "selectLang": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
     "startStation": MessageLookupByLibrary.simpleMessage("محطة البداية"),
     "station": MessageLookupByLibrary.simpleMessage("محطة"),

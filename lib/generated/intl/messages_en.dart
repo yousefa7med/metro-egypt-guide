@@ -167,6 +167,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Wadi_El_Nile": MessageLookupByLibrary.simpleMessage("Wadi El-Nile"),
     "Wadi_Hof": MessageLookupByLibrary.simpleMessage("Wadi Hof"),
     "addToFav": MessageLookupByLibrary.simpleMessage("Add To Favourite"),
+    "addTrips": MessageLookupByLibrary.simpleMessage("Add Trips To Favourite"),
     "backToHome": MessageLookupByLibrary.simpleMessage("Back To Home"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "checkDetails": MessageLookupByLibrary.simpleMessage(
@@ -188,7 +189,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "remfromFav": MessageLookupByLibrary.simpleMessage("Remove From Favourite"),
     "routeDetails": MessageLookupByLibrary.simpleMessage("Route Details"),
-    "seeAll": MessageLookupByLibrary.simpleMessage("See All"),
+    "seeLess": MessageLookupByLibrary.simpleMessage("See Less"),
+    "seeMore": MessageLookupByLibrary.simpleMessage("See More"),
     "selectLang": MessageLookupByLibrary.simpleMessage("Select your language"),
     "startStation": MessageLookupByLibrary.simpleMessage("Start Station"),
     "station": MessageLookupByLibrary.simpleMessage("Station"),

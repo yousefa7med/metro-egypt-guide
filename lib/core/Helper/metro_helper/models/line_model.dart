@@ -1,18 +1,23 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
 import 'package:go_metro/generated/l10n.dart';
 
-class LineModel {
+class LineModel extends Equatable {
   final List<StationModel> stations;
   final Color lineColor;
   final String lineName;
 
-  LineModel({
+  const LineModel({
     required this.lineColor,
     required this.lineName,
     required this.stations,
   });
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [stations, lineColor, lineName];
 }
 
 LineModel line1 = LineModel(

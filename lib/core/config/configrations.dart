@@ -43,8 +43,10 @@ class AppRouter {
       case AppRoutes.detailsView:
         return pageRouteBuilderMethod(
           settings: settings,
-          pageBuilder: (context, animation, secondaryAnimation) =>
-              const DetailsView(),
+          pageBuilder: (context, animation, secondaryAnimation) => BlocProvider.value(
+        value: GetIt.instance<TripCubit>(),
+            child: const DetailsView(),
+          ),
         );
       case AppRoutes.splashView:
         return pageRouteBuilderMethod(

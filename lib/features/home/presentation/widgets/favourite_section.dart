@@ -1,106 +1,137 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
-// import 'package:go_metro/core/utilities/app_color.dart';
-// import 'package:go_metro/core/utilities/app_font_family.dart';
-// import 'package:go_metro/core/utilities/app_text_style.dart';
-// import 'package:go_metro/core/widgets/app_card.dart';
-// import 'package:go_metro/core/widgets/station_row.dart';
-// import 'package:go_metro/features/home/controller/trip_cubit/trip_cubit.dart';
-// import 'package:go_metro/generated/l10n.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-// List<TripDetailsModel> list = [
-//   TripDetailsModel(
-//     startStation: "dfdssfsf",
-//     finalStation: "ssssss",
-//     time: 15,
-//     ticketPrice: 20,
-//     transfer: 1,
-//   ),
-//   TripDetailsModel(
-//     startStation: "dfdssfsf",
-//     finalStation: "ssssss",
-//     time: 15,
-//     ticketPrice: 20,
-//     transfer: 1,
-//   ),
-//   TripDetailsModel(
-//     startStation: "dfdssfsf",
-//     finalStation: "ssssss",
-//     time: 15,
-//     ticketPrice: 20,
-//     transfer: 1,
-//   ),
-//   TripDetailsModel(
-//     startStation: "dfdssfsf",
-//     finalStation: "ssssss",
-//     time: 15,
-//     ticketPrice: 20,
-//     transfer: 1,
-//   ),
-// ];
+import 'package:go_metro/core/Helper/functions/functions.dart';
+import 'package:go_metro/core/utilities/app_color.dart';
+import 'package:go_metro/core/utilities/app_font_family.dart';
+import 'package:go_metro/core/utilities/app_text_style.dart';
+import 'package:go_metro/core/widgets/app_card.dart';
+import 'package:go_metro/features/home/controller/trip_cubit/trip_cubit.dart';
 
-// class FavouriteSection extends StatelessWidget {
-//   const FavouriteSection({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     final s = S.of(context);
+import 'package:go_metro/features/home/presentation/widgets/fav_trip_row.dart';
+import 'package:go_metro/generated/l10n.dart';
 
-//     return AppCard(
-//       child: Padding(
-//         padding: const EdgeInsets.all(16.0),
-//         child: BlocBuilder<TripCubit, TripState>(
-//           builder: (context, state) {
-//             return Column(
-//               children: [
-//                 Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     Text(
-//                       s.favTrips,
-//                       style: AppTextStyle.semiBold16.copyWith(
-//                         fontFamily: AppFontFamily.inter,
-//                       ),
-//                     ),
-//                     !TripCubit.get(context).allFav
-//                         ? TextButton(
-//                             onPressed: () {},
-//                             child: Text(
-//                               s.seeAll,
-//                               style: AppTextStyle.semiBold14.copyWith(
-//                                 color: AppColor.primaryColor,
-//                               ),
-//                             ),
-//                           )
-//                         : const SizedBox.shrink(),
-//                   ],
-//                 ),
+class FavouriteSection extends StatefulWidget {
+  const FavouriteSection({super.key});
 
-//                 ListView.builder(
-//                   itemCount: 2,
+  @override
+  State<FavouriteSection> createState() => _FavouriteSectionState();
+}
 
-//                   itemBuilder: (context, index) => Row(
-//                     children: [
-//                       StationRow(
-//                         color: list[index].routes[0][0].lineColor!,
-//                         station: list[index].routes[0][0].name!,
-//                       ),
-//                       const Icon(
-//                         Icons.arrow_forward,
-//                         color: AppColor.primaryColor,
-//                       ),
-//                       StationRow(
-//                         color: list[index].routes[0][0].lineColor!,
-//                         station: list[index].routes[0][0].name!,
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
+class _FavouriteSectionState extends State<FavouriteSection> {
+  final GlobalKey cardKey = GlobalKey();
+  bool allFav = false;
+  @override
+  Widget build(BuildContext context) {
+    final s = S.of(context);
+
+    return SliverMainAxisGroup(
+      slivers: [
+        SliverToBoxAdapter(
+          child: AppCard(
+            key: cardKey,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    s.favTrips,
+                    style: AppTextStyle.semiBold16.copyWith(
+                      fontFamily: AppFontFamily.inter,
+                    ),
+                  ),
+                  BlocBuilder<TripCubit, TripState>(
+                    builder: (context, state) {
+                      if (state is AllFavChangesState) {
+                        return (context.read<TripCubit>().trips.isNotEmpty &&
+                                context.read<TripCubit>().trips.length > 2)
+                            ? InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    allFav = !allFav;
+                                  });
+                                  print(allFav);
+                                  WidgetsBinding.instance.addPostFrameCallback((
+                                    _,
+                                  ) {
+                                    Scrollable.ensureVisible(
+                                      cardKey.currentContext!,
+                                      duration: const Duration(
+                                        milliseconds: 400,
+                                      ),
+                                      curve: Curves.easeInOut,
+                                    );
+                                  });
+                                },
+                                child: !allFav
+                                    ? Text(
+                                        s.seeMore,
+                                        style: AppTextStyle.semiBold14.copyWith(
+                                          color: AppColor.primaryColor,
+                                        ),
+                                      )
+                                    : Text(
+                                        s.seeLess,
+                                        style: AppTextStyle.semiBold14.copyWith(
+                                          color: AppColor.primaryColor,
+                                        ),
+                                      ),
+                              )
+                            : const SizedBox.shrink();
+                      } else {
+                        return const SizedBox.shrink();
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+
+        BlocBuilder<TripCubit, TripState>(
+          buildWhen: (previous, curr) => curr is AllFavChangesState,
+          builder: (context, state) {
+            if (state is AllFavChangesState &&
+                context.read<TripCubit>().trips.isNotEmpty) {
+              final trips = context.read<TripCubit>().trips;
+
+              return SliverList.builder(
+                itemCount: allFav
+                    ? trips.length
+                    : (trips.length < 2)
+                    ? trips.length
+                    : 2,
+                itemBuilder: (context, index) {
+                  print(index);
+                  return Padding(
+                    padding: isArabic()
+                        ? const EdgeInsets.only(left: 10, right: 10)
+                        : const EdgeInsets.only(right: 10, left: 10),
+                    child: FavTripRow(index: index),
+                  );
+                },
+              );
+            } else {
+              return SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 110.h,
+                  child: Center(
+                    child: Text(
+                      s.addTrips,
+                      style: AppTextStyle.bold18.copyWith(
+                        color: const Color.fromARGB(117, 158, 158, 158),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            }
+          },
+        ),
+      ],
+    );
+  }
+}

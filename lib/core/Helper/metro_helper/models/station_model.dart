@@ -1,8 +1,9 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
 import 'package:go_metro/generated/l10n.dart';
 
-class StationModel {
+class StationModel extends Equatable {
   String? name;
   String? transferBetween;
   int? index;
@@ -254,6 +255,18 @@ class StationModel {
       }
     }
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+    name,
+    transferBetween,
+    index,
+    travellingTime,
+    longitudee,
+    latitude,
+    lineColor,
+  ];
 }
 // "Helwan":"Helwan",
 //   "Ain Helwan":"Ain Helwan",

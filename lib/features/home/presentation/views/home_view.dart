@@ -6,7 +6,7 @@ import 'package:go_metro/core/utilities/app_font_family.dart';
 import 'package:go_metro/core/utilities/app_text_style.dart';
 
 import 'package:go_metro/core/widgets/costum_app_bar.dart';
-// import 'package:go_metro/features/home/presentation/widgets/favourite_section.dart';
+import 'package:go_metro/features/home/presentation/widgets/favourite_section.dart';
 
 import 'package:go_metro/features/home/presentation/widgets/find_route_section.dart';
 import 'package:go_metro/features/home/presentation/widgets/nearest_station_section.dart';
@@ -33,22 +33,17 @@ class HomeView extends StatelessWidget {
           ),
         ),
 
-        body: const SingleChildScrollView(
+        body: const CustomScrollView(
           physics: BouncingScrollPhysics(),
 
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-
-            spacing: 15,
-            children: [
-              Gap(5),
-              NearestStationSection(),
-  
-              FindRouteSection(),
-
-              // FavouriteSection(),
-            ],
-          ),
+          slivers: [
+            SliverToBoxAdapter(child: Gap(20)),
+            SliverToBoxAdapter(child: NearestStationSection()),
+            SliverToBoxAdapter(child: Gap(15)),
+            SliverToBoxAdapter(child: FindRouteSection()),
+            SliverToBoxAdapter(child: Gap(15)),
+FavouriteSection(),
+          ],
         ),
       ),
     );

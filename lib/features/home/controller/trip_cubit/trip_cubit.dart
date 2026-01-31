@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_metro/core/Helper/cashe_helper/cache_helper.dart';
 import 'package:go_metro/core/Helper/metro_helper/metro_helper.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/line_model.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
@@ -14,9 +16,14 @@ import 'package:go_metro/generated/l10n.dart';
 part 'trip_state.dart';
 
 class TripCubit extends Cubit<TripState> with StationNameMixin {
-  TripCubit({required this.metro}) : super(TripInitialState());
+  TripCubit({required this.metro}) : super(TripInitialState()) {
+    trips = GetIt.instance<ObjectBoxServices>().detailsBox.getAll();
+
+    emit(AllFavChangesState());
+  }
 
   Metro metro;
+  late final List<TripDetailsModel> trips;
 
   static TripCubit get(context) => BlocProvider.of(context);
 
@@ -100,23 +107,22 @@ class TripCubit extends Cubit<TripState> with StationNameMixin {
     return station;
   }
 
-  // void allFavChanges() {
-  //   allFav = !allFav;
-  //   emit(AllFavChangesState());
-  // }
+  void removeFromFav(TripDetailsModel det) {
+    trips.remove(det);
+    final box = GetIt.instance<ObjectBoxServices>().detailsBox;
+    box.remove(det.id);
+    det.isFav = false;
+    emit(AllFavChangesState());
+  }
 
-  // void removeFromFav(TripDetailsModel det) {
-  //   // ObjectBox().detailsBox.remove(det.id);
-  //   // favList.remove(det);
-  //   isFav = false;
-  //   emit(RemoveFromFavoutiteState());
-  // }
+  void addToFav(TripDetailsModel det) {
+    det.isFav = true;
 
-  // void addToFav(TripDetailsModel det) {
-  //   // ObjectBox().detailsBox.put(det);
-  //   isFav = true;
-  //   emit(AddToFavoutiteState());
-  // }
+    trips.add(det);
+    final box = GetIt.instance<ObjectBoxServices>().detailsBox;
+    box.put(det);
+    emit(AllFavChangesState());
+  }
 
   @override
   Future<void> close() {
