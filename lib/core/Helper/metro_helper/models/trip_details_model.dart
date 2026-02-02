@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
 import 'package:go_metro/core/Helper/mixins/station_name_mixin.dart';
@@ -7,7 +6,7 @@ import 'package:go_metro/generated/l10n.dart';
 import 'package:objectbox/objectbox.dart';
 
 @Entity()
-class TripDetailsModel extends Equatable with StationNameMixin {
+class TripDetailsModel with StationNameMixin {
   @Id()
   int id = 0;
   String? startStation;
@@ -18,7 +17,8 @@ class TripDetailsModel extends Equatable with StationNameMixin {
   double time;
   int? ticketPrice;
   int? transfer;
-  List<List<StationModel>> routes = [];
+  @Backlink('trip')
+  final routes = ToMany<RouteModel>();
   Set<StationModel> directions = {};
   bool isFav = false;
 
@@ -36,50 +36,16 @@ class TripDetailsModel extends Equatable with StationNameMixin {
   set finalColor(Color color) => finalColorValue = color.toARGB32();
 
   void setColors() {
-    startColor = routes[0][1].lineColor!;
-    finalColor = routes[routes.length - 1][0].lineColor!;
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'startStation': startStation,
-      'finalStation': finalStation,
-      'stationCount': stationCount,
-      'time': time,
-      'ticketPrice': ticketPrice,
-      'transfer': transfer,
-      'routes': routes
-          .map((route) => route.map((station) => station.toMap()).toList())
-          .toList(),
-      'directions': directions.map((station) => station.toMap()).toList(),
-    };
-  }
-
-  factory TripDetailsModel.fromMap(Map<String, dynamic> map) {
-    final TripDetailsModel model = TripDetailsModel();
-
-    model.startStation = map['startStation'];
-    model.finalStation = map['finalStation'];
-    model.stationCount = map['stationCount'];
-    model.time = map['time'];
-    model.ticketPrice = map['ticketPrice'];
-    model.transfer = map['transfer'];
-    if (map['routes'] != null) {
-      model.routes = (map['routes'] as List<List<StationModel>>)
-          .map(
-            (route) => (route as List)
-                .map((station) => StationModel.fromMap(station))
-                .toList(),
-          )
-          .toList();
+    if (routes[0].stations.length > 2) {
+      startColor = routes[0].stations[1].lineColor;
+    } else {
+      startColor = routes[0].stations[0].lineColor;
     }
-    if (map['directions'] != null) {
-      model.directions = (map['directions'] as List)
-          .map((station) => StationModel.fromMap(station))
-          .toSet();
+    if (routes[routes.length - 1].stations.length > 2) {
+      finalColor = routes[routes.length - 1].stations[1].lineColor;
+    } else {
+      finalColor = routes[routes.length - 1].stations[0].lineColor;
     }
-
-    return model;
   }
 
   void clear() {
@@ -120,7 +86,8 @@ class TripDetailsModel extends Equatable with StationNameMixin {
   }
 
   StationModel getLastStation() {
-    return routes[routes.length - 1][routes[routes.length - 1].length - 1];
+    return routes[routes.length - 1]
+        .stations[routes[routes.length - 1].stations.length - 1];
   }
 
   // void printDetails() {
@@ -154,25 +121,33 @@ class TripDetailsModel extends Equatable with StationNameMixin {
   void calcTime() {
     time = 0;
     for (var route in routes) {
-      time += route[0].travellingTime! * route.length;
+      time += route.stations[0].travellingTime! * route.stations.length;
     }
   }
 
-  @override
-  // TODO: implement props
-  List<Object?> get props => [
-    id,
-    startStation,
-    finalStation,
-    startColorValue,
-    finalColorValue,
-    stationCount,
-    time,
+  void setOrder() {
+    for (int i = 0; i < routes.length; i++) {
+      routes[i].routeOrder = i;
+    }
+  }
+}
 
-    ticketPrice,
-    transfer,
-    routes,
-    directions,
-    isFav,
-  ];
+@Entity()
+class RouteModel {
+  @Id()
+  int id = 0;
+
+  @Backlink('route')
+  final stations = ToMany<StationModel>();
+
+  int routeOrder;
+
+  final trip = ToOne<TripDetailsModel>();
+  RouteModel({required this.routeOrder});
+
+  void setOrder() {
+    for (int i = 0; i < stations.length; i++) {
+      stations[i].order = i;
+    }
+  }
 }

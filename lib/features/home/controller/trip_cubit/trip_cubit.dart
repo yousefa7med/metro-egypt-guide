@@ -12,18 +12,42 @@ import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart
 import 'package:go_metro/core/Helper/mixins/station_name_mixin.dart';
 import 'package:go_metro/core/errors/app_exeption.dart';
 import 'package:go_metro/generated/l10n.dart';
+import 'package:go_metro/objectbox.g.dart';
 
 part 'trip_state.dart';
 
 class TripCubit extends Cubit<TripState> with StationNameMixin {
   TripCubit({required this.metro}) : super(TripInitialState()) {
-    trips = GetIt.instance<ObjectBoxServices>().detailsBox.getAll();
+    favourites = GetIt.instance<ObjectBoxServices>().detailsBox
+        .getAll()
+        .reversed
+        .toList();
 
+    for (var trip in favourites) {
+      final routeQuery = GetIt.instance<ObjectBoxServices>().routeBox.query(
+        RouteModel_.trip.equals(trip.id),
+      )..order(RouteModel_.routeOrder);
+      final routeQueryBuilder = routeQuery.build();
+      trip.routes.clear();
+      trip.routes.addAll(routeQueryBuilder.find());
+      routeQueryBuilder.close();
+
+      for (var route in trip.routes) {
+        final stationQuery =
+            GetIt.instance<ObjectBoxServices>().stationsBox.query(
+              StationModel_.route.equals(route.id),
+            )..order(StationModel_.order);
+        final stationqueryBuilder = stationQuery.build();
+        route.stations.clear();
+        route.stations.addAll(stationqueryBuilder.find());
+        stationqueryBuilder.close();
+      }
+    }
     emit(AllFavChangesState());
   }
 
   Metro metro;
-  late final List<TripDetailsModel> trips;
+  late final List<TripDetailsModel> favourites;
 
   static TripCubit get(context) => BlocProvider.of(context);
 
@@ -47,21 +71,24 @@ class TripCubit extends Cubit<TripState> with StationNameMixin {
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      emit(PositionFailureState(errMsg: S.current.PleaseOpenLocation));
+      throw LocationDisabledException();
     }
 
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        emit(
-          PositionFailureState(errMsg: S.current.LocationPermissionRequired),
-        );
+        // emit(
+        //   PositionFailureState(errMsg: S.current.LocationPermissionRequired),
+
+        // );
+        throw LocationPermissionDeniedException();
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      emit(PositionFailureState(errMsg: S.current.LocationPermanentlyDenied));
+      // emit(PositionFailureState(errMsg: S.current.LocationPermanentlyDenied));
+      throw LocationPermissionPermanentlyDeniedException();
     }
 
     return await Geolocator.getCurrentPosition();
@@ -69,17 +96,25 @@ class TripCubit extends Cubit<TripState> with StationNameMixin {
 
   Future<void> getNearestStation() async {
     emit(PositionLoadingState());
-    log('getNearestStation');
-    final position = await _getPosition();
+    try {
+      log('getNearestStation');
+      final position = await _getPosition();
 
-    final nearestStation = _getNearestStationModel(
-      position.latitude,
-      position.longitude,
-    )!;
-    String? nearestStationName = nearestStation.getStationName();
-    startStationController.text = nearestStationName ?? '';
+      final nearestStation = _getNearestStationModel(
+        position.latitude,
+        position.longitude,
+      )!;
+      String? nearestStationName = nearestStation.getStationName();
+      startStationController.text = nearestStationName ?? '';
 
-    emit(PositionSuccessState(nearestStation: nearestStation));
+      emit(PositionSuccessState(nearestStation: nearestStation));
+    } on LocationDisabledException {
+      emit(PositionFailureState(errMsg: S.current.PleaseOpenLocation));
+    } on LocationPermissionDeniedException {
+      emit(PositionFailureState(errMsg: S.current.LocationPermissionRequired));
+    } on LocationPermissionPermanentlyDeniedException {
+      emit(PositionFailureState(errMsg: S.current.LocationPermanentlyDenied));
+    }
   }
 
   StationModel? _getNearestStationModel(double latitude, double longitude) {
@@ -108,7 +143,7 @@ class TripCubit extends Cubit<TripState> with StationNameMixin {
   }
 
   void removeFromFav(TripDetailsModel det) {
-    trips.remove(det);
+    favourites.remove(det);
     final box = GetIt.instance<ObjectBoxServices>().detailsBox;
     box.remove(det.id);
     det.isFav = false;
@@ -118,10 +153,16 @@ class TripCubit extends Cubit<TripState> with StationNameMixin {
   void addToFav(TripDetailsModel det) {
     det.isFav = true;
 
-    trips.add(det);
-    final box = GetIt.instance<ObjectBoxServices>().detailsBox;
-    box.put(det);
+    favourites.insert(0, det);
     emit(AllFavChangesState());
+    for (final route in det.routes) {
+      route.trip.target = det; 
+      for (final station in route.stations) {
+        station.route.target = route; 
+      }
+    }
+
+    GetIt.instance<ObjectBoxServices>().detailsBox.put(det);
   }
 
   @override

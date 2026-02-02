@@ -19,6 +19,11 @@
 "contactUs":"Contact us",
 "favTrips":"Favourite Trips",
 "remfromFav":"Remove From Favourite",
+"delTrip":"Delete Trip",
+"delete":"Delete",
+"AreYouSure":"Are You Sure, Do You want to Delete the Trip?",
+
+
     "LineDetails":"Line Details",
     "AllLines":"All Lines",
     "lang":"Language",

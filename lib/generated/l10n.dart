@@ -191,6 +191,26 @@ class S {
     );
   }
 
+  /// `Delete Trip`
+  String get delTrip {
+    return Intl.message('Delete Trip', name: 'delTrip', desc: '', args: []);
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message('Delete', name: 'delete', desc: '', args: []);
+  }
+
+  /// `Are You Sure, Do You want to Delete the Trip?`
+  String get AreYouSure {
+    return Intl.message(
+      'Are You Sure, Do You want to Delete the Trip?',
+      name: 'AreYouSure',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Line Details`
   String get LineDetails {
     return Intl.message(

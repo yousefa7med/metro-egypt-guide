@@ -45,8 +45,11 @@ class _FavouriteSectionState extends State<FavouriteSection> {
                   BlocBuilder<TripCubit, TripState>(
                     builder: (context, state) {
                       if (state is AllFavChangesState) {
-                        return (context.read<TripCubit>().trips.isNotEmpty &&
-                                context.read<TripCubit>().trips.length > 2)
+                        return (context
+                                    .read<TripCubit>()
+                                    .favourites
+                                    .isNotEmpty &&
+                                context.read<TripCubit>().favourites.length > 2)
                             ? InkWell(
                                 onTap: () {
                                   setState(() {
@@ -95,8 +98,8 @@ class _FavouriteSectionState extends State<FavouriteSection> {
           buildWhen: (previous, curr) => curr is AllFavChangesState,
           builder: (context, state) {
             if (state is AllFavChangesState &&
-                context.read<TripCubit>().trips.isNotEmpty) {
-              final trips = context.read<TripCubit>().trips;
+                context.read<TripCubit>().favourites.isNotEmpty) {
+              final trips = context.read<TripCubit>().favourites;
 
               return SliverList.builder(
                 itemCount: allFav
@@ -110,7 +113,7 @@ class _FavouriteSectionState extends State<FavouriteSection> {
                     padding: isArabic()
                         ? const EdgeInsets.only(left: 10, right: 10)
                         : const EdgeInsets.only(right: 10, left: 10),
-                    child: FavTripRow(index: index),
+                    child: FavTripRow(trip: trips[index]),
                   );
                 },
               );

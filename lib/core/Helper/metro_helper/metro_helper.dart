@@ -125,6 +125,10 @@ class Metro {
     details.calcTransfer();
     details.calcTime();
     details.setColors();
+    details.setOrder();
+    for (var route in details.routes) {
+      route.setOrder();
+    }
     return details;
   }
 
@@ -315,7 +319,9 @@ class Metro {
           // إغلاق الـ route الحالي حتى المحطة قبل الأخيرة
           if (currentRoute.length > 1 ||
               (currentRoute.length == 1 && details.routes.isEmpty)) {
-            details.routes.add(List.from(currentRoute));
+            final newRoute = RouteModel(routeOrder: details.routes.length + 1);
+            newRoute.stations.addAll(currentRoute);
+            details.routes.add(newRoute);
             if (currentLine != null) {
               details.directions.add(
                 _getDirection(
@@ -331,7 +337,9 @@ class Metro {
           currentLine = lastStationLines.firstWhere(
             (line) => line.stations.any((s) => s.name == currStation.name),
           );
-          details.routes.add(List.from(currentRoute));
+          final newRoute = RouteModel(routeOrder: details.routes.length + 1);
+          newRoute.stations.addAll(currentRoute);
+          details.routes.add(newRoute);
           details.directions.add(
             _getDirection(currentLine, currStation.name!, currStation.name!),
           );
@@ -343,7 +351,9 @@ class Metro {
         if (i == path.length - 1) {
           currentRoute.add(currStation);
         }
-        details.routes.add(List.from(currentRoute));
+        final newRoute = RouteModel(routeOrder: details.routes.length + 1);
+        newRoute.stations.addAll(currentRoute);
+        details.routes.add(newRoute);
         if (currentLine != null) {
           details.directions.add(
             _getDirection(
@@ -365,7 +375,9 @@ class Metro {
     // إضافة المسار الأخير إذا لم يتم إضافته
     if (currentRoute.length > 1 ||
         (currentRoute.length == 1 && details.routes.isEmpty)) {
-      details.routes.add(currentRoute);
+      final newRoute = RouteModel(routeOrder: details.routes.length + 1);
+      newRoute.stations.addAll(currentRoute);
+      details.routes.add(newRoute);
       if (currentLine != null) {
         details.directions.add(
           _getDirection(

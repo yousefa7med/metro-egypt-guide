@@ -14,80 +14,197 @@ import 'package:objectbox/internal.dart'
 import 'package:objectbox/objectbox.dart' as obx;
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
+import 'core/Helper/metro_helper/models/station_model.dart';
 import 'core/Helper/metro_helper/models/trip_details_model.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
 final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
-    id: const obx_int.IdUid(1, 7550343634550854417),
-    name: 'TripDetailsModel',
-    lastPropertyId: const obx_int.IdUid(12, 5706528965651627420),
+    id: const obx_int.IdUid(1, 1878406826798200302),
+    name: 'StationModel',
+    lastPropertyId: const obx_int.IdUid(11, 1903947133767334995),
     flags: 0,
     properties: <obx_int.ModelProperty>[
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(1, 3411210631891118254),
+        id: const obx_int.IdUid(1, 7597444048867670043),
         name: 'id',
         type: 6,
         flags: 1,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(2, 3452321596232686419),
-        name: 'startStation',
+        id: const obx_int.IdUid(2, 1864831393635490266),
+        name: 'name',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(3, 661791038983604534),
-        name: 'finalStation',
+        id: const obx_int.IdUid(3, 6062331136966305666),
+        name: 'transferBetween',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(4, 1655135241548333685),
-        name: 'stationCount',
+        id: const obx_int.IdUid(4, 3230181524141601839),
+        name: 'index',
         type: 6,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(5, 2306957780748800444),
-        name: 'time',
+        id: const obx_int.IdUid(5, 3818138352171601811),
+        name: 'order',
+        type: 6,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(6, 1888283232652235655),
+        name: 'travellingTime',
         type: 8,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(6, 4155350882499762217),
-        name: 'ticketPrice',
-        type: 6,
+        id: const obx_int.IdUid(7, 8296082891759851783),
+        name: 'longitudee',
+        type: 8,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(7, 1695552649970896872),
-        name: 'transfer',
-        type: 6,
+        id: const obx_int.IdUid(8, 5173018715973593279),
+        name: 'latitude',
+        type: 8,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(8, 3834310563968879556),
-        name: 'isFav',
-        type: 1,
-        flags: 0,
+        id: const obx_int.IdUid(9, 335992862063190871),
+        name: 'routeId',
+        type: 11,
+        flags: 520,
+        indexId: const obx_int.IdUid(1, 6355618568207949620),
+        relationField: 'route',
+        relationTarget: 'RouteModel',
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(11, 7060455526065150359),
-        name: 'startColorValue',
-        type: 6,
-        flags: 0,
-      ),
-      obx_int.ModelProperty(
-        id: const obx_int.IdUid(12, 5706528965651627420),
-        name: 'finalColorValue',
+        id: const obx_int.IdUid(11, 1903947133767334995),
+        name: 'lineColorValue',
         type: 6,
         flags: 0,
       ),
     ],
     relations: <obx_int.ModelRelation>[],
     backlinks: <obx_int.ModelBacklink>[],
+  ),
+  obx_int.ModelEntity(
+    id: const obx_int.IdUid(2, 3287180650037740563),
+    name: 'RouteModel',
+    lastPropertyId: const obx_int.IdUid(4, 6736465377229199532),
+    flags: 0,
+    properties: <obx_int.ModelProperty>[
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(1, 959313644052531535),
+        name: 'id',
+        type: 6,
+        flags: 1,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(2, 5485680712449817017),
+        name: 'routeOrder',
+        type: 6,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(4, 6736465377229199532),
+        name: 'tripId',
+        type: 11,
+        flags: 520,
+        indexId: const obx_int.IdUid(3, 6347078358917029468),
+        relationField: 'trip',
+        relationTarget: 'TripDetailsModel',
+      ),
+    ],
+    relations: <obx_int.ModelRelation>[],
+    backlinks: <obx_int.ModelBacklink>[
+      obx_int.ModelBacklink(
+        name: 'stations',
+        srcEntity: 'StationModel',
+        srcField: 'route',
+      ),
+    ],
+  ),
+  obx_int.ModelEntity(
+    id: const obx_int.IdUid(3, 2469107595071620681),
+    name: 'TripDetailsModel',
+    lastPropertyId: const obx_int.IdUid(10, 8470833196650760883),
+    flags: 0,
+    properties: <obx_int.ModelProperty>[
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(1, 5662817930919562740),
+        name: 'id',
+        type: 6,
+        flags: 1,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(2, 8378066832450478664),
+        name: 'startStation',
+        type: 9,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(3, 7114481034906551752),
+        name: 'finalStation',
+        type: 9,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(4, 3811735082017196488),
+        name: 'startColorValue',
+        type: 6,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(5, 888559801213203453),
+        name: 'finalColorValue',
+        type: 6,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(6, 6709719329929825827),
+        name: 'stationCount',
+        type: 6,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(7, 4838534645693481655),
+        name: 'time',
+        type: 8,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(8, 3902152556469603055),
+        name: 'ticketPrice',
+        type: 6,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(9, 8400483415017275511),
+        name: 'transfer',
+        type: 6,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(10, 8470833196650760883),
+        name: 'isFav',
+        type: 1,
+        flags: 0,
+      ),
+    ],
+    relations: <obx_int.ModelRelation>[],
+    backlinks: <obx_int.ModelBacklink>[
+      obx_int.ModelBacklink(
+        name: 'routes',
+        srcEntity: 'RouteModel',
+        srcField: 'trip',
+      ),
+    ],
   ),
 ];
 
@@ -134,13 +251,13 @@ obx_int.ModelDefinition getObjectBoxModel() {
     // Typically, this is done with `dart run build_runner build`.
     generatorVersion: obx_int.GeneratorVersion.v2025_12_16,
     entities: _entities,
-    lastEntityId: const obx_int.IdUid(1, 7550343634550854417),
-    lastIndexId: const obx_int.IdUid(0, 0),
+    lastEntityId: const obx_int.IdUid(3, 2469107595071620681),
+    lastIndexId: const obx_int.IdUid(3, 6347078358917029468),
     lastRelationId: const obx_int.IdUid(0, 0),
     lastSequenceId: const obx_int.IdUid(0, 0),
     retiredEntityUids: const [],
-    retiredIndexUids: const [],
-    retiredPropertyUids: const [1545752483839365043, 5729817248310010087],
+    retiredIndexUids: const [6819523881574455711],
+    retiredPropertyUids: const [9102639781452421133, 4978181440416233128],
     retiredRelationUids: const [],
     modelVersion: 5,
     modelVersionParserMinimum: 5,
@@ -148,10 +265,157 @@ obx_int.ModelDefinition getObjectBoxModel() {
   );
 
   final bindings = <Type, obx_int.EntityDefinition>{
-    TripDetailsModel: obx_int.EntityDefinition<TripDetailsModel>(
+    StationModel: obx_int.EntityDefinition<StationModel>(
       model: _entities[0],
+      toOneRelations: (StationModel object) => [object.route],
+      toManyRelations: (StationModel object) => {},
+      getId: (StationModel object) => object.id,
+      setId: (StationModel object, int id) {
+        object.id = id;
+      },
+      objectToFB: (StationModel object, fb.Builder fbb) {
+        final nameOffset = object.name == null
+            ? null
+            : fbb.writeString(object.name!);
+        final transferBetweenOffset = object.transferBetween == null
+            ? null
+            : fbb.writeString(object.transferBetween!);
+        fbb.startTable(12);
+        fbb.addInt64(0, object.id);
+        fbb.addOffset(1, nameOffset);
+        fbb.addOffset(2, transferBetweenOffset);
+        fbb.addInt64(3, object.index);
+        fbb.addInt64(4, object.order);
+        fbb.addFloat64(5, object.travellingTime);
+        fbb.addFloat64(6, object.longitudee);
+        fbb.addFloat64(7, object.latitude);
+        fbb.addInt64(8, object.route.targetId);
+        fbb.addInt64(10, object.lineColorValue);
+        fbb.finish(fbb.endTable());
+        return object.id;
+      },
+      objectFromFB: (obx.Store store, ByteData fbData) {
+        final buffer = fb.BufferContext(fbData);
+        final rootOffset = buffer.derefObject(0);
+        final nameParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGetNullable(buffer, rootOffset, 6);
+        final latitudeParam = const fb.Float64Reader().vTableGetNullable(
+          buffer,
+          rootOffset,
+          18,
+        );
+        final longitudeeParam = const fb.Float64Reader().vTableGetNullable(
+          buffer,
+          rootOffset,
+          16,
+        );
+        final indexParam = const fb.Int64Reader().vTableGetNullable(
+          buffer,
+          rootOffset,
+          10,
+        );
+        final travellingTimeParam = const fb.Float64Reader().vTableGetNullable(
+          buffer,
+          rootOffset,
+          14,
+        );
+        final transferBetweenParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGetNullable(buffer, rootOffset, 8);
+        final lineColorValueParam = const fb.Int64Reader().vTableGetNullable(
+          buffer,
+          rootOffset,
+          24,
+        );
+        final object =
+            StationModel(
+                name: nameParam,
+                latitude: latitudeParam,
+                longitudee: longitudeeParam,
+                index: indexParam,
+                travellingTime: travellingTimeParam,
+                transferBetween: transferBetweenParam,
+                lineColorValue: lineColorValueParam,
+              )
+              ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0)
+              ..order = const fb.Int64Reader().vTableGetNullable(
+                buffer,
+                rootOffset,
+                12,
+              );
+        object.route.targetId = const fb.Int64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          20,
+          0,
+        );
+        object.route.attach(store);
+        return object;
+      },
+    ),
+    RouteModel: obx_int.EntityDefinition<RouteModel>(
+      model: _entities[1],
+      toOneRelations: (RouteModel object) => [object.trip],
+      toManyRelations: (RouteModel object) => {
+        obx_int.RelInfo<StationModel>.toOneBacklink(
+          9,
+          object.id,
+          (StationModel srcObject) => srcObject.route,
+        ): object.stations,
+      },
+      getId: (RouteModel object) => object.id,
+      setId: (RouteModel object, int id) {
+        object.id = id;
+      },
+      objectToFB: (RouteModel object, fb.Builder fbb) {
+        fbb.startTable(5);
+        fbb.addInt64(0, object.id);
+        fbb.addInt64(1, object.routeOrder);
+        fbb.addInt64(3, object.trip.targetId);
+        fbb.finish(fbb.endTable());
+        return object.id;
+      },
+      objectFromFB: (obx.Store store, ByteData fbData) {
+        final buffer = fb.BufferContext(fbData);
+        final rootOffset = buffer.derefObject(0);
+        final routeOrderParam = const fb.Int64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          6,
+          0,
+        );
+        final object = RouteModel(routeOrder: routeOrderParam)
+          ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+        object.trip.targetId = const fb.Int64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          10,
+          0,
+        );
+        object.trip.attach(store);
+        obx_int.InternalToManyAccess.setRelInfo<RouteModel>(
+          object.stations,
+          store,
+          obx_int.RelInfo<StationModel>.toOneBacklink(
+            9,
+            object.id,
+            (StationModel srcObject) => srcObject.route,
+          ),
+        );
+        return object;
+      },
+    ),
+    TripDetailsModel: obx_int.EntityDefinition<TripDetailsModel>(
+      model: _entities[2],
       toOneRelations: (TripDetailsModel object) => [],
-      toManyRelations: (TripDetailsModel object) => {},
+      toManyRelations: (TripDetailsModel object) => {
+        obx_int.RelInfo<RouteModel>.toOneBacklink(
+          4,
+          object.id,
+          (RouteModel srcObject) => srcObject.trip,
+        ): object.routes,
+      },
       getId: (TripDetailsModel object) => object.id,
       setId: (TripDetailsModel object, int id) {
         object.id = id;
@@ -163,17 +427,17 @@ obx_int.ModelDefinition getObjectBoxModel() {
         final finalStationOffset = object.finalStation == null
             ? null
             : fbb.writeString(object.finalStation!);
-        fbb.startTable(13);
+        fbb.startTable(11);
         fbb.addInt64(0, object.id);
         fbb.addOffset(1, startStationOffset);
         fbb.addOffset(2, finalStationOffset);
-        fbb.addInt64(3, object.stationCount);
-        fbb.addFloat64(4, object.time);
-        fbb.addInt64(5, object.ticketPrice);
-        fbb.addInt64(6, object.transfer);
-        fbb.addBool(7, object.isFav);
-        fbb.addInt64(10, object.startColorValue);
-        fbb.addInt64(11, object.finalColorValue);
+        fbb.addInt64(3, object.startColorValue);
+        fbb.addInt64(4, object.finalColorValue);
+        fbb.addInt64(5, object.stationCount);
+        fbb.addFloat64(6, object.time);
+        fbb.addInt64(7, object.ticketPrice);
+        fbb.addInt64(8, object.transfer);
+        fbb.addBool(9, object.isFav);
         fbb.finish(fbb.endTable());
         return object.id;
       },
@@ -189,23 +453,23 @@ obx_int.ModelDefinition getObjectBoxModel() {
         final stationCountParam = const fb.Int64Reader().vTableGetNullable(
           buffer,
           rootOffset,
-          10,
+          14,
         );
         final timeParam = const fb.Float64Reader().vTableGet(
           buffer,
           rootOffset,
-          12,
+          16,
           0,
         );
         final transferParam = const fb.Int64Reader().vTableGetNullable(
           buffer,
           rootOffset,
-          16,
+          20,
         );
         final ticketPriceParam = const fb.Int64Reader().vTableGetNullable(
           buffer,
           rootOffset,
-          14,
+          18,
         );
         final object =
             TripDetailsModel(
@@ -217,23 +481,31 @@ obx_int.ModelDefinition getObjectBoxModel() {
                 ticketPrice: ticketPriceParam,
               )
               ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0)
-              ..isFav = const fb.BoolReader().vTableGet(
-                buffer,
-                rootOffset,
-                18,
-                false,
-              )
               ..startColorValue = const fb.Int64Reader().vTableGetNullable(
                 buffer,
                 rootOffset,
-                24,
+                10,
               )
               ..finalColorValue = const fb.Int64Reader().vTableGetNullable(
                 buffer,
                 rootOffset,
-                26,
+                12,
+              )
+              ..isFav = const fb.BoolReader().vTableGet(
+                buffer,
+                rootOffset,
+                22,
+                false,
               );
-
+        obx_int.InternalToManyAccess.setRelInfo<TripDetailsModel>(
+          object.routes,
+          store,
+          obx_int.RelInfo<RouteModel>.toOneBacklink(
+            4,
+            object.id,
+            (RouteModel srcObject) => srcObject.trip,
+          ),
+        );
         return object;
       },
     ),
@@ -242,55 +514,136 @@ obx_int.ModelDefinition getObjectBoxModel() {
   return obx_int.ModelDefinition(model, bindings);
 }
 
+/// [StationModel] entity fields to define ObjectBox queries.
+class StationModel_ {
+  /// See [StationModel.id].
+  static final id = obx.QueryIntegerProperty<StationModel>(
+    _entities[0].properties[0],
+  );
+
+  /// See [StationModel.name].
+  static final name = obx.QueryStringProperty<StationModel>(
+    _entities[0].properties[1],
+  );
+
+  /// See [StationModel.transferBetween].
+  static final transferBetween = obx.QueryStringProperty<StationModel>(
+    _entities[0].properties[2],
+  );
+
+  /// See [StationModel.index].
+  static final index = obx.QueryIntegerProperty<StationModel>(
+    _entities[0].properties[3],
+  );
+
+  /// See [StationModel.order].
+  static final order = obx.QueryIntegerProperty<StationModel>(
+    _entities[0].properties[4],
+  );
+
+  /// See [StationModel.travellingTime].
+  static final travellingTime = obx.QueryDoubleProperty<StationModel>(
+    _entities[0].properties[5],
+  );
+
+  /// See [StationModel.longitudee].
+  static final longitudee = obx.QueryDoubleProperty<StationModel>(
+    _entities[0].properties[6],
+  );
+
+  /// See [StationModel.latitude].
+  static final latitude = obx.QueryDoubleProperty<StationModel>(
+    _entities[0].properties[7],
+  );
+
+  /// See [StationModel.route].
+  static final route = obx.QueryRelationToOne<StationModel, RouteModel>(
+    _entities[0].properties[8],
+  );
+
+  /// See [StationModel.lineColorValue].
+  static final lineColorValue = obx.QueryIntegerProperty<StationModel>(
+    _entities[0].properties[9],
+  );
+}
+
+/// [RouteModel] entity fields to define ObjectBox queries.
+class RouteModel_ {
+  /// See [RouteModel.id].
+  static final id = obx.QueryIntegerProperty<RouteModel>(
+    _entities[1].properties[0],
+  );
+
+  /// See [RouteModel.routeOrder].
+  static final routeOrder = obx.QueryIntegerProperty<RouteModel>(
+    _entities[1].properties[1],
+  );
+
+  /// See [RouteModel.trip].
+  static final trip = obx.QueryRelationToOne<RouteModel, TripDetailsModel>(
+    _entities[1].properties[2],
+  );
+
+  /// see [RouteModel.stations]
+  static final stations = obx.QueryBacklinkToMany<StationModel, RouteModel>(
+    StationModel_.route,
+  );
+}
+
 /// [TripDetailsModel] entity fields to define ObjectBox queries.
 class TripDetailsModel_ {
   /// See [TripDetailsModel.id].
   static final id = obx.QueryIntegerProperty<TripDetailsModel>(
-    _entities[0].properties[0],
+    _entities[2].properties[0],
   );
 
   /// See [TripDetailsModel.startStation].
   static final startStation = obx.QueryStringProperty<TripDetailsModel>(
-    _entities[0].properties[1],
+    _entities[2].properties[1],
   );
 
   /// See [TripDetailsModel.finalStation].
   static final finalStation = obx.QueryStringProperty<TripDetailsModel>(
-    _entities[0].properties[2],
-  );
-
-  /// See [TripDetailsModel.stationCount].
-  static final stationCount = obx.QueryIntegerProperty<TripDetailsModel>(
-    _entities[0].properties[3],
-  );
-
-  /// See [TripDetailsModel.time].
-  static final time = obx.QueryDoubleProperty<TripDetailsModel>(
-    _entities[0].properties[4],
-  );
-
-  /// See [TripDetailsModel.ticketPrice].
-  static final ticketPrice = obx.QueryIntegerProperty<TripDetailsModel>(
-    _entities[0].properties[5],
-  );
-
-  /// See [TripDetailsModel.transfer].
-  static final transfer = obx.QueryIntegerProperty<TripDetailsModel>(
-    _entities[0].properties[6],
-  );
-
-  /// See [TripDetailsModel.isFav].
-  static final isFav = obx.QueryBooleanProperty<TripDetailsModel>(
-    _entities[0].properties[7],
+    _entities[2].properties[2],
   );
 
   /// See [TripDetailsModel.startColorValue].
   static final startColorValue = obx.QueryIntegerProperty<TripDetailsModel>(
-    _entities[0].properties[8],
+    _entities[2].properties[3],
   );
 
   /// See [TripDetailsModel.finalColorValue].
   static final finalColorValue = obx.QueryIntegerProperty<TripDetailsModel>(
-    _entities[0].properties[9],
+    _entities[2].properties[4],
+  );
+
+  /// See [TripDetailsModel.stationCount].
+  static final stationCount = obx.QueryIntegerProperty<TripDetailsModel>(
+    _entities[2].properties[5],
+  );
+
+  /// See [TripDetailsModel.time].
+  static final time = obx.QueryDoubleProperty<TripDetailsModel>(
+    _entities[2].properties[6],
+  );
+
+  /// See [TripDetailsModel.ticketPrice].
+  static final ticketPrice = obx.QueryIntegerProperty<TripDetailsModel>(
+    _entities[2].properties[7],
+  );
+
+  /// See [TripDetailsModel.transfer].
+  static final transfer = obx.QueryIntegerProperty<TripDetailsModel>(
+    _entities[2].properties[8],
+  );
+
+  /// See [TripDetailsModel.isFav].
+  static final isFav = obx.QueryBooleanProperty<TripDetailsModel>(
+    _entities[2].properties[9],
+  );
+
+  /// see [TripDetailsModel.routes]
+  static final routes = obx.QueryBacklinkToMany<RouteModel, TripDetailsModel>(
+    RouteModel_.trip,
   );
 }

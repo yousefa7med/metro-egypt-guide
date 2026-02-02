@@ -1,47 +1,36 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
 import 'package:go_metro/generated/l10n.dart';
+import 'package:objectbox/objectbox.dart';
 
-class StationModel extends Equatable {
+@Entity()
+class StationModel {
+  @Id()
+  int id = 0;
   String? name;
   String? transferBetween;
   int? index;
+  int? order;
   double? travellingTime;
   double? longitudee;
   double? latitude;
-  Color? lineColor;
+  int? lineColorValue;
+  final route = ToOne<RouteModel>();
   StationModel({
     this.name,
     this.latitude,
     this.longitudee,
-    this.lineColor,
     this.index,
     this.travellingTime,
     this.transferBetween,
+    this.lineColorValue
   });
-  Map<String, dynamic> toMap() {
-    return {
-      "name": name,
-      "index": index,
-      "travellingTime": travellingTime,
-      "longitudee": longitudee,
-      'latitude': latitude,
-      'lineColor': lineColor,
-    };
-  }
+  Color get lineColor => Color(lineColorValue!);
+  set lineColor(Color color) => lineColorValue = color.toARGB32();
 
-  factory StationModel.fromMap(Map<String, dynamic> map) {
-    return StationModel(
-      name: map["name"],
-      index: map["index"],
-      travellingTime: map["travellingTime"],
-      longitudee: map["longitudee"],
-      latitude: map['latitude'],
+   
 
-      lineColor: map['lineColor'],
-    );
-  }
 
   static String getLine(Color lineColor, BuildContext context) {
     final s = S.of(context);
@@ -255,18 +244,6 @@ class StationModel extends Equatable {
       }
     }
   }
-
-  @override
-  // TODO: implement props
-  List<Object?> get props => [
-    name,
-    transferBetween,
-    index,
-    travellingTime,
-    longitudee,
-    latitude,
-    lineColor,
-  ];
 }
 // "Helwan":"Helwan",
 //   "Ain Helwan":"Ain Helwan",

@@ -17,10 +17,10 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
 
-  await getIt<ObjectBoxServices>().init();
-  await getIt<CacheHelper>().init();
+  await GetIt.instance<ObjectBoxServices>().init();
+  await GetIt.instance<CacheHelper>().init();
   Bloc.observer = AppBlocObserver();
-  // getIt<ObjectBoxServices>().detailsBox.removeAll();
+  // getIt<ObjectBoxServices>().deleteAll();
 
   runApp(
     BlocProvider(
@@ -68,14 +68,12 @@ class MetroGuide extends StatelessWidget {
   }
 }
 
-final getIt = GetIt.instance;
-
 void configureDependencies() {
   // Register your services
-  getIt.registerSingleton<Metro>(Metro());
-  getIt.registerSingleton<CacheHelper>(CacheHelper());
-  getIt.registerSingleton<ObjectBoxServices>(ObjectBoxServices());
-  getIt.registerLazySingleton<TripCubit>(
-    () => TripCubit(metro: getIt<Metro>()),
+  GetIt.instance.registerSingleton<Metro>(Metro());
+  GetIt.instance.registerSingleton<CacheHelper>(CacheHelper());
+  GetIt.instance.registerSingleton<ObjectBoxServices>(ObjectBoxServices());
+  GetIt.instance.registerLazySingleton<TripCubit>(
+    () => TripCubit(metro: GetIt.instance<Metro>()),
   );
 }

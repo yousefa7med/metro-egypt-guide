@@ -30,6 +30,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "Alf_Masken": MessageLookupByLibrary.simpleMessage("Alf Masken"),
     "AllLines": MessageLookupByLibrary.simpleMessage("All Lines"),
     "Arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "AreYouSure": MessageLookupByLibrary.simpleMessage(
+      "Are You Sure, Do You want to Delete the Trip?",
+    ),
     "Attaba": MessageLookupByLibrary.simpleMessage("Attaba"),
     "Bab_El_Shaariya": MessageLookupByLibrary.simpleMessage("Bab El-Shaariya"),
     "Boulak_El_Dakrour": MessageLookupByLibrary.simpleMessage(
@@ -174,6 +177,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please check your start station and final station",
     ),
     "contactUs": MessageLookupByLibrary.simpleMessage("Contact us"),
+    "delTrip": MessageLookupByLibrary.simpleMessage("Delete Trip"),
+    "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "enableLocation": MessageLookupByLibrary.simpleMessage("Enable Location"),
     "favTrips": MessageLookupByLibrary.simpleMessage("Favourite Trips"),
     "finalStation": MessageLookupByLibrary.simpleMessage("Final Station"),

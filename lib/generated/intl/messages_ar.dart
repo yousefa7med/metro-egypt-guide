@@ -30,6 +30,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "Alf_Masken": MessageLookupByLibrary.simpleMessage("الف مسكن"),
     "AllLines": MessageLookupByLibrary.simpleMessage("جميع الخطوط"),
     "Arabic": MessageLookupByLibrary.simpleMessage("اللغة العربية"),
+    "AreYouSure": MessageLookupByLibrary.simpleMessage(
+      "هل انت متأكد هل تريد حذف الرحلة؟",
+    ),
     "Attaba": MessageLookupByLibrary.simpleMessage("العتبة"),
     "Bab_El_Shaariya": MessageLookupByLibrary.simpleMessage("باب الشعرية"),
     "Boulak_El_Dakrour": MessageLookupByLibrary.simpleMessage("بولاق الدكرور"),
@@ -146,6 +149,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "يرجي التأكد من محطة البداية والنهاية",
     ),
     "contactUs": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
+    "delTrip": MessageLookupByLibrary.simpleMessage("حذف الرحلة"),
+    "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "enableLocation": MessageLookupByLibrary.simpleMessage("تفعيل الموقع"),
     "favTrips": MessageLookupByLibrary.simpleMessage("الرحلات المفضلة"),
     "finalStation": MessageLookupByLibrary.simpleMessage("محطة النهاية"),

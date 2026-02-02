@@ -52,14 +52,19 @@ class DetailsView extends StatelessWidget {
                 start: details.stationName(details.startStation!)!,
                 end: details.stationName(details.finalStation!)!,
                 startLine: TripDetailsModel.getLineByColor(
-                  details.routes[0][0].lineColor!,
+                  details.routes[0].stations[0].lineColor,
                 ),
-                startColor: details.routes[0][0].lineColor!,
+                startColor: details.routes[0].stations[0].lineColor,
                 lastLine: TripDetailsModel.getLineByColor(
-                  details.routes[details.routes.length - 1][0].lineColor!,
+                  details
+                      .routes[details.routes.length - 1]
+                      .stations[0]
+                      .lineColor,
                 ),
-                lastColor:
-                    details.routes[details.routes.length - 1][0].lineColor!,
+                lastColor: details
+                    .routes[details.routes.length - 1]
+                    .stations[0]
+                    .lineColor,
               ),
             ),
             const SliverToBoxAdapter(child: Gap(15)),
@@ -84,13 +89,13 @@ class DetailsView extends StatelessWidget {
                     spacing: 10,
                     children: [
                       StationRow(
-                        color: details.routes[index].last.lineColor!,
+                        color: details.routes[index].stations.last.lineColor,
                         station:
-                            "${s.transferFrom} ${details.routes[index].last.getStationName()}",
+                            "${s.transferFrom} ${details.routes[index].stations.last.getStationName()}",
                       ),
 
                       Text(
-                        "${details.routes[index].last.getStationName()} ${details.routes[index].last.transferBetween} ",
+                        "${details.routes[index].stations.last.getStationName()} ${details.routes[index].stations.last.transferBetween} ",
                         style: AppTextStyle.medium14.copyWith(
                           fontSize: 16,
                           fontFamily: AppFontFamily.roboto,
@@ -103,16 +108,15 @@ class DetailsView extends StatelessWidget {
               ),
             ),
             for (var route in details.routes) ...[
-              // المسار نفسه (المحطات) بتعمل Lazy Loading
               SliverPadding(
                 sliver: SliverList.builder(
-                  itemCount: route.length,
+                  itemCount: route.stations.length,
                   itemBuilder: (context, index) {
                     log('builder $index');
                     return AppTimeLineTile(
                       index: index,
-                      stations: route,
-                      color: route[0].lineColor!,
+                      stations: route.stations,
+                      color: route.stations[0].lineColor,
                     );
                   },
                 ),

@@ -4,76 +4,167 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:7550343634550854417",
-      "lastPropertyId": "12:5706528965651627420",
-      "name": "TripDetailsModel",
+      "id": "1:1878406826798200302",
+      "lastPropertyId": "11:1903947133767334995",
+      "name": "StationModel",
       "properties": [
         {
-          "id": "1:3411210631891118254",
+          "id": "1:7597444048867670043",
           "name": "id",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "2:3452321596232686419",
+          "id": "2:1864831393635490266",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:6062331136966305666",
+          "name": "transferBetween",
+          "type": 9
+        },
+        {
+          "id": "4:3230181524141601839",
+          "name": "index",
+          "type": 6
+        },
+        {
+          "id": "5:3818138352171601811",
+          "name": "order",
+          "type": 6
+        },
+        {
+          "id": "6:1888283232652235655",
+          "name": "travellingTime",
+          "type": 8
+        },
+        {
+          "id": "7:8296082891759851783",
+          "name": "longitudee",
+          "type": 8
+        },
+        {
+          "id": "8:5173018715973593279",
+          "name": "latitude",
+          "type": 8
+        },
+        {
+          "id": "9:335992862063190871",
+          "name": "routeId",
+          "indexId": "1:6355618568207949620",
+          "type": 11,
+          "flags": 520,
+          "relationTarget": "RouteModel"
+        },
+        {
+          "id": "11:1903947133767334995",
+          "name": "lineColorValue",
+          "type": 6
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:3287180650037740563",
+      "lastPropertyId": "4:6736465377229199532",
+      "name": "RouteModel",
+      "properties": [
+        {
+          "id": "1:959313644052531535",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5485680712449817017",
+          "name": "routeOrder",
+          "type": 6
+        },
+        {
+          "id": "4:6736465377229199532",
+          "name": "tripId",
+          "indexId": "3:6347078358917029468",
+          "type": 11,
+          "flags": 520,
+          "relationTarget": "TripDetailsModel"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:2469107595071620681",
+      "lastPropertyId": "10:8470833196650760883",
+      "name": "TripDetailsModel",
+      "properties": [
+        {
+          "id": "1:5662817930919562740",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8378066832450478664",
           "name": "startStation",
           "type": 9
         },
         {
-          "id": "3:661791038983604534",
+          "id": "3:7114481034906551752",
           "name": "finalStation",
           "type": 9
         },
         {
-          "id": "4:1655135241548333685",
-          "name": "stationCount",
-          "type": 6
-        },
-        {
-          "id": "5:2306957780748800444",
-          "name": "time",
-          "type": 8
-        },
-        {
-          "id": "6:4155350882499762217",
-          "name": "ticketPrice",
-          "type": 6
-        },
-        {
-          "id": "7:1695552649970896872",
-          "name": "transfer",
-          "type": 6
-        },
-        {
-          "id": "8:3834310563968879556",
-          "name": "isFav",
-          "type": 1
-        },
-        {
-          "id": "11:7060455526065150359",
+          "id": "4:3811735082017196488",
           "name": "startColorValue",
           "type": 6
         },
         {
-          "id": "12:5706528965651627420",
+          "id": "5:888559801213203453",
           "name": "finalColorValue",
           "type": 6
+        },
+        {
+          "id": "6:6709719329929825827",
+          "name": "stationCount",
+          "type": 6
+        },
+        {
+          "id": "7:4838534645693481655",
+          "name": "time",
+          "type": 8
+        },
+        {
+          "id": "8:3902152556469603055",
+          "name": "ticketPrice",
+          "type": 6
+        },
+        {
+          "id": "9:8400483415017275511",
+          "name": "transfer",
+          "type": 6
+        },
+        {
+          "id": "10:8470833196650760883",
+          "name": "isFav",
+          "type": 1
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:7550343634550854417",
-  "lastIndexId": "0:0",
+  "lastEntityId": "3:2469107595071620681",
+  "lastIndexId": "3:6347078358917029468",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
-  "retiredIndexUids": [],
+  "retiredIndexUids": [
+    6819523881574455711
+  ],
   "retiredPropertyUids": [
-    1545752483839365043,
-    5729817248310010087
+    9102639781452421133,
+    4978181440416233128
   ],
   "retiredRelationUids": [],
   "version": 1

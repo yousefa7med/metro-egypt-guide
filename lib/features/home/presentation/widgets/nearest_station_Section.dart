@@ -56,7 +56,7 @@ class NearestStationSection extends StatelessWidget {
                     return SizedBox(height: 19.h);
                   case PositionSuccessState(:final nearestStation):
                     return StationRow(
-                      color: nearestStation.lineColor!,
+                      color: nearestStation.lineColor,
                       station: nearestStation.getStationName()!,
                     );
 
@@ -74,7 +74,8 @@ class NearestStationSection extends StatelessWidget {
             child: BlocBuilder<TripCubit, TripState>(
               buildWhen: (prev, curr) {
                 return curr is PositionSuccessState ||
-                    curr is PositionLoadingState;
+                    curr is PositionLoadingState ||
+                    curr is PositionFailureState;
               },
               builder: (context, state) {
                 if (state is PositionLoadingState) {

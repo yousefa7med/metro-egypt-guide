@@ -28,7 +28,7 @@ LineModel line1 = LineModel(
       name: "Helwan",
       latitude: 29.8490,
       longitudee: 31.3342,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
       travellingTime: 2,
     ),
     StationModel(
@@ -36,14 +36,14 @@ LineModel line1 = LineModel(
       latitude: 29.8628,
       longitudee: 31.3250,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Helwan University",
       latitude: 29.8689,
       longitudee: 31.3203,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Wadi Hof",
@@ -51,7 +51,7 @@ LineModel line1 = LineModel(
       latitude: 29.8794,
       longitudee: 31.3133,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Hadayek Helwan",
@@ -59,7 +59,7 @@ LineModel line1 = LineModel(
       latitude: 29.8972,
       longitudee: 31.3042,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "El-Maasara",
@@ -67,7 +67,7 @@ LineModel line1 = LineModel(
       latitude: 29.9061,
       longitudee: 31.2997,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Tora El-Asmant",
@@ -75,7 +75,7 @@ LineModel line1 = LineModel(
       latitude: 29.9258,
       longitudee: 31.2878,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Kozzika",
@@ -83,14 +83,14 @@ LineModel line1 = LineModel(
       latitude: 29.9361,
       longitudee: 31.2817,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Tora El-Balad",
       latitude: 29.9464,
       longitudee: 31.2736,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Sakanat El-Maadi",
@@ -98,7 +98,7 @@ LineModel line1 = LineModel(
       latitude: 29.9528,
       longitudee: 31.2633,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "El-Maadi",
@@ -106,7 +106,7 @@ LineModel line1 = LineModel(
       latitude: 29.9597,
       longitudee: 31.2581,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Hadayek El-Maadi",
@@ -114,7 +114,7 @@ LineModel line1 = LineModel(
       latitude: 29.9700,
       longitudee: 31.2506,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Dar El-Salam",
@@ -122,7 +122,7 @@ LineModel line1 = LineModel(
       latitude: 29.9819,
       longitudee: 31.2422,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "El-Zahraa",
@@ -130,7 +130,7 @@ LineModel line1 = LineModel(
       latitude: 29.9953,
       longitudee: 31.2317,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Mar Girgis",
@@ -138,7 +138,7 @@ LineModel line1 = LineModel(
       latitude: 30.0058,
       longitudee: 31.2294,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "El-Malek El-Saleh",
@@ -146,7 +146,7 @@ LineModel line1 = LineModel(
       latitude: 30.0169,
       longitudee: 31.2310,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "El-Sayeda Zeinab",
@@ -154,7 +154,7 @@ LineModel line1 = LineModel(
       latitude: 30.0292,
       longitudee: 31.2353,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Saad Zaghloul",
@@ -162,7 +162,7 @@ LineModel line1 = LineModel(
       latitude: 30.0367,
       longitudee: 31.2381,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "El-Sadat",
@@ -171,7 +171,7 @@ LineModel line1 = LineModel(
       latitude: 30.0444,
       longitudee: 31.2356,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Nasser",
@@ -180,7 +180,7 @@ LineModel line1 = LineModel(
       latitude: 30.0536,
       longitudee: 31.2389,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Orabi",
@@ -188,7 +188,7 @@ LineModel line1 = LineModel(
       latitude: 30.0575,
       longitudee: 31.2425,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "El-Shohadaa",
@@ -196,7 +196,7 @@ LineModel line1 = LineModel(
       latitude: 30.0620,
       longitudee: 31.2461,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Ghamra",
@@ -204,7 +204,7 @@ LineModel line1 = LineModel(
       latitude: 30.0689,
       longitudee: 31.2647,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "El-Demerdash",
@@ -212,7 +212,7 @@ LineModel line1 = LineModel(
       latitude: 30.0772,
       longitudee: 31.2778,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Manshyet El-Sadr",
@@ -220,7 +220,7 @@ LineModel line1 = LineModel(
       latitude: 30.0822,
       longitudee: 31.2878,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       name: "Kobry El-Qubba",
@@ -228,11 +228,11 @@ LineModel line1 = LineModel(
       latitude: 30.0870,
       longitudee: 31.2939,
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
     ),
     StationModel(
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
       name: "Hammamet El-Qubba",
 
       latitude: 30.0903,
@@ -240,21 +240,21 @@ LineModel line1 = LineModel(
     ),
     StationModel(
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
       name: "Saray El-Qubba",
 
       latitude: 30.0981,
       longitudee: 31.3047,
     ),
     StationModel(
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
       name: "Hadayek El-Zaytoun",
       latitude: 30.1053,
       travellingTime: 2,
       longitudee: 31.3100,
     ),
     StationModel(
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
       name: "Helmayet El-Zaytoun",
       latitude: 30.1144,
       travellingTime: 2,
@@ -262,7 +262,7 @@ LineModel line1 = LineModel(
     ),
     StationModel(
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
       name: "El-Mattareya",
 
       latitude: 30.1214,
@@ -271,21 +271,21 @@ LineModel line1 = LineModel(
     StationModel(
       name: "Ain Shams",
 
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
       latitude: 30.1311,
       longitudee: 31.3181,
       travellingTime: 2,
     ),
     StationModel(
       travellingTime: 2,
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
       name: "Ezbet El-Nakhl",
 
       latitude: 30.1392,
       longitudee: 31.3244,
     ),
     StationModel(
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
       name: "Al-Marg",
 
       travellingTime: 2,
@@ -293,7 +293,7 @@ LineModel line1 = LineModel(
       longitudee: 31.3356,
     ),
     StationModel(
-      lineColor: AppColor.line1Color,
+      lineColorValue: AppColor.line1Color.toARGB32(),
       name: "New El-Marg",
       travellingTime: 2,
 
@@ -312,10 +312,10 @@ LineModel line2 = LineModel(
 
       latitude: 30.1225,
       longitudee: 31.2447,
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       travellingTime: 2,
       name: "Koleyet El-Zeraa",
 
@@ -324,14 +324,14 @@ LineModel line2 = LineModel(
     ),
     StationModel(
       travellingTime: 2,
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       name: "El-Mezallat",
 
       latitude: 30.1050,
       longitudee: 31.2467,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       travellingTime: 2,
       name: "El-Khalafawy",
 
@@ -339,7 +339,7 @@ LineModel line2 = LineModel(
       longitudee: 31.2453,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       name: "Saint Theresa",
       travellingTime: 2,
 
@@ -347,7 +347,7 @@ LineModel line2 = LineModel(
       longitudee: 31.2456,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       name: "Rod El-Farag",
 
       latitude: 30.0806,
@@ -355,7 +355,7 @@ LineModel line2 = LineModel(
       longitudee: 31.2456,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       name: "Massara",
       travellingTime: 2,
 
@@ -363,7 +363,7 @@ LineModel line2 = LineModel(
       longitudee: 31.2450,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       name: "El-Shohadaa",
       travellingTime: 2,
       transferBetween: S.current.transferBetween12,
@@ -371,7 +371,7 @@ LineModel line2 = LineModel(
       longitudee: 31.2461,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       travellingTime: 2,
       name: "Attaba",
       transferBetween: S.current.transferBetween23,
@@ -381,13 +381,13 @@ LineModel line2 = LineModel(
     ),
     StationModel(
       travellingTime: 2,
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       name: "Nageeb",
       latitude: 30.0453,
       longitudee: 31.2442,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       name: "El-Sadat",
       travellingTime: 2,
       transferBetween: S.current.transferBetween12,
@@ -396,14 +396,14 @@ LineModel line2 = LineModel(
       longitudee: 31.2356,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       name: "Opera",
       latitude: 30.0420,
       travellingTime: 2,
       longitudee: 31.2253,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       travellingTime: 2,
       name: "Dokki",
 
@@ -411,7 +411,7 @@ LineModel line2 = LineModel(
       longitudee: 31.2119,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       travellingTime: 2,
       name: "El-Behoos",
 
@@ -419,7 +419,7 @@ LineModel line2 = LineModel(
       longitudee: 31.2003,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       travellingTime: 2,
       name: "Cairo University",
       transferBetween: S.current.transferBetween23,
@@ -428,7 +428,7 @@ LineModel line2 = LineModel(
       longitudee: 31.2011,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       travellingTime: 2,
       name: "Faysal",
 
@@ -436,7 +436,7 @@ LineModel line2 = LineModel(
       longitudee: 31.2039,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       name: "Giza",
       travellingTime: 2,
 
@@ -444,7 +444,7 @@ LineModel line2 = LineModel(
       longitudee: 31.2070,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       name: "Omm El-Masryeen",
 
       latitude: 30.0053,
@@ -452,7 +452,7 @@ LineModel line2 = LineModel(
       longitudee: 31.2081,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       name: "Sakyet-Mekky",
 
       latitude: 29.9956,
@@ -460,7 +460,7 @@ LineModel line2 = LineModel(
       longitudee: 31.2086,
     ),
     StationModel(
-      lineColor: AppColor.line2Color,
+      lineColorValue: AppColor.line2Color.toARGB32(),
       name: "El-Moneeb",
       travellingTime: 2,
 
@@ -476,14 +476,14 @@ LineModel line3Main = LineModel(
     StationModel(
       travellingTime: 1.5,
 
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Adly Mansour",
 
       latitude: 30.1469,
       longitudee: 31.4214,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "El-Haikstep",
       travellingTime: 1.5,
 
@@ -491,7 +491,7 @@ LineModel line3Main = LineModel(
       longitudee: 31.4047,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
       name: "Omar Ibn El-Khattab",
 
@@ -500,7 +500,7 @@ LineModel line3Main = LineModel(
     ),
     StationModel(
       travellingTime: 1.5,
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Qebaa",
 
       latitude: 30.1347,
@@ -508,14 +508,14 @@ LineModel line3Main = LineModel(
     ),
     StationModel(
       travellingTime: 1.5,
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Hesham Barakat",
 
       latitude: 30.1311,
       longitudee: 31.3728,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Nozha",
 
       latitude: 30.1283,
@@ -523,7 +523,7 @@ LineModel line3Main = LineModel(
       longitudee: 31.3600,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
       name: "El-Shams Club",
 
@@ -531,7 +531,7 @@ LineModel line3Main = LineModel(
       longitudee: 31.3439,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
       name: "Alf Masken",
 
@@ -539,7 +539,7 @@ LineModel line3Main = LineModel(
       longitudee: 31.3397,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Heliopolis",
       travellingTime: 1.5,
 
@@ -547,7 +547,7 @@ LineModel line3Main = LineModel(
       longitudee: 31.3381,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
       name: "Haroun",
 
@@ -555,7 +555,7 @@ LineModel line3Main = LineModel(
       longitudee: 31.3328,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "El-Ahram",
       travellingTime: 1.5,
 
@@ -563,7 +563,7 @@ LineModel line3Main = LineModel(
       longitudee: 31.3264,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Kolleyet El-Banat",
 
       travellingTime: 1.5,
@@ -571,7 +571,7 @@ LineModel line3Main = LineModel(
       longitudee: 31.3290,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Stadium",
       travellingTime: 1.5,
 
@@ -580,7 +580,7 @@ LineModel line3Main = LineModel(
     ),
     StationModel(
       travellingTime: 1.5,
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Fair Zone",
 
       latitude: 30.0733,
@@ -588,14 +588,14 @@ LineModel line3Main = LineModel(
     ),
     StationModel(
       travellingTime: 1.5,
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "El-Abassiya",
 
       latitude: 30.0697,
       longitudee: 31.2808,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Abdou Pasha",
 
       travellingTime: 1.5,
@@ -604,7 +604,7 @@ LineModel line3Main = LineModel(
     ),
     StationModel(
       travellingTime: 1.5,
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "El-Geish",
 
       latitude: 30.0628,
@@ -612,14 +612,14 @@ LineModel line3Main = LineModel(
     ),
     StationModel(
       travellingTime: 1.5,
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Bab El-Shaariya",
 
       latitude: 30.0539,
       longitudee: 31.2561,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Attaba",
       travellingTime: 1.5,
       transferBetween: S.current.transferBetween23,
@@ -630,7 +630,7 @@ LineModel line3Main = LineModel(
     StationModel(
       transferBetween: S.current.transferBetween13,
 
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
       name: "Nasser",
 
@@ -639,14 +639,14 @@ LineModel line3Main = LineModel(
     ),
     StationModel(
       travellingTime: 1.5,
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Maspero",
 
       latitude: 30.0556,
       longitudee: 31.2322,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
       name: "Safaa Hegazy",
 
@@ -663,21 +663,21 @@ LineModel line3Branch1 = LineModel(
   stations: [
     kitKat,
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
       name: "Sudan",
       latitude: 30.0697,
       longitudee: 31.2053,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Imbaba",
       latitude: 30.0750,
       travellingTime: 1.5,
       longitudee: 31.2075,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
       name: "El-Bohy",
 
@@ -685,7 +685,7 @@ LineModel line3Branch1 = LineModel(
       longitudee: 31.2106,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "El-Qawmia",
 
       travellingTime: 1.5,
@@ -693,7 +693,7 @@ LineModel line3Branch1 = LineModel(
       longitudee: 31.2089,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
       name: "Ring Road",
 
@@ -701,7 +701,7 @@ LineModel line3Branch1 = LineModel(
       longitudee: 31.1997,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
       name: "Rod El Farag Corr",
 
@@ -716,7 +716,7 @@ LineModel line3Branch2 = LineModel(
   stations: [
     kitKat,
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
       name: "Tawfikia",
 
@@ -725,14 +725,14 @@ LineModel line3Branch2 = LineModel(
     ),
     StationModel(
       travellingTime: 1.5,
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Wadi El-Nile",
 
       latitude: 30.0583,
       longitudee: 31.2000,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Gamet El-Dowel",
       travellingTime: 1.5,
 
@@ -740,7 +740,7 @@ LineModel line3Branch2 = LineModel(
       longitudee: 31.1997,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Boulak El-Dakrour",
 
       travellingTime: 1.5,
@@ -748,7 +748,7 @@ LineModel line3Branch2 = LineModel(
       longitudee: 31.1964,
     ),
     StationModel(
-      lineColor: AppColor.line3Color,
+      lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
       name: "Cairo University",
       transferBetween: S.current.transferBetween23,
@@ -761,7 +761,7 @@ LineModel line3Branch2 = LineModel(
 List<StationModel> commonStations = [
   StationModel(
     transferBetween: S.current.transferBetween13,
-    lineColor: AppColor.line3Color,
+    lineColorValue: AppColor.line3Color.toARGB32(),
     name: "Nasser",
     latitude: 30.0536,
     longitudee: 31.2389,
@@ -770,7 +770,7 @@ List<StationModel> commonStations = [
   StationModel(
     transferBetween: S.current.transferBetween23,
 
-    lineColor: AppColor.line3Color,
+    lineColorValue: AppColor.line3Color.toARGB32(),
     name: "Attaba",
     latitude: 30.0525,
     longitudee: 31.2469,
@@ -779,7 +779,7 @@ List<StationModel> commonStations = [
   StationModel(
     transferBetween: S.current.transferBetween12,
 
-    lineColor: AppColor.line2Color,
+    lineColorValue: AppColor.line2Color.toARGB32(),
     name: "El-Shohadaa",
     latitude: 30.0619,
     longitudee: 31.2461,
@@ -788,7 +788,7 @@ List<StationModel> commonStations = [
   StationModel(
     transferBetween: S.current.transferBetween12,
 
-    lineColor: AppColor.line1Color,
+    lineColorValue: AppColor.line1Color.toARGB32(),
     name: "El-Sadat",
     latitude: 30.0444,
     longitudee: 31.2356,
@@ -797,7 +797,7 @@ List<StationModel> commonStations = [
   StationModel(
     transferBetween: S.current.transferBetween23,
 
-    lineColor: AppColor.line3Color,
+    lineColorValue: AppColor.line3Color.toARGB32(),
     name: "Cairo University",
     latitude: 30.0261,
     longitudee: 31.2011,
@@ -809,7 +809,7 @@ List<StationModel> commonStations = [
 final kitKat = StationModel(
   transferBetween: S.current.transferBetween33,
 
-  lineColor: AppColor.line3Color,
+  lineColorValue: AppColor.line3Color.toARGB32(),
   name: "Kit-Kat",
 
   latitude: 30.0667,
