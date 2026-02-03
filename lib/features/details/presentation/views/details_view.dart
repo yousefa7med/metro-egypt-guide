@@ -95,7 +95,7 @@ class DetailsView extends StatelessWidget {
                       ),
 
                       Text(
-                        "${details.routes[index].stations.last.getStationName()} ${details.routes[index].stations.last.transferBetween} ",
+                        "${details.routes[index].stations.last.getStationName()} ${details.routes[index].stations.last.getTransferBetween(context)} ",
                         style: AppTextStyle.medium14.copyWith(
                           fontSize: 16,
                           fontFamily: AppFontFamily.roboto,

@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
 import 'package:go_metro/core/utilities/app_color.dart';
-import 'package:go_metro/generated/l10n.dart';
 
 class LineModel extends Equatable {
   final List<StationModel> stations;
@@ -166,8 +165,7 @@ LineModel line1 = LineModel(
     ),
     StationModel(
       name: "El-Sadat",
-      transferBetween: S.current.transferBetween12,
-
+      transferBetween: "is Transfer station between\nLine 1 and Line 2",
       latitude: 30.0444,
       longitudee: 31.2356,
       travellingTime: 2,
@@ -175,7 +173,7 @@ LineModel line1 = LineModel(
     ),
     StationModel(
       name: "Nasser",
-      transferBetween: S.current.transferBetween13,
+      transferBetween: "is Transfer station between\nLine 1 and Line 3",
 
       latitude: 30.0536,
       longitudee: 31.2389,
@@ -192,7 +190,7 @@ LineModel line1 = LineModel(
     ),
     StationModel(
       name: "El-Shohadaa",
-      transferBetween: S.current.transferBetween12,
+      transferBetween: "is Transfer station between\nLine 1 and Line 2",
       latitude: 30.0620,
       longitudee: 31.2461,
       travellingTime: 2,
@@ -366,7 +364,7 @@ LineModel line2 = LineModel(
       lineColorValue: AppColor.line2Color.toARGB32(),
       name: "El-Shohadaa",
       travellingTime: 2,
-      transferBetween: S.current.transferBetween12,
+      transferBetween: "is Transfer station between\nLine 1 and Line 2",
       latitude: 30.0619,
       longitudee: 31.2461,
     ),
@@ -374,7 +372,7 @@ LineModel line2 = LineModel(
       lineColorValue: AppColor.line2Color.toARGB32(),
       travellingTime: 2,
       name: "Attaba",
-      transferBetween: S.current.transferBetween23,
+      transferBetween: "is Transfer station between\nLine 2 and Line 3",
 
       latitude: 30.0525,
       longitudee: 31.2469,
@@ -390,7 +388,7 @@ LineModel line2 = LineModel(
       lineColorValue: AppColor.line2Color.toARGB32(),
       name: "El-Sadat",
       travellingTime: 2,
-      transferBetween: S.current.transferBetween12,
+      transferBetween: "is Transfer station between\nLine 1 and Line 2",
 
       latitude: 30.0444,
       longitudee: 31.2356,
@@ -422,7 +420,7 @@ LineModel line2 = LineModel(
       lineColorValue: AppColor.line2Color.toARGB32(),
       travellingTime: 2,
       name: "Cairo University",
-      transferBetween: S.current.transferBetween23,
+      transferBetween: "is Transfer station between\nLine 2 and Line 3",
 
       latitude: 30.0272,
       longitudee: 31.2011,
@@ -622,13 +620,13 @@ LineModel line3Main = LineModel(
       lineColorValue: AppColor.line3Color.toARGB32(),
       name: "Attaba",
       travellingTime: 1.5,
-      transferBetween: S.current.transferBetween23,
+      transferBetween: "is Transfer station between\nLine 2 and Line 3",
 
       latitude: 30.0525,
       longitudee: 31.2469,
     ),
     StationModel(
-      transferBetween: S.current.transferBetween13,
+      transferBetween: "is Transfer station between\nLine 1 and Line 3",
 
       lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
@@ -751,7 +749,7 @@ LineModel line3Branch2 = LineModel(
       lineColorValue: AppColor.line3Color.toARGB32(),
       travellingTime: 1.5,
       name: "Cairo University",
-      transferBetween: S.current.transferBetween23,
+      transferBetween: "is Transfer station between\nLine 2 and Line 3",
       latitude: 30.0261,
       longitudee: 31.2011,
     ),
@@ -760,7 +758,7 @@ LineModel line3Branch2 = LineModel(
 
 List<StationModel> commonStations = [
   StationModel(
-    transferBetween: S.current.transferBetween13,
+    transferBetween: "is Transfer station between\nLine 1 and Line 3",
     lineColorValue: AppColor.line3Color.toARGB32(),
     name: "Nasser",
     latitude: 30.0536,
@@ -768,7 +766,7 @@ List<StationModel> commonStations = [
     travellingTime: 1.5,
   ),
   StationModel(
-    transferBetween: S.current.transferBetween23,
+    transferBetween: "is Transfer station between\nLine 2 and Line 3",
 
     lineColorValue: AppColor.line3Color.toARGB32(),
     name: "Attaba",
@@ -777,7 +775,7 @@ List<StationModel> commonStations = [
     travellingTime: 1.5,
   ),
   StationModel(
-    transferBetween: S.current.transferBetween12,
+    transferBetween: "is Transfer station between\nLine 1 and Line 2",
 
     lineColorValue: AppColor.line2Color.toARGB32(),
     name: "El-Shohadaa",
@@ -786,7 +784,7 @@ List<StationModel> commonStations = [
     travellingTime: 2,
   ),
   StationModel(
-    transferBetween: S.current.transferBetween12,
+    transferBetween: "is Transfer station between\nLine 1 and Line 2",
 
     lineColorValue: AppColor.line1Color.toARGB32(),
     name: "El-Sadat",
@@ -795,7 +793,7 @@ List<StationModel> commonStations = [
     travellingTime: 2,
   ),
   StationModel(
-    transferBetween: S.current.transferBetween23,
+    transferBetween: "is Transfer station between\nLine 2 and Line 3",
 
     lineColorValue: AppColor.line3Color.toARGB32(),
     name: "Cairo University",
@@ -807,7 +805,8 @@ List<StationModel> commonStations = [
 ];
 
 final kitKat = StationModel(
-  transferBetween: S.current.transferBetween33,
+  transferBetween:
+      "is Transfer station between\nimbaba branch and cairo Uni branch",
 
   lineColorValue: AppColor.line3Color.toARGB32(),
   name: "Kit-Kat",

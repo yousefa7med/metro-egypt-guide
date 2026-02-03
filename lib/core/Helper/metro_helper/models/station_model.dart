@@ -24,13 +24,26 @@ class StationModel {
     this.index,
     this.travellingTime,
     this.transferBetween,
-    this.lineColorValue
+    this.lineColorValue,
   });
   Color get lineColor => Color(lineColorValue!);
   set lineColor(Color color) => lineColorValue = color.toARGB32();
 
-   
-
+  String getTransferBetween(BuildContext context, ) {
+    final s = S.of(context);
+    switch (transferBetween) {
+      case "is Transfer station between\nLine 1 and Line 3":
+        return s.transferBetween13;
+      case "is Transfer station between\nLine 2 and Line 3":
+        return s.transferBetween23;
+      case "is Transfer station between\nLine 1 and Line 2":
+        return s.transferBetween12;
+      case "is Transfer station between\nimbaba branch and cairo Uni branch":
+        return s.transferBetween33;
+      default:
+        return "";
+    }
+  }
 
   static String getLine(Color lineColor, BuildContext context) {
     final s = S.of(context);

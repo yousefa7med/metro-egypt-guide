@@ -84,7 +84,9 @@ class _FindRouteFormState extends State<FindRouteForm> with StationNameMixin {
           onPressed: () async {
             TripDetailsModel? details;
             try {
-              details = TripCubit.get(context).getTripDetails(startStation,lastStation);
+              details = TripCubit.get(
+                context,
+              ).getTripDetails(startStation, lastStation);
               // await  Navigator.pushNamed(
               //     context,
               //     AppRoutes.detailsView,
@@ -140,6 +142,7 @@ class _FindRouteFormState extends State<FindRouteForm> with StationNameMixin {
     required BuildContext context,
   }) {
     return (value) {
+      print(value);
       startStation = value;
       context.read<TripCubit>().startStationController.text = stationName(
         value,
