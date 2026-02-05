@@ -83,7 +83,7 @@ To get a local copy up and running, follow these steps:
 
 1. **Clone the repo:**
    ```bash
-   git clone [https://github.com/yousefa7med/Go_Metro.git](https://github.com/yousefa7med/Go_Metro.git)
+   git clone https://github.com/yousefa7med/Go_Metro.git
 
 ---
 
