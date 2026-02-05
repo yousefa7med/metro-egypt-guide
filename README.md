@@ -3,7 +3,7 @@
 **Go Metro** is a Flutter application designed to simplify commuting via the Cairo Metro. The app provides users with the nearest station, fastest routes, ticket prices, and trip details, ensuring a smooth navigation experience through Egypt's underground network.
 
 <p align="center">
-  <a href="ttps://github.com/yousefa7med/Go_Metro/releases/download/go_metro.apk/go.metro.apk">
+  <a href="https://github.com/yousefa7med/Go_Metro/releases/download/go_metro.apk/go.metro.apk">
     <img src="https://img.shields.io/badge/Download-APK-green?style=for-the-badge&logo=android&logoColor=white" alt="Download APK">
   </a>
 </p>
@@ -83,7 +83,7 @@ To get a local copy up and running, follow these steps:
 
 1. **Clone the repo:**
    ```bash
-   git clone [https://github.com/yousefa7med/Go_Metro.git](https://github.com/yousefa7med/Go_Metro.git)
+   git clone https://github.com/yousefa7med/Go_Metro.git
 
 ---
 
