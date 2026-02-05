@@ -2,10 +2,8 @@ import 'package:go_metro/generated/l10n.dart';
 
 mixin StationNameMixin {
   String? stationName(String station ,
-  // BuildContext context
-  // S s
+
   ) {
-    // final s = S.of(context);
     final s = S.current;
 
     switch (station) {

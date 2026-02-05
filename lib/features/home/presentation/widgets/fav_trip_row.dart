@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
 import 'package:go_metro/core/Helper/mixins/station_name_mixin.dart';
 import 'package:go_metro/core/config/configrations.dart';
@@ -29,12 +30,19 @@ class FavTripRow extends StatelessWidget with StationNameMixin {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              IconButton(
-                onPressed: () {
+              InkWell(
+                borderRadius: BorderRadius.circular(16),
+                onTap: () {
                   deleteDialog(context: context, trip: trip);
                 },
-                icon: const Icon(Icons.delete, color: AppColor.primaryColor),
+                child: const Icon(
+                  Icons.close,
+                  color: AppColor.primaryColor,
+                  weight: 50,
+                  size: 30,
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -76,13 +84,19 @@ class FavTripRow extends StatelessWidget with StationNameMixin {
         content: Text(s.AreYouSure),
         actions: [
           TextButton(
-            child: Text(s.cancel),
+            child: Text(
+              s.cancel,
+              style: const TextStyle(color: AppColor.primaryColor),
+            ),
             onPressed: () {
               Navigator.pop(ctx);
             },
           ),
           TextButton(
-            child: Text(s.delete),
+            child: Text(
+              s.delete,
+              style: const TextStyle(color: AppColor.primaryColor),
+            ),
             onPressed: () async {
               Navigator.pop(ctx);
               context.read<TripCubit>().removeFromFav(trip);

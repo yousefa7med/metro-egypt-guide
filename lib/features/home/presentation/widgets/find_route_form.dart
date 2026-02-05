@@ -6,7 +6,6 @@ import 'package:gap/gap.dart';
 import 'package:go_metro/core/Helper/functions/functions.dart';
 import 'package:go_metro/core/Helper/functions/show_snackBer.dart';
 import 'package:go_metro/core/Helper/metro_helper/metro_helper.dart';
-import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/trip_details_model.dart';
 import 'package:go_metro/core/Helper/mixins/station_name_mixin.dart';
 import 'package:go_metro/core/config/configrations.dart';
@@ -29,8 +28,10 @@ class FindRouteForm extends StatefulWidget {
 class _FindRouteFormState extends State<FindRouteForm> with StationNameMixin {
   final List<DropdownMenuEntry<String>> startStationList = [];
   final List<DropdownMenuEntry<String>> finalStationList = [];
-  StationModel? lastStartStation;
-  StationModel? lastFinalStation;
+  String? lastStartStationName;
+  int? lastStartStationIndex;
+  String? lastFinalStationName;
+  int? lastFinalStationIndex;
   String? startStation;
   String? lastStation;
   String? currentLocale;
@@ -58,8 +59,8 @@ class _FindRouteFormState extends State<FindRouteForm> with StationNameMixin {
         BlocListener<TripCubit, TripState>(
           listener: (context, state) {
             if (state is PositionSuccessState) {
-              startStationsOnSelectedFunction(context: context)!(
-                context.read<TripCubit>().startStationController.text,
+              startStationsOnSelectedFunction(context: context)(
+                state.nearestStation.name,
               );
             }
           },
@@ -118,7 +119,7 @@ class _FindRouteFormState extends State<FindRouteForm> with StationNameMixin {
     finalStationList.clear();
     TripCubit.get(context).startStationController.clear();
     TripCubit.get(context).finalStationController.clear();
-    if (isArabic()) {
+    if (isArabic(context)) {
       String localStation;
       for (var station in allStations) {
         localStation = stationName(station)!;
@@ -138,7 +139,7 @@ class _FindRouteFormState extends State<FindRouteForm> with StationNameMixin {
     }
   }
 
-  Function(dynamic)? startStationsOnSelectedFunction({
+  Function(dynamic) startStationsOnSelectedFunction({
     required BuildContext context,
   }) {
     return (value) {
@@ -147,21 +148,21 @@ class _FindRouteFormState extends State<FindRouteForm> with StationNameMixin {
       context.read<TripCubit>().startStationController.text = stationName(
         value,
       )!;
-      lastStartStation ??= StationModel();
 
-      if (lastStartStation!.name != null &&
-          !finalStationList.any((e) => e.value == lastStartStation!.name)) {
+      if (lastStartStationName != null &&
+          lastFinalStationIndex != null &&
+          !finalStationList.any((e) => e.value == lastStartStationName)) {
         finalStationList.insert(
-          lastStartStation!.index!,
+          lastStartStationIndex!,
           DropdownMenuEntry(
-            value: lastStartStation!.name!,
-            label: stationName(lastStartStation!.name!)!,
+            value: lastStartStationName!,
+            label: stationName(lastStartStationName!)!,
           ),
         );
       }
 
-      lastStartStation!.name = value;
-      lastStartStation!.index = finalStationList.indexWhere(
+      lastStartStationName = value;
+      lastStartStationIndex = finalStationList.indexWhere(
         (e) => e.value == value,
       );
 
@@ -171,7 +172,7 @@ class _FindRouteFormState extends State<FindRouteForm> with StationNameMixin {
     };
   }
 
-  Function(dynamic)? finalStationsOnSelectedFunction({
+  Function(dynamic) finalStationsOnSelectedFunction({
     required BuildContext context,
   }) {
     return (value) {
@@ -180,21 +181,20 @@ class _FindRouteFormState extends State<FindRouteForm> with StationNameMixin {
         value,
       )!;
 
-      lastFinalStation ??= StationModel();
-
-      if (lastFinalStation!.name != null &&
-          !startStationList.any((e) => e.value == lastFinalStation!.name)) {
+      if (lastFinalStationName != null &&
+          lastFinalStationIndex != null &&
+          !startStationList.any((e) => e.value == lastFinalStationName)) {
         startStationList.insert(
-          lastFinalStation!.index!,
+          lastFinalStationIndex!,
           DropdownMenuEntry(
-            value: lastFinalStation!.name!,
-            label: stationName(lastFinalStation!.name!)!,
+            value: lastFinalStationName!,
+            label: stationName(lastFinalStationName!)!,
           ),
         );
       }
 
-      lastFinalStation!.name = value;
-      lastFinalStation!.index = startStationList.indexWhere(
+      lastFinalStationName = value;
+      lastFinalStationIndex = startStationList.indexWhere(
         (e) => e.value == value,
       );
 

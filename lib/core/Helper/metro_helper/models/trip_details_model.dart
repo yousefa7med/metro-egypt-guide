@@ -121,7 +121,7 @@ class TripDetailsModel with StationNameMixin {
   void calcTime() {
     time = 0;
     for (var route in routes) {
-      time += route.stations[0].travellingTime! * route.stations.length;
+      time += route.stations[0].travellingTime * route.stations.length;
     }
   }
 

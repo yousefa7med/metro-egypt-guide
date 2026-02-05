@@ -141,17 +141,17 @@ class Metro {
       for (int i = 0; i < line.stations.length; i++) {
         var current = line.stations[i];
         if (!graph.containsKey(current.name)) {
-          graph[current.name!] = [];
+          graph[current.name] = [];
         }
         // إضافة المحطة السابقة (إذا وجدت)
         if (i > 0) {
           var prev = line.stations[i - 1];
-          graph[current.name!]!.add(MapEntry(prev, line));
+          graph[current.name]!.add(MapEntry(prev, line));
         }
         // إضافة المحطة التالية (إذا وجدت)
         if (i < line.stations.length - 1) {
           var next = line.stations[i + 1];
-          graph[current.name!]!.add(MapEntry(next, line));
+          graph[current.name]!.add(MapEntry(next, line));
         }
       }
     }
@@ -231,17 +231,17 @@ class Metro {
             newDistance <= visited[neighbor.name]!) {
           if (!visited.containsKey(neighbor.name) ||
               newDistance < visited[neighbor.name]!) {
-            visited[neighbor.name!] = newDistance;
-            transfers[neighbor.name!] = newTransfers;
-            parent[neighbor.name!] = currentStation;
-            lineUsed[neighbor.name!] = line;
+            visited[neighbor.name] = newDistance;
+            transfers[neighbor.name] = newTransfers;
+            parent[neighbor.name] = currentStation;
+            lineUsed[neighbor.name] = line;
             queue.add([neighbor, line, newTransfers, newDistance]);
           } else if (newDistance == visited[neighbor.name]! &&
               newTransfers < transfers[neighbor.name]!) {
             // إذا كان عدد المحطات متساويًا ولكن عدد التحويلات أقل
-            transfers[neighbor.name!] = newTransfers;
-            parent[neighbor.name!] = currentStation;
-            lineUsed[neighbor.name!] = line;
+            transfers[neighbor.name] = newTransfers;
+            parent[neighbor.name] = currentStation;
+            lineUsed[neighbor.name] = line;
             queue.add([neighbor, line, newTransfers, newDistance]);
           }
         }
@@ -257,7 +257,7 @@ class Metro {
       int pathTransfers = 0;
       LineModel? prevLine;
       for (int i = 1; i < path.length; i++) {
-        var currLine = _getLineForStations(path[i - 1].name!, path[i].name!);
+        var currLine = _getLineForStations(path[i - 1].name, path[i].name);
         if (currLine != null && prevLine != null && currLine != prevLine) {
           if (path[i - 1].name == "Kit-Kat") {
             bool isBranch1ToBranch2 =
@@ -287,14 +287,14 @@ class Metro {
 
     List<StationModel> currentRoute = [path[0]];
     LineModel? currentLine = path.length > 1
-        ? _getLineForStations(path[0].name!, path[1].name!)
+        ? _getLineForStations(path[0].name, path[1].name)
         : null;
     details.directions.add(path[0]); // إضافة محطة البداية
 
     for (int i = 1; i < path.length; i++) {
       var currStation = path[i];
       var prevStation = path[i - 1];
-      var nextLine = _getLineForStations(prevStation.name!, currStation.name!);
+      var nextLine = _getLineForStations(prevStation.name, currStation.name);
 
       // التحقق من ما إذا كان يجب التقسيم أم لا
       bool shouldSplit =
@@ -326,8 +326,8 @@ class Metro {
               details.directions.add(
                 _getDirection(
                   currentLine,
-                  currentRoute.first.name!,
-                  currentRoute.last.name!,
+                  currentRoute.first.name,
+                  currentRoute.last.name,
                 ),
               );
             }
@@ -341,7 +341,7 @@ class Metro {
           newRoute.stations.addAll(currentRoute);
           details.routes.add(newRoute);
           details.directions.add(
-            _getDirection(currentLine, currStation.name!, currStation.name!),
+            _getDirection(currentLine, currStation.name, currStation.name),
           );
           continue;
         }
@@ -358,8 +358,8 @@ class Metro {
           details.directions.add(
             _getDirection(
               currentLine,
-              currentRoute.first.name!,
-              currentRoute.last.name!,
+              currentRoute.first.name,
+              currentRoute.last.name,
             ),
           );
         }
@@ -382,8 +382,8 @@ class Metro {
         details.directions.add(
           _getDirection(
             currentLine,
-            currentRoute.first.name!,
-            currentRoute.last.name!,
+            currentRoute.first.name,
+            currentRoute.last.name,
           ),
         );
       }
@@ -415,11 +415,11 @@ class Metro {
         line3Branch1.stations.any((e) => e.name == firstStation) &&
             line3Main.stations.any((e) => e.name == secondStation)) {
       return LineModel(
-        lineColor: AppColor.line3Color,
+        lineColorValue: AppColor.line3Color.toARGB32(),
         lineName: 'Line3 & Branch1',
         stations: [
           ...line3Main.stations,
-          ...line3Branch1.stations.where((e) => e.name != kitKat.name),
+          ...line3Branch1.stations.where((e) => e.name !="Kit-Kat"),
         ],
       );
     } else if (line3Main.stations.any((e) => e.name == firstStation) &&
@@ -427,11 +427,11 @@ class Metro {
         line3Branch2.stations.any((e) => e.name == firstStation) &&
             line3Main.stations.any((e) => e.name == secondStation)) {
       return LineModel(
-        lineColor: AppColor.line3Color,
+        lineColorValue: AppColor.line3Color.toARGB32(),
         lineName: 'Line3 & Branch2',
         stations: [
           ...line3Main.stations,
-          ...line3Branch2.stations.where((e) => e.name != kitKat.name),
+          ...line3Branch2.stations.where((e) => e.name != "Kit-Kat"),
         ],
       );
     }

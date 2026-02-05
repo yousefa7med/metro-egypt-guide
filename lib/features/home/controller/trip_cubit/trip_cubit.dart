@@ -131,8 +131,8 @@ class TripCubit extends Cubit<TripState> with StationNameMixin {
       distance = Geolocator.distanceBetween(
         latitude,
         longitude,
-        elemnet.latitude!,
-        elemnet.longitudee!,
+        elemnet.latitude,
+        elemnet.longitude,
       );
       if (lowestDistance > distance) {
         lowestDistance = distance;
@@ -156,9 +156,9 @@ class TripCubit extends Cubit<TripState> with StationNameMixin {
     favourites.insert(0, det);
     emit(AllFavChangesState());
     for (final route in det.routes) {
-      route.trip.target = det; 
+      route.trip.target = det;
       for (final station in route.stations) {
-        station.route.target = route; 
+        station.route.target = route;
       }
     }
 

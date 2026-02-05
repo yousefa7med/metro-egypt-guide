@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:go_metro/core/Helper/functions/functions.dart';
+
 import 'package:go_metro/core/controllers/app_cubit/app_cubit.dart';
 import 'package:go_metro/features/settings/presentation/widgets/lang_container.dart';
 import 'package:go_metro/generated/l10n.dart';
@@ -17,7 +17,7 @@ class _ChangeLangColumnState extends State<ChangeLangColumn> {
   late bool isAarbic;
   @override
   void initState() {
-    isAarbic = isArabic();
+    isAarbic = context.read<AppCubit>().currentLang == "ar";
 
     super.initState();
   }

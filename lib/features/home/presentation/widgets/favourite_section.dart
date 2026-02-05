@@ -110,7 +110,7 @@ class _FavouriteSectionState extends State<FavouriteSection> {
                 itemBuilder: (context, index) {
                   print(index);
                   return Padding(
-                    padding: isArabic()
+                    padding: isArabic(context)
                         ? const EdgeInsets.only(left: 10, right: 10)
                         : const EdgeInsets.only(right: 10, left: 10),
                     child: FavTripRow(trip: trips[index]),

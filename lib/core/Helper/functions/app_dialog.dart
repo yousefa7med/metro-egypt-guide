@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:go_metro/core/utilities/app_color.dart';
 import 'package:go_metro/generated/l10n.dart';
 
 void appDialog({required BuildContext context, required String msg}) {
@@ -17,7 +18,10 @@ void appDialog({required BuildContext context, required String msg}) {
           onPressed: () {
             Navigator.pop(ctx);
           },
-          child: Text(s.cancel),
+          child: Text(
+            s.cancel,
+            style: const TextStyle(color: AppColor.primaryColor),
+          ),
         ),
         TextButton(
           onPressed: () async {
@@ -31,7 +35,10 @@ void appDialog({required BuildContext context, required String msg}) {
               await Geolocator.openAppSettings();
             }
           },
-          child: Text(s.openSettings),
+          child: Text(
+            s.openSettings,
+            style: const TextStyle(color: AppColor.primaryColor),
+          ),
         ),
       ],
     ),

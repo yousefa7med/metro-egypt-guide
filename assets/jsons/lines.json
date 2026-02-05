@@ -1,0 +1,844 @@
+{
+    "line1": {
+        "lineName": {
+            "en": "Line 1",
+            "ar": "الخط الأول"
+        },
+        "lineColorValue": 4279715997,
+        "stations": [
+            {
+                "name": "Helwan",
+                "latitude": 29.8490,
+                "longitude": 31.3342,
+                "lineColorValue": 4279715997,
+                "travellingTime": 2,
+                "index": 0
+            },
+            {
+                "name": "Ain Helwan",
+                "latitude": 29.8628,
+                "longitude": 31.3250,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 1
+            },
+            {
+                "name": "Helwan University",
+                "latitude": 29.8689,
+                "longitude": 31.3203,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 2
+            },
+            {
+                "name": "Wadi Hof",
+                "latitude": 29.8794,
+                "longitude": 31.3133,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 3
+            },
+            {
+                "name": "Hadayek Helwan",
+                "latitude": 29.8972,
+                "longitude": 31.3042,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 4
+            },
+            {
+                "name": "El-Maasara",
+                "latitude": 29.9061,
+                "longitude": 31.2997,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 5
+            },
+            {
+                "name": "Tora El-Asmant",
+                "latitude": 29.9258,
+                "longitude": 31.2878,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 6
+            },
+            {
+                "name": "Kozzika",
+                "latitude": 29.9361,
+                "longitude": 31.2817,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 7
+            },
+            {
+                "name": "Tora El-Balad",
+                "latitude": 29.9464,
+                "longitude": 31.2736,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 8
+            },
+            {
+                "name": "Sakanat El-Maadi",
+                "latitude": 29.9528,
+                "longitude": 31.2633,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 9
+            },
+            {
+                "name": "El-Maadi",
+                "latitude": 29.9597,
+                "longitude": 31.2581,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 10
+            },
+            {
+                "name": "Hadayek El-Maadi",
+                "latitude": 29.9700,
+                "longitude": 31.2506,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 11
+            },
+            {
+                "name": "Dar El-Salam",
+                "latitude": 29.9819,
+                "longitude": 31.2422,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 12
+            },
+            {
+                "name": "El-Zahraa",
+                "latitude": 29.9953,
+                "longitude": 31.2317,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 13
+            },
+            {
+                "name": "Mar Girgis",
+                "latitude": 30.0058,
+                "longitude": 31.2294,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 14
+            },
+            {
+                "name": "El-Malek El-Saleh",
+                "latitude": 30.0169,
+                "longitude": 31.2310,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 15
+            },
+            {
+                "name": "El-Sayeda Zeinab",
+                "latitude": 30.0292,
+                "longitude": 31.2353,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 16
+            },
+            {
+                "name": "Saad Zaghloul",
+                "latitude": 30.0367,
+                "longitude": 31.2381,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 17
+            },
+            {
+                "name": "El-Sadat",
+                "transferBetween": "is Transfer station between\nLine 1 and Line 2",
+                "latitude": 30.0444,
+                "longitude": 31.2356,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 18
+            },
+            {
+                "name": "Nasser",
+                "transferBetween": "is Transfer station between\nLine 1 and Line 3",
+                "latitude": 30.0536,
+                "longitude": 31.2389,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 19
+            },
+            {
+                "name": "Orabi",
+                "latitude": 30.0575,
+                "longitude": 31.2425,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 20
+            },
+            {
+                "name": "El-Shohadaa",
+                "transferBetween": "is Transfer station between\nLine 1 and Line 2",
+                "latitude": 30.0620,
+                "longitude": 31.2461,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 21
+            },
+            {
+                "name": "Ghamra",
+                "latitude": 30.0689,
+                "longitude": 31.2647,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 22
+            },
+            {
+                "name": "El-Demerdash",
+                "latitude": 30.0772,
+                "longitude": 31.2778,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 23
+            },
+            {
+                "name": "Manshyet El-Sadr",
+                "latitude": 30.0822,
+                "longitude": 31.2878,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 24
+            },
+            {
+                "name": "Kobry El-Qubba",
+                "latitude": 30.0870,
+                "longitude": 31.2939,
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "index": 25
+            },
+            {
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "name": "Hammamet El-Qubba",
+                "latitude": 30.0903,
+                "longitude": 31.2981,
+                "index": 26
+            },
+            {
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "name": "Saray El-Qubba",
+                "latitude": 30.0981,
+                "longitude": 31.3047,
+                "index": 27
+            },
+            {
+                "lineColorValue": 4279715997,
+                "name": "Hadayek El-Zaytoun",
+                "latitude": 30.1053,
+                "travellingTime": 2,
+                "longitude": 31.3100,
+                "index": 28
+            },
+            {
+                "lineColorValue": 4279715997,
+                "name": "Helmayet El-Zaytoun",
+                "latitude": 30.1144,
+                "travellingTime": 2,
+                "longitude": 31.3139,
+                "index": 29
+            },
+            {
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "name": "El-Mattareya",
+                "latitude": 30.1214,
+                "longitude": 31.3139,
+                "index": 30
+            },
+            {
+                "name": "Ain Shams",
+                "lineColorValue": 4279715997,
+                "latitude": 30.1311,
+                "longitude": 31.3181,
+                "travellingTime": 2,
+                "index": 31
+            },
+            {
+                "travellingTime": 2,
+                "lineColorValue": 4279715997,
+                "name": "Ezbet El-Nakhl",
+                "latitude": 30.1392,
+                "longitude": 31.3244,
+                "index": 32
+            },
+            {
+                "lineColorValue": 4279715997,
+                "name": "Al-Marg",
+                "travellingTime": 2,
+                "latitude": 30.1522,
+                "longitude": 31.3356,
+                "index": 33
+            },
+            {
+                "lineColorValue": 4279715997,
+                "name": "New El-Marg",
+                "travellingTime": 2,
+                "latitude": 30.1633,
+                "longitude": 31.3383,
+                "index": 34
+            }
+        ]
+    },
+    "line2": {
+        "lineName": {
+            "en": "Line 2",
+            "ar": "الخط الثاني"
+        },
+        "lineColorValue": 4287769133,
+        "stations": [
+            {
+                "name": "Shubra El-Kheima",
+                "travellingTime": 2,
+                "latitude": 30.1225,
+                "longitude": 31.2447,
+                "lineColorValue": 4287769133,
+                "index": 35
+            },
+            {
+                "lineColorValue": 4287769133,
+                "travellingTime": 2,
+                "name": "Koleyet El-Zeraa",
+                "latitude": 30.1139,
+                "longitude": 31.2486,
+                "index": 36
+            },
+            {
+                "travellingTime": 2,
+                "lineColorValue": 4287769133,
+                "name": "El-Mezallat",
+                "latitude": 30.1050,
+                "longitude": 31.2467,
+                "index": 37
+            },
+            {
+                "lineColorValue": 4287769133,
+                "travellingTime": 2,
+                "name": "El-Khalafawy",
+                "latitude": 30.0981,
+                "longitude": 31.2453,
+                "index": 38
+            },
+            {
+                "lineColorValue": 4287769133,
+                "name": "Saint Theresa",
+                "travellingTime": 2,
+                "latitude": 30.0883,
+                "longitude": 31.2456,
+                "index": 39
+            },
+            {
+                "lineColorValue": 4287769133,
+                "name": "Rod El-Farag",
+                "latitude": 30.0806,
+                "travellingTime": 2,
+                "longitude": 31.2456,
+                "index": 40
+            },
+            {
+                "lineColorValue": 4287769133,
+                "name": "Massara",
+                "travellingTime": 2,
+                "latitude": 30.0711,
+                "longitude": 31.2450,
+                "index": 41
+            },
+            {
+                "lineColorValue": 4287769133,
+                "name": "El-Shohadaa",
+                "travellingTime": 2,
+                "transferBetween": "is Transfer station between\nLine 1 and Line 2",
+                "latitude": 30.0619,
+                "longitude": 31.2461,
+                "index": 21
+            },
+            {
+                "lineColorValue": 4287769133,
+                "travellingTime": 2,
+                "name": "Attaba",
+                "transferBetween": "is Transfer station between\nLine 2 and Line 3",
+                "latitude": 30.0525,
+                "longitude": 31.2469,
+                "index": 42
+            },
+            {
+                "travellingTime": 2,
+                "lineColorValue": 4287769133,
+                "name": "Nageeb",
+                "latitude": 30.0453,
+                "longitude": 31.2442,
+                "index": 43
+            },
+            {
+                "lineColorValue": 4287769133,
+                "name": "El-Sadat",
+                "travellingTime": 2,
+                "transferBetween": "is Transfer station between\nLine 1 and Line 2",
+                "latitude": 30.0444,
+                "longitude": 31.2356,
+                "index": 18
+            },
+            {
+                "lineColorValue": 4287769133,
+                "name": "Opera",
+                "latitude": 30.0420,
+                "travellingTime": 2,
+                "longitude": 31.2253,
+                "index": 44
+            },
+            {
+                "lineColorValue": 4287769133,
+                "travellingTime": 2,
+                "name": "Dokki",
+                "latitude": 30.0383,
+                "longitude": 31.2119,
+                "index": 45
+            },
+            {
+                "lineColorValue": 4287769133,
+                "travellingTime": 2,
+                "name": "El-Behoos",
+                "latitude": 30.0358,
+                "longitude": 31.2003,
+                "index": 46
+            },
+            {
+                "lineColorValue": 4287769133,
+                "travellingTime": 2,
+                "name": "Cairo University",
+                "transferBetween": "is Transfer station between\nLine 2 and Line 3",
+                "latitude": 30.0272,
+                "longitude": 31.2011,
+                "index": 47
+            },
+            {
+                "lineColorValue": 4287769133,
+                "travellingTime": 2,
+                "name": "Faysal",
+                "latitude": 30.0172,
+                "longitude": 31.2039,
+                "index": 48
+            },
+            {
+                "lineColorValue": 4287769133,
+                "name": "Giza",
+                "travellingTime": 2,
+                "latitude": 30.0106,
+                "longitude": 31.2070,
+                "index": 49
+            },
+            {
+                "lineColorValue": 4287769133,
+                "name": "Omm El-Masryeen",
+                "latitude": 30.0053,
+                "travellingTime": 2,
+                "longitude": 31.2081,
+                "index": 50
+            },
+            {
+                "lineColorValue": 4287769133,
+                "name": "Sakyet-Mekky",
+                "latitude": 29.9956,
+                "travellingTime": 2,
+                "longitude": 31.2086,
+                "index": 51
+            },
+            {
+                "lineColorValue": 4287769133,
+                "name": "El-Moneeb",
+                "travellingTime": 2,
+                "latitude": 29.9814,
+                "longitude": 31.2120,
+                "index": 52
+            }
+        ]
+    },
+    "line3Main": {
+        "lineName": {
+            "en": "Line 3",
+            "ar": "الخط الثالث"
+        },
+        "lineColorValue": 4281096469,
+        "stations": [
+            {
+                "travellingTime": 1.5,
+                "lineColorValue": 4281096469,
+                "name": "Adly Mansour",
+                "latitude": 30.1469,
+                "longitude": 31.4214,
+                "index": 53
+            },
+            {
+                "lineColorValue": 4281096469,
+                "name": "El-Haikstep",
+                "travellingTime": 1.5,
+                "latitude": 30.1439,
+                "longitude": 31.4047,
+                "index": 54
+            },
+            {
+                "lineColorValue": 4281096469,
+                "travellingTime": 1.5,
+                "name": "Omar Ibn El-Khattab",
+                "latitude": 30.1406,
+                "longitude": 31.3930,
+                "index": 55
+            },
+            {
+                "travellingTime": 1.5,
+                "lineColorValue": 4281096469,
+                "name": "Qebaa",
+                "latitude": 30.1347,
+                "longitude": 31.3839,
+                "index": 56
+            },
+            {
+                "travellingTime": 1.5,
+                "lineColorValue": 4281096469,
+                "name": "Hesham Barakat",
+                "latitude": 30.1311,
+                "longitude": 31.3728,
+                "index": 57
+            },
+            {
+                "lineColorValue": 4281096469,
+                "name": "Nozha",
+                "latitude": 30.1283,
+                "travellingTime": 1.5,
+                "longitude": 31.3600,
+                "index": 58
+            },
+            {
+                "lineColorValue": 4281096469,
+                "travellingTime": 1.5,
+                "name": "El-Shams Club",
+                "latitude": 30.1222,
+                "longitude": 31.3439,
+                "index": 59
+            },
+            {
+                "lineColorValue": 4281096469,
+                "travellingTime": 1.5,
+                "name": "Alf Masken",
+                "latitude": 30.1170,
+                "longitude": 31.3397,
+                "index": 60
+            },
+            {
+                "lineColorValue": 4281096469,
+                "name": "Heliopolis",
+                "travellingTime": 1.5,
+                "latitude": 30.1081,
+                "longitude": 31.3381,
+                "index": 61
+            },
+            {
+                "lineColorValue": 4281096469,
+                "travellingTime": 1.5,
+                "name": "Haroun",
+                "latitude": 30.1000,
+                "longitude": 31.3328,
+                "index": 62
+            },
+            {
+                "lineColorValue": 4281096469,
+                "name": "El-Ahram",
+                "travellingTime": 1.5,
+                "latitude": 30.0914,
+                "longitude": 31.3264,
+                "index": 63
+            },
+            {
+                "lineColorValue": 4281096469,
+                "name": "Kolleyet El-Banat",
+                "travellingTime": 1.5,
+                "latitude": 30.0836,
+                "longitude": 31.3290,
+                "index": 64
+            },
+            {
+                "lineColorValue": 4281096469,
+                "name": "Stadium",
+                "travellingTime": 1.5,
+                "latitude": 30.0731,
+                "longitude": 31.3175,
+                "index": 65
+            },
+            {
+                "travellingTime": 1.5,
+                "lineColorValue": 4281096469,
+                "name": "Fair Zone",
+                "latitude": 30.0733,
+                "longitude": 31.3011,
+                "index": 66
+            },
+            {
+                "travellingTime": 1.5,
+                "lineColorValue": 4281096469,
+                "name": "El-Abassiya",
+                "latitude": 30.0697,
+                "longitude": 31.2808,
+                "index": 67
+            },
+            {
+                "lineColorValue": 4281096469,
+                "name": "Abdou Pasha",
+                "travellingTime": 1.5,
+                "latitude": 30.0647,
+                "longitude": 31.2747,
+                "index": 68
+            },
+            {
+                "travellingTime": 1.5,
+                "lineColorValue": 4281096469,
+                "name": "El-Geish",
+                "latitude": 30.0628,
+                "longitude": 31.2669,
+                "index": 69
+            },
+            {
+                "travellingTime": 1.5,
+                "lineColorValue": 4281096469,
+                "name": "Bab El-Shaariya",
+                "latitude": 30.0539,
+                "longitude": 31.2561,
+                "index": 70
+            },
+            {
+                "lineColorValue": 4281096469,
+                "name": "Attaba",
+                "travellingTime": 1.5,
+                "transferBetween": "is Transfer station between\nLine 2 and Line 3",
+                "latitude": 30.0525,
+                "longitude": 31.2469,
+                "index": 42
+            },
+            {
+                "transferBetween": "is Transfer station between\nLine 1 and Line 3",
+                "lineColorValue": 4281096469,
+                "travellingTime": 1.5,
+                "name": "Nasser",
+                "latitude": 30.0536,
+                "longitude": 31.2389,
+                "index": 19
+            },
+            {
+                "travellingTime": 1.5,
+                "lineColorValue": 4281096469,
+                "name": "Maspero",
+                "latitude": 30.0556,
+                "longitude": 31.2322,
+                "index": 71
+            },
+            {
+                "lineColorValue": 4281096469,
+                "travellingTime": 1.5,
+                "name": "Safaa Hegazy",
+                "latitude": 30.0625,
+                "longitude": 31.2225,
+                "index": 72
+            },
+            {
+                "transferBetween": "is Transfer station between\nimbaba branch and cairo Uni branch",
+                "lineColorValue": 4281096469,
+                "name": "Kit-Kat",
+                "latitude": 30.0667,
+                "longitude": 31.2131,
+                "travellingTime": 1.5,
+                "index": 73
+            }
+        ]
+    },
+    "line3Branch1": {
+        "lineName": {
+            "en": "Imbaba Branch",
+            "ar": "فرع امبابة"
+        },
+        "lineColorValue": 4281096469,
+        "stations": [
+            {
+                "transferBetween": "is Transfer station between\nimbaba branch and cairo Uni branch",
+                "lineColorValue": 4281096469,
+                "name": "Kit-Kat",
+                "latitude": 30.0667,
+                "longitude": 31.2131,
+                "travellingTime": 1.5,
+                "index": 73
+            },
+            {
+                "lineColorValue": 4281096469,
+                "travellingTime": 1.5,
+                "name": "Sudan",
+                "latitude": 30.0697,
+                "longitude": 31.2053,
+                "index": 74
+            },
+            {
+                "lineColorValue": 4281096469,
+                "name": "Imbaba",
+                "latitude": 30.0750,
+                "travellingTime": 1.5,
+                "longitude": 31.2075,
+                "index": 75
+            },
+            {
+                "lineColorValue": 4281096469,
+                "travellingTime": 1.5,
+                "name": "El-Bohy",
+                "latitude": 30.0822,
+                "longitude": 31.2106,
+                "index": 76
+            },
+            {
+                "lineColorValue": 4281096469,
+                "name": "El-Qawmia",
+                "travellingTime": 1.5,
+                "latitude": 30.0933,
+                "longitude": 31.2089,
+                "index": 77
+            },
+            {
+                "lineColorValue": 4281096469,
+                "travellingTime": 1.5,
+                "name": "Ring Road",
+                "latitude": 30.0964,
+                "longitude": 31.1997,
+                "index": 78
+            },
+            {
+                "lineColorValue": 4281096469,
+                "travellingTime": 1.5,
+                "name": "Rod El Farag Corr",
+                "latitude": 30.1019,
+                "longitude": 31.1831,
+                "index": 79
+            }
+        ]
+    },
+    "line3Branch2": {
+        "lineName": {
+            "en": "Cairo University Branch",
+            "ar": "فرع جامعة القاهرة"
+        },
+        "lineColorValue": 4281096469,
+        "stations": [
+            {
+                "transferBetween": "is Transfer station between\nimbaba branch and cairo Uni branch",
+                "lineColorValue": 4281096469,
+                "name": "Kit-Kat",
+                "latitude": 30.0667,
+                "longitude": 31.2131,
+                "travellingTime": 1.5,
+                "index": 73
+            },
+            {
+                "lineColorValue": 4281096469,
+                "travellingTime": 1.5,
+                "name": "Tawfikia",
+                "latitude": 30.0653,
+                "longitude": 31.2025,
+                "index": 80
+            },
+            {
+                "travellingTime": 1.5,
+                "lineColorValue": 4281096469,
+                "name": "Wadi El-Nile",
+                "latitude": 30.0583,
+                "longitude": 31.2000,
+                "index": 81
+            },
+            {
+                "lineColorValue": 4281096469,
+                "name": "Gamet El-Dowel",
+                "travellingTime": 1.5,
+                "latitude": 30.0508,
+                "longitude": 31.1997,
+                "index": 82
+            },
+            {
+                "lineColorValue": 4281096469,
+                "name": "Boulak El-Dakrour",
+                "travellingTime": 1.5,
+                "latitude": 30.0361,
+                "longitude": 31.1964,
+                "index": 83
+            },
+            {
+                "lineColorValue": 4281096469,
+                "travellingTime": 1.5,
+                "name": "Cairo University",
+                "transferBetween": "is Transfer station between\nLine 2 and Line 3",
+                "latitude": 30.0261,
+                "longitude": 31.2011,
+                "index": 47
+            }
+        ]
+    },
+    "commonStations": [
+        {
+            "transferBetween": "is Transfer station between\nLine 1 and Line 3",
+            "lineColorValue": 4281096469,
+            "name": "Nasser",
+            "latitude": 30.0536,
+            "longitude": 31.2389,
+            "travellingTime": 1.5,
+            "index": 19
+        },
+        {
+            "transferBetween": "is Transfer station between\nLine 2 and Line 3",
+            "lineColorValue": 4281096469,
+            "name": "Attaba",
+            "latitude": 30.0525,
+            "longitude": 31.2469,
+            "travellingTime": 1.5,
+            "index": 40
+        },
+        {
+            "transferBetween": "is Transfer station between\nLine 1 and Line 2",
+            "lineColorValue": 4287769133,
+            "name": "El-Shohadaa",
+            "latitude": 30.0619,
+            "longitude": 31.2461,
+            "travellingTime": 2,
+            "index": 21
+        },
+        {
+            "transferBetween": "is Transfer station between\nLine 1 and Line 2",
+            "lineColorValue": 4279715997,
+            "name": "El-Sadat",
+            "latitude": 30.0444,
+            "longitude": 31.2356,
+            "travellingTime": 2,
+            "index": 18
+        },
+        {
+            "transferBetween": "is Transfer station between\nLine 2 and Line 3",
+            "lineColorValue": 4281096469,
+            "name": "Cairo University",
+            "latitude": 30.0261,
+            "longitude": 31.2011,
+            "travellingTime": 1.5,
+            "index": 47
+        },
+        {
+            "transferBetween": "is Transfer station between\nimbaba branch and cairo Uni branch",
+            "lineColorValue": 4281096469,
+            "name": "Kit-Kat",
+            "latitude": 30.0667,
+            "longitude": 31.2131,
+            "travellingTime": 1.5,
+            "index": 73
+        }
+    ]
+}

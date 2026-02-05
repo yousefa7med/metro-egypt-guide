@@ -1,10 +1,15 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_metro/core/Helper/cashe_helper/cache_helper.dart';
 import 'package:go_metro/core/Helper/cashe_helper/cache_keys.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/line_model.dart';
+import 'package:go_metro/core/Helper/metro_helper/models/station_model.dart';
+import 'package:go_metro/core/utilities/assets.dart';
 part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
@@ -12,6 +17,28 @@ class AppCubit extends Cubit<AppState> {
 
   ThemeModeState currentTheme = ThemeModeState.system;
   static AppCubit get(BuildContext context) => BlocProvider.of(context);
+  Future<void> init() async {
+    _loadTheme();
+    _loadLang();
+    await assignLines();
+  }
+
+  Future<Map<String, dynamic>> _loadLines() async {
+    final response = await rootBundle.loadString(Assets.linesJson);
+    return jsonDecode(response);
+  }
+
+  Future<void> assignLines() async {
+    final json = await _loadLines();
+    line1 = LineModel.fromJson(json: json, linekey: "line1");
+    line2 = LineModel.fromJson(json: json, linekey: "line2");
+    line3Main = LineModel.fromJson(json: json, linekey: "line3Main");
+    line3Branch1 = LineModel.fromJson(json: json, linekey: "line3Branch1");
+    line3Branch2 = LineModel.fromJson(json: json, linekey: "line3Branch2");
+    commonStations = (json["commonStations"] as List)
+        .map((e) => StationModel.fromJson(json: e))
+        .toList();
+  }
 
   ThemeMode getTheme() {
     switch (currentTheme) {
@@ -32,11 +59,6 @@ class AppCubit extends Cubit<AppState> {
       value: theme.name,
     );
     emit(ThemeChangesState());
-  }
-
-  void init() {
-    _loadTheme();
-    _loadLang();
   }
 
   void _loadTheme() {
@@ -93,8 +115,6 @@ class AppCubit extends Cubit<AppState> {
         }
     }
   }
-
-
 }
 
 enum ThemeModeState { light, dark, system }

@@ -41,7 +41,10 @@ class ContactUs extends StatelessWidget {
                     mode: LaunchMode.externalApplication,
                   );
                 },
-                icon: const Icon(FontAwesomeIcons.linkedin),
+                icon: const Icon(
+                  FontAwesomeIcons.linkedin,
+                  color: Colors.white,
+                ),
               ),
               backgroundColorIcon: const Color(0xFF0A66C2),
             ),
@@ -54,7 +57,7 @@ class ContactUs extends StatelessWidget {
                     mode: LaunchMode.externalApplication,
                   );
                 },
-                icon: const Icon(FontAwesomeIcons.github),
+                icon: const Icon(FontAwesomeIcons.github, color: Colors.white),
               ),
               backgroundColorIcon: const Color(0xFF24292e),
             ),
@@ -68,7 +71,10 @@ class ContactUs extends StatelessWidget {
                     mode: LaunchMode.externalApplication,
                   );
                 },
-                icon: const Icon(FontAwesomeIcons.envelope),
+                icon: const Icon(
+                  FontAwesomeIcons.envelope,
+                  color: Colors.white,
+                ),
               ),
               backgroundColorIcon: AppColor.primaryColor,
             ),

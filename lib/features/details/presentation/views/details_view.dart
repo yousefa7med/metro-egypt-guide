@@ -52,19 +52,35 @@ class DetailsView extends StatelessWidget {
                 start: details.stationName(details.startStation!)!,
                 end: details.stationName(details.finalStation!)!,
                 startLine: TripDetailsModel.getLineByColor(
-                  details.routes[0].stations[0].lineColor,
+                  details.routes[0].stations.length > 1
+                      ? details.routes[0].stations[1].lineColor
+                      : details.routes[0].stations[0].lineColor,
                 ),
-                startColor: details.routes[0].stations[0].lineColor,
+                startColor: details.routes[0].stations.length > 1
+                    ? details.routes[0].stations[1].lineColor
+                    : details.routes[0].stations[0].lineColor,
                 lastLine: TripDetailsModel.getLineByColor(
-                  details
-                      .routes[details.routes.length - 1]
-                      .stations[0]
-                      .lineColor,
+                  details.routes[details.routes.length - 1].stations.length > 1
+                      ? details
+                            .routes[details.routes.length - 1]
+                            .stations[1]
+                            .lineColor
+                      : details
+                            .routes[details.routes.length - 1]
+                            .stations[0]
+                            .lineColor,
                 ),
-                lastColor: details
-                    .routes[details.routes.length - 1]
-                    .stations[0]
-                    .lineColor,
+                lastColor:
+                    details.routes[details.routes.length - 1].stations.length >
+                        1
+                    ? details
+                          .routes[details.routes.length - 1]
+                          .stations[1]
+                          .lineColor
+                    : details
+                          .routes[details.routes.length - 1]
+                          .stations[0]
+                          .lineColor,
               ),
             ),
             const SliverToBoxAdapter(child: Gap(15)),
@@ -116,11 +132,13 @@ class DetailsView extends StatelessWidget {
                     return AppTimeLineTile(
                       index: index,
                       stations: route.stations,
-                      color: route.stations[0].lineColor,
+                      color: route.stations.length > 1
+                          ? route.stations[1].lineColor
+                          : route.stations[0].lineColor,
                     );
                   },
                 ),
-                padding: isArabic()
+                padding: isArabic(context)
                     ? const EdgeInsets.only(right: 16)
                     : const EdgeInsets.only(left: 16),
               ),

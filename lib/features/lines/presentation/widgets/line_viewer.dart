@@ -94,13 +94,13 @@ class _LineViewerState extends State<LineViewer> {
           duration: const Duration(milliseconds: 650),
           sliver: isExpanded1
               ? SliverPadding(
-                  padding: isArabic()
+                  padding: isArabic(context)
                       ? const EdgeInsets.only(left: 16, right: 36)
                       : const EdgeInsets.only(right: 16, left: 36),
                   sliver: SliverList.builder(
                     itemCount: line1.stations.length,
                     itemBuilder: (ctx, index) {
-                      log(line1.stations[index].name!);
+                      log(line1.stations[index].name);
                       return AppTimeLineTile(
                         index: index,
                         stations: line1.stations,
@@ -175,13 +175,13 @@ class _LineViewerState extends State<LineViewer> {
           duration: const Duration(milliseconds: 650),
           sliver: isExpanded2
               ? SliverPadding(
-                  padding: isArabic()
+                  padding: isArabic(context)
                       ? const EdgeInsets.only(left: 16, right: 36)
                       : const EdgeInsets.only(right: 16, left: 36),
                   sliver: SliverList.builder(
                     itemCount: line2.stations.length,
                     itemBuilder: (ctx, index) {
-                      log(line2.stations[index].name!);
+                      log(line2.stations[index].name);
                       return AppTimeLineTile(
                         index: index,
                         stations: line2.stations,
@@ -261,13 +261,13 @@ class _LineViewerState extends State<LineViewer> {
           duration: const Duration(milliseconds: 650),
           sliver: isExpanded3
               ? SliverPadding(
-                  padding: isArabic()
+                  padding: isArabic(context)
                       ? const EdgeInsets.only(left: 16, right: 36)
                       : const EdgeInsets.only(right: 16, left: 36),
                   sliver: SliverList.builder(
                     itemCount: line3.length,
                     itemBuilder: (ctx, index) {
-                      log(line3[index].name!);
+                      log(line3[index].name);
 
                       return AppTimeLineTile(
                         index: index,

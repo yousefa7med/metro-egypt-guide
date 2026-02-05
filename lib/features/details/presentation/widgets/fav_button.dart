@@ -53,6 +53,7 @@ class _FavButtonState extends State<FavButton> {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
+          foregroundColor: AppColor.primaryColor,
           side: const BorderSide(color: AppColor.primaryColor, width: 3),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(12),

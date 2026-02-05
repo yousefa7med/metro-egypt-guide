@@ -8,28 +8,38 @@ import 'package:objectbox/objectbox.dart';
 class StationModel {
   @Id()
   int id = 0;
-  String? name;
-  String? transferBetween;
-  int? index;
+  final String name;
+  final String? transferBetween;
+  final int index;
   int? order;
-  double? travellingTime;
-  double? longitudee;
-  double? latitude;
-  int? lineColorValue;
+  final double travellingTime;
+  final double longitude;
+  final double latitude;
+  final int lineColorValue;
   final route = ToOne<RouteModel>();
   StationModel({
-    this.name,
-    this.latitude,
-    this.longitudee,
-    this.index,
-    this.travellingTime,
+    required this.name,
+    required this.latitude,
+    required this.longitude,
+    required this.index,
+    required this.travellingTime,
     this.transferBetween,
-    this.lineColorValue,
+    required this.lineColorValue,
   });
-  Color get lineColor => Color(lineColorValue!);
-  set lineColor(Color color) => lineColorValue = color.toARGB32();
+  factory StationModel.fromJson({required final Map<String, dynamic> json}) =>
+      StationModel(
+        name: json["name"] as String,
+        latitude: (json["latitude"] as num).toDouble(),
+        longitude: (json["longitude"] as num).toDouble(),
+        index: json["index"] as int,
+        travellingTime: (json["travellingTime"] as num).toDouble(),
+        lineColorValue: json["lineColorValue"] as int,
+        transferBetween: json["transferBetween"] as String?,
+      );
 
-  String getTransferBetween(BuildContext context, ) {
+  Color get lineColor => Color(lineColorValue);
+
+  String getTransferBetween(BuildContext context) {
     final s = S.of(context);
     switch (transferBetween) {
       case "is Transfer station between\nLine 1 and Line 3":

@@ -68,7 +68,7 @@ class NearestStationSection extends StatelessWidget {
           ),
 
           trailing: Padding(
-            padding: isArabic()
+            padding: isArabic(context)
                 ? const EdgeInsets.only(left: 8.0)
                 : const EdgeInsets.only(right: 8.0),
             child: BlocBuilder<TripCubit, TripState>(
