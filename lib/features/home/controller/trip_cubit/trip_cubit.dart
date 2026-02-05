@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
@@ -78,16 +76,12 @@ class TripCubit extends Cubit<TripState> with StationNameMixin {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        // emit(
-        //   PositionFailureState(errMsg: S.current.LocationPermissionRequired),
-
-        // );
+      
         throw LocationPermissionDeniedException();
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      // emit(PositionFailureState(errMsg: S.current.LocationPermanentlyDenied));
       throw LocationPermissionPermanentlyDeniedException();
     }
 
@@ -97,7 +91,7 @@ class TripCubit extends Cubit<TripState> with StationNameMixin {
   Future<void> getNearestStation() async {
     emit(PositionLoadingState());
     try {
-      log('getNearestStation');
+    
       final position = await _getPosition();
 
       final nearestStation = _getNearestStationModel(

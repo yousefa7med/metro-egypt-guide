@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -128,7 +127,6 @@ class DetailsView extends StatelessWidget {
                 sliver: SliverList.builder(
                   itemCount: route.stations.length,
                   itemBuilder: (context, index) {
-                    log('builder $index');
                     return AppTimeLineTile(
                       index: index,
                       stations: route.stations,

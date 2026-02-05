@@ -72,9 +72,7 @@ class DetailsSection extends StatelessWidget {
               ],
             ),
 
-            // Row(
 
-            // ),
           ],
         ),
       ),

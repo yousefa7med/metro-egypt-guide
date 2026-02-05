@@ -20,7 +20,6 @@ Future<void> main() async {
   await GetIt.instance<ObjectBoxServices>().init();
   await GetIt.instance<CacheHelper>().init();
   Bloc.observer = AppBlocObserver();
-  // getIt<ObjectBoxServices>().deleteAll();
 
   runApp(
     BlocProvider(
@@ -69,7 +68,6 @@ class MetroGuide extends StatelessWidget {
 }
 
 void configureDependencies() {
-  // Register your services
   GetIt.instance.registerSingleton<Metro>(Metro());
   GetIt.instance.registerSingleton<CacheHelper>(CacheHelper());
   GetIt.instance.registerSingleton<ObjectBoxServices>(ObjectBoxServices());

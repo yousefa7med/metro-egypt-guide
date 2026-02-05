@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,7 +37,6 @@ class _FindRouteFormState extends State<FindRouteForm> with StationNameMixin {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    log("message");
     final newLocale = Localizations.localeOf(context).languageCode;
     if (currentLocale != newLocale) {
       currentLocale = newLocale;
@@ -88,11 +86,7 @@ class _FindRouteFormState extends State<FindRouteForm> with StationNameMixin {
               details = TripCubit.get(
                 context,
               ).getTripDetails(startStation, lastStation);
-              // await  Navigator.pushNamed(
-              //     context,
-              //     AppRoutes.detailsView,
-              //     arguments: details,
-              //   );
+            
               AppNavigation.pushName(
                 rootNavigator: true,
                 context: context,
@@ -143,7 +137,6 @@ class _FindRouteFormState extends State<FindRouteForm> with StationNameMixin {
     required BuildContext context,
   }) {
     return (value) {
-      print(value);
       startStation = value;
       context.read<TripCubit>().startStationController.text = stationName(
         value,

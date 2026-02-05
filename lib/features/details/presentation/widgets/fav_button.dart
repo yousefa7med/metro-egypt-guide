@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +29,6 @@ class _FavButtonState extends State<FavButton> {
       setState(() {
         isFav = details.isFav;
       });
-      log(isFav.toString());
     });
 
     super.initState();

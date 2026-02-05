@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 abstract class AppNavigation {
-  //? navigation without delay
   static void pushName({
     required BuildContext context,
     required String route,
@@ -36,13 +35,11 @@ abstract class AppNavigation {
     ).pushNamedAndRemoveUntil(route, (Route<dynamic> route) => false);
   }
 
-  //? navigation with delay time
   static void navigationdelay({
     required BuildContext context,
     required String route,
   }) {
     Future.delayed(const Duration(seconds: 4), () {
-      // ignore: use_build_context_synchronously
       Navigator.pushNamed(context, route);
     });
   }

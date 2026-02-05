@@ -55,7 +55,6 @@ class _FavouriteSectionState extends State<FavouriteSection> {
                                   setState(() {
                                     allFav = !allFav;
                                   });
-                                  print(allFav);
                                   WidgetsBinding.instance.addPostFrameCallback((
                                     _,
                                   ) {
@@ -108,7 +107,7 @@ class _FavouriteSectionState extends State<FavouriteSection> {
                     ? trips.length
                     : 2,
                 itemBuilder: (context, index) {
-                  print(index);
+                
                   return Padding(
                     padding: isArabic(context)
                         ? const EdgeInsets.only(left: 10, right: 10)

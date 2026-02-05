@@ -15,7 +15,6 @@ class MainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
-      // stateManagement: false,
       tabs: _tabs(context),
       navBarBuilder: (navBarConfig) => Style6BottomNavBar(
         navBarConfig: navBarConfig,
@@ -33,9 +32,7 @@ class MainView extends StatelessWidget {
 
 List<PersistentTabConfig> _tabs(BuildContext context) => [
   PersistentTabConfig(
-    // navigatorConfig: NavigatorConfig(
-    //   routes: {AppRoutes.detailsView: (context) => const DetailsView()},
-    // ),
+    
     screen: BlocProvider.value(
       value: GetIt.instance<TripCubit>(),
       child: const HomeView(),

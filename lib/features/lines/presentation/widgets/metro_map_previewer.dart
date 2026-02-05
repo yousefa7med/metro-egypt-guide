@@ -12,15 +12,12 @@ class MetroMapPreviewer extends StatelessWidget {
         _showZoomableImage(context, Assets.imagesMetroMap);
       },
       child: Hero(
-        tag: Assets.imagesMetroMap, // for smooth transition
+        tag: Assets.imagesMetroMap,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(12),
           child: Container(
             decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black, // 🔲 لون الإطار
-                width: 2, // سمك الإطار
-              ),
+              border: Border.all(color: Colors.black, width: 2),
             ),
             child: Opacity(
               opacity: 0.79,
@@ -41,14 +38,13 @@ class MetroMapPreviewer extends StatelessWidget {
 void _showZoomableImage(BuildContext context, String imagePath) {
   showGeneralDialog(
     context: context,
-    barrierColor: Colors.black.withAlpha(220), // 🔥 خلفية شفافة
+    barrierColor: Colors.black.withAlpha(220),
     barrierDismissible: true,
     barrierLabel: "PhotoView",
     transitionDuration: const Duration(milliseconds: 200),
     pageBuilder: (context, anim1, anim2) {
       return Stack(
         children: [
-          // 📸 الصورة القابلة للتكبير
           Center(
             child: Hero(
               tag: imagePath,
@@ -73,10 +69,9 @@ void _showZoomableImage(BuildContext context, String imagePath) {
             ),
           ),
 
-          // 🔙 زر الرجوع
           Positioned(
-            top: 40, // المسافة من الأعلى
-            left: 16, // المسافة من اليسار
+            top: 40,
+            left: 16,
             child: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
               onPressed: () => Navigator.of(context).pop(),

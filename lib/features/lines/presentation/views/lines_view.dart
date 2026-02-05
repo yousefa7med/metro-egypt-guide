@@ -43,7 +43,6 @@ class LinesView extends StatelessWidget {
 
           LineViewer(),
 
-          // 2. المحطات (Lazy Loading)
         ],
       ),
     );

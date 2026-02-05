@@ -1,7 +1,5 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:gap/gap.dart';
 import 'package:go_metro/core/Helper/functions/functions.dart';
 import 'package:go_metro/core/Helper/metro_helper/models/line_model.dart';
@@ -44,7 +42,6 @@ class _LineViewerState extends State<LineViewer> {
         SliverToBoxAdapter(
           child: GestureDetector(
             onTap: () {
-              print('clicked');
 
               if (!isExpanded1) {
                 isExpanded2 = false;
@@ -100,7 +97,6 @@ class _LineViewerState extends State<LineViewer> {
                   sliver: SliverList.builder(
                     itemCount: line1.stations.length,
                     itemBuilder: (ctx, index) {
-                      log(line1.stations[index].name);
                       return AppTimeLineTile(
                         index: index,
                         stations: line1.stations,
@@ -121,7 +117,6 @@ class _LineViewerState extends State<LineViewer> {
         SliverToBoxAdapter(
           child: GestureDetector(
             onTap: () {
-              print('clicked');
 
               if (!isExpanded2) {
                 isExpanded1 = false;
@@ -181,7 +176,6 @@ class _LineViewerState extends State<LineViewer> {
                   sliver: SliverList.builder(
                     itemCount: line2.stations.length,
                     itemBuilder: (ctx, index) {
-                      log(line2.stations[index].name);
                       return AppTimeLineTile(
                         index: index,
                         stations: line2.stations,
@@ -207,7 +201,6 @@ class _LineViewerState extends State<LineViewer> {
         SliverToBoxAdapter(
           child: GestureDetector(
             onTap: () {
-              print('clicked');
 
               if (!isExpanded3) {
                 isExpanded2 = false;
@@ -267,7 +260,6 @@ class _LineViewerState extends State<LineViewer> {
                   sliver: SliverList.builder(
                     itemCount: line3.length,
                     itemBuilder: (ctx, index) {
-                      log(line3[index].name);
 
                       return AppTimeLineTile(
                         index: index,

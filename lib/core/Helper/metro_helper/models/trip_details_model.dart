@@ -90,27 +90,7 @@ class TripDetailsModel with StationNameMixin {
         .stations[routes[routes.length - 1].stations.length - 1];
   }
 
-  // void printDetails() {
-  //   print(
-  //     '============================================= routes =========================================',
-  //   );
-  //   for (var route in routes) {
-  //     print(
-  //       '=============================================== route =======================================',
-  //     );
-  //     for (var station in route) {
-  //       print(station.name);
-  //     }
-  //   }
-
-  //   for (var direction in directions) {
-  //     print(
-  //       '=============================================== direction =======================================',
-  //     );
-
-  //     print(direction.name);
-  //   }
-  // }
+ 
 
   void calcTransfer() => transfer = directions.length - 1;
 
